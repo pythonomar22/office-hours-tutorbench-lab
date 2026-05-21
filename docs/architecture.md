@@ -17,7 +17,7 @@
 - UC3 active learning: input is the problem plus partial student work; output
   should be a hint or guiding question and must avoid giving the full answer.
 
-## Agentic Tutor V1
+## Agentic Tutor V2
 
 The agentic strategy is rubric-blind:
 
@@ -43,6 +43,13 @@ The agentic strategy is rubric-blind:
   calibration, acknowledgement, structure, and spoiler risk.
 - Revision loop: runs up to `TUTORBENCH_MAX_REVISION_ATTEMPTS` if the critic
   returns `REVISE`, and uses the full composer policy during revisions.
+- Task-family playbooks: deterministic, rubric-blind guidance for recurring
+  TutorBench tutoring patterns such as hydrogen-halide acidity, ellipse area
+  optimization, recursive factorial feedback, CLT sample-mean hints, and
+  plant/animal cell diagrams.
+- Deterministic final guards: narrow post-composition repairs for brittle
+  task-family anchors that the LLM critic may miss, such as exact visual
+  anchors, exact factorial verification, and active-learning spoiler templates.
 
 No candidate step receives sample-specific TutorBench rubrics. Rubrics are used
 only in the judge.
@@ -52,6 +59,14 @@ The trace for each agentic response stores these stages as
 `specialist_audit`, `solver_analysis`, `answer_contract`,
 `domain_verification`, `draft`, `critic_attempts`, and
 `revision_attempts`.
+
+## Evaluation Parity
+
+Run `tutorbench-lab audit-parity` before treating a score as comparable to the
+public leaderboard. The current pinned public Hugging Face release is
+public-HF-comparable but not leaderboard-exact because the local manifest has
+`1473` rows and `15043` rubrics, while Scale's overview describes `1490` rows
+and `15220` rubrics. See `docs/eval_parity.md`.
 
 ## Current Iteration Notes
 
@@ -70,6 +85,20 @@ row but regressed the active-learning subset overall (`78.07%` to `64.98%` on
 the four-row slice), mostly by damaging the calculus hint. That gate is not in
 the default route; the lesson is that hint verification likely needs
 subject/task-specific gates rather than one broad UC3 gate.
+
+The dev10 loop later reached `99.60%`, but that is an intentionally overfit
+debug set. The current comparison ladder is:
+
+1. `office_hours_dev10` for quick trace debugging.
+2. `office_hours_dev50` for architecture iteration, excluding dev10 rows.
+3. A future `validation150` for sparse inspection.
+4. Full public-HF run after architecture freeze.
+5. Official Scale submission for leaderboard claims.
+
+The first dev50 sanity slice showed baseline Sonnet at `69.63%` and the agentic
+tutor at `72.14%` across three rows. It also exposed a statistics active-learning
+regression on a CLT sample-mean hint; adding a CLT playbook moved that row from
+`44.4%` to `100%` locally.
 
 ## Office Hours Transfer Path
 

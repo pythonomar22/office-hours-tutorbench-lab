@@ -61,6 +61,10 @@ def build_task_playbook(
         text, ["pooled proportion", "two-proportion", "z-test", "vaccine"]
     ):
         notes.append(_pooled_proportion_hint_playbook())
+    if turn.subject.lower() == "statistics" and _has_any(
+        text, ["central limit theorem", "clt", "sample mean", "right-skewed"]
+    ):
+        notes.append(_clt_sample_mean_hint_playbook())
 
     if turn.subject.lower() == "physics" and _has_any(
         text, ["vf", "v_f", "kinematic", "acceleration", "50 m", "40 m/s"]
@@ -216,6 +220,28 @@ def _pooled_proportion_hint_playbook() -> str:
           numerically, then state that once SE is known the z-score can be
           computed with z = (p_hat_v - p_hat_p) / SE.
         - Do not give the final z-score, p-value, or conclusion.
+        """
+    ).strip()
+
+
+def _clt_sample_mean_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: CLT sample-mean active-learning hint
+        - Keep this as a hint, not a mini-lecture. Affirm the student's SE and
+          z-score only if already computed correctly.
+        - Include at least two probing questions:
+          1. "What does the Central Limit Theorem say happens to the sampling
+             distribution of x-bar as n gets large?"
+          2. "Does that CLT statement depend on the original population being
+             normal, or does it apply even when the population is skewed?"
+        - Ask the student to apply that principle to n = 50 in this exact light
+          bulb scenario.
+        - Instruct the student to interpret P(Z < a negative z-value) as a
+          left-tail standard-normal probability and round the final probability
+          to three decimals.
+        - Do not state P(Z < -0.707), do not give the numerical probability,
+          and do not directly say the final rounded answer.
         """
     ).strip()
 

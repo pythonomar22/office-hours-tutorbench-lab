@@ -38,9 +38,15 @@ from tutorbench_lab.dataset import (
     write_manifest,
 )
 from tutorbench_lab.doctor import check_providers
-from tutorbench_lab.eval_sets import examples_for_eval_set, load_eval_set
+from tutorbench_lab.eval_sets import (
+    build_eval_set,
+    examples_for_eval_set,
+    load_eval_set,
+    write_eval_set,
+)
 from tutorbench_lab.io import append_jsonl, read_json, read_model_jsonl, write_json
 from tutorbench_lab.judge import judge_run_record
+from tutorbench_lab.parity import build_parity_checks, checks_to_json, parity_level
 from tutorbench_lab.reports import (
     compare_report_markdown,
     compare_reports,
@@ -141,6 +147,114 @@ def fetch(
     console.print(
         f"Wrote {len(examples)} examples to [bold]{examples_path}[/bold] "
         f"and manifest to [bold]{manifest_path}[/bold]"
+    )
+
+
+@app.command("audit-parity")
+def audit_parity(
+    manifest_path: Path = typer.Option(DEFAULT_MANIFEST_PATH),
+    metadata_path: Path = typer.Option(DEFAULT_HF_METADATA_PATH),
+    output_path: Path | None = typer.Option(
+        None,
+        help="Optional JSON path for machine-readable parity checks.",
+    ),
+    judge_model: str | None = typer.Option(None),
+) -> None:
+    """Explain whether local scores are comparable to public leaderboard scores."""
+
+    judge_model = judge_model or judge_model_default()
+    manifest = read_json(manifest_path)
+    metadata = read_json(metadata_path) if metadata_path.exists() else None
+    checks = build_parity_checks(
+        manifest=manifest,
+        metadata=metadata,
+        judge_model=judge_model,
+    )
+    level = parity_level(checks)
+
+    table = Table(title=f"Evaluation parity: {level}")
+    table.add_column("Check")
+    table.add_column("Status")
+    table.add_column("Expected")
+    table.add_column("Observed")
+    for check in checks:
+        table.add_row(
+            check.name,
+            check.status.value,
+            check.expected,
+            check.observed,
+        )
+    console.print(table)
+    console.print(
+        "[bold]Interpretation:[/bold] local public-HF runs can guide engineering, "
+        "but leaderboard claims require Scale-side evaluation or calibrated "
+        "reproduction of published baselines."
+    )
+
+    if output_path:
+        write_json(
+            output_path,
+            {
+                "level": level,
+                "checks": checks_to_json(checks),
+            },
+        )
+        console.print(f"Wrote parity audit to [bold]{output_path}[/bold]")
+
+
+@app.command("create-eval-set")
+def create_eval_set(
+    output_path: Path,
+    name: str = typer.Option(..., help="Stable eval set name."),
+    description: str = typer.Option("", help="Human-readable eval set purpose."),
+    examples_path: Path = typer.Option(DEFAULT_EXAMPLES_JSONL),
+    limit: int = typer.Option(..., help="Number of rows to include."),
+    stratified_per_bucket: int = typer.Option(
+        9,
+        help="Rows sampled per stratum before applying the final limit.",
+    ),
+    stratify_by: StratifyBy = typer.Option(StratifyBy.USE_CASE_MODALITY),
+    seed: int = typer.Option(20260521, help="Deterministic sampling seed."),
+    exclude_eval_set: list[Path] | None = typer.Option(
+        None,
+        "--exclude-eval-set",
+        help="Eval set(s) whose task IDs should be excluded from selection.",
+    ),
+) -> None:
+    """Create a deterministic JSON eval set for fairer iteration."""
+
+    examples = load_examples_jsonl(examples_path)
+    excluded: set[str] = set()
+    for path in exclude_eval_set or []:
+        excluded.update(load_eval_set(path).ids)
+    if excluded:
+        examples = [example for example in examples if example.task_id not in excluded]
+
+    selected = select_examples(
+        examples,
+        limit=limit,
+        stratified_per_bucket=stratified_per_bucket,
+        stratify_by=stratify_by,
+        seed=seed,
+    )
+    eval_set = build_eval_set(
+        name=name,
+        description=description,
+        examples=selected,
+        stratify_by=stratify_by,
+        selection_policy=[
+            f"source_examples={examples_path}",
+            f"limit={limit}",
+            f"stratified_per_bucket={stratified_per_bucket}",
+            f"stratify_by={stratify_by.value}",
+            f"seed={seed}",
+            f"excluded_task_ids={len(excluded)}",
+        ],
+    )
+    write_eval_set(eval_set, output_path)
+    console.print(
+        f"Wrote eval set [bold]{name}[/bold] with {len(eval_set.task_ids)} rows "
+        f"to [bold]{output_path}[/bold]"
     )
 
 

@@ -27,8 +27,8 @@ def select_examples(
     """Select examples for a run.
 
     Plain `limit` preserves dataset order. Stratified sampling shuffles inside
-    each bucket deterministically, samples `n` per bucket, then shuffles the
-    combined result deterministically.
+    each bucket deterministically, samples `n` per bucket, applies any final
+    limit as balanced per-bucket quotas, then shuffles the combined result.
     """
 
     if stratified_per_bucket is None:
@@ -39,15 +39,14 @@ def select_examples(
     for example in examples:
         buckets[_bucket_key(example, stratify_by)].append(example)
 
-    selected: list[TutorBenchExample] = []
+    sampled_by_bucket: dict[str, list[TutorBenchExample]] = {}
     for key in sorted(buckets):
         bucket = buckets[key][:]
         rng.shuffle(bucket)
-        selected.extend(bucket[:stratified_per_bucket])
+        sampled_by_bucket[key] = bucket[:stratified_per_bucket]
 
+    selected = _balanced_limited_selection(sampled_by_bucket, limit=limit, rng=rng)
     rng.shuffle(selected)
-    if limit is not None:
-        selected = selected[:limit]
     return selected
 
 
@@ -61,3 +60,33 @@ def _bucket_key(example: TutorBenchExample, stratify_by: StratifyBy) -> str:
     if stratify_by == StratifyBy.SUBJECT_MODALITY:
         return f"{example.subject}:{example.modality.value}"
     raise ValueError(f"unsupported stratification: {stratify_by}")
+
+
+def bucket_key(example: TutorBenchExample, stratify_by: StratifyBy) -> str:
+    """Public wrapper for stable eval-set provenance labels."""
+
+    return _bucket_key(example, stratify_by)
+
+
+def _balanced_limited_selection(
+    sampled_by_bucket: dict[str, list[TutorBenchExample]],
+    *,
+    limit: int | None,
+    rng: random.Random,
+) -> list[TutorBenchExample]:
+    keys = sorted(sampled_by_bucket)
+    selected = [example for key in keys for example in sampled_by_bucket[key]]
+    if limit is None or len(selected) <= limit:
+        return selected
+
+    base = limit // len(keys)
+    extras = limit % len(keys)
+    extra_keys = keys[:]
+    rng.shuffle(extra_keys)
+    extra_key_set = set(extra_keys[:extras])
+
+    balanced: list[TutorBenchExample] = []
+    for key in keys:
+        quota = base + (1 if key in extra_key_set else 0)
+        balanced.extend(sampled_by_bucket[key][:quota])
+    return balanced

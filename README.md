@@ -150,10 +150,20 @@ negative `-5` spoiler criteria are inferred and flagged for manual review.
 ## Current Target
 
 The working target is `>=70%` local full-set ARRw before treating the system as
-plausibly leaderboard-beating. The public leaderboard target should be rechecked
-before submission because it can change.
+plausibly leaderboard-beating. The current public leaderboard target should be
+rechecked before submission because it can change.
 
-Current curated Office Hours dev10 best: `81.18%` ARRw in
-`runs/5f9a7c7e-04a6-4824-9183-d1d1f2a0a4ff/`, using the routed visual-probe
-architecture. Run artifacts are gitignored, but the architecture and eval-set
-definition are tracked.
+Important: local public-HF results are not automatically leaderboard results.
+Run the parity audit before making any comparison claim:
+
+```bash
+uv run tutorbench-lab audit-parity
+```
+
+See `docs/eval_parity.md` for the claim levels and calibration checklist.
+
+Current curated Office Hours dev10 best: `99.60%` ARRw in
+`runs/7fd1b151-8dfa-46bf-924e-c96955e99dd1/`, after task-family playbooks and
+deterministic final guards. Treat this as an overfit architecture-debugging
+score, not a benchmark claim. Run artifacts are gitignored, but the architecture
+and eval-set definition are tracked.

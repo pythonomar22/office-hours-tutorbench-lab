@@ -40,3 +40,25 @@ def test_stratified_sampling_takes_per_bucket():
         "assessment:text",
         "active_learning:text",
     }
+
+
+def test_stratified_limit_trims_balanced_buckets():
+    examples = []
+    batches = ["USE_CASE_1_TEXT", "USE_CASE_2_TEXT", "USE_CASE_3_TEXT"]
+    for bucket_index, batch in enumerate(batches):
+        for item_index in range(4):
+            examples.append(_example(f"{bucket_index}-{item_index}", batch))
+
+    selected = select_examples(
+        examples,
+        limit=8,
+        stratified_per_bucket=4,
+        stratify_by=StratifyBy.USE_CASE,
+        seed=7,
+    )
+
+    counts: dict[str, int] = {}
+    for example in selected:
+        counts[example.use_case.value] = counts.get(example.use_case.value, 0) + 1
+
+    assert sorted(counts.values()) == [2, 3, 3]

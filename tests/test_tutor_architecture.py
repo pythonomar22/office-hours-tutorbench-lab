@@ -109,6 +109,29 @@ def test_derivative_hint_playbook_withholds_full_arithmetic(adaptive_example) ->
     assert "height at t = 4" in playbook
 
 
+def test_clt_sample_mean_playbook_requires_probing_questions(adaptive_example) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Statistics",
+            "batch": "USE_CASE_3_TEXT",
+            "prompt": (
+                "A right-skewed population has a sample mean problem. The student "
+                "used CLT and has z = -0.707."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "What does the Central Limit Theorem say" in playbook
+    assert "population being" in playbook
+    assert "normal" in playbook
+    assert "round the final probability" in playbook
+    assert "to three decimals" in playbook
+    assert "Do not state P(Z < -0.707)" in playbook
+
+
 def test_deterministic_guards_add_brittle_playbook_anchors() -> None:
     playbook = "\n\n".join(
         [
