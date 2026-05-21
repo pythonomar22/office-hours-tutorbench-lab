@@ -7,6 +7,8 @@ from dataclasses import dataclass
 
 import httpx
 
+from tutorbench_lab.config import load_environment
+
 
 @dataclass(frozen=True)
 class ProviderCheck:
@@ -52,7 +54,11 @@ PROVIDERS = {
 }
 
 
-def check_providers(*, ping: bool = False, timeout_s: float = 10.0) -> list[ProviderCheck]:
+def check_providers(
+    *, ping: bool = False, timeout_s: float = 10.0, load_env: bool = True
+) -> list[ProviderCheck]:
+    if load_env:
+        load_environment()
     checks = []
     for provider, config in PROVIDERS.items():
         env_name = config["env"]

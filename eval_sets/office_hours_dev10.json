@@ -1,0 +1,51 @@
+{
+  "name": "office_hours_dev10",
+  "description": "Curated TutorBench development set for iterating on the Office Hours tutor. The set intentionally covers all three TutorBench use cases, all six subjects, four text rows, six multimodal rows, and the failure modes most relevant to an iPad/whiteboard tutor.",
+  "selection_policy": [
+    "Keep TutorBench rubrics evaluator-only; this file contains task IDs and product-facing rationales, not rubric answers.",
+    "Bias toward examples that exercise Office Hours workflows: uploaded work, handwritten/diagram perception, progressive hints, adaptive misconception repair, and assessment feedback.",
+    "Use this as a small prompt-development set, not as proof of benchmark performance."
+  ],
+  "task_ids": [
+    {
+      "task_id": "6847710ae3de2dd1e1ed6b02",
+      "why": "CS adaptive explanation; tests whether the tutor can explain abstraction and trade-offs with examples instead of giving a generic OOP answer."
+    },
+    {
+      "task_id": "684a8c40ddc9f025efade29b",
+      "why": "Chemistry adaptive explanation; tests warm confusion repair and distinguishing electronegativity from acid strength trends."
+    },
+    {
+      "task_id": "681cfd7a516d8f36be368bca",
+      "why": "Calculus multimodal adaptive explanation; stresses whether the tutor trusts the conversation context while still using image evidence carefully."
+    },
+    {
+      "task_id": "68362923bd1df5c44ef3112b",
+      "why": "Physics text assessment; tests feedback on a nearly correct solution, sign/algebra repair, and providing the corrected quantitative result."
+    },
+    {
+      "task_id": "683e45123a967938ab5f5de2",
+      "why": "Biology multimodal assessment; high-value perception case with numbered cell labels and student reasoning."
+    },
+    {
+      "task_id": "683e450e8103655aef73fbcf",
+      "why": "CS multimodal assessment; tests exact visual/code-line reading and debugging feedback."
+    },
+    {
+      "task_id": "683e458c1eb8a249fd792c51",
+      "why": "Biology multimodal active learning; tests anchoring to the student's own wording while preserving hint style."
+    },
+    {
+      "task_id": "6847720944c191c985a2fbb3",
+      "why": "Statistics text active learning; tests formula-level hint completeness without revealing the final answer."
+    },
+    {
+      "task_id": "681b9468c81f0f0c9aedbe68",
+      "why": "Physics multimodal active learning; tests variable extraction from an image and kinematics scaffolding."
+    },
+    {
+      "task_id": "683e458c2d5e3eede3bfbe83",
+      "why": "Calculus multimodal active learning; tests validating correct partial work and nudging derivative/evaluation steps."
+    }
+  ]
+}

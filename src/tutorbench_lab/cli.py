@@ -2,24 +2,25 @@
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
 from uuid import uuid4
 
 import typer
-from dotenv import load_dotenv
 from rich.console import Console
 from rich.table import Table
 
+from tutorbench_lab.config import (
+    candidate_model_default,
+    critic_model_default,
+    judge_model_default,
+    load_environment,
+    solver_model_default,
+)
 from tutorbench_lab.constants import (
-    DEFAULT_CANDIDATE_MODEL,
-    DEFAULT_CRITIC_MODEL,
     DEFAULT_EXAMPLES_JSONL,
     DEFAULT_HF_METADATA_PATH,
-    DEFAULT_JUDGE_MODEL,
     DEFAULT_MANIFEST_PATH,
     DEFAULT_RAW_DATASET_DIR,
-    DEFAULT_SOLVER_MODEL,
 )
 from tutorbench_lab.dataset import (
     build_manifest,
@@ -33,6 +34,7 @@ from tutorbench_lab.dataset import (
     write_manifest,
 )
 from tutorbench_lab.doctor import check_providers
+from tutorbench_lab.eval_sets import examples_for_eval_set, load_eval_set
 from tutorbench_lab.io import append_jsonl, read_json, read_model_jsonl, write_json
 from tutorbench_lab.judge import judge_run_record
 from tutorbench_lab.reports import (
@@ -42,6 +44,7 @@ from tutorbench_lab.reports import (
 )
 from tutorbench_lab.schemas import JudgedRunRecord, RunRecord, ScoreReport, Strategy
 from tutorbench_lab.scoring import build_score_report
+from tutorbench_lab.selection import StratifyBy, select_examples
 from tutorbench_lab.tutor import (
     dry_run_response,
     record_for_response,
@@ -49,10 +52,21 @@ from tutorbench_lab.tutor import (
     run_baseline,
 )
 
-load_dotenv()
-
 app = typer.Typer(no_args_is_help=True, help="TutorBench evaluation lab.")
 console = Console()
+
+
+@app.callback()
+def main(
+    env_file: Path = typer.Option(
+        Path(".env"),
+        "--env-file",
+        help="Path to the dotenv file to load before running a command.",
+    ),
+) -> None:
+    """Load local environment before any command runs."""
+
+    load_environment(env_file)
 
 
 @app.command()
@@ -134,23 +148,45 @@ def run(
         Strategy.DRY_RUN,
         help="Use dry_run until you intentionally want to spend model tokens.",
     ),
-    model: str = typer.Option(
-        os.getenv("TUTORBENCH_CANDIDATE_MODEL", DEFAULT_CANDIDATE_MODEL)
-    ),
-    solver_model: str = typer.Option(
-        os.getenv("TUTORBENCH_SOLVER_MODEL", DEFAULT_SOLVER_MODEL)
-    ),
-    critic_model: str = typer.Option(
-        os.getenv("TUTORBENCH_CRITIC_MODEL", DEFAULT_CRITIC_MODEL)
-    ),
+    model: str | None = typer.Option(None),
+    solver_model: str | None = typer.Option(None),
+    critic_model: str | None = typer.Option(None),
     limit: int | None = typer.Option(None),
+    eval_set: Path | None = typer.Option(
+        None,
+        help="JSON eval set file containing ordered TutorBench task IDs.",
+    ),
+    stratified_per_bucket: int | None = typer.Option(
+        None,
+        help="Sample this many examples per stratification bucket.",
+    ),
+    stratify_by: StratifyBy = typer.Option(StratifyBy.USE_CASE_MODALITY),
+    seed: int = typer.Option(7, help="Deterministic sampling seed."),
     max_tokens: int = typer.Option(1200),
 ) -> None:
     """Generate candidate tutor responses."""
 
+    model = model or candidate_model_default()
+    solver_model = solver_model or solver_model_default()
+    critic_model = critic_model or critic_model_default()
     examples = load_examples_jsonl(examples_path)
-    if limit is not None:
-        examples = examples[:limit]
+    if eval_set is not None:
+        selected_eval_set = load_eval_set(eval_set)
+        examples = examples_for_eval_set(examples, selected_eval_set)
+        console.print(
+            f"Loaded eval set [bold]{selected_eval_set.name}[/bold] "
+            f"with {len(examples)} examples"
+        )
+        if limit is not None:
+            examples = examples[:limit]
+    else:
+        examples = select_examples(
+            examples,
+            limit=limit,
+            stratified_per_bucket=stratified_per_bucket,
+            stratify_by=stratify_by,
+            seed=seed,
+        )
 
     run_id = str(uuid4())
     run_dir = output_dir / run_id
@@ -188,14 +224,13 @@ def run(
 def judge(
     responses_path: Path,
     output_path: Path | None = typer.Option(None),
-    judge_model: str = typer.Option(
-        os.getenv("TUTORBENCH_JUDGE_MODEL", DEFAULT_JUDGE_MODEL)
-    ),
+    judge_model: str | None = typer.Option(None),
     limit: int | None = typer.Option(None),
     max_tokens: int = typer.Option(2000),
 ) -> None:
     """Judge candidate responses with sample-specific rubrics."""
 
+    judge_model = judge_model or judge_model_default()
     records = list(read_model_jsonl(responses_path, RunRecord))
     if limit is not None:
         records = records[:limit]

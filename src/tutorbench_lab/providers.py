@@ -18,6 +18,7 @@ from google.genai import types as google_types
 from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 
+from tutorbench_lab.config import load_environment
 from tutorbench_lab.media import load_image
 from tutorbench_lab.schemas import ModelUsage, TutorResponse, TutorTurnInput
 
@@ -88,6 +89,7 @@ def make_client(model_spec: str) -> ModelClient:
 class AnthropicClient(ModelClient):
     def __init__(self, spec: ModelSpec):
         super().__init__(spec)
+        load_environment()
         api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
             raise ProviderError("ANTHROPIC_API_KEY is not set")
@@ -136,6 +138,7 @@ class AnthropicClient(ModelClient):
 class OpenAIClient(ModelClient):
     def __init__(self, spec: ModelSpec):
         super().__init__(spec)
+        load_environment()
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
             raise ProviderError("OPENAI_API_KEY is not set")
@@ -177,6 +180,7 @@ class OpenAIClient(ModelClient):
 class OpenAICompatibleClient(OpenAIClient):
     def __init__(self, spec: ModelSpec, *, api_key_env: str, base_url: str):
         ModelClient.__init__(self, spec)
+        load_environment()
         api_key = os.getenv(api_key_env)
         if not api_key:
             raise ProviderError(f"{api_key_env} is not set")
@@ -186,6 +190,7 @@ class OpenAICompatibleClient(OpenAIClient):
 class GoogleClient(ModelClient):
     def __init__(self, spec: ModelSpec):
         super().__init__(spec)
+        load_environment()
         api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
         if not api_key:
             raise ProviderError("GOOGLE_API_KEY or GEMINI_API_KEY is not set")

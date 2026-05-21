@@ -14,7 +14,7 @@ def test_doctor_reports_missing_without_ping(monkeypatch):
     ]:
         monkeypatch.delenv(env, raising=False)
 
-    checks = check_providers(ping=False)
+    checks = check_providers(ping=False, load_env=False)
 
     assert checks
     assert all(check.present is False for check in checks)

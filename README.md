@@ -22,6 +22,13 @@ cp .env.example .env
 Fill only the keys you intend to use. If keys have ever been pasted into chat,
 rotate them before relying on them.
 
+The CLI loads `.env` from the current working directory by default. To use a
+different file:
+
+```bash
+uv run tutorbench-lab --env-file /path/to/.env doctor
+```
+
 Cheap key diagnostics:
 
 ```bash
@@ -83,7 +90,19 @@ uv run tutorbench-lab run \
   --model anthropic:claude-sonnet-4-6 \
   --solver-model anthropic:claude-sonnet-4-6 \
   --critic-model anthropic:claude-sonnet-4-6 \
-  --limit 20
+  --stratified-per-bucket 1 \
+  --stratify-by use-case-modality
+```
+
+Curated Office Hours dev set:
+
+```bash
+uv run tutorbench-lab run \
+  --strategy agentic \
+  --eval-set eval_sets/office_hours_dev10.json \
+  --model anthropic:claude-sonnet-4-6 \
+  --solver-model anthropic:claude-sonnet-4-6 \
+  --critic-model anthropic:claude-sonnet-4-6
 ```
 
 Candidate generation never sees sample-specific rubrics.

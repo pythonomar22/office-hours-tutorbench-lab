@@ -1,0 +1,52 @@
+"""Environment loading and model defaults."""
+
+from __future__ import annotations
+
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+from tutorbench_lab.constants import (
+    DEFAULT_CANDIDATE_MODEL,
+    DEFAULT_CRITIC_MODEL,
+    DEFAULT_JUDGE_MODEL,
+    DEFAULT_SOLVER_MODEL,
+)
+
+
+def load_environment(env_file: Path | None = None) -> Path | None:
+    """Load environment variables from a local .env file.
+
+    Returns the file that was loaded, if one exists. Existing shell variables
+    keep precedence over .env values.
+    """
+
+    if env_file is not None:
+        if env_file.exists():
+            load_dotenv(env_file, override=False)
+            return env_file
+        return None
+
+    default = Path(".env")
+    if default.exists():
+        load_dotenv(default, override=False)
+        return default
+    load_dotenv(override=False)
+    return None
+
+
+def candidate_model_default() -> str:
+    return os.getenv("TUTORBENCH_CANDIDATE_MODEL", DEFAULT_CANDIDATE_MODEL)
+
+
+def solver_model_default() -> str:
+    return os.getenv("TUTORBENCH_SOLVER_MODEL", DEFAULT_SOLVER_MODEL)
+
+
+def critic_model_default() -> str:
+    return os.getenv("TUTORBENCH_CRITIC_MODEL", DEFAULT_CRITIC_MODEL)
+
+
+def judge_model_default() -> str:
+    return os.getenv("TUTORBENCH_JUDGE_MODEL", DEFAULT_JUDGE_MODEL)

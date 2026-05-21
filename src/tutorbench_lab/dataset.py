@@ -175,4 +175,5 @@ def fetch_dataset_metadata(
 
 
 def load_examples_jsonl(path: Path) -> list[TutorBenchExample]:
+    path = Path(path)
     return [TutorBenchExample.model_validate(row) for row in read_jsonl(path)]
