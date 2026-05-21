@@ -13,6 +13,7 @@ from tutorbench_lab.constants import (
     DEFAULT_JUDGE_MODEL,
     DEFAULT_MAX_REVISION_ATTEMPTS,
     DEFAULT_PLANNER_MODEL,
+    DEFAULT_REQUEST_TIMEOUT_S,
     DEFAULT_SOLVER_MODEL,
     DEFAULT_VERIFIER_MODEL,
 )
@@ -68,3 +69,10 @@ def max_revision_attempts_default() -> int:
 
 def judge_model_default() -> str:
     return os.getenv("TUTORBENCH_JUDGE_MODEL", DEFAULT_JUDGE_MODEL)
+
+
+def request_timeout_default() -> float:
+    raw = os.getenv("TUTORBENCH_REQUEST_TIMEOUT_S")
+    if raw is None:
+        return DEFAULT_REQUEST_TIMEOUT_S
+    return float(raw)

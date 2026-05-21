@@ -55,47 +55,50 @@ class GenerateResult:
 
 
 class ModelClient(ABC):
-    def __init__(self, spec: ModelSpec):
+    def __init__(self, spec: ModelSpec, *, timeout_s: float | None = None):
         self.spec = spec
+        self.timeout_s = timeout_s
 
     @abstractmethod
     def generate(self, turn: TutorTurnInput, *, max_tokens: int = 1200) -> GenerateResult:
         """Generate one model response."""
 
 
-def make_client(model_spec: str) -> ModelClient:
+def make_client(model_spec: str, *, timeout_s: float | None = None) -> ModelClient:
     spec = ModelSpec.parse(model_spec)
     if spec.provider == "anthropic":
-        return AnthropicClient(spec)
+        return AnthropicClient(spec, timeout_s=timeout_s)
     if spec.provider == "openai":
-        return OpenAIClient(spec)
+        return OpenAIClient(spec, timeout_s=timeout_s)
     if spec.provider == "google":
-        return GoogleClient(spec)
+        return GoogleClient(spec, timeout_s=timeout_s)
     if spec.provider == "deepseek":
         return OpenAICompatibleClient(
             spec,
             api_key_env="DEEPSEEK_API_KEY",
             base_url="https://api.deepseek.com",
+            timeout_s=timeout_s,
         )
     if spec.provider == "fireworks":
         return OpenAICompatibleClient(
             spec,
             api_key_env="FIREWORKS_API_KEY",
             base_url="https://api.fireworks.ai/inference/v1",
+            timeout_s=timeout_s,
         )
     raise ValueError(f"unsupported provider: {spec.provider}")
 
 
 class AnthropicClient(ModelClient):
-    def __init__(self, spec: ModelSpec):
-        super().__init__(spec)
+    def __init__(self, spec: ModelSpec, *, timeout_s: float | None = None):
+        super().__init__(spec, timeout_s=timeout_s)
         load_environment()
         api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
             raise ProviderError("ANTHROPIC_API_KEY is not set")
-        self._client = Anthropic(api_key=api_key)
+        self._client = Anthropic(api_key=api_key, timeout=timeout_s, max_retries=0)
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(3))
+    @retry(wait=wait_exponential(multiplier=1, min=1, max=20), stop=stop_after_attempt(2))
     def generate(self, turn: TutorTurnInput, *, max_tokens: int = 1200) -> GenerateResult:
         image = load_image(turn.image)
         content: list[dict[str, Any]] = []
@@ -136,15 +139,15 @@ class AnthropicClient(ModelClient):
 
 
 class OpenAIClient(ModelClient):
-    def __init__(self, spec: ModelSpec):
-        super().__init__(spec)
+    def __init__(self, spec: ModelSpec, *, timeout_s: float | None = None):
+        super().__init__(spec, timeout_s=timeout_s)
         load_environment()
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
             raise ProviderError("OPENAI_API_KEY is not set")
-        self._client = OpenAI(api_key=api_key)
+        self._client = OpenAI(api_key=api_key, timeout=timeout_s, max_retries=0)
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(3))
+    @retry(wait=wait_exponential(multiplier=1, min=1, max=20), stop=stop_after_attempt(2))
     def generate(self, turn: TutorTurnInput, *, max_tokens: int = 1200) -> GenerateResult:
         image = load_image(turn.image)
         user_content: list[dict[str, Any]] = [{"type": "text", "text": turn.user_prompt}]
@@ -178,25 +181,40 @@ class OpenAIClient(ModelClient):
 
 
 class OpenAICompatibleClient(OpenAIClient):
-    def __init__(self, spec: ModelSpec, *, api_key_env: str, base_url: str):
-        ModelClient.__init__(self, spec)
+    def __init__(
+        self,
+        spec: ModelSpec,
+        *,
+        api_key_env: str,
+        base_url: str,
+        timeout_s: float | None = None,
+    ):
+        ModelClient.__init__(self, spec, timeout_s=timeout_s)
         load_environment()
         api_key = os.getenv(api_key_env)
         if not api_key:
             raise ProviderError(f"{api_key_env} is not set")
-        self._client = OpenAI(api_key=api_key, base_url=base_url)
+        self._client = OpenAI(
+            api_key=api_key,
+            base_url=base_url,
+            timeout=timeout_s,
+            max_retries=0,
+        )
 
 
 class GoogleClient(ModelClient):
-    def __init__(self, spec: ModelSpec):
-        super().__init__(spec)
+    def __init__(self, spec: ModelSpec, *, timeout_s: float | None = None):
+        super().__init__(spec, timeout_s=timeout_s)
         load_environment()
         api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
         if not api_key:
             raise ProviderError("GOOGLE_API_KEY or GEMINI_API_KEY is not set")
-        self._client = genai.Client(api_key=api_key)
+        http_options = None
+        if timeout_s is not None:
+            http_options = google_types.HttpOptions(timeout=int(timeout_s * 1000))
+        self._client = genai.Client(api_key=api_key, http_options=http_options)
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(3))
+    @retry(wait=wait_exponential(multiplier=1, min=1, max=20), stop=stop_after_attempt(2))
     def generate(self, turn: TutorTurnInput, *, max_tokens: int = 1200) -> GenerateResult:
         image = load_image(turn.image)
         parts: list[Any] = [turn.user_prompt]

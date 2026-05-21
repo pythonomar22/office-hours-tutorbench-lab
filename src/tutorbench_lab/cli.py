@@ -16,6 +16,7 @@ from tutorbench_lab.config import (
     load_environment,
     max_revision_attempts_default,
     planner_model_default,
+    request_timeout_default,
     solver_model_default,
     verifier_model_default,
 )
@@ -177,6 +178,11 @@ def run(
         None,
         help="Maximum critic-triggered revision passes for agentic runs.",
     ),
+    request_timeout_s: float | None = typer.Option(
+        None,
+        "--request-timeout-s",
+        help="Per-provider request timeout in seconds.",
+    ),
 ) -> None:
     """Generate candidate tutor responses."""
 
@@ -189,6 +195,11 @@ def run(
         max_revision_attempts
         if max_revision_attempts is not None
         else max_revision_attempts_default()
+    )
+    request_timeout_s = (
+        request_timeout_s
+        if request_timeout_s is not None
+        else request_timeout_default()
     )
     examples = load_examples_jsonl(examples_path)
     if task_id:
@@ -231,7 +242,12 @@ def run(
             turn = dry_turn_for_example(example)
             response = dry_run_response(example)
         elif strategy == Strategy.BASELINE:
-            turn, response = run_baseline(example, model=model, max_tokens=max_tokens)
+            turn, response = run_baseline(
+                example,
+                model=model,
+                max_tokens=max_tokens,
+                request_timeout_s=request_timeout_s,
+            )
         else:
             turn, response = run_agentic(
                 example,
@@ -242,6 +258,8 @@ def run(
                 critic_model=critic_model,
                 max_tokens=max_tokens,
                 max_revision_attempts=max_revision_attempts,
+                request_timeout_s=request_timeout_s,
+                progress_callback=lambda stage: console.print(f"  - {stage}"),
             )
         append_jsonl(
             out_path,
@@ -263,10 +281,20 @@ def judge(
     judge_model: str | None = typer.Option(None),
     limit: int | None = typer.Option(None),
     max_tokens: int = typer.Option(2000),
+    request_timeout_s: float | None = typer.Option(
+        None,
+        "--request-timeout-s",
+        help="Per-provider request timeout in seconds.",
+    ),
 ) -> None:
     """Judge candidate responses with sample-specific rubrics."""
 
     judge_model = judge_model or judge_model_default()
+    request_timeout_s = (
+        request_timeout_s
+        if request_timeout_s is not None
+        else request_timeout_default()
+    )
     records = list(read_model_jsonl(responses_path, RunRecord))
     if limit is not None:
         records = records[:limit]
@@ -278,6 +306,7 @@ def judge(
             record,
             judge_model=judge_model,
             max_tokens=max_tokens,
+            request_timeout_s=request_timeout_s,
         )
         append_jsonl(out_path, judged)
 

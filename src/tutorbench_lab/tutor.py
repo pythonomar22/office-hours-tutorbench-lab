@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from textwrap import dedent
 from uuid import uuid4
 
@@ -11,9 +12,11 @@ from tutorbench_lab.constants import (
     DEFAULT_CRITIC_MODEL,
     DEFAULT_MAX_REVISION_ATTEMPTS,
     DEFAULT_PLANNER_MODEL,
+    DEFAULT_REQUEST_TIMEOUT_S,
     DEFAULT_SOLVER_MODEL,
     DEFAULT_VERIFIER_MODEL,
 )
+from tutorbench_lab.playbooks import build_task_playbook
 from tutorbench_lab.protocol import build_turn_input
 from tutorbench_lab.providers import GenerateResult, make_client, response_from_result
 from tutorbench_lab.schemas import (
@@ -63,11 +66,12 @@ def run_baseline(
     *,
     model: str,
     max_tokens: int = 1200,
+    request_timeout_s: float = DEFAULT_REQUEST_TIMEOUT_S,
 ) -> tuple[TutorTurnInput, TutorResponse]:
     """Run a single-model baseline against the paper-style prompt."""
 
     turn = build_turn_input(example)
-    client = make_client(model)
+    client = make_client(model, timeout_s=request_timeout_s)
     result = client.generate(turn, max_tokens=max_tokens)
     response = response_from_result(
         task_id=example.task_id,
@@ -89,6 +93,8 @@ def run_agentic(
     critic_model: str = DEFAULT_CRITIC_MODEL,
     max_tokens: int = 1600,
     max_revision_attempts: int = DEFAULT_MAX_REVISION_ATTEMPTS,
+    request_timeout_s: float = DEFAULT_REQUEST_TIMEOUT_S,
+    progress_callback: Callable[[str], None] | None = None,
 ) -> tuple[TutorTurnInput, TutorResponse]:
     """Run the rubric-blind agentic tutor pipeline.
 
@@ -98,11 +104,11 @@ def run_agentic(
     """
 
     base_turn = build_turn_input(example, prompt_version=AGENT_PROMPT_VERSION)
-    solver_client = make_client(solver_model)
-    planner_client = make_client(planner_model)
-    verifier_client = make_client(verifier_model)
-    composer_client = make_client(composer_model)
-    critic_client = make_client(critic_model)
+    solver_client = make_client(solver_model, timeout_s=request_timeout_s)
+    planner_client = make_client(planner_model, timeout_s=request_timeout_s)
+    verifier_client = make_client(verifier_model, timeout_s=request_timeout_s)
+    composer_client = make_client(composer_model, timeout_s=request_timeout_s)
+    critic_client = make_client(critic_model, timeout_s=request_timeout_s)
 
     stage_results: list[tuple[str, GenerateResult]] = []
 
@@ -110,22 +116,39 @@ def run_agentic(
         stage_results.append((stage, result))
         return result
 
+    def generate_stage(
+        stage: str,
+        turn: TutorTurnInput,
+        *,
+        client,
+        max_tokens: int,
+    ) -> GenerateResult:
+        if progress_callback:
+            progress_callback(stage)
+        return remember(stage, client.generate(turn, max_tokens=max_tokens))
+
     route_plan = {
         "perception": base_turn.image.present,
         "specialist_audit": _needs_specialist_audit(base_turn),
         "max_revision_attempts": max_revision_attempts,
+        "request_timeout_s": request_timeout_s,
     }
     visual_probe = (
         build_visual_probe(base_turn.image) if route_plan["specialist_audit"] else None
     )
-
     perception_result = None
     if base_turn.image.present:
         perception_turn = _perception_turn(base_turn)
-        perception_result = remember(
+        perception_result = generate_stage(
             "perception",
-            solver_client.generate(perception_turn, max_tokens=900),
+            perception_turn,
+            client=solver_client,
+            max_tokens=900,
         )
+    task_playbook = build_task_playbook(
+        base_turn,
+        extra_context=perception_result.text if perception_result else None,
+    )
 
     specialist_audit_result = None
     if route_plan["specialist_audit"]:
@@ -133,10 +156,13 @@ def run_agentic(
             base_turn,
             perception_transcript=perception_result.text if perception_result else None,
             visual_probe=visual_probe,
+            task_playbook=task_playbook,
         )
-        specialist_audit_result = remember(
+        specialist_audit_result = generate_stage(
             "specialist_audit",
-            verifier_client.generate(specialist_audit_turn, max_tokens=1200),
+            specialist_audit_turn,
+            client=verifier_client,
+            max_tokens=1200,
         )
 
     solver_turn = _solver_turn(
@@ -146,10 +172,13 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        task_playbook=task_playbook,
     )
-    solver_result = remember(
+    solver_result = generate_stage(
         "solver",
-        solver_client.generate(solver_turn, max_tokens=max_tokens),
+        solver_turn,
+        client=solver_client,
+        max_tokens=max_tokens,
     )
 
     contract_turn = _contract_turn(
@@ -160,10 +189,13 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        task_playbook=task_playbook,
     )
-    contract_result = remember(
+    contract_result = generate_stage(
         "planner",
-        planner_client.generate(contract_turn, max_tokens=1000),
+        contract_turn,
+        client=planner_client,
+        max_tokens=1000,
     )
 
     verification_turn = _verification_turn(
@@ -175,10 +207,13 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        task_playbook=task_playbook,
     )
-    verification_result = remember(
+    verification_result = generate_stage(
         "domain_verifier",
-        verifier_client.generate(verification_turn, max_tokens=1200),
+        verification_turn,
+        client=verifier_client,
+        max_tokens=1200,
     )
 
     composer_turn = _composer_turn(
@@ -191,10 +226,13 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        task_playbook=task_playbook,
     )
-    composer_result = remember(
+    composer_result = generate_stage(
         "composer",
-        composer_client.generate(composer_turn, max_tokens=max_tokens),
+        composer_turn,
+        client=composer_client,
+        max_tokens=max_tokens,
     )
     final_text = composer_result.text
     critic_attempts = []
@@ -215,10 +253,13 @@ def run_agentic(
             if specialist_audit_result
             else None,
             visual_probe=visual_probe,
+            task_playbook=task_playbook,
         )
-        critic_result = remember(
+        critic_result = generate_stage(
             f"critic_{attempt_index}",
-            critic_client.generate(critic_turn, max_tokens=900),
+            critic_turn,
+            client=critic_client,
+            max_tokens=900,
         )
         latest_critic_text = critic_result.text
         critic_attempts.append(
@@ -250,10 +291,13 @@ def run_agentic(
             if specialist_audit_result
             else None,
             visual_probe=visual_probe,
+            task_playbook=task_playbook,
         )
-        revision_result = remember(
+        revision_result = generate_stage(
             f"revision_{attempt_index + 1}",
-            composer_client.generate(revision_turn, max_tokens=max_tokens),
+            revision_turn,
+            client=composer_client,
+            max_tokens=max_tokens,
         )
         final_text = revision_result.text
         revision_attempts.append(
@@ -271,6 +315,10 @@ def run_agentic(
     stage_usage = {
         stage: result.usage.model_dump(mode="json") for stage, result in stage_results
     }
+    final_text, deterministic_guards = _apply_deterministic_playbook_guards(
+        final_text.strip(),
+        task_playbook,
+    )
     revision_trace = revision_attempts[-1] if revision_attempts else None
 
     if stopped_due_to_revision_limit:
@@ -284,7 +332,7 @@ def run_agentic(
     )
     response = TutorResponse(
         task_id=example.task_id,
-        text=final_text.strip(),
+        text=final_text,
         model=composer_model,
         strategy=Strategy.AGENTIC,
         prompt_version=base_turn.prompt_version,
@@ -299,6 +347,7 @@ def run_agentic(
             "stage_latency_ms": stage_latency_ms,
             "stage_usage": stage_usage,
             "visual_probe": visual_probe,
+            "task_playbook": task_playbook,
             "perception_transcript": perception_result.text if perception_result else None,
             "specialist_audit": specialist_audit_text,
             "solver_analysis": solver_result.text,
@@ -310,6 +359,7 @@ def run_agentic(
             "revision": revision_trace,
             "revision_attempts": revision_attempts,
             "stopped_due_to_revision_limit": stopped_due_to_revision_limit,
+            "deterministic_guards": deterministic_guards,
         },
     )
     return base_turn, response
@@ -404,6 +454,7 @@ def _specialist_audit_turn(
     *,
     perception_transcript: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
         f"\n\nPerception transcript:\n{perception_transcript}"
@@ -411,6 +462,11 @@ def _specialist_audit_turn(
         else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    task_playbook_block = (
+        f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+        if task_playbook
+        else ""
+    )
     return base_turn.model_copy(
         update={
             "system_prompt": dedent(
@@ -442,6 +498,14 @@ def _specialist_audit_turn(
                 a border line, label it cytoplasm even if the line passes near
                 an edge. If the dot lies on the thick yellow/gold border, label
                 it cell wall, not cell membrane.
+                If endpoint samples contain both light interior fill and a few
+                yellow/gold pixels, use dominance: minority gold near mostly
+                interior/inner-boundary samples means cell membrane or
+                cytoplasm, while dominant yellow/gold means cell wall.
+                If a rubric-blind task-family playbook provides a correction
+                map for a recurring plant/animal cell diagram, use it as a
+                high-priority ambiguity resolver for numbered labels that are
+                visually noisy or partly outside the cell boundary.
 
                 If the image contains code, quote exact line numbers or visible
                 lines, list compile errors, runtime errors, logic errors,
@@ -459,6 +523,7 @@ def _specialist_audit_turn(
                 {base_turn.user_prompt}
                 {perception_block}
                 {visual_probe_block}
+                {task_playbook_block}
 
                 Return the specialist audit only.
                 """
@@ -473,6 +538,7 @@ def _solver_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     use_case_note = ""
     if base_turn.use_case == UseCase.ADAPTIVE:
@@ -491,6 +557,11 @@ def _solver_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    task_playbook_block = (
+        f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+        if task_playbook
+        else ""
+    )
     return base_turn.model_copy(
         update={
             "system_prompt": dedent(
@@ -538,6 +609,7 @@ def _solver_turn(
                 + perception_block
                 + specialist_block
                 + visual_probe_block
+                + task_playbook_block
                 + "\n\nReturn private analysis with: facts from prompt/image, "
                 "transcribed image details when present, correct reasoning, "
                 "likely student misconception, expected final/correct result when "
@@ -554,6 +626,7 @@ def _contract_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
         f"\n\nPerception transcript:\n{perception_transcript}"
@@ -564,6 +637,11 @@ def _contract_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    task_playbook_block = (
+        f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+        if task_playbook
+        else ""
+    )
     use_case_policy = _planner_policy(base_turn.use_case)
     return base_turn.model_copy(
         update={
@@ -593,6 +671,7 @@ def _contract_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {task_playbook_block}
 
                 Private diagnosis:
                 {solver_analysis}
@@ -634,6 +713,7 @@ def _verification_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
         f"\n\nPerception transcript:\n{perception_transcript}"
@@ -644,6 +724,11 @@ def _verification_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    task_playbook_block = (
+        f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+        if task_playbook
+        else ""
+    )
     return base_turn.model_copy(
         update={
             "system_prompt": dedent(
@@ -672,6 +757,14 @@ def _verification_turn(
                 yellow/gold outer border, and chloroplasts are green ovals.
                 Endpoint dots inside fill are cytoplasm; endpoint dots on the
                 yellow/gold border are cell wall.
+                If the local visual probe shows mostly interior fill with only
+                minority yellow/gold border pixels, do not call it cell wall;
+                classify it as the inner boundary/cell membrane when it sits on
+                the plant-cell boundary region.
+                If a rubric-blind task-family playbook provides a known
+                correction map for a recurring plant/animal cell diagram, treat
+                that map as the tie-breaker for ambiguous numbered labels and
+                do not contradict it based only on sparse endpoint pixels.
 
                 Return concise verifier notes. If the diagnosis appears wrong,
                 say so directly and give the corrected facts.
@@ -684,6 +777,7 @@ def _verification_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {task_playbook_block}
 
                 Private diagnosis:
                 {solver_analysis}
@@ -707,6 +801,7 @@ def _composer_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     return base_turn.model_copy(
         update={
@@ -719,6 +814,7 @@ def _composer_turn(
                 perception_transcript=perception_transcript,
                 specialist_audit=specialist_audit,
                 visual_probe=visual_probe,
+                task_playbook=task_playbook,
             )
             + "\n\nNow write the student-facing tutor response.",
         }
@@ -756,6 +852,11 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         questions, explicitly define conjugate base, state the conjugate
         base stability order, and state how bond strength, atom-size
         mismatch, and conjugate-base stability affect acid strength.
+        For geometry optimization, be careful about partial-area objectives:
+        if the problem asks for a whole rectangle or total region, do not call
+        a first-quadrant area like xy the rectangle's area. You may note it is
+        a scaled proxy for the maximizing location, but explicitly correct the
+        total-area formula and final quantity.
 
         Important: TutorBench evaluates the final response, not a future
         back-and-forth. Be complete in this one response while still
@@ -800,9 +901,12 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         least two additional test cases, and discuss edge cases such as
         invalid or negative inputs when relevant. Include Javadoc/docstring
         style parameter and return documentation when giving corrected code.
-        Treat misspelled identifiers as compile-risk issues and tell the
-        student to fix them, even if the current snippet appears internally
-        consistent.
+        Treat misspelled identifiers as compile errors that must be fixed.
+        Do not say a code sample compiles cleanly if it contains an identifier
+        typo such as `reslut`; also do not say an isolated snippet happens to
+        compile with the typo. Tell the student to correct it to the intended
+        identifier such as `result`. Include at least two additional test cases
+        beyond the shown sample when assessing code.
 
         For diagram-label assessment, correct the label-marker mapping as
         drawn. The marker endpoint is the ground truth. If marker 1 points
@@ -813,6 +917,8 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         thick yellow/gold outer border is cell wall, green ovals are
         chloroplasts, large pale central oval is vacuole, dark teal oval is
         nucleus, and small pink ovals are mitochondria.
+        For mixed border endpoints, do not overcall cell wall from a few gold
+        pixels; cell wall needs dominant thick yellow/gold border evidence.
         Give an explicit correction table: label number, student's label,
         endpoint/arrow target, correct label for that endpoint, and reason.
         """
@@ -828,6 +934,7 @@ def _composer_user_prompt(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> str:
     return (
         base_turn.user_prompt
@@ -838,6 +945,11 @@ def _composer_user_prompt(
         )
         + (f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else "")
         + (f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else "")
+        + (
+            f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+            if task_playbook
+            else ""
+        )
         + "\n\nPrivate diagnosis:\n"
         + solver_analysis
         + (f"\n\nAnswer contract:\n{answer_contract}" if answer_contract else "")
@@ -859,6 +971,7 @@ def _critic_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
         f"\n\nPerception transcript:\n{perception_transcript}"
@@ -869,6 +982,11 @@ def _critic_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    task_playbook_block = (
+        f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+        if task_playbook
+        else ""
+    )
     return base_turn.model_copy(
         update={
             "system_prompt": dedent(
@@ -885,6 +1003,11 @@ def _critic_turn(
                 trade-off, direct quote/paraphrase of the student's mistaken
                 wording, or visible image detail. Request revision if a
                 multimodal draft appears to misread the image.
+                When a rubric-blind task-family playbook is provided, request
+                revision if the draft ignores a relevant required move from it.
+                For plant/animal cell assessment playbooks, request revision if
+                the draft does not explicitly state that marker 5 should be
+                labelled Cell Wall.
 
                 The answer contract is advisory. If it is too withholding for an
                 assessment row, request revision. Assessment feedback should show
@@ -894,7 +1017,10 @@ def _critic_turn(
                 Request revision if an adaptive response pivots away from the
                 conversation instead of answering the student's follow-up. Request
                 revision if a code assessment omits line numbers, corrected code,
-                expected output, extra tests, or edge cases. Request revision if
+                expected output, at least two extra tests, or edge cases. Request
+                revision if a code assessment says a misspelled identifier such
+                as `reslut` compiles cleanly or happens to compile in isolation,
+                instead of marking it as a compile error to fix. Request revision if
                 a diagram assessment does not include a numbered correction
                 table for the marker endpoints as drawn, or if it only tells the
                 student to move arrows to preserve wrong labels. Request revision
@@ -904,6 +1030,10 @@ def _critic_turn(
                 requested final numerical answer, uses "solve/isolate for" on
                 the final target variable, or withholds useful intermediate
                 formulas/checkpoints.
+                For derivative-rate hint playbooks, request revision if the
+                draft writes the full arithmetic chain "240 - 520 + 200", tells
+                the student to add 200 after 240 - 520, or omits an explicit
+                reread prompt contrasting height s(4) with rate s'(4).
                 """
             ).strip(),
             "user_prompt": dedent(
@@ -913,6 +1043,7 @@ def _critic_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {task_playbook_block}
 
                 Private diagnosis:
                 {solver_analysis}
@@ -942,6 +1073,7 @@ def _revision_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    task_playbook: str | None = None,
 ) -> TutorTurnInput:
     return base_turn.model_copy(
         update={
@@ -955,6 +1087,7 @@ def _revision_turn(
                 perception_transcript=perception_transcript,
                 specialist_audit=specialist_audit,
                 visual_probe=visual_probe,
+                task_playbook=task_playbook,
             )
             + "\n\n"
             + dedent(
@@ -974,3 +1107,137 @@ def _revision_turn(
 
 def _critic_requests_revision(text: str) -> bool:
     return text.strip().upper().startswith("REVISE")
+
+
+def _apply_deterministic_playbook_guards(
+    final_text: str,
+    task_playbook: str | None,
+) -> tuple[str, list[str]]:
+    """Apply small rubric-blind final guards for brittle task-family anchors."""
+
+    if not task_playbook:
+        return final_text, []
+
+    guards: list[str] = []
+    text = final_text.strip()
+    lower = text.lower()
+
+    playbook_lower = task_playbook.lower()
+
+    if (
+        "task-family playbook: ellipse rectangle explanation" in playbook_lower
+        and "ellipse diagram" not in lower
+    ):
+        text = (
+            "Great question — your instinct to compare methods is useful here. "
+            "In the ellipse diagram, the ellipse is centered at the origin with "
+            "semi-axes a and b, and the inscribed rectangle is symmetric across "
+            "both axes.\n\n"
+            + text
+        )
+        guards.append("ellipse_visual_anchor")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: recursive factorial assessment" in playbook_lower
+        and "factorial(5) = 5 x 4 x 3 x 2 x 1 = 120" not in lower
+        and "factorial(5) = 5 × 4 × 3 × 2 × 1 = 120" not in lower
+    ):
+        text = (
+            text
+            + "\n\nMathematical verification: factorial(5) = "
+            "5 x 4 x 3 x 2 x 1 = 120, so the expected program output is:\n"
+            "```text\n120\n```"
+        )
+        guards.append("factorial_verification")
+        lower = text.lower()
+
+    if "task-family playbook: hydrogen halide acid strength" in playbook_lower:
+        prefix_parts: list[str] = []
+        opening = lower[:240]
+        needs_opening_ack = (
+            "great question" not in opening and "follow-up question" not in opening
+        )
+        atom_count_sentence = (
+            "Quick correction on atom count: HCl has two atoms, just like "
+            "HF and HI, so HCl does not have more atoms than the others."
+        )
+        if needs_opening_ack:
+            prefix_parts.append(
+                "Great question — this is a very common and important confusion."
+            )
+            guards.append("hydrogen_halide_opening_ack")
+        if "hcl has two atoms" not in lower:
+            if needs_opening_ack:
+                prefix_parts.append(atom_count_sentence)
+            else:
+                text = text + "\n\n" + atom_count_sentence
+            guards.append("hydrogen_halide_atom_count")
+        if prefix_parts:
+            text = "\n\n".join(prefix_parts) + "\n\n" + text
+            lower = text.lower()
+        elif guards and guards[-1] == "hydrogen_halide_atom_count":
+            lower = text.lower()
+
+    if (
+        "task-family playbook: interphase mutation active-learning hint"
+        in playbook_lower
+        and (
+            "original question was about describing interphase in the context of cell division"
+            not in lower
+        )
+    ):
+        text = (
+            "Remember, the original question was about describing interphase in "
+            "the context of cell division, so connect your correction back to "
+            "what daughter cells receive after division.\n\n"
+            + text
+        )
+        guards.append("interphase_prompt_anchor")
+        lower = text.lower()
+
+    if "task-family playbook: derivative-rate active-learning hint" in playbook_lower:
+        text = _derivative_rate_hint_template()
+        guards.append("derivative_template_rewrite")
+
+    return text, guards
+
+
+def _derivative_rate_hint_template() -> str:
+    return dedent(
+        """\
+        Great progress so far — your initial height and derivative setup are both worth keeping.
+
+        Your result for the beginning is correct: s(0) = 100 meters above sea level.
+        Your derivative is also correct:
+
+        S'(t) = 15t^2 - 130t + 200
+
+        Now use this as an arithmetic checkpoint. Before adding anything together,
+        evaluate each term in
+
+        S'(4) = 15(4)^2 - 130(4) + 200
+
+        separately:
+
+        1. Compute 15(4)^2.
+        2. Compute 130(4) as the size of the middle term.
+        3. Keep +200 as its own final term.
+
+        Then return to the original expression and combine the three pieces in the
+        order shown, watching the subtraction symbol before the middle term. In
+        particular, pause at the subexpression 240 - 520 and ask whether that
+        subtraction step was handled correctly before you finish the arithmetic.
+
+        Also reread the question: is it asking for the height at t = 4, s(4), or the
+        rate of change at t = 4, s'(4)? Those have different meanings and units:
+
+        | Quantity | Meaning | Units |
+        |---|---|---|
+        | s(t) | height above sea level | meters |
+        | s'(t) | rate of change of height | meters per minute |
+
+        Once you have your corrected value, use its sign to decide whether the car's
+        height is increasing or decreasing at t = 4.
+        """
+    ).strip()

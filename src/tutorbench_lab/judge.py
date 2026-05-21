@@ -25,13 +25,19 @@ def judge_run_record(
     *,
     judge_model: str,
     max_tokens: int = 2000,
+    request_timeout_s: float | None = None,
 ) -> JudgedRunRecord:
     """Judge one run record with either a real LLM judge or heuristic mode."""
 
     if judge_model == "heuristic":
         judge = heuristic_judge(run)
     else:
-        judge = llm_judge(run, judge_model=judge_model, max_tokens=max_tokens)
+        judge = llm_judge(
+            run,
+            judge_model=judge_model,
+            max_tokens=max_tokens,
+            request_timeout_s=request_timeout_s,
+        )
     arrw_raw, arrw, manual_review = compute_arrw(run, judge)
     return JudgedRunRecord(
         run=run,
@@ -47,22 +53,41 @@ def llm_judge(
     *,
     judge_model: str,
     max_tokens: int = 2000,
+    max_parse_attempts: int = 2,
+    request_timeout_s: float | None = None,
 ) -> JudgeResult:
     """Run an LLM judge against sample-specific rubrics."""
 
     turn = build_judge_turn(run)
-    client = make_client(judge_model)
-    start = time.monotonic()
-    result = client.generate(turn, max_tokens=max_tokens)
-    latency_ms = int((time.monotonic() - start) * 1000)
-    ratings = parse_judge_json(result.text, expected_count=len(run.example.rubrics))
-    return JudgeResult(
-        task_id=run.example.task_id,
-        judge_model=judge_model,
-        ratings=ratings,
-        raw_judge_output=result.text,
-        latency_ms=latency_ms,
-        usage=result.usage,
+    client = make_client(judge_model, timeout_s=request_timeout_s)
+    errors = []
+    total_latency_ms = 0
+    last_text = ""
+    for attempt in range(max_parse_attempts + 1):
+        start = time.monotonic()
+        result = client.generate(turn, max_tokens=max_tokens)
+        total_latency_ms += int((time.monotonic() - start) * 1000)
+        last_text = result.text
+        try:
+            ratings = parse_judge_json(
+                result.text,
+                expected_count=len(run.example.rubrics),
+            )
+        except ValueError as exc:
+            errors.append(f"attempt {attempt + 1}: {exc}")
+            continue
+        return JudgeResult(
+            task_id=run.example.task_id,
+            judge_model=judge_model,
+            ratings=ratings,
+            raw_judge_output=result.text,
+            latency_ms=total_latency_ms,
+            usage=result.usage,
+        )
+    raise ValueError(
+        "judge output could not be parsed after retries: "
+        + "; ".join(errors)
+        + f"; last output preview={last_text[:500]!r}"
     )
 
 
@@ -89,10 +114,12 @@ def build_judge_turn(run: RunRecord) -> TutorTurnInput:
         Rubric criteria:
         {chr(10).join(rubric_lines)}
 
-        Grade each criterion independently as pass/fail. Return JSON only:
+        Grade each criterion independently as pass/fail. Return JSON only.
+        Do not include rationale text; free-form rationale strings often make
+        JSON invalid. Use exactly this compact shape:
         {{
           "ratings": [
-            {{"criterion_index": 0, "passed": true, "confidence": 0.9, "rationale": "..."}}
+            {{"criterion_index": 0, "passed": true, "confidence": 0.9}}
           ]
         }}
         """
@@ -109,7 +136,8 @@ def build_judge_turn(run: RunRecord) -> TutorTurnInput:
             sample-specific criteria to the candidate response. Criteria may
             describe either desirable behavior or undesirable behavior; follow
             the weight note attached to each criterion. Do not reward facts that
-            are not present in the candidate response. Return strict JSON only.
+            are not present in the candidate response. Return strict JSON only,
+            without rationale strings or explanatory text.
             """
         ).strip(),
         user_prompt=user_prompt,
