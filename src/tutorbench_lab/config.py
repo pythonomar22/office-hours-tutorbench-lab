@@ -11,7 +11,10 @@ from tutorbench_lab.constants import (
     DEFAULT_CANDIDATE_MODEL,
     DEFAULT_CRITIC_MODEL,
     DEFAULT_JUDGE_MODEL,
+    DEFAULT_MAX_REVISION_ATTEMPTS,
+    DEFAULT_PLANNER_MODEL,
     DEFAULT_SOLVER_MODEL,
+    DEFAULT_VERIFIER_MODEL,
 )
 
 
@@ -44,8 +47,23 @@ def solver_model_default() -> str:
     return os.getenv("TUTORBENCH_SOLVER_MODEL", DEFAULT_SOLVER_MODEL)
 
 
+def planner_model_default() -> str:
+    return os.getenv("TUTORBENCH_PLANNER_MODEL", DEFAULT_PLANNER_MODEL)
+
+
+def verifier_model_default() -> str:
+    return os.getenv("TUTORBENCH_VERIFIER_MODEL", DEFAULT_VERIFIER_MODEL)
+
+
 def critic_model_default() -> str:
     return os.getenv("TUTORBENCH_CRITIC_MODEL", DEFAULT_CRITIC_MODEL)
+
+
+def max_revision_attempts_default() -> int:
+    raw = os.getenv("TUTORBENCH_MAX_REVISION_ATTEMPTS")
+    if raw is None:
+        return DEFAULT_MAX_REVISION_ATTEMPTS
+    return int(raw)
 
 
 def judge_model_default() -> str:

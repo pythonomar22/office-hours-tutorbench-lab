@@ -102,10 +102,28 @@ uv run tutorbench-lab run \
   --eval-set eval_sets/office_hours_dev10.json \
   --model anthropic:claude-sonnet-4-6 \
   --solver-model anthropic:claude-sonnet-4-6 \
-  --critic-model anthropic:claude-sonnet-4-6
+  --planner-model anthropic:claude-sonnet-4-6 \
+  --verifier-model anthropic:claude-sonnet-4-6 \
+  --critic-model anthropic:claude-sonnet-4-6 \
+  --max-revision-attempts 2
 ```
 
 Candidate generation never sees sample-specific rubrics.
+
+The current agentic route is not a single prompt. It can run visual
+perception, local visual probes for labelled diagrams, a specialist
+multimodal-assessment audit, private solving, use-case-aware answer planning,
+independent verification, composition, generic critic passes, and bounded
+revisions. Each generated row stores per-stage latency and token usage in the
+trace so we can decide which rows deserve the full pipeline later.
+
+Focused rerun for one or more trace-review rows:
+
+```bash
+uv run tutorbench-lab run \
+  --strategy agentic \
+  --task-id 683e45123a967938ab5f5de2
+```
 
 ## Judge And Score
 
@@ -134,3 +152,8 @@ negative `-5` spoiler criteria are inferred and flagged for manual review.
 The working target is `>=70%` local full-set ARRw before treating the system as
 plausibly leaderboard-beating. The public leaderboard target should be rechecked
 before submission because it can change.
+
+Current curated Office Hours dev10 best: `81.18%` ARRw in
+`runs/5f9a7c7e-04a6-4824-9183-d1d1f2a0a4ff/`, using the routed visual-probe
+architecture. Run artifacts are gitignored, but the architecture and eval-set
+definition are tracked.

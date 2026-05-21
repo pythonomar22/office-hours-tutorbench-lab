@@ -38,11 +38,14 @@ DEFAULT_EXAMPLES_JSONL = DEFAULT_DATA_DIR / "processed" / "examples.jsonl"
 DEFAULT_HF_METADATA_PATH = DEFAULT_DATA_DIR / "processed" / "hf_metadata.json"
 
 PROMPT_VERSION = "paper-v1"
-AGENT_PROMPT_VERSION = "agentic-v1"
+AGENT_PROMPT_VERSION = "agentic-v2"
 
 DEFAULT_CANDIDATE_MODEL = "anthropic:claude-sonnet-4-6"
 DEFAULT_JUDGE_MODEL = "anthropic:claude-sonnet-4-6"
 DEFAULT_SOLVER_MODEL = "anthropic:claude-sonnet-4-6"
+DEFAULT_PLANNER_MODEL = "anthropic:claude-sonnet-4-6"
+DEFAULT_VERIFIER_MODEL = "anthropic:claude-sonnet-4-6"
 DEFAULT_CRITIC_MODEL = "anthropic:claude-sonnet-4-6"
+DEFAULT_MAX_REVISION_ATTEMPTS = 2
 
 LEADERBOARD_TARGET_SCORE = 0.70

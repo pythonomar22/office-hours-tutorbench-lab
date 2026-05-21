@@ -14,7 +14,10 @@ from tutorbench_lab.config import (
     critic_model_default,
     judge_model_default,
     load_environment,
+    max_revision_attempts_default,
+    planner_model_default,
     solver_model_default,
+    verifier_model_default,
 )
 from tutorbench_lab.constants import (
     DEFAULT_EXAMPLES_JSONL,
@@ -150,8 +153,15 @@ def run(
     ),
     model: str | None = typer.Option(None),
     solver_model: str | None = typer.Option(None),
+    planner_model: str | None = typer.Option(None),
+    verifier_model: str | None = typer.Option(None),
     critic_model: str | None = typer.Option(None),
     limit: int | None = typer.Option(None),
+    task_id: list[str] | None = typer.Option(
+        None,
+        "--task-id",
+        help="Run specific TutorBench task IDs in the order provided.",
+    ),
     eval_set: Path | None = typer.Option(
         None,
         help="JSON eval set file containing ordered TutorBench task IDs.",
@@ -163,14 +173,37 @@ def run(
     stratify_by: StratifyBy = typer.Option(StratifyBy.USE_CASE_MODALITY),
     seed: int = typer.Option(7, help="Deterministic sampling seed."),
     max_tokens: int = typer.Option(1200),
+    max_revision_attempts: int | None = typer.Option(
+        None,
+        help="Maximum critic-triggered revision passes for agentic runs.",
+    ),
 ) -> None:
     """Generate candidate tutor responses."""
 
     model = model or candidate_model_default()
     solver_model = solver_model or solver_model_default()
+    planner_model = planner_model or planner_model_default()
+    verifier_model = verifier_model or verifier_model_default()
     critic_model = critic_model or critic_model_default()
+    max_revision_attempts = (
+        max_revision_attempts
+        if max_revision_attempts is not None
+        else max_revision_attempts_default()
+    )
     examples = load_examples_jsonl(examples_path)
-    if eval_set is not None:
+    if task_id:
+        by_task_id = {example.task_id: example for example in examples}
+        missing = [item for item in task_id if item not in by_task_id]
+        if missing:
+            raise typer.BadParameter(
+                f"Unknown task ID(s): {', '.join(missing)}",
+                param_hint="--task-id",
+            )
+        examples = [by_task_id[item] for item in task_id]
+        console.print(f"Loaded {len(examples)} requested task ID(s)")
+        if limit is not None:
+            examples = examples[:limit]
+    elif eval_set is not None:
         selected_eval_set = load_eval_set(eval_set)
         examples = examples_for_eval_set(examples, selected_eval_set)
         console.print(
@@ -204,8 +237,11 @@ def run(
                 example,
                 composer_model=model,
                 solver_model=solver_model,
+                planner_model=planner_model,
+                verifier_model=verifier_model,
                 critic_model=critic_model,
                 max_tokens=max_tokens,
+                max_revision_attempts=max_revision_attempts,
             )
         append_jsonl(
             out_path,
