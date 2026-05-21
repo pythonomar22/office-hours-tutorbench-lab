@@ -1,0 +1,51 @@
+[project]
+name = "office-hours-tutorbench-lab"
+version = "0.1.0"
+description = "Evaluation lab for building an agentic tutor against TutorBench."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.68.0",
+    "datasets>=3.6.0",
+    "google-genai>=1.50.0",
+    "httpx>=0.28.0",
+    "huggingface-hub>=0.35.0",
+    "openai>=2.0.0",
+    "pillow>=11.0.0",
+    "pydantic>=2.10.0",
+    "python-dotenv>=1.0.1",
+    "rich>=13.9.0",
+    "tenacity>=9.0.0",
+    "typer>=0.15.0",
+]
+
+[project.scripts]
+tutorbench-lab = "tutorbench_lab.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.25.0",
+    "ruff>=0.8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tutorbench_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 96
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/tutorbench_lab/cli.py" = ["B008"]
