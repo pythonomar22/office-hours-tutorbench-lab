@@ -38,6 +38,15 @@ local public-HF/dev-set results unless explicitly marked as official.
 
 - Claim level: validation-set result, not official leaderboard.
 - Parity level: `public-hf-comparable`, not leaderboard-exact.
+- Larger holdout set: `eval_sets/heldout500.json`, 500 rows excluding
+  dev10/dev50/validation150.
+- Heldout500 Sonnet baseline: `heldout500-sonnet-baseline`
+  - Score: `60.77%`, CI `58.90%-62.83%`.
+  - Use-case scores: active learning `65.26%`, adaptive `59.33%`, assessment
+    `57.70%`.
+  - Modality scores: text `63.96%`, multimodal `57.55%`.
+  - This is close to the validation150 Sonnet baseline (`59.65%`), which is a
+    useful sanity check that the larger split is not obviously easier.
 - Current validation set: `eval_sets/validation150.json`, 150 rows excluding
   dev10/dev50, balanced as 25 rows per use-case/modality bucket.
 - Current validation checkpoint: `validation150-retired-playbooks-v3`

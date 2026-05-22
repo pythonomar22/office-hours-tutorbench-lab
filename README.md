@@ -206,3 +206,8 @@ Current `validation150` checkpoint: baseline Sonnet `59.65%` vs agentic
 `72.13%`, CI `69.02%-75.35%`, in
 `runs/validation150-retired-playbooks-v3/`. This is a local
 public-HF-comparable validation score, not an official leaderboard result.
+
+Current larger holdout anchor: `heldout500-sonnet-baseline` scored `60.77%`,
+CI `58.90%-62.83%`, over `eval_sets/heldout500.json`. This 500-row split
+excludes dev10/dev50/validation150 and gives us a stable single-model baseline
+before running the more expensive agentic comparison.
