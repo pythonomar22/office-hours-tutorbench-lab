@@ -1,0 +1,48 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7916666666666666,
+      "name": "Analyze"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7916666666666666,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7916666666666666,
+      "name": "Physics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7916666666666666,
+      "name": "adaptive"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": null,
+    "ci_low": null,
+    "count": 1,
+    "mean_arrw": 0.7916666666666666,
+    "name": "overall"
+  },
+  "run_id": "964b582c-386f-4669-808c-1ab4c3f8aa17"
+}

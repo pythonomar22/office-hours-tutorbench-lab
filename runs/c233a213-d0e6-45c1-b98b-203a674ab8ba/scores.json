@@ -1,0 +1,90 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.9038461538461539,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8333333333333334,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8571428571428571,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.9038461538461539,
+      "ci_low": 0.8333333333333334,
+      "count": 2,
+      "mean_arrw": 0.8685897435897436,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8571428571428571,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8571428571428571,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.9038461538461539,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8333333333333334,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 0.9038461538461539,
+      "ci_low": 0.8571428571428571,
+      "count": 2,
+      "mean_arrw": 0.8804945054945055,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8333333333333334,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": 0.9038461538461539,
+    "ci_low": 0.8333333333333334,
+    "count": 3,
+    "mean_arrw": 0.8647741147741148,
+    "name": "overall"
+  },
+  "run_id": "c233a213-d0e6-45c1-b98b-203a674ab8ba"
+}

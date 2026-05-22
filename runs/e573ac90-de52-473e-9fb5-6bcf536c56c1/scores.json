@@ -1,0 +1,83 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 0.7619047619047619,
+      "ci_low": 0.7222222222222222,
+      "count": 2,
+      "mean_arrw": 0.7420634920634921,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.6046511627906976,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.7619047619047619,
+      "ci_low": 0.6046511627906976,
+      "count": 3,
+      "mean_arrw": 0.6962593823058939,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.6046511627906976,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7619047619047619,
+      "name": "Physics"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7222222222222222,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7222222222222222,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7619047619047619,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.6046511627906976,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 1,
+  "overall": {
+    "ci_high": 0.7619047619047619,
+    "ci_low": 0.6046511627906976,
+    "count": 3,
+    "mean_arrw": 0.6962593823058939,
+    "name": "overall"
+  },
+  "run_id": "e573ac90-de52-473e-9fb5-6bcf536c56c1"
+}

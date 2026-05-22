@@ -1,0 +1,48 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8723404255319149,
+      "name": "Apply"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8723404255319149,
+      "name": "multimodal"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8723404255319149,
+      "name": "Calculus"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8723404255319149,
+      "name": "active_learning"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": null,
+    "ci_low": null,
+    "count": 1,
+    "mean_arrw": 0.8723404255319149,
+    "name": "overall"
+  },
+  "run_id": "961ae12e-fe3f-4477-8606-e83e4a8b445b"
+}

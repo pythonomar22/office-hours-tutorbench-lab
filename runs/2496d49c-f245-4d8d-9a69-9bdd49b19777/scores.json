@@ -1,0 +1,48 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.5614035087719298,
+      "name": "Evaluate"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.5614035087719298,
+      "name": "multimodal"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.5614035087719298,
+      "name": "Biology"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.5614035087719298,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": null,
+    "ci_low": null,
+    "count": 1,
+    "mean_arrw": 0.5614035087719298,
+    "name": "overall"
+  },
+  "run_id": "2496d49c-f245-4d8d-9a69-9bdd49b19777"
+}

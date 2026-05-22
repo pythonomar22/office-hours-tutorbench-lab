@@ -1,0 +1,111 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.5416666666666666,
+      "count": 2,
+      "mean_arrw": 0.7708333333333333,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9107142857142857,
+      "count": 3,
+      "mean_arrw": 0.9702380952380952,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8823529411764706,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Remember"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.8965336134453781,
+      "count": 4,
+      "mean_arrw": 0.948266806722689,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.5416666666666666,
+      "count": 3,
+      "mean_arrw": 0.8472222222222222,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.8823529411764706,
+      "count": 3,
+      "mean_arrw": 0.9607843137254902,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.9107142857142857,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.5416666666666666,
+      "count": 2,
+      "mean_arrw": 0.7708333333333333,
+      "name": "Physics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 1.0,
+      "count": 2,
+      "mean_arrw": 1.0,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.5416666666666666,
+      "count": 3,
+      "mean_arrw": 0.8174603174603174,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.8823529411764706,
+      "count": 2,
+      "mean_arrw": 0.9411764705882353,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 1,
+  "overall": {
+    "ci_high": 0.9872448979591837,
+    "ci_low": 0.7612545018007203,
+    "count": 7,
+    "mean_arrw": 0.9049619847939175,
+    "name": "overall"
+  },
+  "run_id": "8df14365-42db-475f-8447-bcb896ae8d5e"
+}

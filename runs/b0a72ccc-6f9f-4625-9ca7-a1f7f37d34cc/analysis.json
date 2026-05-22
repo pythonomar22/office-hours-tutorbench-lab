@@ -1,0 +1,1054 @@
+{
+  "playbooks": [
+    {
+      "count": 15,
+      "mean_arrw": 0.7875640924628119,
+      "name": "none"
+    },
+    {
+      "count": 2,
+      "mean_arrw": 0.9848484848484849,
+      "name": "interphase mutation active-learning hint"
+    },
+    {
+      "count": 2,
+      "mean_arrw": 0.6714285714285715,
+      "name": "radical derivative adaptive explanation"
+    },
+    {
+      "count": 2,
+      "mean_arrw": 0.9305555555555556,
+      "name": "recursive factorial assessment"
+    },
+    {
+      "count": 2,
+      "mean_arrw": 0.41875,
+      "name": "two-proportion z-test active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Arctic fox coat-color active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "CLT sample-mean active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Gene X methylation/tumor-suppressor active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "H2/O2 water limiting-reagent visual assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7922077922077922,
+      "name": "Le Chatelier SO2/SO3 assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9795918367346939,
+      "name": "Mendelian independent-assortment testcross"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "OOP design / inventory class"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8235294117647058,
+      "name": "aerobic respiration assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9038461538461539,
+      "name": "alkylbenzene sulphonation hyperconjugation explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.782608695652174,
+      "name": "arc-length perimeter active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9565217391304348,
+      "name": "binary-tree traversal reconstruction assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7916666666666666,
+      "name": "coffee-shop conditional-probability active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "conical-pendulum adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9655172413793104,
+      "name": "dextrose solubility/molarity assessment-hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7916666666666666,
+      "name": "equilateral-triangle wire magnetic-field adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "extremophile multi-part metabolism hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "heat-exchange active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8125,
+      "name": "kth-smallest sorted-matrix assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8571428571428571,
+      "name": "oxygen/CO2 cellular-respiration adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "penicillin allergy Bayes active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.972972972972973,
+      "name": "regression residual assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "rotating charged ring active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "second ionization energy assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7727272727272727,
+      "name": "sinc integral/removable discontinuity assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9583333333333334,
+      "name": "two's-complement negative-number active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8214285714285714,
+      "name": "weak-acid titration pKa adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8333333333333334,
+      "name": "z-test vs t-test assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 33.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 0.7828947368421053,
+      "passed_positive_weight": 119.0,
+      "positive_weight": 152.0,
+      "rows_with_failure": 9,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 33.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 0.8166666666666667,
+      "passed_positive_weight": 147.0,
+      "positive_weight": 180.0,
+      "rows_with_failure": 8,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 32.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.8415841584158416,
+      "passed_positive_weight": 170.0,
+      "positive_weight": 202.0,
+      "rows_with_failure": 6,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 3.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 0.8421052631578947,
+      "passed_positive_weight": 16.0,
+      "positive_weight": 19.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 154.0,
+      "name": "instruction_following",
+      "negative_criteria": 4,
+      "pass_rate": 0.8452261306532663,
+      "passed_positive_weight": 841.0,
+      "positive_weight": 995.0,
+      "rows_with_failure": 25,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 113.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.8536269430051814,
+      "passed_positive_weight": 659.0,
+      "positive_weight": 772.0,
+      "rows_with_failure": 18,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 36.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.8686131386861314,
+      "passed_positive_weight": 238.0,
+      "positive_weight": 274.0,
+      "rows_with_failure": 9,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 2.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.9833333333333333,
+      "passed_positive_weight": 118.0,
+      "positive_weight": 120.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 0.9191433566433567,
+        "ci_low": 0.5047658071095571,
+        "count": 8,
+        "mean_arrw": 0.7350688374125874,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.9187525139031528,
+        "ci_low": 0.8335258415541579,
+        "count": 30,
+        "mean_arrw": 0.8765885883410529,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 1.0,
+        "count": 2,
+        "mean_arrw": 1.0,
+        "name": "Create"
+      },
+      {
+        "ci_high": 0.9272058823529412,
+        "ci_low": 0.7458333333333333,
+        "count": 5,
+        "mean_arrw": 0.8313725490196079,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Remember"
+      },
+      {
+        "ci_high": 0.8604651162790697,
+        "ci_low": 0.7727272727272727,
+        "count": 3,
+        "mean_arrw": 0.8301117487163998,
+        "name": "Understand"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8148148148148148,
+        "name": "none"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.900555695234598,
+        "ci_low": 0.7406077535925232,
+        "count": 25,
+        "mean_arrw": 0.8307767034575197,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.9218683208738606,
+        "ci_low": 0.8230883857022998,
+        "count": 25,
+        "mean_arrw": 0.8748321427662539,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": 0.9654493886468808,
+        "ci_low": 0.8731300376360821,
+        "count": 11,
+        "mean_arrw": 0.9213983174314555,
+        "name": "Biology"
+      },
+      {
+        "ci_high": 0.7912960690829275,
+        "ci_low": 0.6901175687666371,
+        "count": 7,
+        "mean_arrw": 0.7408938601444323,
+        "name": "Calculus"
+      },
+      {
+        "ci_high": 0.969057881773399,
+        "ci_low": 0.8424388111888111,
+        "count": 8,
+        "mean_arrw": 0.9069658789486376,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.9754140786749482,
+        "ci_low": 0.7991071428571429,
+        "count": 7,
+        "mean_arrw": 0.8921023119392685,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 0.9456102591695812,
+        "ci_low": 0.7140686526279746,
+        "count": 9,
+        "mean_arrw": 0.8408724044317264,
+        "name": "Physics"
+      },
+      {
+        "ci_high": 0.931517454954955,
+        "ci_low": 0.542454954954955,
+        "count": 8,
+        "mean_arrw": 0.7812859734734735,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 0.9560401768133345,
+        "ci_low": 0.8677367230475544,
+        "count": 18,
+        "mean_arrw": 0.9098419105063725,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.8916345745028781,
+        "ci_low": 0.6567333356953893,
+        "count": 16,
+        "mean_arrw": 0.7955608565541601,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.9143546940058841,
+        "ci_low": 0.7662892158713379,
+        "count": 16,
+        "mean_arrw": 0.8458808163508171,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 4,
+    "overall": {
+      "ci_high": 0.8950844165934301,
+      "ci_low": 0.8013384640720365,
+      "count": 50,
+      "mean_arrw": 0.8528044231118869,
+      "name": "overall"
+    },
+    "run_id": "b0a72ccc-6f9f-4625-9ca7-a1f7f37d34cc"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 1113881,
+    "generation_output_tokens": 205018,
+    "judge_input_tokens": 112637,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 11936,
+    "mean_generation_latency_ms": 83379.38,
+    "mean_judge_latency_ms": 3766.62,
+    "negative_weight_review_count": 4,
+    "row_count": 50,
+    "run_id": "b0a72ccc-6f9f-4625-9ca7-a1f7f37d34cc",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1994000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 398000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19997
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2394000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 50,
+      "critic_0": 50,
+      "critic_1": 3,
+      "critic_2": 1,
+      "domain_verifier": 50,
+      "perception": 25,
+      "planner": 50,
+      "revision_1": 3,
+      "revision_2": 1,
+      "solver": 50,
+      "specialist_audit": 8
+    },
+    "stage_mean_latency_ms": {
+      "composer": 15875.98,
+      "critic_0": 5203.84,
+      "critic_1": 5541.33,
+      "critic_2": 10125,
+      "domain_verifier": 12414.58,
+      "perception": 12220.24,
+      "planner": 17990.12,
+      "revision_1": 10930.67,
+      "revision_2": 6914,
+      "solver": 21852.02,
+      "specialist_audit": 16272.62
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 12.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 0.5862068965517241,
+      "passed_positive_weight": 17.0,
+      "positive_weight": 29.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 16.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 0.627906976744186,
+      "passed_positive_weight": 27.0,
+      "positive_weight": 43.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 46.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.7733990147783252,
+      "passed_positive_weight": 157.0,
+      "positive_weight": 203.0,
+      "rows_with_failure": 6,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 80.0,
+      "name": "Not applicable",
+      "negative_criteria": 3,
+      "pass_rate": 0.8272138228941684,
+      "passed_positive_weight": 383.0,
+      "positive_weight": 463.0,
+      "rows_with_failure": 23,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 39.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.8458498023715415,
+      "passed_positive_weight": 214.0,
+      "positive_weight": 253.0,
+      "rows_with_failure": 9,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 27.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.8969465648854962,
+      "passed_positive_weight": 235.0,
+      "positive_weight": 262.0,
+      "rows_with_failure": 6,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 28.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.899641577060932,
+      "passed_positive_weight": 251.0,
+      "positive_weight": 279.0,
+      "rows_with_failure": 6,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 12.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 1,
+      "pass_rate": 0.9210526315789473,
+      "passed_positive_weight": 140.0,
+      "positive_weight": 152.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 106.0,
+      "positive_weight": 106.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.025,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly acknowledge the student's stated confusion by using phrases such as \"I understand you're confused,\" \"I see the confusion,\" or \"Let me clear up the c...",
+          "criterion_index": 0,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the ONLY correct Bonferroni method is dividing alpha by the number of tests (0.05/3 = 0.0167).",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explicitly state that multiplying p-values by the number of tests is not a valid or equivalent Bonferroni method.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must address that the student's confident assertion about reading the p-value division method \"in their prep book\" is incorrect.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must calculate the standard error as exactly 0.084 (or show work leading to 0.084, not 0.080).",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 11,
+      "modality": "multimodal",
+      "playbook": "two-proportion z-test active-learning hint",
+      "response_preview": "It's okay to be confused here - this is a common fork in two-proportion tests. First, look back at the wording **\"reduces the likelihood\"**. Does that sound like you are testing for *any* difference, or specifically whether the vaccine group's disease propo...",
+      "rubric_count": 12,
+      "subject": "Statistics",
+      "task_id": "683e3d90e1480f05f1927713",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5416666666666666,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must address the student\u2019s emotional cues by empathizing with any expressed confusion or uncertainty.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should suggest alternative valid solution paths (e.g., using kinematics equations or dimensional checks).",
+          "criterion_index": 7,
+          "dimensions": [
+            "conciseness_relevance",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on Your Solution ### What You Did Correctly Your overall approach is exactly right: identify this as a conservation of energy problem, compute the loss in potential energy, and set it equal to the kinetic energy gained. Your Step 1 calculation i...",
+      "rubric_count": 9,
+      "subject": "Physics",
+      "task_id": "681cfc8c5db7f3af72e1579d",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide a complete, correct solution by showing every step\u2014from $\\Delta U=mgh$ to $\\tfrac{1}{2}mv^2=\\Delta U$, solving for $v$, and stating $v=9.90$ m/s.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.5454545454545454,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must point out that the student inconsistently made use of the \"approximately equal\" sign, while it should be applied anywhere where rounded values are being used.",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must point out that the student inconsistently added units to the physical quantities and that this is required.",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must point out that the square has not been applied by the student to the orbital period T in the Kepler formula.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work on Kepler's Third Law ### What You Did Well - You correctly stated Kepler's Third Law: **r\u00b3/T\u00b2 = GM/4\u03c0\u00b2** \u2713 - You correctly identified that r\u00b3 should be isolated on the left side \u2713 - You used the right value for G (6.67\u00d710\u207b\u00b9\u00b9) \u2713 -...",
+      "rubric_count": 9,
+      "subject": "Physics",
+      "task_id": "683e45162f54c21988695290",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.6428571428571429,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must demonstrate, starting from the limit definition of the derivative, how to arrive at the simplified form \\((4t^{2}+18)/(2\\sqrt{t^{2}+9})\\).",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that part (b) can be solved in two ways : by applying the chain rule and by using the first-principles (limit-definition) derivative and make an attempt...",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "radical derivative adaptive explanation",
+      "response_preview": "## Where the *t* Comes From (and Where It Goes) You're not canceling anything illegally \u2014 the *t* in the denominator isn't secretly sitting there from the start. It **appears through factoring** and then cancels with the *t* you factor from the numerator. L...",
+      "rubric_count": 8,
+      "subject": "Calculus",
+      "task_id": "684a8c403b901ee3995f38f5",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.65625,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the coe used document.createElement(\"td\") and set row.innerText, and explain why using innerText with HTML-like content does not create table cel...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should suggest a way to check or debug the DOM structure (use browser dev or console.log) to see the effect of the code",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explain that using innerText to insert what looks like HTML will not create actual table cells, but instead display the raw text, resulting in a empty table",
+          "criterion_index": 7,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great question \u2014 your intuition actually makes sense, and it's worth unpacking exactly why it doesn't work that way in JavaScript. ## Why There's No Row \"Already There\" When you write `document.createElement(\"td\")`, JavaScript creates a single, **standalone...",
+      "rubric_count": 8,
+      "subject": "Computer Science",
+      "task_id": "683e3d8db4f61c885835aa80",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.6875,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the correct inverse is $C(F) = (5/9)(F - 32)$ and explain why this order is correct.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a specific numeric example (e.g., $F = 50$ or $F = 212$) demonstrating that the student\u2019s formula gives an incorrect result, while the correct formula...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work ### What You Got Right Your **Step 2 is correct**: $\\dfrac{dC}{dF} = \\dfrac{5}{9}$ \u2713 ### What Is Wrong \u2014 Step 1 Your inverse function $C(F) = \\dfrac{5}{9}F - 32$ **is incorrect**. The constant term should be $-\\dfrac{160}{9}$, not...",
+      "rubric_count": 8,
+      "subject": "Calculus",
+      "task_id": "683e4514f37c3bccc4ec7df3",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.7,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must restrict the explanation to the domain \\(\\[0, 1\\) \\cup \\(1, 2\\] \\).",
+          "criterion_index": 6,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must include a numeric example of a situation where the integral is very large, instead of divergent. For instance, if the value of the integral at the critical poi...",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "radical derivative adaptive explanation",
+      "response_preview": "Great question \u2014 this is exactly the right thing to push on, and the distinction is a precise mathematical one, not just intuition. ## \"Diverges\" vs. \"really large but finite\" The difference comes down to what the **limit** actually does. When we computed t...",
+      "rubric_count": 8,
+      "subject": "Calculus",
+      "task_id": "684a8c41f2ed21c3af4f5e68",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.7321428571428571,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly identify that the student made sign errors when applying the chain rule to differentiate $-28\\cos(2x0$ and $-13\\sin(x)$.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that for $-13\\sin(x)$, the derivative $-13\\cos(x)$ retains the negative sign.",
+          "criterion_index": 9,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that sign errors are common when working with the chain rule and negative coefficients.",
+          "criterion_index": 10,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Your arithmetic on your own expression is internally consistent \u2014 $13\\cos(\\pi) - 56\\sin(2\\pi) = 13(-1) - 56(0) = -13$ is correct *if* your $h(x)$ were right. But notice that your expression $13\\cos(x) - 56\\sin(2x)$ is exactly $-1$ times the correct third de...",
+      "rubric_count": 12,
+      "subject": "Calculus",
+      "task_id": "6811d40e3babd4e8219eb4ff",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.7727272727272727,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student's expressed confusion with appropriate empathy and encouragement, such as stating \"I understand this type of problem can be confusing,...",
+          "criterion_index": 3,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "sinc integral/removable discontinuity assessment",
+      "response_preview": "I understand why this feels confusing: the original integrand is not defined at t = 0, and your substitution seemed to create a new singular expression. **What you did well** Your Taylor-series argument is strong: $$\\sin(t)=t-\\frac{t^3}{6}+O(t^5),$$ so $$\\f...",
+      "rubric_count": 6,
+      "subject": "Calculus",
+      "task_id": "684771b2c4915de7a58b3cdd",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.7727272727272727,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly acknowledge the student's confusion.",
+          "criterion_index": 2,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "You've actually already done the hardest part \u2014 your identification of the **2:1 ratio** is completely correct and is exactly the tool you need. Let me show you how to connect it to the arithmetic. ## The Stoichiometric Rate Relationship For any balanced re...",
+      "rubric_count": 6,
+      "subject": "Chemistry",
+      "task_id": "683870ef925f37fe4fe4398c",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.782608695652174,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must not provide the next step directly without stating the arc length formula \\( L = \\int_a^b \\sqrt{1 + [f'(x)]^2} \\, dx \\) or the derivative of \\( e^x \\).",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "arc-length perimeter active-learning hint",
+      "response_preview": "Great work so far: the three straight side lengths in your diagram are **1**, **n**, and **e^n**. The missing piece is the curved top boundary. The concept to recall is **arc length**. For a curve y = f(x), the arc length from x = a to x = b is $$L = \\int_a...",
+      "rubric_count": 7,
+      "subject": "Calculus",
+      "task_id": "683e458b98da731381469295",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.7916666666666666,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student's correct initial understanding that the problem is about conditional probability and that they have identified some relevant numbers f...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must not reveal the next step by offering specifics of the numerator or denominator of the final fraction (or providing any equivalently specific information).",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "coffee-shop conditional-probability active hint",
+      "response_preview": "It's okay to feel stuck here - the word **given** is exactly the part that changes the denominator. Think of conditional probability as shrinking the room you are looking at. Once the problem says **given that the customer visited in the morning**, you shou...",
+      "rubric_count": 12,
+      "subject": "Statistics",
+      "task_id": "684772090f13de1c3fc22137",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    }
+  ]
+}

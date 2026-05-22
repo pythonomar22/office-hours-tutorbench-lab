@@ -1,0 +1,750 @@
+{
+  "playbooks": [
+    {
+      "count": 1,
+      "mean_arrw": 0.6730769230769231,
+      "name": "alkylbenzene sulphonation hyperconjugation explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8958333333333334,
+      "name": "coffee-shop conditional-probability active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8125,
+      "name": "kth-smallest sorted-matrix assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.38095238095238093,
+      "name": "oxygen/CO2 cellular-respiration adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "penicillin allergy Bayes active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "rotating charged ring active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8125,
+      "name": "two-proportion z-test active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.2777777777777778,
+      "name": "z-test vs t-test assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 1.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 0.0,
+      "passed_positive_weight": 0.0,
+      "positive_weight": 1.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.5714285714285714,
+      "passed_positive_weight": 20.0,
+      "positive_weight": 35.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.6,
+      "passed_positive_weight": 15.0,
+      "positive_weight": 25.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 40.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.6190476190476191,
+      "passed_positive_weight": 65.0,
+      "positive_weight": 105.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 11.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.65625,
+      "passed_positive_weight": 21.0,
+      "positive_weight": 32.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 42.0,
+      "name": "instruction_following",
+      "negative_criteria": 0,
+      "pass_rate": 0.7439024390243902,
+      "passed_positive_weight": 122.0,
+      "positive_weight": 164.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 7.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 0.7741935483870968,
+      "passed_positive_weight": 24.0,
+      "positive_weight": 31.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 2.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 0.9393939393939394,
+      "passed_positive_weight": 31.0,
+      "positive_weight": 33.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.6730769230769231,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.8541666666666667,
+        "count": 4,
+        "mean_arrw": 0.9270833333333334,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 0.8125,
+        "ci_low": 0.2777777777777778,
+        "count": 2,
+        "mean_arrw": 0.5451388888888888,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.38095238095238093,
+        "name": "Understand"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.9182692307692308,
+        "ci_low": 0.41145833333333337,
+        "count": 4,
+        "mean_arrw": 0.6908386752136753,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.953125,
+        "ci_low": 0.4888392857142857,
+        "count": 4,
+        "mean_arrw": 0.7723214285714286,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.38095238095238093,
+        "name": "Biology"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.6730769230769231,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8125,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Physics"
+      },
+      {
+        "ci_high": 0.9479166666666667,
+        "ci_low": 0.4322916666666667,
+        "count": 4,
+        "mean_arrw": 0.7465277777777778,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.8541666666666667,
+        "count": 4,
+        "mean_arrw": 0.9270833333333334,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.6730769230769231,
+        "ci_low": 0.38095238095238093,
+        "count": 2,
+        "mean_arrw": 0.527014652014652,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.8125,
+        "ci_low": 0.2777777777777778,
+        "count": 2,
+        "mean_arrw": 0.5451388888888888,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 0,
+    "overall": {
+      "ci_high": 0.8888221153846154,
+      "ci_low": 0.5275297619047619,
+      "count": 8,
+      "mean_arrw": 0.7315800518925519,
+      "name": "overall"
+    },
+    "run_id": "eb925fae-b460-4d43-a43d-9e3827bb9e71"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 203910,
+    "generation_output_tokens": 37470,
+    "judge_input_tokens": 14282,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 1791,
+    "mean_generation_latency_ms": 95013.75,
+    "mean_judge_latency_ms": 3473.5,
+    "negative_weight_review_count": 0,
+    "row_count": 8,
+    "run_id": "eb925fae-b460-4d43-a43d-9e3827bb9e71",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1995000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19998
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2395000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 8,
+      "critic_0": 8,
+      "critic_1": 1,
+      "critic_2": 1,
+      "domain_verifier": 8,
+      "perception": 4,
+      "planner": 8,
+      "revision_1": 1,
+      "revision_2": 1,
+      "solver": 8,
+      "specialist_audit": 2
+    },
+    "stage_mean_latency_ms": {
+      "composer": 17412.75,
+      "critic_0": 6370,
+      "critic_1": 14151,
+      "critic_2": 13355,
+      "domain_verifier": 13135,
+      "perception": 14828.25,
+      "planner": 18004.88,
+      "revision_1": 13255,
+      "revision_2": 15464,
+      "solver": 21551.38,
+      "specialist_audit": 16390
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 10.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 0.0,
+      "passed_positive_weight": 0.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 25.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.2857142857142857,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 35.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 12.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.5714285714285714,
+      "passed_positive_weight": 16.0,
+      "positive_weight": 28.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.7222222222222222,
+      "passed_positive_weight": 26.0,
+      "positive_weight": 36.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.75,
+      "passed_positive_weight": 15.0,
+      "positive_weight": 20.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 17.0,
+      "name": "Not applicable",
+      "negative_criteria": 0,
+      "pass_rate": 0.8045977011494253,
+      "passed_positive_weight": 70.0,
+      "positive_weight": 87.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 7.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.8333333333333334,
+      "passed_positive_weight": 35.0,
+      "positive_weight": 42.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 20.0,
+      "positive_weight": 20.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.2777777777777778,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly read the student solution that since |z| = .20 < 1.96, reject H0.",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the sample size as 40 students, sample average as 78, the alternate hypothesis as H0 = 80 and the calculation of z=(78-80)/10=-0.2.",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the student incorrectly used the standard deviation [\u03c3] instead of the standard error [\\(\\frac{\\sigma}{\\sqrt{n}}\\)] of the mean to calculate the tes...",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide explanations to correctly answer the question, i.e. the student should use t-test because standard deviation is unknown, correctly calculate the standa...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the student incorrectly rejected the null hypothesis [H0: u=80] instead of failing to reject the null hypothesis.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "z-test vs t-test assessment",
+      "response_preview": "The student's conclusion is not valid as a z-test. The issue is the standard deviation assumption. A **z-test** is appropriate when the population standard deviation is known, or in a setting where the normal approximation is specifically justified. Here, t...",
+      "rubric_count": 8,
+      "subject": "Statistics",
+      "task_id": "683e45143a109788e3f7e591",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.38095238095238093,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge that to relate the CO2 production to glucose, the student should first remember its formula (C\u2086H\u2081\u2082O\u2086).",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must contain an appropriate metaphor that contains a structure with six pieces (and must state it has six pieces) to represent the carbons involved, such as a six-b...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must point out that no CO2 is produced during glycolysis.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should mention that glycolysis happens in cytoplasm.",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must provide the explanation in logical order: first, address the knowledge gap and explain that glucose consists of 6 carbon molecules (C\u2086H\u2081\u2082O\u2086), then explain glyc...",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "oxygen/CO2 cellular-respiration adaptive explanation",
+      "response_preview": "Totally fair question: glucose **does** go through glycolysis, but that is only the first stop in the trip. The key separation is: - The **carbon dioxide you exhale comes from the carbon atoms in glucose**. - The **oxygen you inhale does not become that CO2...",
+      "rubric_count": 10,
+      "subject": "Biology",
+      "task_id": "6842a1fb5ca82eb2207af64b",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.6730769230769231,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model should describe that alkyl groups donates the electrons density through inductive effect (sigma bond).",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The model should describe that the reactivity of the electrophilic substitution depends upon the nucleophilicity of the benzene ring.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The model must explain that reactivity depends upon the electrophilicity of the electrophile.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain that reactivity depends upon the steric hinderance due to the groups present on the benzene ring.",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must correctly reason based on the provided image between activation (electron donation) and deactivation (steric hindrance) in this reversible reaction.",
+          "criterion_index": 10,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "alkylbenzene sulphonation hyperconjugation explanation",
+      "response_preview": "I get why you're unsure here: \"more branching donates more\" is a useful shortcut in some settings, but it is not the whole story for this sulphonation ranking. For electrophilic sulphonation of alkylbenzenes, focus on how strongly the alkyl group activates...",
+      "rubric_count": 12,
+      "subject": "Chemistry",
+      "task_id": "683e3d8d2b6d2a6c45002caa",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8125,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must provide a concrete numerical example showing why j+1 is needed (e.g., showing a row with specific values and explaining the index vs count difference).",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should explain why undercounting leads to searching for a higher kth element than needed, causing convergence on non-existent alues.",
+          "criterion_index": 7,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "kth-smallest sorted-matrix assessment",
+      "response_preview": "I can see why you are so frustrated: your counting logic is genuinely clever, and the overall strategy is the right one. The bug is a small index-vs-count mistake that makes the binary search believe the kth value is somewhere it is not. **What is correct**...",
+      "rubric_count": 8,
+      "subject": "Computer Science",
+      "task_id": "683e4516f37c3bccc4ec7e12",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.8125,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge that the student has correctly calculated the sample proportions (\\( \\hat{p}_v = 0.25 \\) and \\( \\hat{p}_p = 0.30 \\)).",
+          "criterion_index": 0,
+          "dimensions": [
+            "style_tone",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response can use encouraging phrases such as \"Great start!\", \"You're on the right track!\", or similar positive reinforcement.",
+          "criterion_index": 7,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "two-proportion z-test active-learning hint",
+      "response_preview": "It's okay to be confused here - this is a common fork in two-proportion tests. First, look back at the wording **\"reduces the likelihood\"**. Does that sound like you are testing for *any* difference, or specifically whether the vaccine group's disease propo...",
+      "rubric_count": 8,
+      "subject": "Statistics",
+      "task_id": "6843160b61e29735d3565670",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.8958333333333334,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student's correct initial understanding that the problem is about conditional probability and that they have identified some relevant numbers f...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "coffee-shop conditional-probability active hint",
+      "response_preview": "It's okay to feel stuck here - the word **given** is exactly the part that changes the denominator. Think of conditional probability as shrinking the room you are looking at. Once the problem says **given that the customer visited in the morning**, you shou...",
+      "rubric_count": 12,
+      "subject": "Statistics",
+      "task_id": "684772090f13de1c3fc22137",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "penicillin allergy Bayes active-learning hint",
+      "response_preview": "I see why Bayes' Theorem feels like it might be overcomplicating this: \\(P(R\\mid A)\\) is sitting right there, so it is tempting to use it directly. The key is that the question has flipped the condition. - \\(P(R\\mid A)\\): among patients with a listed allerg...",
+      "rubric_count": 6,
+      "subject": "Statistics",
+      "task_id": "6843160a1c3b85b09bea6fd9",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "rotating charged ring active-learning hint",
+      "response_preview": "Pause on one reading detail first: the ring is rotating about a **diameter**, not about the central symmetry axis. That changes what the rotating geometry looks like, so do not assume the usual \"spinning about its axis\" picture. Now ask what quantity the pr...",
+      "rubric_count": 8,
+      "subject": "Physics",
+      "task_id": "683e458c3a109788e3f7e64f",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    }
+  ]
+}

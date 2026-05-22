@@ -1,0 +1,104 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.7105263157894737,
+      "count": 2,
+      "mean_arrw": 0.8552631578947368,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.84375,
+      "name": "Create"
+    },
+    {
+      "ci_high": 0.9811320754716981,
+      "ci_low": 0.9019607843137255,
+      "count": 2,
+      "mean_arrw": 0.9415464298927119,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.9019607843137255,
+      "ci_low": 0.7105263157894737,
+      "count": 2,
+      "mean_arrw": 0.8062435500515996,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.84375,
+      "count": 3,
+      "mean_arrw": 0.941627358490566,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.9019607843137255,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.9811320754716981,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 0.84375,
+      "ci_low": 0.7105263157894737,
+      "count": 2,
+      "mean_arrw": 0.7771381578947368,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9019607843137255,
+      "count": 2,
+      "mean_arrw": 0.9509803921568627,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 0.9811320754716981,
+      "ci_low": 0.84375,
+      "count": 2,
+      "mean_arrw": 0.9124410377358491,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7105263157894737,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": 0.9690714021457639,
+    "ci_low": 0.7871001031991745,
+    "count": 5,
+    "mean_arrw": 0.8874738351149795,
+    "name": "overall"
+  },
+  "run_id": "a43425c1-f42d-4402-b02b-87f5baa0f772"
+}

@@ -11,9 +11,16 @@ data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
-# Runs can contain proprietary model outputs and API metadata.
+# Keep raw traces private, but allow small sanitized result summaries for sharing.
 runs/*
 !runs/.gitkeep
+!runs/*/
+runs/*/*.jsonl
+!runs/*/scores*.json
+!runs/*/analysis.json
+!runs/*/analysis.md
+!runs/*/report*.md
+!runs/*/compare*.md
 
 # Local notebooks/scratch
 scratch/

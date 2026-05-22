@@ -1,0 +1,69 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 0.25,
+      "ci_low": 0.05747126436781609,
+      "count": 2,
+      "mean_arrw": 0.15373563218390804,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.21739130434782608,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.25,
+      "ci_low": 0.05747126436781609,
+      "count": 3,
+      "mean_arrw": 0.17495418957188072,
+      "name": "multimodal"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.21739130434782608,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.25,
+      "name": "Calculus"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.05747126436781609,
+      "name": "Chemistry"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 0.25,
+      "ci_low": 0.05747126436781609,
+      "count": 3,
+      "mean_arrw": 0.17495418957188072,
+      "name": "adaptive"
+    }
+  ],
+  "judge_model": "heuristic",
+  "negative_weight_review_count": 2,
+  "overall": {
+    "ci_high": 0.25,
+    "ci_low": 0.05747126436781609,
+    "count": 3,
+    "mean_arrw": 0.17495418957188072,
+    "name": "overall"
+  },
+  "run_id": "37d69b52-acc0-4b74-b7c5-46e54141bf5a"
+}

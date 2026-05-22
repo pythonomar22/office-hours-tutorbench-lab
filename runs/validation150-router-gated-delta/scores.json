@@ -1,0 +1,118 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 0.7368421052631579,
+      "ci_low": 0.52,
+      "count": 3,
+      "mean_arrw": 0.6094235588972431,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": 0.7878040498302455,
+      "ci_low": 0.5439123066627213,
+      "count": 14,
+      "mean_arrw": 0.6690669185580355,
+      "name": "Apply"
+    },
+    {
+      "ci_high": 0.9117647058823529,
+      "ci_low": 0.5283018867924528,
+      "count": 3,
+      "mean_arrw": 0.7327103696012793,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": 0.7105263157894737,
+      "ci_low": 0.3548387096774194,
+      "count": 3,
+      "mean_arrw": 0.5185203679660886,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.7564146764940827,
+      "ci_low": 0.5583404046863701,
+      "count": 11,
+      "mean_arrw": 0.6540774401474387,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 0.7695496200005555,
+      "ci_low": 0.5006124993622225,
+      "count": 12,
+      "mean_arrw": 0.6461706589653753,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": 0.6340625757943246,
+      "ci_low": 0.3891619228336496,
+      "count": 8,
+      "mean_arrw": 0.51041859563741,
+      "name": "Biology"
+    },
+    {
+      "ci_high": 0.9565217391304348,
+      "ci_low": 0.5283018867924528,
+      "count": 3,
+      "mean_arrw": 0.6767593904591443,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 0.894140989729225,
+      "ci_low": 0.7805727554179567,
+      "count": 4,
+      "mean_arrw": 0.8357044572214851,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": 0.7058823529411765,
+      "ci_low": 0.6666666666666666,
+      "count": 2,
+      "mean_arrw": 0.6862745098039216,
+      "name": "Physics"
+    },
+    {
+      "ci_high": 0.8769657724329325,
+      "ci_low": 0.4898976550225394,
+      "count": 6,
+      "mean_arrw": 0.6866509940393055,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 0.8610130042355106,
+      "ci_low": 0.5025304807913504,
+      "count": 6,
+      "mean_arrw": 0.6982108037819084,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 0.7503132355893534,
+      "ci_low": 0.5521269201274961,
+      "count": 9,
+      "mean_arrw": 0.64114587273778,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 0.7969420781353035,
+      "ci_low": 0.4485867598427653,
+      "count": 8,
+      "mean_arrw": 0.6236652589843574,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 6,
+  "overall": {
+    "ci_high": 0.7380969012344258,
+    "ci_low": 0.5628202880174252,
+    "count": 23,
+    "mean_arrw": 0.6499521630089709,
+    "name": "overall"
+  },
+  "run_id": "validation150-router-gated-delta"
+}

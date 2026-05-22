@@ -1,0 +1,104 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.868421052631579,
+      "count": 2,
+      "mean_arrw": 0.9342105263157895,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Create"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9622641509433962,
+      "count": 2,
+      "mean_arrw": 0.9811320754716981,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.868421052631579,
+      "count": 2,
+      "mean_arrw": 0.9342105263157895,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9622641509433962,
+      "count": 3,
+      "mean_arrw": 0.9874213836477987,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.9622641509433962,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.868421052631579,
+      "count": 2,
+      "mean_arrw": 0.9342105263157895,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 1.0,
+      "count": 2,
+      "mean_arrw": 1.0,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9622641509433962,
+      "count": 2,
+      "mean_arrw": 0.9811320754716981,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.868421052631579,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": 1.0,
+    "ci_low": 0.9135054617676266,
+    "count": 5,
+    "mean_arrw": 0.9661370407149951,
+    "name": "overall"
+  },
+  "run_id": "63f36cd0-39ed-48e6-ac38-55cc3d118e4b"
+}

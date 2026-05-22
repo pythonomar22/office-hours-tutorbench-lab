@@ -1,0 +1,1397 @@
+{
+  "playbooks": [
+    {
+      "count": 18,
+      "mean_arrw": 0.6342166206497902,
+      "name": "none"
+    },
+    {
+      "count": 2,
+      "mean_arrw": 0.8823529411764706,
+      "name": "OOP design / inventory class"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7058823529411765,
+      "name": "kinematics active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7580645161290323,
+      "name": "plant/animal cell diagram assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.30434782608695654,
+      "name": "two-proportion z-test active-learning hint"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 3.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 0.4,
+      "passed_positive_weight": 2.0,
+      "positive_weight": 5.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 21.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 0.6181818181818182,
+      "passed_positive_weight": 34.0,
+      "positive_weight": 55.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 57.0,
+      "name": "truthfulness",
+      "negative_criteria": 2,
+      "pass_rate": 0.6607142857142857,
+      "passed_positive_weight": 111.0,
+      "positive_weight": 168.0,
+      "rows_with_failure": 11,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 138.0,
+      "name": "instruction_following",
+      "negative_criteria": 5,
+      "pass_rate": 0.6960352422907489,
+      "passed_positive_weight": 316.0,
+      "positive_weight": 454.0,
+      "rows_with_failure": 17,
+      "triggered_negative_criteria": 3
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.7169811320754716,
+      "passed_positive_weight": 38.0,
+      "positive_weight": 53.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 87.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 2,
+      "pass_rate": 0.7402985074626866,
+      "passed_positive_weight": 248.0,
+      "positive_weight": 335.0,
+      "rows_with_failure": 13,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 19.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 0.7466666666666667,
+      "passed_positive_weight": 56.0,
+      "positive_weight": 75.0,
+      "rows_with_failure": 7,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 29.0,
+      "positive_weight": 29.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 0.7368421052631579,
+        "ci_low": 0.52,
+        "count": 3,
+        "mean_arrw": 0.6094235588972431,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.7878040498302455,
+        "ci_low": 0.5439123066627213,
+        "count": 14,
+        "mean_arrw": 0.6690669185580355,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 0.9117647058823529,
+        "ci_low": 0.5283018867924528,
+        "count": 3,
+        "mean_arrw": 0.7327103696012793,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": 0.7105263157894737,
+        "ci_low": 0.3548387096774194,
+        "count": 3,
+        "mean_arrw": 0.5185203679660886,
+        "name": "Understand"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.7564146764940827,
+        "ci_low": 0.5583404046863701,
+        "count": 11,
+        "mean_arrw": 0.6540774401474387,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.7695496200005555,
+        "ci_low": 0.5006124993622225,
+        "count": 12,
+        "mean_arrw": 0.6461706589653753,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": 0.6340625757943246,
+        "ci_low": 0.3891619228336496,
+        "count": 8,
+        "mean_arrw": 0.51041859563741,
+        "name": "Biology"
+      },
+      {
+        "ci_high": 0.9565217391304348,
+        "ci_low": 0.5283018867924528,
+        "count": 3,
+        "mean_arrw": 0.6767593904591443,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.894140989729225,
+        "ci_low": 0.7805727554179567,
+        "count": 4,
+        "mean_arrw": 0.8357044572214851,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 0.7058823529411765,
+        "ci_low": 0.6666666666666666,
+        "count": 2,
+        "mean_arrw": 0.6862745098039216,
+        "name": "Physics"
+      },
+      {
+        "ci_high": 0.8769657724329325,
+        "ci_low": 0.4898976550225394,
+        "count": 6,
+        "mean_arrw": 0.6866509940393055,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 0.8610130042355106,
+        "ci_low": 0.5025304807913504,
+        "count": 6,
+        "mean_arrw": 0.6982108037819084,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.7503132355893534,
+        "ci_low": 0.5521269201274961,
+        "count": 9,
+        "mean_arrw": 0.64114587273778,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.7969420781353035,
+        "ci_low": 0.4485867598427653,
+        "count": 8,
+        "mean_arrw": 0.6236652589843574,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 6,
+    "overall": {
+      "ci_high": 0.7418371464933744,
+      "ci_low": 0.5678562056326805,
+      "count": 23,
+      "mean_arrw": 0.6499521630089709,
+      "name": "overall"
+    },
+    "run_id": "validation150-router-gated-delta"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 510636,
+    "generation_output_tokens": 97900,
+    "judge_input_tokens": 59742,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 5534,
+    "mean_generation_latency_ms": 87214.65217391304,
+    "mean_judge_latency_ms": 4718.826086956522,
+    "negative_weight_review_count": 6,
+    "row_count": 23,
+    "run_id": "validation150-router-gated-delta",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1993000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19998
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2393000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 23,
+      "critic_0": 23,
+      "critic_1": 2,
+      "critic_2": 1,
+      "domain_verifier": 23,
+      "perception": 11,
+      "planner": 23,
+      "revision_1": 2,
+      "revision_2": 1,
+      "solver": 23,
+      "specialist_audit": 2
+    },
+    "stage_mean_latency_ms": {
+      "composer": 18060.74,
+      "critic_0": 5091.74,
+      "critic_1": 9500.5,
+      "critic_2": 4587,
+      "domain_verifier": 12126.78,
+      "perception": 11837.36,
+      "planner": 18100.48,
+      "revision_1": 8269,
+      "revision_2": 7388,
+      "solver": 24624.22,
+      "specialist_audit": 17060.5
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 70.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.5483870967741935,
+      "passed_positive_weight": 85.0,
+      "positive_weight": 155.0,
+      "rows_with_failure": 10,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 62.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.6457142857142857,
+      "passed_positive_weight": 113.0,
+      "positive_weight": 175.0,
+      "rows_with_failure": 10,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 3.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 0.7272727272727273,
+      "passed_positive_weight": 8.0,
+      "positive_weight": 11.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 54.0,
+      "name": "Not applicable",
+      "negative_criteria": 4,
+      "pass_rate": 0.7326732673267327,
+      "passed_positive_weight": 148.0,
+      "positive_weight": 202.0,
+      "rows_with_failure": 14,
+      "triggered_negative_criteria": 4
+    },
+    {
+      "failed_positive_weight": 20.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.7333333333333333,
+      "passed_positive_weight": 55.0,
+      "positive_weight": 75.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 6.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 0.8064516129032258,
+      "passed_positive_weight": 25.0,
+      "positive_weight": 31.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 16.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 2,
+      "pass_rate": 0.8222222222222222,
+      "passed_positive_weight": 74.0,
+      "positive_weight": 90.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 0.9166666666666666,
+      "passed_positive_weight": 11.0,
+      "positive_weight": 12.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 1,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 33.0,
+      "positive_weight": 33.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 1
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.16666666666666666,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that inserting \"TA\" destroys the original AUG start codon, preventing normal translation initiation.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that eukaryotic ribosomes require a valid AUG to begin translation and cannot start at any other codon.",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that, as a result of losing the start codon, no peptide is synthesised and the protein's function is entirely lost.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment: DNA Insertion Mutation Analysis Your work is thorough and well-organized, and almost everything here is correct. There is one terminology error to fix, but your molecular biology\u2014every sequence, every codon, and your functional conclusion\u2014is...",
+      "rubric_count": 6,
+      "subject": "Biology",
+      "task_id": "681a876ab9d767de6644dc12",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.30434782608695654,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge that the student has correctly calculated P11, P14 and PC.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must understand that the student does not know how to calculate the test statistic.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must hint that the right formula to calculate the test statistic is $\\frac{p_{14} - p_{11}}{\\sqrt{p_c*(1-p_c)*(\\frac{1}{n_{14}} + \\frac{1}{n_{11}}))}}$",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should be formatted using bulleted or numbered lists.",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "two-proportion z-test active-learning hint",
+      "response_preview": "It's okay to be confused here - this is a common fork in two-proportion tests. First, look back at the wording **\"reduces the likelihood\"**. Does that sound like you are testing for *any* difference, or specifically whether the vaccine group's disease propo...",
+      "rubric_count": 7,
+      "subject": "Statistics",
+      "task_id": "683e458cb4f61c885835b5f8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.3548387096774194,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that evolution requires many generations and cannot occur within individual lifetimes or immediately.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain the genetic basis using proper terminology: alleles, genotypes (BB, Bb or equivalent), or allele frequencies to describe how population genetic composi...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify selective pressures beyond predation (such as thermoregulation, sexual selection, parasitism, or competition) that could affect beetle coloration.",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain some features that cannot evolve due to constraints (developmental, genetic, phylogenetic, or physical constraints) to contrast with the student's impl...",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "# Feedback on Your Beetle Natural Selection Explanation You've clearly put thought into this, and there are some genuinely correct ideas here. But there's also one big misconception running through almost every paragraph that we need to fix \u2014 once you see i...",
+      "rubric_count": 7,
+      "subject": "Biology",
+      "task_id": "681a876a23b6cca56a90f2a0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.49019607843137253,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student's feeling of being \"puzzled\" before starting the explanation.",
+          "criterion_index": 0,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "There response must identify that the student is missing the main concept of cells having high specificity to ensure there isn't cross-talk between signaling pathways by explain...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must answer why the signaling doesn't just jump straight to Kinase Z by explaining that If RTK-1 could directly activate Kinase Z, it's possible that signals could...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must answer why Protein Y is even needed by explaining that Protein Y also modulates signal strength: if amplified, it can recruit multiple proteins in the signalin...",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must answer why Protein Y is even needed by explaining that Protein Y can help fine-tune the signaling pathway through its own regulation such as phosphorylation, u...",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Why Protein Y Can't Be Skipped Great question \u2014 and yes, signaling cascades really are elegant once you see the logic behind their design! Here's the core issue with \"why can't the signal just jump to Kinase Z?\": **being activated (phosphorylated) doesn'...",
+      "rubric_count": 11,
+      "subject": "Biology",
+      "task_id": "68377546cbb6263fa01c027b",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5116279069767442,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that the primary transcript is shorter than the DNA because only the promoter-to-terminator region is transcribed, naming at least one specific non-tra...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must note that the diagram is schematic / not drawn to scale, directly addressing why the primary transcript appears shorter.",
+          "criterion_index": 7,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explicitly say that RNA-polymerase starts transcription just downstream of the promoter (i.e., mention promoter-linked initiation).",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the mature mRNA receives a 5' cap and a poly-A tail during processing.",
+          "criterion_index": 9,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that after processing in the nucleus the mature mRNA is exported to the cytoplasm for translation.",
+          "criterion_index": 10,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great observation \u2014 you're reading the diagram correctly, and your question gets at something really important to distinguish. ## Two different steps, two different reasons for shortening You're right that there are **two separate arrows** in the diagram (D...",
+      "rubric_count": 11,
+      "subject": "Biology",
+      "task_id": "683e3d8e9394b13fefb08813",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.52,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must point out evidence that X-linked dominant inheritance is not possible by explaining that if the disease were X-linked, fathers would pass the disease to all th...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must answer that X-linked recessive isn't possible because to be X-linked recessive, a female needs to inherit two copies of the recessive allele to be affected.",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must point out evidence that X-linked recessive isn't possible by stating that affected female, II-3, has an unaffected father, I-2.",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should include that other genetic phenomenon such as incomplete penetrance, could be happening because we see not every child of an affected parent is affected, as...",
+          "criterion_index": 12,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "You are **not** horrible at this \u2014 you actually found **real genetic evidence**. An affected mother passing the disorder to sons is genuinely consistent with X-linked inheritance. That's a legitimate clue, and noticing it shows you're thinking like a geneti...",
+      "rubric_count": 13,
+      "subject": "Biology",
+      "task_id": "683775dc91fac7d3a4bdc866",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5238095238095238,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student's stated feeling of being \"really confused\" before explaining the concept by offering an empathetic remark.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify that the critical value provided by the student (2.928) was found using the t-distribution with 24 degrees of freedom.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must indicate that the critical value provided by the student (2.928) is the square of t\u2080.\u2080\u2085,\u2082\u2084 = 1.711: (t\u2080.\u2080\u2085,\u2082\u2084)\u00b2 = 2.928.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must indicate that the term \"square\" in the name of the \"\u03c7\u00b2 distribution\" is part of the notation, not an algebraic operation.",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great question \u2014 and I can see exactly where the confusion is coming from. Let's zero in on your critical value of **2.928**. --- ### What Does 2.928 Tell Us? The value **2.928** does not appear anywhere in a chi-square table for df = 24. It is a value from...",
+      "rubric_count": 14,
+      "subject": "Statistics",
+      "task_id": "681b80ddb17ff4fba2eec7e8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5283018867924528,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student is stuck because they are unsure about which species react with HCl and which equilibrium to use.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must not provide the direct next computational step by avoiding explicit calculation of final moles after HCl reaction or direct statement of which specific species...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must correctly reason based on the image by recognizing that the student's confusion stems from following the incorrect teacher's hint shown in the image, and that...",
+          "criterion_index": 5,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must acknowledge the student's confusion about which equilibrium controls the pH.",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that Henderson-Hasselbach with Ka2 will work.",
+          "criterion_index": 10,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Great start \u2014 your mole calculations are all correct! Your four values are spot on: - H\u2083PO\u2084 = 0.0250 mol - H\u2082PO\u2084\u207b = 0.0400 mol - HPO\u2084\u00b2\u207b = 0.0300 mol - H\u207a (from HCl) = 0.00375 mol Getting stuck here is completely normal \u2014 this is the conceptual pivot poin...",
+      "rubric_count": 13,
+      "subject": "Chemistry",
+      "task_id": "683870523cf028f91cd74ad8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.5454545454545454,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state the correct subtraction in the HH equation: 9.25 \u2013 4.75 = 4.50, and identify the student's incorrect subtraction (9.25 \u2013 2.38 = 5.97) as an arithmetic er...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that a large [A\u207b]/[HA] ratio means very little HA remains, and that the student's verbal interpretation (\u201calmost all HA is converted\u201d) is incomplete an...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on Your Titration Work ### What You Got Right Your final answer, **[HA] = 0.2 M**, is correct. The stoichiometric calculation that gets you there is also perfectly sound: - Moles of NaOH at equivalence = 0.1 M \u00d7 0.050 L = **0.005 mol** \u2713 - Since...",
+      "rubric_count": 7,
+      "subject": "Chemistry",
+      "task_id": "6843120a7996124c02b92b01",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.5714285714285714,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should be concise and focused on the student question and confusion, without being overly wordy or verbose.",
+          "criterion_index": 6,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your reasoning here is genuinely excellent, and it's exactly the kind of thinking that separates rote genetics from real biological analysis. Let me affirm what you've gotten right and then build on it carefully. ## The Default Rule vs. Functional Reality T...",
+      "rubric_count": 7,
+      "subject": "Biology",
+      "task_id": "6847710a62247cf826ecc61b",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the final answer to the question, that the severity of a mutation depends not only on how many nucleotides are deleted, but where the deletion occurs,...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.6071428571428571,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly explain that a p-value represents the probability of observing results as extreme as (or more extreme than) the actual results, assuming the null hyp...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should provide a clear analogy or example to help the student understand the concept of hypothesis testing decisions (e.g., comparing to a criminal trial where we f...",
+          "criterion_index": 8,
+          "dimensions": [
+            "style_tone",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on Your Statistical Argument You've correctly identified this as a two-group comparison and you've got the right intuition that the null hypothesis claims equal average sleep hours. That's a solid starting point. However, there are several signi...",
+      "rubric_count": 9,
+      "subject": "Statistics",
+      "task_id": "684a8cd62e4d9fec5e495e45",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide a correct solution including six components: (1) null and alternative hypotheses, (2) significance level \u03b1 = 0.05, (3) given information (p=0.047, n1=4...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.6666666666666666,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should mention an alternative approach (e.g., solving for time first) or acknowledge that multiple valid methods exist.",
+          "criterion_index": 6,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on Your Work ### What You Did Correctly You chose exactly the right kinematic equation \u2014 **vf\u00b2 = v\u2080\u00b2 + 2ad** is the perfect tool here since you know initial velocity, acceleration, and distance but not time. Your arithmetic is also spot-on: 15\u00b2...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "68545549f20ebbefd00e2ce5",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the correct final answer: \\( 7.55 \\, \\text{m/s} \\).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.7058823529411765,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your z-score of 0.25 and probability of 40.13% tell me **exactly** what happened \u2014 and there's just one thing to fix. ### The line where the error occurs You almost certainly computed: $$z = \\frac{25{,}500 - 25{,}000}{2{,}000} = \\frac{500}{2{,}000} = 0.25$$...",
+      "rubric_count": 7,
+      "subject": "Statistics",
+      "task_id": "683628c73a003524f3d65e16",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the correct final answer of 6.68%",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.7058823529411765,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must include the hint that angular and linear acceleration are related via $a=r\u03b1$, specifically pointing out that the cylinder uses $r=2R$.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must suggest writing torque equations for both the pulley and cylinder using the correct moments of inertia (e.g., $I = \\frac{1}{2} MR^2$).",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "kinematics active-learning hint",
+      "response_preview": "## Nice progress \u2014 two things to check before moving forward You've set up the pulley's moment of inertia correctly ($I_p = \\tfrac{1}{2}MR^2$) and the torque equation structure $T_1R - T_2R = I_p\\alpha$ is exactly right. Let me point you to two issues in th...",
+      "rubric_count": 10,
+      "subject": "Physics",
+      "task_id": "681cffc83d9f33c969b76c6f",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.7105263157894737,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must point out that the student is incorrect when they state that all DNA encodes protein, so all changes in DNA should change proteins.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that not all DNA encodes protein because there is DNA outside of coding regions (which are the regions of DNA that encode protein).",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should give examples of regions of DNA that are outside of coding regions, such as introns, regulatory regions, untranslated regions, intergenic regions, telomeres...",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your reasoning is actually **correct up to a point** \u2014 and that's exactly what makes this confusing. Let me show you where the chain breaks. You wrote: \"If the DNA is different, the mRNA will be different, so shouldn't the protein be different?\" Your first...",
+      "rubric_count": 10,
+      "subject": "Biology",
+      "task_id": "6847710bc4915de7a58b3cb5",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.7368421052631579,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model acknowledges the student emotion",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great question \u2014 and it's a very common source of confusion. Your version has three separate bugs, each of which would break the method on its own. Let me walk through each one anchored to your exact lines. --- ## Bug 1: `mystery(n--)` calls `mystery(n)`, n...",
+      "rubric_count": 7,
+      "subject": "Computer Science",
+      "task_id": "683775dc913c16d05cd33839",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.7580645161290323,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must be able to reason that the student's identification of organelle 8 as the Rough Endoplasmic Reticulum (RER) AND organelle 11 as ribosomes is correct based on the...",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain the function of free/cytoplasmic ribosomes by stating that they create and serve as the origin of all proteins in the cell, and thus they are actively inv...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain the function of the RER by stating that it is where proteins containing a signal peptide complete their synthesis, given the specialized chemical environm...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "plant/animal cell diagram assessment",
+      "response_preview": "## Assessment of Your Answer ### What You Got Right \u2705 Your identification and description of **organelle 8 as the Rough Endoplasmic Reticulum (RER)** is completely correct. Your description is also strong: - The RER has ribosomes studded on its cytoplasmic...",
+      "rubric_count": 14,
+      "subject": "Biology",
+      "task_id": "68376de0afc2cf08ab22a52e",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.8412698412698413,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must hint for the student to consider that the `b^0` base case represents a way to avoid recursion for a specific `x` value, so there may be a way to avoid recursio...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must not provide any of the next steps directly: stating the `Double` return type, stating the `0^x` base case, or telling the student exactly what to return for th...",
+          "criterion_index": 10,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## You're closer than you think \u2014 let's tackle these one at a time! **First, quick confirmation:** Yes, your base cases are solid. The null guard `b == 0 && x <= 0` correctly catches `0^0` and `0^(negative)`, and `x == 0 \u2192 1.0` is right since `b^0 = 1`. Als...",
+      "rubric_count": 15,
+      "subject": "Computer Science",
+      "task_id": "683e458a9c195766bfe397d3",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.8529411764705882,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must remind the student that the array is rectangular, so all rows have the same length and all columns have the same length.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "OOP design / inventory class",
+      "response_preview": "## Great progress on Checks 1 and 2! Your dimension verification and bomb-counting logic are both correct. Now let's think through Check 3. --- ### Three guiding questions to build the inner body **1. Should you check every cell?** Look back at Check 2 \u2014 yo...",
+      "rubric_count": 10,
+      "subject": "Computer Science",
+      "task_id": "68387051925f37fe4fe43927",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.9117647058823529,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should take a mildly encouraging tone, using statements like \"Off to a great start!\"",
+          "criterion_index": 16,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "OOP design / inventory class",
+      "response_preview": "## Assessment of `alphaNumSwap` Your overall structure and most importantly your **parallel-processing logic are correct** \u2014 that's the hardest part of this problem and you nailed it. However, there are **two compile errors** and **two logic errors** that n...",
+      "rubric_count": 17,
+      "subject": "Computer Science",
+      "task_id": "68377627c130b33e3079a99e",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide a complete code solution to the prompt, a correct method `alphaNumSwap` that follows the specifications and corrects the four user errors. (e.g., publi...",
+          "criterion_index": 13,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.9565217391304348,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should ensure full student comprehension by asking a question like, \"do these hints make sense?\"",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "You've done really well identifying the two reactions and working backwards to the intermediate \u2014 **3-nitrotoluene is correct** as the intermediate, and your identification of Reaction 1 as nitration and Reaction 2 as nitro-group reduction is spot on. Great...",
+      "rubric_count": 7,
+      "subject": "Chemistry",
+      "task_id": "683870ee7ae15972ddd10cf9",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.9787234042553191,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that the student\u2019s claim \u201cgrouping always reduces variability\u201d is incorrect, clarifying that stratification reduces variability only when subgroups hav...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "# Feedback on Your Work You've shown good structural instincts \u2014 you set up formulas for each part and tried to reason about the comparison in part (c). But there are several errors to fix across all three parts. Let's go through each carefully. --- ## Part...",
+      "rubric_count": 11,
+      "subject": "Statistics",
+      "task_id": "68545548e6d053a2b0278006",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Switching to a t-Test: What Changes and What Doesn't Your original result \u2014 z = \u22122.828, rejecting H\u2080 at the 5% level \u2014 gives us a great anchor to build from. Let's trace exactly what happens when \u03c3 is unknown. --- ## The Mechanical Change: z \u2192 t When \u03c3 i...",
+      "rubric_count": 3,
+      "subject": "Statistics",
+      "task_id": "684a8c40a8da4aded13ef54a",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    }
+  ]
+}
