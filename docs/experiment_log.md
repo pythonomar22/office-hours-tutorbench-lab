@@ -47,6 +47,20 @@ local public-HF/dev-set results unless explicitly marked as official.
   - Modality scores: text `63.96%`, multimodal `57.55%`.
   - This is close to the validation150 Sonnet baseline (`59.65%`), which is a
     useful sanity check that the larger split is not obviously easier.
+- Heldout500 agentic checkpoint: `heldout500-agentic-v3`
+  - Score: `68.23%`, CI `66.11%-70.23%`.
+  - Same-set Sonnet baseline: `60.77%`, CI `58.90%-62.83%`.
+  - Delta vs baseline: `+7.46` points.
+  - Use-case scores: active learning `70.56%`, adaptive `65.80%`, assessment
+    `68.32%`.
+  - Modality scores: text `69.55%`, multimodal `66.89%`.
+  - Main remaining gaps: truthfulness (`63.58%` pass rate), visual reasoning
+    (`65.81%`), instruction following (`67.83%`), and tutoring skills for
+    alternative paths (`45.71%`), guiding questions (`48.87%`), and
+    examples/analogies (`54.92%`).
+  - This is the strongest current fairness anchor because it uses a larger
+    split disjoint from all tuning/dev sets. It is close to, but not yet safely
+    above, the `>=70%` local target.
 - Current validation set: `eval_sets/validation150.json`, 150 rows excluding
   dev10/dev50, balanced as 25 rows per use-case/modality bucket.
 - Current validation checkpoint: `validation150-retired-playbooks-v3`
