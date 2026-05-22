@@ -53,6 +53,7 @@ from tutorbench_lab.reports import (
     compare_reports,
     score_report_markdown,
 )
+from tutorbench_lab.run_analysis import analysis_markdown, build_run_analysis
 from tutorbench_lab.schemas import JudgedRunRecord, RunRecord, ScoreReport, Strategy
 from tutorbench_lab.scoring import build_score_report
 from tutorbench_lab.selection import StratifyBy, select_examples
@@ -534,6 +535,37 @@ def report(
         console.print(f"Wrote Markdown report to [bold]{output_path}[/bold]")
     else:
         console.print(markdown)
+
+
+@app.command("analyze-run")
+def analyze_run(
+    judged_path: Path,
+    output_path: Path | None = typer.Option(
+        None,
+        help="Optional JSON output path. Defaults to analysis.json next to judgments.",
+    ),
+    markdown_path: Path | None = typer.Option(
+        None,
+        help="Optional Markdown output path. Defaults to analysis.md next to judgments.",
+    ),
+    top_n: int = typer.Option(10, min=1, help="Number of weakest rows to list."),
+    bootstrap_samples: int = typer.Option(500),
+) -> None:
+    """Write a forensic analysis for a judged run."""
+
+    records = list(read_model_jsonl(judged_path, JudgedRunRecord))
+    analysis = build_run_analysis(
+        records,
+        top_n=top_n,
+        bootstrap_samples=bootstrap_samples,
+    )
+    out_path = output_path or judged_path.with_name("analysis.json")
+    md_path = markdown_path or judged_path.with_name("analysis.md")
+    write_json(out_path, analysis)
+    md_path.parent.mkdir(parents=True, exist_ok=True)
+    md_path.write_text(analysis_markdown(analysis), encoding="utf-8")
+    console.print(f"Wrote analysis JSON to [bold]{out_path}[/bold]")
+    console.print(f"Wrote analysis Markdown to [bold]{md_path}[/bold]")
 
 
 @app.command()

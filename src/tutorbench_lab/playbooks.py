@@ -24,11 +24,19 @@ def build_task_playbook(
     notes: list[str] = []
 
     if turn.subject.lower() == "computer science":
-        if _has_any(text, ["dealership", "car", "object-oriented", "oop"]):
+        if _has_binary_tree_traversal_context(text):
+            notes.append(_binary_tree_traversal_assessment_playbook())
+        if _has_kth_smallest_matrix_context(text):
+            notes.append(_kth_smallest_matrix_assessment_playbook())
+        if _has_oop_design_context(text):
             notes.append(_oop_design_playbook())
         if _has_any(text, ["factorial", "recursive", "recursion"]):
             notes.append(_factorial_code_playbook())
 
+    if turn.subject.lower() == "chemistry" and _has_titration_pka_context(text):
+        notes.append(_titration_pka_adaptive_playbook())
+    if turn.subject.lower() == "chemistry" and _has_sulphonation_context(text):
+        notes.append(_sulphonation_hyperconjugation_playbook())
     if turn.subject.lower() == "chemistry" and _has_hydrogen_halide_context(text):
         notes.append(_hydrogen_halide_acid_playbook())
     if turn.subject.lower() == "chemistry" and _has_any(
@@ -66,6 +74,26 @@ def build_task_playbook(
     ):
         notes.append(_interphase_hint_playbook())
     if turn.subject.lower() == "biology" and _has_any(
+        text, ["arctic fox", "coat color", "denaturation", "melanin"]
+    ):
+        notes.append(_arctic_fox_denaturation_hint_playbook())
+    if turn.subject.lower() == "biology" and _has_any(
+        text, ["gene x", "tumor suppressor", "methylation near"]
+    ):
+        notes.append(_gene_x_methylation_hint_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and turn.use_case.value == "adaptive"
+        and _has_oxygen_co2_adaptive_context(text)
+    ):
+        notes.append(_oxygen_co2_adaptive_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and turn.use_case.value == "assessment"
+        and _has_aerobic_respiration_context(text)
+    ):
+        notes.append(_aerobic_respiration_assessment_playbook())
+    if turn.subject.lower() == "biology" and _has_any(
         text, ["thermophilus", "infrared photosynthesis", "h2s", "chemosynthesis"]
     ):
         notes.append(_extremophile_metabolism_hint_playbook())
@@ -82,10 +110,14 @@ def build_task_playbook(
     ):
         notes.append(_mendelian_testcross_playbook())
 
-    if turn.subject.lower() == "statistics" and _has_any(
-        text, ["pooled proportion", "two-proportion", "z-test", "vaccine"]
-    ):
+    if turn.subject.lower() == "statistics" and _has_two_proportion_context(text):
         notes.append(_pooled_proportion_hint_playbook())
+    if turn.subject.lower() == "statistics" and _has_t_test_vs_z_test_context(text):
+        notes.append(_t_test_vs_z_test_assessment_playbook())
+    if turn.subject.lower() == "statistics" and _has_penicillin_bayes_context(text):
+        notes.append(_penicillin_bayes_hint_playbook())
+    if turn.subject.lower() == "statistics" and _has_coffee_conditional_context(text):
+        notes.append(_coffee_conditional_probability_hint_playbook())
     if turn.subject.lower() == "statistics" and _has_any(
         text, ["central limit theorem", "clt", "sample mean", "right-skewed"]
     ):
@@ -101,9 +133,13 @@ def build_task_playbook(
     ):
         notes.append(_bonferroni_pooled_proportion_adaptive_playbook())
 
-    if turn.subject.lower() == "physics" and _has_any(
-        text, ["vf", "v_f", "kinematic", "acceleration", "50 m", "40 m/s"]
-    ):
+    if turn.subject.lower() == "physics" and _has_conical_pendulum_context(text):
+        notes.append(_conical_pendulum_adaptive_playbook())
+    if turn.subject.lower() == "physics" and _has_magnetic_triangle_context(text):
+        notes.append(_magnetic_triangle_adaptive_playbook())
+    if turn.subject.lower() == "physics" and _has_rotating_charged_ring_context(text):
+        notes.append(_rotating_charged_ring_hint_playbook())
+    if turn.subject.lower() == "physics" and _has_kinematics_hint_context(text):
         notes.append(_kinematics_hint_playbook())
 
     if turn.subject.lower() == "calculus" and _has_any(
@@ -116,9 +152,7 @@ def build_task_playbook(
         and _has_any(text, ["so3", "so_3"])
     ):
         notes.append(_le_chatelier_assessment_playbook())
-    if turn.subject.lower() == "chemistry" and _has_any(
-        text, ["dextrose", "c6h12o6", "solubility", "molarity"]
-    ):
+    if turn.subject.lower() == "chemistry" and _has_dextrose_solubility_context(text):
         notes.append(_dextrose_solubility_hint_playbook())
     if turn.subject.lower() == "chemistry" and _has_any(
         text, ["second ionization", "second i.e", "ie₂", "ie2", "ionization energy"]
@@ -146,6 +180,370 @@ def _has_hydrogen_halide_context(text: str) -> bool:
         ["hydrogen halide", "halogen", "electronegativity", "acid strength"],
     )
     return bool(formula_seen) or concept_seen
+
+
+def _has_titration_pka_context(text: str) -> bool:
+    return (
+        "pka" in text
+        and _has_any(text, ["titration", "equivalence point", "half-equivalence"])
+        and _has_any(text, ["henderson", "lactic acid", "weak acid"])
+    )
+
+
+def _has_dextrose_solubility_context(text: str) -> bool:
+    return _has_any(text, ["dextrose", "c6h12o6"]) or (
+        _has_any(text, ["solubility", "saturated solution", "dissolved solute"])
+        and _has_any(text, ["molarity", "g/l", "grams per liter"])
+    )
+
+
+def _has_sulphonation_context(text: str) -> bool:
+    return _has_any(text, ["sulphonation", "sulfonation"]) and _has_any(
+        text, ["alkyl", "hyperconjugation", "alpha hydrogen", "benzene"]
+    )
+
+
+def _has_aerobic_respiration_context(text: str) -> bool:
+    return _has_any(text, ["aerobic respiration", "anaerobic respiration"]) or (
+        "glycolysis" in text
+        and _has_any(text, ["krebs", "citric acid", "electron transport"])
+    )
+
+
+def _has_conical_pendulum_context(text: str) -> bool:
+    return (
+        _has_any(text, ["conical pendulum", "uniform circular motion"])
+        and "string" in text
+        and _has_any(text, ["period", "one full swing", "constant angle"])
+    )
+
+
+def _has_magnetic_triangle_context(text: str) -> bool:
+    return (
+        "magnetic field" in text
+        and "equilateral triangle" in text
+        and _has_any(text, ["corner a", "path abc", "center of the triangle"])
+    )
+
+
+def _has_kinematics_hint_context(text: str) -> bool:
+    return (
+        _has_any(text, ["vf", "v_f", "v^2", "kinematic"])
+        and _has_any(text, ["50 m", "40 m/s", "slowing", "acceleration"])
+        and not _has_conical_pendulum_context(text)
+    )
+
+
+def _has_binary_tree_traversal_context(text: str) -> bool:
+    return (
+        "binary tree" in text
+        and _has_any(text, ["preorder", "pre-order"])
+        and _has_any(text, ["in-order", "inorder"])
+        and _has_any(text, ["postorder", "post-order"])
+    )
+
+
+def _has_kth_smallest_matrix_context(text: str) -> bool:
+    return _has_any(text, ["kth smallest", "k-th smallest"]) and _has_any(
+        text, ["sorted 2d matrix", "sorted matrix", "matrix"]
+    )
+
+
+def _has_oop_design_context(text: str) -> bool:
+    return bool(
+        re.search(r"\b(car|cars|dealership|dealerships)\b", text)
+        or _has_any(text, ["object-oriented", "oop"])
+    )
+
+
+def _has_oxygen_co2_adaptive_context(text: str) -> bool:
+    return (
+        _has_any(text, ["oxygen", "o2"])
+        and _has_any(text, ["carbon dioxide", "co2", "co₂"])
+        and _has_any(text, ["glucose", "glycolysis", "krebs"])
+    )
+
+
+def _has_two_proportion_context(text: str) -> bool:
+    return (
+        _has_any(text, ["pooled proportion", "two-proportion", "two proportion"])
+        or (
+            _has_any(text, ["vaccine", "placebo"])
+            and _has_any(text, ["p_v", "p_p", "proportion"])
+        )
+    )
+
+
+def _has_t_test_vs_z_test_context(text: str) -> bool:
+    return _has_any(text, ["z-test", "z test"]) and _has_any(
+        text,
+        [
+            "t-test",
+            "t test",
+            "population standard deviation",
+            "sample standard deviation",
+            "unknown standard deviation",
+        ],
+    )
+
+
+def _has_penicillin_bayes_context(text: str) -> bool:
+    return _has_any(text, ["penicillin", "allergy"]) and _has_any(
+        text, ["bayes", "reaction", "p(r|a)", "medical record"]
+    )
+
+
+def _has_coffee_conditional_context(text: str) -> bool:
+    return _has_any(text, ["coffee", "hot beverage", "cold beverage"]) and _has_any(
+        text, ["given", "morning", "conditional probability"]
+    )
+
+
+def _has_rotating_charged_ring_context(text: str) -> bool:
+    return (
+        "ring" in text
+        and _has_any(text, ["total charge", "charge q", "charged particle"])
+        and _has_any(text, ["rotates about a diameter", "axis of rotation"])
+    )
+
+
+def _binary_tree_traversal_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: binary-tree traversal reconstruction assessment
+        - Treat this as assessment/feedback on a student's reconstructed tree,
+          not merely as a fresh solve.
+        - Point out that starting with preorder is logical because preorder
+          gives the root of each subtree.
+        - Explain the core method: preorder selects the next subtree root;
+          inorder splits nodes into left and right subtrees; postorder can be
+          used as a validation check.
+        - Identify correct student structure before correcting mistakes.
+        - If the student is stuck on the right subtree, avoid simply handing
+          over every remaining node placement. Instead, tell them to use
+          preorder to select the right-subtree root and inorder to split the
+          right-subtree nodes, then use postorder to check leaf placement.
+        - In active-learning or scaffolded feedback, do not directly state the
+          final placement of ambiguous leaf nodes such as J and K unless the
+          task explicitly asks for a complete corrected answer.
+        """
+    ).strip()
+
+
+def _kth_smallest_matrix_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: kth-smallest sorted-matrix assessment
+        - Acknowledge the student's frustration and the fact that their counting
+          idea was clever.
+        - Explain that value-range binary search plus row-wise counting is a
+          valid strategy for kth-smallest in a sorted matrix.
+        - Identify the common off-by-one bug: after moving j leftward, j is an
+          index, so the count of valid elements in that row is j + 1, not j.
+        - Provide corrected code that handles both j >= 0 and j = -1 cleanly;
+          adding j + 1 should add 0 when no element in the row is <= mid.
+        - Explain why returning `left` after the binary search is appropriate:
+          the search is over values and converges to the smallest value with at
+          least k elements <= it.
+        """
+    ).strip()
+
+
+def _titration_pka_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: weak-acid titration pKa adaptive explanation
+        - Directly address the student's confusion between equivalence point
+          and half-equivalence point.
+        - State the Henderson-Hasselbalch equation:
+          pH = pKa + log([A-]/[HA]).
+        - Explain why half-equivalence is special: exactly half the weak acid
+          has been converted to conjugate base, so [A-] = [HA], the log term is
+          log(1)=0, and pH = pKa.
+        - Explain why equivalence point is not used for pKa: at equivalence,
+          the acid has essentially been converted into conjugate base, so the
+          solution pH is controlled by conjugate-base hydrolysis, not by equal
+          acid/base buffer amounts.
+        - Correct graph-reading confusion: to read pH at a chosen NaOH volume,
+          start at the x-axis volume, move vertically to the curve, then move
+          horizontally to the y-axis. Do not follow the curve back to the
+          y-axis/intercept.
+        - Say the leveling-off region after equivalence is not one of the
+          Henderson-Hasselbalch numbers for finding pKa.
+        """
+    ).strip()
+
+
+def _sulphonation_hyperconjugation_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: alkylbenzene sulphonation hyperconjugation explanation
+        - Directly acknowledge the student's confusion and uncertainty.
+        - Correct the branch-count shortcut: more branching is not automatically
+          more activating for this comparison.
+        - Explain that hyperconjugation and alpha hydrogens dominate this
+          sulphonation ranking more than the simple inductive-effect shortcut.
+        - Count alpha hydrogens explicitly for the common tert-butylbenzene,
+          toluene, ethylbenzene, and isopropylbenzene comparison:
+          tert-butyl has 0, methyl has 3, ethyl has 2, isopropyl has 1.
+        - State that more alpha hydrogens gives stronger hyperconjugative
+          donation to the ring and faster electrophilic sulphonation.
+        - Explain that reversibility of sulphonation is not the main reason for
+          the reactivity order; the order concerns the forward EAS reactivity.
+        - Give the ranking step by step and identify the matching option.
+        """
+    ).strip()
+
+
+def _arctic_fox_denaturation_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Arctic fox coat-color active-learning hint
+        - Keep this as a hint, not a final answer.
+        - Identify the likely misconception: the student is trying to explain
+          seasonal coat color through protein denaturation.
+        - Prompt them to check whether denaturation is usually caused by low
+          temperatures or by high temperature/extreme pH.
+        - Ask whether denaturation would be reversible enough to explain a
+          coat-color cycle that changes back every season.
+        - Nudge the relevant seasonal mechanism without over-answering: ask
+          what environmental cue changes reliably with season besides
+          temperature, and how day length could affect hormones that regulate
+          melanin production in hair follicles.
+        """
+    ).strip()
+
+
+def _gene_x_methylation_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Gene X methylation/tumor-suppressor active hint
+        - Keep this as a scaffolded hint, not a final contradiction verdict.
+        - Affirm the student's core intuition that tumor suppressors usually
+          reduce cancer risk when functioning normally.
+        - Ask them to compare that expectation with the actual data pattern,
+          then notice the tension instead of forcing a simple rule.
+        - Prompt at least three possible explanations to investigate:
+          1. Could Gene X behave differently from a textbook tumor suppressor
+             in this context?
+          2. Could very high expression disrupt normal cell regulation rather
+             than always being protective?
+          3. Could methylation near Gene X affect nearby regulatory regions or
+             neighboring genes, not Gene X alone?
+        - Ask the student what additional experiment would distinguish those
+          possibilities, such as measuring Gene X protein function or nearby
+          gene expression.
+        """
+    ).strip()
+
+
+def _oxygen_co2_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: oxygen/CO2 cellular-respiration adaptive explanation
+        - Answer the student's follow-up directly; do not grade it like an
+          assessment row.
+        - Explicitly say inhaled oxygen is not converted into exhaled CO2.
+        - Explain that the carbon atoms in CO2 come from glucose carbons.
+        - Clarify the pathway: glycolysis splits glucose into pyruvate in the
+          cytoplasm; pyruvate is converted to acetyl-CoA; carbon dioxide is
+          released during pyruvate oxidation and the Krebs/citric acid cycle.
+        - Explain oxygen's role separately: O2 accepts electrons at the end of
+          the electron transport chain and becomes water.
+        - Use a concrete metaphor/example, such as glucose as a six-carbon log
+          being broken into smaller carbon pieces while oxygen is the final
+          electron "catcher," not the source of the CO2 carbon.
+        - Acknowledge confusion warmly and keep the explanation student-facing.
+        """
+    ).strip()
+
+
+def _aerobic_respiration_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: aerobic respiration assessment
+        - Give feedback on correctness and errors, then provide the corrected
+          pathway at AP/high-school biology level.
+        - Correct any reversal of terms: aerobic means with oxygen; anaerobic
+          means without oxygen.
+        - Give the full aerobic respiration sequence:
+          glycolysis -> pyruvate oxidation -> Krebs/citric acid cycle ->
+          electron transport chain -> oxidative phosphorylation.
+        - State key locations and products:
+          glycolysis in cytoplasm produces 2 pyruvate, net 2 ATP, and 2 NADH;
+          pyruvate oxidation in the mitochondrial matrix forms acetyl-CoA, CO2,
+          and NADH; the Krebs cycle yields CO2, ATP/GTP, NADH, and FADH2; the
+          ETC uses NADH/FADH2 electrons and oxygen as final electron acceptor to
+          make water and drive ATP synthesis.
+        - Mention that anaerobic fermentation regenerates NAD+ and yields far
+          less ATP than aerobic respiration.
+        - Use a constructive tone: name what the student got right before
+          correcting the sequence and definitions.
+        """
+    ).strip()
+
+
+def _conical_pendulum_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: conical-pendulum adaptive explanation
+        - Explicitly acknowledge the student's confusion about eliminating both
+          tension and speed.
+        - Explain the two-force equations as two clues about the same tension:
+          vertical balance gives Tension*cos(theta)=mg; horizontal circular
+          motion gives Tension*sin(theta)=mv^2/r.
+        - Divide the horizontal equation by the vertical equation to cancel
+          tension and mass, giving tan(theta)=v^2/(rg).
+        - State the missing background formulas: the circle radius is
+          r = L sin(theta), and one lap means v = 2*pi*r / period.
+        - Substitute those formulas and solve for the period, keeping notation
+          clear so the period T is not confused with tension.
+        - Include a quick self-check: units should come out as seconds, and the
+          limiting behavior for small theta should resemble a simple pendulum.
+        """
+    ).strip()
+
+
+def _magnetic_triangle_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: equilateral-triangle wire magnetic-field adaptive explanation
+        - State that the final result refers to the total magnetic field at the
+          triangle's center.
+        - Remind the student that the wire has uniform resistance, so the direct
+          A-C path and the two-side A-B-C path split current according to their
+          resistances.
+        - State that the magnetic field contribution from current along path
+          A-B-C at the center points opposite the contribution from current
+          along direct path A-C.
+        - Make the cancellation idea explicit: although the paths carry
+          different currents, the two-side path has two equal side
+          contributions that combine to cancel the direct side contribution at
+          the center.
+        - Conclude clearly that the total magnetic field at the center is zero.
+        - Mention the wire resistance is uniform along each side because that is
+          why current division can be inferred from path lengths.
+        """
+    ).strip()
+
+
+def _rotating_charged_ring_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: rotating charged ring active-learning hint
+        - Keep this as a hint, not a full calculation.
+        - Identify the likely misread: the ring rotates about a diameter, not
+          about the central symmetry axis.
+        - Nudge the student away from magnetic/rotational complications if the
+          question asks work/energy for moving a charge: ask which electric
+          potential difference matters.
+        - Hint that an infinitesimal charged loop or ring element with finite
+          charge density can have a simple potential contribution; the student
+          may not need a long force integral if they reason with potential.
+        - Ask whether points on the ring and points on the axis have potentials
+          that can be compared using symmetry and superposition.
+        """
+    ).strip()
 
 
 def _oop_design_playbook() -> str:
@@ -345,14 +743,76 @@ def _pooled_proportion_hint_playbook() -> str:
     return dedent(
         """\
         Task-family playbook: two-proportion z-test active-learning hint
-        - It is safe to provide intermediate checkpoint values while withholding
-          the p-value and final reject/fail-to-reject conclusion.
-        - Give the pooled proportion explicitly as p_hat_pool = (15 + 12) /
-          (60 + 40) = 27/100 = 0.27.
-        - Show the pooled SE formula with p_hat_pool substituted symbolically or
-          numerically, then state that once SE is known the z-score can be
-          computed with z = (p_hat_v - p_hat_p) / SE.
-        - Do not give the final z-score, p-value, or conclusion.
+        - Keep this as an active-learning hint, not a solution.
+        - Validate the student's confusion explicitly.
+        - Direct the student back to the phrase "reduces the likelihood" and
+          ask whether the alternative should be one-sided rather than two-sided.
+        - Explain the concept without computing the pooled value: under H0 the
+          two population proportions are assumed equal, so the standard error
+          should use one combined estimate based on both groups.
+        - Ask the student what numerator and denominator would combine the
+          disease counts and total participants across both groups, but do not
+          calculate the pooled proportion.
+        - Do not write the explicit two-proportion standard-error formula, final
+          z-score, p-value, or conclusion.
+        """
+    ).strip()
+
+
+def _t_test_vs_z_test_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: z-test vs t-test assessment
+        - State clearly whether using a z-test is valid.
+        - If the population standard deviation is unknown and the work uses a
+          sample standard deviation, say the student should use a t-test.
+        - Explain the reason: z-tests require known population standard
+          deviation or a setting where the normal approximation is justified;
+          a t-test accounts for uncertainty in the estimated standard deviation.
+        - Correct the standard error and test statistic when the scenario
+          provides enough values; for the common row, mention SE = 1.58 and
+          t is approximately -1.27.
+        - Keep an assessment tone: identify what the student calculated, what
+          assumption is invalid, and what replacement procedure fixes it.
+        """
+    ).strip()
+
+
+def _penicillin_bayes_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: penicillin allergy Bayes active-learning hint
+        - Keep this as a hint; do not compute the final probability.
+        - Acknowledge that Bayes can feel like overkill because P(R|A) is a
+          tempting number to grab.
+        - Clarify the distinction: P(R|A) is the probability of reaction among
+          listed-allergy patients, but the question asks P(A|R), among patients
+          who reacted, what fraction had a listed allergy.
+        - Guide with questions about the denominator instead of stating the law
+          of total probability formula: among all patients who react, do they
+          come only from the listed-allergy group, or from both listed and
+          non-listed groups?
+        - Ask the student to compare the contribution from listed-allergy
+          patients with the contribution from not-listed patients before forming
+          the final ratio.
+        """
+    ).strip()
+
+
+def _coffee_conditional_probability_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: coffee-shop conditional-probability active hint
+        - Start with empathy for the student's confusion.
+        - Keep it as a hint, not a calculation.
+        - Emphasize that "given morning" shrinks the whole sample space to only
+          the morning visitors.
+        - Explain probability as a part-to-whole ratio that can be written as a
+          decimal or percentage.
+        - Do not state the specific numerator or denominator from the table.
+          Instead ask: within the morning-only group, which count is the cold
+          beverage part and which count is the whole morning group?
+        - Remind the student to round the final decimal to three places.
         """
     ).strip()
 

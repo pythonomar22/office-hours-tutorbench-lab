@@ -152,10 +152,16 @@ negative `-5` spoiler criteria are inferred and flagged for manual review.
 restartable iteration. The Anthropic client captures non-secret rate-limit
 headers in traces for future runs. On the current Sonnet key, a cheap probe
 reported very high limits (`20,000` requests, `2,000,000` input tokens, and
-`400,000` output tokens in the current bucket), and an `office_hours_dev50`
-agentic run at `--workers 16` completed without throttling. Use `--workers 16`
-as the default for dev-set iteration, then inspect `stage_rate_limits` before
-raising it further.
+`400,000` output tokens in the current bucket), and full `office_hours_dev50`
+agentic/judge runs at `--workers 24` completed without throttling. Use
+`--workers 24` for dev-set iteration on this key, then inspect
+`stage_rate_limits` before raising it further.
+
+After judging a run, write the forensic report:
+
+```bash
+uv run tutorbench-lab analyze-run runs/<run_id>/judged.jsonl
+```
 
 ## Current Target
 
@@ -179,6 +185,6 @@ score, not a benchmark claim. Run artifacts are gitignored, but the architecture
 and eval-set definition are tracked.
 
 Current clean `office_hours_dev50` checkpoint: baseline Sonnet
-`59.68%` vs agentic `74.72%` in
-`runs/2ddb82f0-4947-46e6-be98-f8fa4901eacd/`, a +15.04 point gain. This is a
+`59.68%` vs agentic `85.28%` in
+`runs/b0a72ccc-6f9f-4625-9ca7-a1f7f37d34cc/`, a +25.60 point gain. This is a
 local public-HF dev-set score, not a leaderboard claim.

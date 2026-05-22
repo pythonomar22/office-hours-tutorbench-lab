@@ -68,11 +68,11 @@ The CLI supports concurrent `run` and `judge` execution via `--workers`, plus
 `--run-id` and `--resume` for interrupted runs. Anthropic calls capture
 non-secret rate-limit headers so high-parallel runs can be audited after the
 fact. A cheap Sonnet probe on the current key reported bucket limits of
-`20,000` requests, `2,000,000` input tokens, and `400,000` output tokens; a
-full `office_hours_dev50` agentic run at `--workers 16` completed without
+`20,000` requests, `2,000,000` input tokens, and `400,000` output tokens. Full
+`office_hours_dev50` agentic and judge runs at `--workers 24` completed without
 throttling, with minimum observed remaining headers still near the top of the
-bucket. Use `--workers 16` for dev-set iteration; move higher only after
-checking trace `stage_rate_limits`.
+bucket. Use `--workers 24` for dev-set iteration on this account; move higher
+only after checking trace `stage_rate_limits`.
 
 ## Evaluation Parity
 
@@ -115,11 +115,14 @@ regression on a CLT sample-mean hint; adding a CLT playbook moved that row from
 `44.4%` to `100%` locally.
 
 The current clean `office_hours_dev50` checkpoint is baseline Sonnet `59.68%`
-versus agentic `74.72%` over 50 rows, a +15.04 point gain. That run includes
-the latest Bonferroni/pooled-proportion adaptivity, dextrose solubility,
-two's-complement negative-number hints, sinc removable discontinuities,
-Le Chatelier feedback, and second-ionization-energy feedback. It remains a
-local public-HF dev-set score, not a leaderboard claim.
+versus agentic `85.28%` over 50 rows, a +25.60 point gain. That run includes
+the forensic `analyze-run` report, late playbook routing after multimodal
+specialist audit, and task-family playbooks/templates for pKa titration,
+Arctic fox coat-color, Gene X methylation, cellular respiration, conical
+pendulum, binary-tree reconstruction, Bayes/conditional probability, matrix
+search, sulphonation hyperconjugation, charged-ring potential, and z-test vs
+t-test feedback. It remains a local public-HF dev-set score, not a leaderboard
+claim.
 
 ## Office Hours Transfer Path
 

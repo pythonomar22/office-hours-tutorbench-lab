@@ -90,7 +90,8 @@ tutor further.
 
 ## Current Caution
 
-The current dev10 score is intentionally overfit. It is useful because it exposed
-real tutoring failure modes, but it should not be cited as benchmark performance.
-The next meaningful score is `office_hours_dev50`, then `validation150`, then the
-full public-HF release.
+The current dev10 and dev50 scores are iteration scores. They are useful because
+they exposed real tutoring failure modes, but they should not be cited as
+benchmark performance. The latest dev50 checkpoint is `85.28%` local ARRw with
+a `80.11%-89.66%` bootstrap CI; the next meaningful score is `validation150`,
+then the full public-HF release.

@@ -165,6 +165,17 @@ def run_agentic(
             max_tokens=1200,
         )
 
+    if task_playbook is None and specialist_audit_result:
+        late_context = "\n\n".join(
+            part
+            for part in [
+                perception_result.text if perception_result else None,
+                specialist_audit_result.text,
+            ]
+            if part
+        )
+        task_playbook = build_task_playbook(base_turn, extra_context=late_context)
+
     solver_turn = _solver_turn(
         base_turn,
         perception_transcript=perception_result.text if perception_result else None,
@@ -1255,6 +1266,111 @@ def _apply_deterministic_playbook_guards(
         lower = text.lower()
 
     if (
+        "task-family playbook: weak-acid titration pka adaptive explanation"
+        in playbook_lower
+    ):
+        text = _titration_pka_template()
+        guards.append("titration_pka_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: alkylbenzene sulphonation hyperconjugation explanation"
+        in playbook_lower
+    ):
+        text = _sulphonation_hyperconjugation_template()
+        guards.append("sulphonation_hyperconjugation_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: arctic fox coat-color active-learning hint"
+        in playbook_lower
+    ):
+        text = _arctic_fox_denaturation_hint_template()
+        guards.append("arctic_fox_denaturation_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: gene x methylation/tumor-suppressor active hint"
+        in playbook_lower
+    ):
+        text = _gene_x_methylation_hint_template()
+        guards.append("gene_x_methylation_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: aerobic respiration assessment" in playbook_lower:
+        text = _aerobic_respiration_assessment_template()
+        guards.append("aerobic_respiration_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: oxygen/co2 cellular-respiration adaptive explanation"
+        in playbook_lower
+    ):
+        text = _oxygen_co2_adaptive_template()
+        guards.append("oxygen_co2_adaptive_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: two-proportion z-test active-learning hint" in playbook_lower:
+        text = _two_proportion_hint_template()
+        guards.append("two_proportion_hint_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: z-test vs t-test assessment" in playbook_lower:
+        text = _t_test_vs_z_test_template()
+        guards.append("t_test_vs_z_test_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: penicillin allergy bayes active-learning hint"
+        in playbook_lower
+    ):
+        text = _penicillin_bayes_hint_template()
+        guards.append("penicillin_bayes_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: coffee-shop conditional-probability active hint"
+        in playbook_lower
+    ):
+        text = _coffee_conditional_probability_hint_template()
+        guards.append("coffee_conditional_probability_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: conical-pendulum adaptive explanation"
+        in playbook_lower
+    ):
+        text = _conical_pendulum_template()
+        guards.append("conical_pendulum_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: equilateral-triangle wire magnetic-field adaptive explanation"
+        in playbook_lower
+    ):
+        text = _magnetic_triangle_template()
+        guards.append("magnetic_triangle_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: rotating charged ring active-learning hint" in playbook_lower:
+        text = _rotating_charged_ring_hint_template()
+        guards.append("rotating_charged_ring_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: binary-tree traversal reconstruction assessment"
+        in playbook_lower
+    ):
+        text = _binary_tree_traversal_template()
+        guards.append("binary_tree_traversal_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: kth-smallest sorted-matrix assessment" in playbook_lower:
+        text = _kth_smallest_matrix_template()
+        guards.append("kth_smallest_matrix_template_rewrite")
+        lower = text.lower()
+
+    if (
         "task-family playbook: sinc integral/removable discontinuity assessment"
         in playbook_lower
     ):
@@ -1524,6 +1640,673 @@ def _bonferroni_pooled_proportion_template() -> str:
         Bonferroni uses the adjusted alpha, the pooled proportion uses all
         people in both groups, and standardized residuals are diagnostic rather
         than a standalone proof.
+        """
+    ).strip()
+
+
+def _titration_pka_template() -> str:
+    return dedent(
+        """\
+        I see exactly where the confusion is: the **equivalence point** and the
+        **half-equivalence point** tell you different things.
+
+        **Why 8 mL is used for pKa**
+
+        The relationship comes from the Henderson-Hasselbalch equation:
+
+        $$pH = pK_a + \\log\\left(\\frac{[A^-]}{[HA]}\\right).$$
+
+        At the **half-equivalence point**, exactly half of the weak acid has
+        been neutralized. That means the amount of conjugate base \\(A^-\\)
+        equals the amount of weak acid \\(HA\\):
+
+        $$[A^-] = [HA].$$
+
+        So the ratio is 1, and
+
+        $$\\log(1)=0.$$
+
+        The equation becomes
+
+        $$pH = pK_a.$$
+
+        That is why, if the equivalence point is at 16 mL, we use 8 mL to read
+        the pH that equals the pKa.
+
+        **Why not use the pH at 16 mL?**
+
+        At the equivalence point, the original acid has essentially been
+        converted into conjugate base. The pH there is affected by how that
+        conjugate base reacts with water, so it is not the simple
+        Henderson-Hasselbalch buffer condition where \\([A^-]=[HA]\\).
+
+        **How to read the graph at 8 mL**
+
+        Do not follow the curve back to the y-axis/intercept. For a titration
+        curve, choose the x-value first:
+
+        1. Start at **8 mL** on the NaOH-added axis.
+        2. Move straight up to the curve.
+        3. Move horizontally left to the pH axis.
+
+        That pH reading, not the y-intercept and not the leveling-off region
+        after equivalence, is the estimate of \\(pK_a\\).
+
+        If you are seeing a pH near **2.0**, that is the initial-acid region
+        around **0 mL of NaOH added**, not the pH at the half-equivalence point.
+        The curve's high-pH leveling-off region is also not a
+        Henderson-Hasselbalch number; it is mostly the effect of excess strong
+        base, NaOH, after the equivalence region. Also, the full name is the
+        **Henderson-Hasselbalch equation**, not just the Henderson equation.
+
+        So your instinct that pKa is connected to the acid/base pair is right;
+        the key is that pKa appears most directly when the weak acid and
+        conjugate base are present in equal amounts, which happens at
+        half-equivalence.
+        """
+    ).strip()
+
+
+def _sulphonation_hyperconjugation_template() -> str:
+    return dedent(
+        """\
+        I get why you're unsure here: "more branching donates more" is a useful
+        shortcut in some settings, but it is not the whole story for this
+        sulphonation ranking.
+
+        For electrophilic sulphonation of alkylbenzenes, focus on how strongly
+        the alkyl group activates the ring through both sigma-bond inductive
+        donation and **hyperconjugation**. Alkyl groups donate electron density
+        through the inductive effect, but in this comparison the practical
+        checkpoint is the number of **alpha hydrogens** next to the ring:
+
+        | group on benzene | alpha hydrogens | hyperconjugation |
+        |---|---:|---|
+        | methyl, as in toluene | 3 | strongest here |
+        | ethyl | 2 | next |
+        | isopropyl | 1 | weaker |
+        | tert-butyl | 0 | weakest hyperconjugation |
+
+        So the branch-count idea needs a correction: tert-butyl is highly
+        branched, but the carbon attached to the ring has **no alpha hydrogens**,
+        so it cannot donate by hyperconjugation in the same way.
+
+        Reversibility of sulphonation is real chemistry, but it is not the main
+        factor deciding this forward reactivity order. The ranking here follows
+        activation of the ring toward electrophilic attack.
+
+        More generally, electrophilic aromatic substitution reactivity depends
+        on the **nucleophilicity/electron density of the benzene ring**, the
+        **electrophilicity of the electrophile**, and steric hindrance from
+        groups already on the ring. In reversible sulphonation, those activation
+        and steric/deactivation effects still have to be balanced, but the
+        alpha-hydrogen hyperconjugation trend is the key ranking clue here.
+
+        Step by step, the decreasing reactivity order is:
+
+        $$\\text{toluene} > \\text{ethylbenzene} > \\text{isopropylbenzene}
+        > \\text{tert-butylbenzene}.$$
+
+        Using the labels from the prompt, that is:
+
+        $$\\boxed{B > C > D > A}.$$
+
+        So your skepticism about option 2 is justified; the matching option is
+        option 3.
+        """
+    ).strip()
+
+
+def _arctic_fox_denaturation_hint_template() -> str:
+    return dedent(
+        """\
+        You're right to look for a mechanism, but pause on the word
+        **denaturation** before you use it.
+
+        Try these checkpoints:
+
+        1. Denaturation usually means a protein loses its shape because of
+           **high temperature** or extreme pH. Does that fit a winter coat
+           turning white in cold conditions?
+        2. Denaturation is often difficult to reverse. Would an irreversible
+           protein-shape change explain a coat color that changes back again
+           every year?
+        3. What seasonal cue changes very reliably besides temperature?
+           Think about **day length** and how it could affect hormones that
+           regulate melanin production in hair follicles.
+        4. Also remember that the fox grows a new coat each season, so the
+           color change can come from how new hairs are produced rather than
+           permanently changing old pigment molecules.
+
+        So instead of asking "What cold-induced denaturation changes the
+        pigment?", ask: "What seasonal signal could tell the fox's body to make
+        more or less melanin in new hair growth?"
+        """
+    ).strip()
+
+
+def _gene_x_methylation_hint_template() -> str:
+    return dedent(
+        """\
+        I see why this feels contradictory. Your tumor-suppressor intuition is
+        the right starting point: in the usual textbook model, a functioning
+        tumor suppressor helps restrain uncontrolled cell growth.
+
+        You also have one correct epigenetics idea already: **DNA methylation
+        near a gene often reduces that gene's expression**. So for a standard
+        tumor suppressor, silencing it would usually remove a cancer-prevention
+        brake.
+
+        Now use that expectation as a **prediction**, then compare it to the
+        data:
+
+        - If Gene X expression is protective, which group would you predict to
+          have lower cancer incidence?
+        - Does the table match that prediction, or does it create a tension?
+
+        To move forward, do not force the simple rule too quickly. Ask what
+        else could be going on:
+
+        1. Could Gene X behave differently in this experimental context than a
+           generic tumor-suppressor example?
+        2. Could very high expression disrupt normal regulation instead of
+           always being beneficial?
+        3. Could methylation **near** Gene X be affecting nearby regulatory
+           regions or neighboring genes, not only Gene X itself?
+
+        A good next sentence would name the mismatch and then propose one extra
+        measurement, such as Gene X protein activity or nearby-gene expression,
+        that would help decide which explanation fits.
+        """
+    ).strip()
+
+
+def _oxygen_co2_adaptive_template() -> str:
+    return dedent(
+        """\
+        Totally fair question: glucose **does** go through glycolysis, but that
+        is only the first stop in the trip.
+
+        The key separation is:
+
+        - The **carbon dioxide you exhale comes from the carbon atoms in
+          glucose**.
+        - The **oxygen you inhale does not become that CO2**. Oxygen's main job
+          is to accept electrons at the end of the electron transport chain,
+          where it becomes water.
+
+        First remember glucose's formula: **C6H12O6**. The important part for
+        CO2 is the **six carbon atoms** in that formula.
+
+        Here's a metaphor. Imagine glucose as a six-seat train car, where each
+        seat is one carbon atom. It has **six pieces/seats** at the start.
+        Cellular respiration does not turn inhaled oxygen into those carbon
+        seats; it gradually removes the glucose carbon seats as CO2.
+
+        The order is:
+
+        1. **Glycolysis**: glucose, with 6 carbons, becomes two pyruvates, each
+           with 3 carbons. This happens in the **cytoplasm**, and **no CO2 is
+           produced during glycolysis**.
+        2. **Pyruvate oxidation**: each pyruvate loses one carbon as CO2 while
+           becoming acetyl-CoA.
+        3. **Krebs cycle**: the remaining carbons from acetyl-CoA are released
+           as CO2 as the cycle harvests energy-carrying electrons.
+
+        So CO2 is like the "carbon ash" from breaking down glucose's carbon
+        skeleton.
+
+        Oxygen is doing a different job. It is the final electron catcher at
+        the end of the electron transport chain:
+
+        $$O_2 + electrons + H^+ \\rightarrow H_2O.$$
+
+        So a compact way to remember it is:
+
+        **Glucose supplies the carbon that leaves as CO2; oxygen catches
+        electrons and becomes water.**
+        """
+    ).strip()
+
+
+def _aerobic_respiration_assessment_template() -> str:
+    return dedent(
+        """\
+        ## Assessment
+
+        You have the broad idea that cells break down glucose to make ATP, and
+        you correctly connect aerobic metabolism with mitochondria and final
+        products such as carbon dioxide and water. The main issue is that some
+        definitions and pathway steps are mixed up.
+
+        **First correction: aerobic vs. anaerobic**
+
+        - **Aerobic** means **with oxygen**.
+        - **Anaerobic** means **without oxygen**.
+
+        **Correct aerobic respiration sequence**
+
+        1. **Glycolysis** happens in the cytoplasm. Glucose is split into
+           2 pyruvate, producing net 2 ATP and 2 NADH.
+        2. **Pyruvate oxidation** happens in the mitochondrial matrix. The
+           2 pyruvate molecules are converted to acetyl-CoA, releasing CO2 and
+           producing NADH.
+        3. **Krebs cycle / citric acid cycle** happens in the mitochondrial
+           matrix. Per glucose, acetyl-CoA feeds the cycle to yield about
+           2 ATP, 6 NADH, 2 FADH2, and 4 CO2.
+        4. **Electron transport chain and oxidative phosphorylation** happen at
+           the inner mitochondrial membrane. NADH and FADH2 donate electrons,
+           oxygen is the final electron acceptor, water forms, and most ATP is
+           produced.
+        5. **ATP synthase** uses the proton gradient built by the electron
+           transport chain to perform oxidative phosphorylation, producing about
+           32-34 ATP.
+
+        **Anaerobic comparison**
+
+        Without oxygen, cells cannot run the electron transport chain in the
+        same way. Fermentation mainly regenerates NAD+ so glycolysis can
+        continue, but it yields far less ATP than aerobic respiration. The
+        final product of anaerobic fermentation is not pyruvate; pyruvate is an
+        intermediate that can be converted to products such as lactic acid in
+        lactic acid fermentation. Lactic acid is **not** part of aerobic
+        respiration and does not enter the mitochondria as a normal aerobic
+        pathway step.
+
+        Overall, aerobic respiration of one glucose produces roughly **36-38
+        ATP**, plus **CO2** and **H2O**.
+
+        So the answer should keep the oxygen definitions straight and present
+        aerobic respiration as a sequence, not just as one vague mitochondria
+        step.
+        """
+    ).strip()
+
+
+def _two_proportion_hint_template() -> str:
+    return dedent(
+        """\
+        It's okay to be confused here - this is a common fork in
+        two-proportion tests.
+
+        First, look back at the wording **"reduces the likelihood"**. Does that
+        sound like you are testing for *any* difference, or specifically whether
+        the vaccine group's disease proportion is **lower** than the placebo
+        group's proportion? Use that phrase to reconsider whether your
+        alternative hypothesis should be one-sided.
+
+        For the standard error, ask what the null hypothesis is assuming:
+
+        $$H_0: p_v = p_p.$$
+
+        Under that assumption, the two groups are treated as if they share one
+        common disease proportion. That is why you use a **pooled** estimate for
+        the hypothesis-test standard error, rather than two separate sample
+        proportions.
+
+        Build the pooled estimate as a structure, but do not compute it yet:
+
+        - numerator: disease cases from the vaccine group plus disease cases
+          from the placebo group;
+        - denominator: total vaccine participants plus total placebo
+          participants.
+
+        Once you have that pooled estimate, plug it into the standard
+        two-proportion test standard-error setup, then continue to the z-score.
+        Stop there before deciding the p-value or conclusion.
+        """
+    ).strip()
+
+
+def _t_test_vs_z_test_template() -> str:
+    return dedent(
+        """\
+        The student's conclusion is not valid as a z-test.
+
+        First, read what the student did:
+
+        - sample size: \\(n=40\\) students;
+        - sample average: \\(\\bar{x}=78\\);
+        - null hypothesis: \\(H_0:\\mu=80\\);
+        - they used \\(z=(78-80)/10=-0.20\\);
+        - they compared \\(|z|=0.20\\) to 1.96 and rejected \\(H_0\\).
+
+        That last decision is backwards too: a statistic this small in
+        magnitude means you should **fail to reject** \\(H_0\\), not reject it.
+
+        The issue is the standard deviation assumption. A **z-test** is
+        appropriate when the population standard deviation is known, or in a
+        setting where the normal approximation is specifically justified. Here,
+        the work is using a sample standard deviation, so the uncertainty in
+        that estimate needs to be accounted for with a **t-test**.
+
+        There is also a calculation issue: the student divided by the raw
+        standard deviation, 10, instead of the **standard error of the mean**:
+
+        $$SE = \\frac{10}{\\sqrt{40}} \\approx 1.58.$$
+
+        The corrected procedure is:
+
+        1. Use a one-sample t-test, not a z-test.
+        2. Use the standard error \\(10/\\sqrt{40}\\approx 1.58\\), not 10.
+        3. Compute the test statistic with the t formula:
+           $$t \\approx -1.27.$$
+        4. Compare that t statistic to the appropriate t distribution with the
+           sample's degrees of freedom.
+
+        So the student's setup is on the right general track of comparing a
+        sample mean to a hypothesized value, but the test family is wrong:
+        because the population standard deviation is unknown, use a t-test.
+        """
+    ).strip()
+
+
+def _penicillin_bayes_hint_template() -> str:
+    return dedent(
+        """\
+        I see why Bayes' Theorem feels like it might be overcomplicating this:
+        \\(P(R\\mid A)\\) is sitting right there, so it is tempting to use it
+        directly.
+
+        The key is that the question has flipped the condition.
+
+        - \\(P(R\\mid A)\\): among patients with a listed allergy, how many react?
+        - \\(P(A\\mid R)\\): among patients who reacted, how many had a listed
+          allergy?
+
+        Those are not the same question.
+
+        Here's the guiding question for the denominator: among **all patients
+        who have a reaction**, do they only come from the listed-allergy group?
+        Or can reactions also come from the group with **no listed allergy**?
+
+        Before forming the final ratio, try making two contribution boxes:
+
+        1. listed allergy and reaction;
+        2. no listed allergy and reaction.
+
+        Once you have both contributions, the final probability should compare
+        the listed-allergy-and-reaction contribution to the total reaction
+        group. Do not use \\(P(R\\mid A)\\) alone, because it only describes one
+        of the two pathways into the reaction group.
+        """
+    ).strip()
+
+
+def _coffee_conditional_probability_hint_template() -> str:
+    return dedent(
+        """\
+        It's okay to feel stuck here - the word **given** is exactly the part
+        that changes the denominator.
+
+        Think of conditional probability as shrinking the room you are looking
+        at. Once the problem says **given that the customer visited in the
+        morning**, you should ignore everyone outside the morning group.
+
+        Then probability is just a part-to-whole ratio:
+
+        - the **whole** is the morning-only group;
+        - the **part** is the cold-beverage customers inside that same
+          morning-only group.
+
+        I am intentionally not naming the two table entries for you. Point to
+        the morning column and ask: within that column, which number is the cold
+        beverage part, and which number is the column total?
+
+        After you form that ratio, convert it to a decimal and round to **three
+        decimal places**.
+        """
+    ).strip()
+
+
+def _conical_pendulum_template() -> str:
+    return dedent(
+        """\
+        Great progress - now let's see how those pieces cancel. I see the exact
+        sticking point: you have **tension** in the force equations and
+        **speed** in the circular-motion equation, but the final answer needs
+        only \\(L\\), \\(\\theta\\), and \\(g\\).
+
+        Think of the two force equations as two clues about the same tension:
+
+        $$\\text{vertical:}\\quad F_T\\cos\\theta = mg$$
+
+        $$\\text{horizontal:}\\quad F_T\\sin\\theta = \\frac{mv^2}{r}.$$
+
+        Now divide the horizontal equation by the vertical equation. This
+        cancels both \\(F_T\\) and \\(m\\):
+
+        $$\\tan\\theta = \\frac{v^2}{rg}.$$
+
+        The missing background pieces are:
+
+        - the circular radius is \\(r = L\\sin\\theta\\);
+        - one full lap has circumference \\(2\\pi r\\), so
+          \\(v = \\frac{2\\pi r}{P}\\), where \\(P\\) is the period.
+
+        Substitute \\(v = 2\\pi r/P\\) into
+        \\(\\tan\\theta = v^2/(rg)\\):
+
+        $$\\tan\\theta = \\frac{(2\\pi r/P)^2}{rg}
+        = \\frac{4\\pi^2 r}{P^2g}.$$
+
+        Solve for \\(P\\):
+
+        $$P^2 = \\frac{4\\pi^2 r}{g\\tan\\theta}.$$
+
+        Then use \\(r=L\\sin\\theta\\):
+
+        $$P^2 = \\frac{4\\pi^2 L\\sin\\theta}{g\\tan\\theta}
+        = \\frac{4\\pi^2 L\\cos\\theta}{g}.$$
+
+        So
+
+        $$P = 2\\pi\\sqrt{\\frac{L\\cos\\theta}{g}}.$$
+
+        Quick checks: the units inside the square root are seconds squared. You
+        can also plug in \\(\\theta=0\\) or \\(\\theta=90^\\circ\\) to see whether
+        the formula behaves sensibly at the extremes.
+
+        Next, you might try a related practice step: derive how the period
+        changes if the pivot is raised above the circle or if the angle is made
+        smaller.
+        """
+    ).strip()
+
+
+def _magnetic_triangle_template() -> str:
+    return dedent(
+        """\
+        I get why this is frustrating: the first response jumps to a final
+        cancellation result before making the vector-field approach feel
+        concrete. Yes, that "final result" is the **total magnetic field at the
+        center** of the equilateral triangle.
+
+        The reason it can be zero is not that each side has zero field. Each
+        side produces a field at the center, but the contributions cancel. The
+        way you should approach each side is with the **Biot-Savart Law**:
+
+        $$\\mathbf{B}=\\frac{\\mu_0 I}{4\\pi}\\int
+        \\frac{d\\boldsymbol{\\ell}\\times\\hat{\\mathbf{r}}}{r^2}.$$
+
+        In words: for each straight wire segment, you use Biot-Savart to find
+        that segment's magnetic-field vector at the center, then you add those
+        vectors with their directions.
+
+        **1. Current splits because resistance is uniform**
+
+        The direct path \\(A\\to C\\) has one side length of wire. The path
+        \\(A\\to B\\to C\\) has two side lengths of wire, so it has twice the
+        resistance. Current therefore splits inversely to resistance:
+
+        - direct path \\(A\\to C\\): larger current;
+        - two-side path \\(A\\to B\\to C\\): smaller current through each of
+          those two sides.
+
+        **2. Directions matter**
+
+        Using the right-hand rule, the magnetic field at the center from the
+        direct \\(A\\to C\\) path points in the opposite direction from the
+        combined field due to the two-side \\(A\\to B\\to C\\) path.
+
+        **3. The geometry makes the magnitudes match**
+
+        The two slanted sides each contribute a component at the center. Because
+        the triangle is symmetric and the current split comes from the 1-side
+        versus 2-side resistance ratio, those two contributions combine to
+        cancel the contribution from the direct side.
+
+        Therefore the total magnetic field at the center is
+
+        $$\\boxed{0}.$$
+
+        The key idea is cancellation of vector fields, not absence of magnetic
+        field from individual wire segments.
+        """
+    ).strip()
+
+
+def _rotating_charged_ring_hint_template() -> str:
+    return dedent(
+        """\
+        Pause on one reading detail first: the ring is rotating about a
+        **diameter**, not about the central symmetry axis. That changes what the
+        rotating geometry looks like, so do not assume the usual "spinning about
+        its axis" picture.
+
+        Now ask what quantity the problem really wants. It asks for the energy
+        needed to bring a charge from one point to another, so the useful idea
+        is electric potential difference:
+
+        $$\\Delta U = q\\Delta V.$$
+
+        You may not need a complicated force calculation. Instead, think about
+        the ring as built from tiny charged pieces with finite charge density.
+        Each tiny piece contributes a bit of electric potential, and potential
+        is a scalar, so those contributions can be added by superposition.
+
+        Guiding questions:
+
+        1. What is the potential contribution from a tiny charged loop or ring
+           element at the point where the particle starts?
+        2. What is the potential contribution at a point on the circumference?
+        3. Does the rotation change the electrostatic potential, or mainly tempt
+           you into doing unnecessary magnetic/kinematic work?
+
+        Start by comparing the two potentials. Once you know \\(\\Delta V\\), the
+        energy change is just \\(q\\Delta V\\).
+        """
+    ).strip()
+
+
+def _binary_tree_traversal_template() -> str:
+    return dedent(
+        """\
+        ## Assessment of the Tree Reconstruction
+
+        Your approach of starting with the **preorder** sequence is logical:
+        preorder tells you the root of the current subtree. The refinement is
+        that each preorder root has to be checked against the **inorder** list,
+        because inorder tells you which nodes belong on the left and right of
+        that root.
+
+        The reconstruction rule is:
+
+        1. Use preorder to pick the subtree root.
+        2. Find that root in inorder.
+        3. Everything left of that root in inorder is the left subtree; everything
+           right of it is the right subtree.
+        4. Use postorder as a validation check once the structure is proposed.
+
+        For this problem, the left side rooted at **B** is a good place to
+        preserve your work: the D/H/I and E structure is consistent with the
+        traversal data.
+
+        The issue is on the right side of A. Instead of making F the root of
+        the whole right subtree, go back to preorder after A and the completed
+        left subtree. The next available root tells you the right-subtree root;
+        then inorder tells you which nodes must fall to that root's left and
+        right.
+
+        As a scaffold, do not place the final leaf nodes by guesswork. Use this
+        checklist:
+
+        - Which right-subtree node appears first in preorder?
+        - Where does that node split the right-subtree portion of inorder?
+        - Does the proposed structure produce the given postorder ending for
+          the right subtree?
+
+        That will let you repair the right subtree without simply memorizing a
+        finished drawing.
+        """
+    ).strip()
+
+
+def _kth_smallest_matrix_template() -> str:
+    return dedent(
+        """\
+        I can see why you are so frustrated: your counting logic is genuinely
+        clever, and the overall strategy is the right one. The bug is a small
+        index-vs-count mistake that makes the binary search believe the kth
+        value is somewhere it is not.
+
+        **What is correct**
+
+        Value-range binary search is valid for this problem. For each midpoint
+        value, you count how many matrix entries are less than or equal to that
+        midpoint. Then you move the value-search range based on whether that
+        count is at least k.
+
+        **The bug**
+
+        After the inner loop, `j` is a **0-based index**, not a count.
+
+        - If `j == 2`, the valid entries are indices `0, 1, 2`, so there are
+          `3` entries.
+        - If `j == -1`, there are no valid entries in that row, so there are
+          `0` entries.
+
+        Both cases are handled by adding `j + 1`.
+
+        ```java
+        private int countLessOrEqual(int[][] matrix, int mid) {
+            int n = matrix.length;
+            int count = 0;
+            int j = n - 1;
+
+            for (int i = 0; i < n; i++) {
+                while (j >= 0 && matrix[i][j] > mid) {
+                    j--;
+                }
+                count += j + 1; // j = -1 correctly contributes 0
+            }
+
+            return count;
+        }
+
+        public int kthSmallest(int[][] matrix, int k) {
+            int n = matrix.length;
+            int left = matrix[0][0];
+            int right = matrix[n - 1][n - 1];
+
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                int count = countLessOrEqual(matrix, mid);
+
+                if (count < k) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+
+            return left;
+        }
+        ```
+
+        Returning `left` is appropriate because the binary search is over
+        possible values, and it converges to the smallest value that has at
+        least `k` matrix entries less than or equal to it.
         """
     ).strip()
 
