@@ -10,7 +10,7 @@ The lab is deliberately conservative about data and cost:
   `c70d2311cdca7129cab9376ba22eaa97c3cff3d7`.
 - `run` defaults to `dry_run`; real model calls require an explicit strategy.
 - Defaults use Sonnet 4-family model specs. No GPT-5 Pro-style model is configured.
-- `.env` is gitignored. Never commit API keys or model outputs.
+- `.env` is gitignored. Never commit API keys, raw dataset rows, or raw traces.
 
 ## Setup
 
@@ -163,6 +163,15 @@ After judging a run, write the forensic report:
 uv run tutorbench-lab analyze-run runs/<run_id>/judged.jsonl
 ```
 
+For team review, export redacted traces. These keep task IDs, scores, model
+outputs, per-stage usage, and rubric pass/fail metadata, but remove prompt text,
+images, sample-specific rubric criteria, judge rationales, and private
+scratchpads:
+
+```bash
+uv run tutorbench-lab export-traces runs/<run_id>/judged.jsonl
+```
+
 ## Current Target
 
 The working target is `>=70%` local full-set ARRw before treating the system as
@@ -179,7 +188,8 @@ Run the parity audit before making any comparison claim:
 uv run tutorbench-lab audit-parity
 ```
 
-See `docs/eval_parity.md` for the claim levels and calibration checklist.
+See `docs/eval_protocol.md` and `docs/eval_parity.md` for claim levels,
+calibration requirements, and the public artifact policy.
 
 Current curated Office Hours dev10 best: `99.60%` ARRw in
 `runs/7fd1b151-8dfa-46bf-924e-c96955e99dd1/`, after task-family playbooks and

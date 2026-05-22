@@ -16,6 +16,7 @@ runs/*
 !runs/.gitkeep
 !runs/*/
 runs/*/*.jsonl
+!runs/*/redacted_traces*.jsonl
 !runs/*/scores*.json
 !runs/*/analysis.json
 !runs/*/analysis.md

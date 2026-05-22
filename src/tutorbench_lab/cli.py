@@ -45,9 +45,10 @@ from tutorbench_lab.eval_sets import (
     load_eval_set,
     write_eval_set,
 )
-from tutorbench_lab.io import append_jsonl, read_json, read_model_jsonl, write_json
+from tutorbench_lab.io import append_jsonl, read_json, read_model_jsonl, write_json, write_jsonl
 from tutorbench_lab.judge import judge_run_record
 from tutorbench_lab.parity import build_parity_checks, checks_to_json, parity_level
+from tutorbench_lab.redaction import build_redacted_traces
 from tutorbench_lab.reports import (
     compare_report_markdown,
     compare_reports,
@@ -629,6 +630,39 @@ def analyze_run(
     md_path.write_text(analysis_markdown(analysis), encoding="utf-8")
     console.print(f"Wrote analysis JSON to [bold]{out_path}[/bold]")
     console.print(f"Wrote analysis Markdown to [bold]{md_path}[/bold]")
+
+
+@app.command("export-traces")
+def export_traces(
+    judged_path: Path,
+    output_path: Path | None = typer.Option(
+        None,
+        help="Optional JSONL output path. Defaults to redacted_traces.jsonl.",
+    ),
+    include_response_text: bool = typer.Option(
+        True,
+        "--response-text/--no-response-text",
+        help="Include candidate tutor output while stripping dataset prompt/rubric fields.",
+    ),
+    include_ratings: bool = typer.Option(
+        True,
+        "--ratings/--no-ratings",
+        help="Include per-criterion pass/fail metadata without rubric text.",
+    ),
+) -> None:
+    """Export shareable traces with TutorBench prompt/rubric content removed."""
+
+    records = list(read_model_jsonl(judged_path, JudgedRunRecord))
+    redacted = build_redacted_traces(
+        records,
+        include_response_text=include_response_text,
+        include_ratings=include_ratings,
+    )
+    out_path = output_path or judged_path.with_name("redacted_traces.jsonl")
+    write_jsonl(out_path, redacted)
+    console.print(
+        f"Wrote {len(redacted)} redacted trace row(s) to [bold]{out_path}[/bold]"
+    )
 
 
 @app.command()

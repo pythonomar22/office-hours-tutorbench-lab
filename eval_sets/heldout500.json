@@ -1,0 +1,2014 @@
+{
+  "description": "Larger public-HF holdout excluding office_hours_dev10, office_hours_dev50, and validation150; intended for post-validation architecture checks before full public-HF runs.",
+  "name": "heldout500",
+  "selection_policy": [
+    "source_examples=data/processed/examples.jsonl",
+    "limit=500",
+    "stratified_per_bucket=84",
+    "stratify_by=use-case-modality",
+    "seed=20260522",
+    "excluded_task_ids=210"
+  ],
+  "task_ids": [
+    {
+      "task_id": "681b84ff94969ef6e11908e0",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "681cfb9f152f4bd92bc2a043",
+      "why": "adaptive:text; Biology; Evaluate"
+    },
+    {
+      "task_id": "68097901af814e40f5075fc5",
+      "why": "assessment:text; Biology; Evaluate"
+    },
+    {
+      "task_id": "6847710ad041366db0d09559",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68477209a30ca13e9cde77a9",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68377627155e0b0f68c5f402",
+      "why": "assessment:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683870ed328fdda5d51a61e2",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e3d8ff37c3bccc4ec79b1",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "681008c2dd09fb568f9f1814",
+      "why": "adaptive:multimodal; Chemistry; Analyze"
+    },
+    {
+      "task_id": "683870efb037749cfac48301",
+      "why": "active_learning:text; Computer Science; Create"
+    },
+    {
+      "task_id": "68377627a6018ceeadb000a7",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "683e458c8619d1d443f30580",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683870effd0caa1cb84ff701",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "681008c238fb2e4fca3f0098",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "681cfc8c7f159325757a2101",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e458dd3bdf2dc57e05464",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e4517a08f8bb261597839",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "6843120a2797ae5b1e7bf8c4",
+      "why": "assessment:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "68377588a6018ceeadaffe5b",
+      "why": "assessment:text; Computer Science; Analyze"
+    },
+    {
+      "task_id": "68477209de93ff93d7ba42e5",
+      "why": "active_learning:text; Biology; Apply"
+    },
+    {
+      "task_id": "683e45162d501a5ab198c520",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681cffc85db7f3af72e1598d",
+      "why": "active_learning:multimodal; Computer Science; Create"
+    },
+    {
+      "task_id": "683e458c00c66429fabd74d7",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "681a876ad276597945af8237",
+      "why": "assessment:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e3d8f2d501a5ab198c07d",
+      "why": "adaptive:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "684a8cd6bde8e5fe198faf53",
+      "why": "assessment:text; Biology; Apply"
+    },
+    {
+      "task_id": "6814f360736eaea472ce9b26",
+      "why": "adaptive:multimodal; Computer Science; Remember"
+    },
+    {
+      "task_id": "6843160b2797ae5b1e7bfc5f",
+      "why": "active_learning:text; Biology; Analyze"
+    },
+    {
+      "task_id": "683e450f2e254199a0fa2cfa",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "681b9468e25967e744e7dddb",
+      "why": "active_learning:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "683e3d8d9906d6b295d9044d",
+      "why": "adaptive:multimodal; Calculus; Analyze"
+    },
+    {
+      "task_id": "684a8cd6a2df538ed4adb725",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "685454ee2ae3f8515f9eaec1",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "68387052ed1412eef12fffe2",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "685454ee8639de96a3d235d4",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6843160bf6a4ef09a6eb321a",
+      "why": "active_learning:text; Biology; Apply"
+    },
+    {
+      "task_id": "683870ee896f97b90e668cb8",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "684771b392f69b56b285b58c",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e3d8d1eb8a249fd7926a8",
+      "why": "adaptive:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683870ee3cf028f91cd74b1e",
+      "why": "active_learning:text; Biology; Apply"
+    },
+    {
+      "task_id": "6847710aa30ca13e9cde7751",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "68377627f500da2ef4232482",
+      "why": "assessment:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6843160f2b986bd2d9ca62d1",
+      "why": "active_learning:text; Biology; Apply"
+    },
+    {
+      "task_id": "6843160b786a2d6dbf258f33",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683628c7f249f26e4042aca4",
+      "why": "adaptive:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "68477209001aed0b224ab364",
+      "why": "active_learning:text; Biology; Apply"
+    },
+    {
+      "task_id": "68362923edd465ec2c6a9b31",
+      "why": "assessment:text; Biology; Create"
+    },
+    {
+      "task_id": "6842a1fb2797ae5b1e7be6c3",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "685454ee2e6607c81507261e",
+      "why": "adaptive:text; Computer Science; Understand"
+    },
+    {
+      "task_id": "684a8c406dff21aacb332629",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "68376de04d48dbcf9aa0d0b3",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "685455c7cda0c5d0f3d2127b",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6811d40ebaeb8d13b9950a51",
+      "why": "adaptive:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "681904ae3f170328e61a5e3c",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "681cfb9f998b35aadeba36e0",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e458f2d501a5ab198c61c",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "681cfdceafc3b3424f4299d7",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "683e458ccb225e8f5aa69462",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e3d8fcb225e8f5aa68f83",
+      "why": "adaptive:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "68377545cbb6263fa01c0268",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "681cfdce3d9f33c969b76af0",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "683e458c55b71d5f5598c587",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e458e8619d1d443f305dd",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "681336fce7be049441bd690e",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "68376de0d69e9a741304b4dd",
+      "why": "assessment:multimodal; Physics; Analyze"
+    },
+    {
+      "task_id": "683870ef5afc1229ea9412d9",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "681b80dd92b6a05076956ffc",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683775dd19214e0eed328ea8",
+      "why": "adaptive:multimodal; Biology; none"
+    },
+    {
+      "task_id": "684772086f616dc4cfed8567",
+      "why": "active_learning:text; Biology; Analyze"
+    },
+    {
+      "task_id": "683e3d8df37c3bccc4ec7990",
+      "why": "adaptive:multimodal; Biology; Understand"
+    },
+    {
+      "task_id": "681cfcca423b8a534abc79e6",
+      "why": "active_learning:text; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "6847710b9bc321f32d5b5ab8",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "6838705313dd25f48fb17dfa",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683e458fd3bdf2dc57e054a4",
+      "why": "active_learning:multimodal; Chemistry; Analyze"
+    },
+    {
+      "task_id": "681008c22c3d7f10eb03b935",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "68377588f500da2ef4232264",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "6837758891fac7d3a4bdc697",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "6814f360210f9c60bff3dfd7",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683e3d8d2e254199a0fa27a6",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683e450e2667944fdee50574",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "684771b36f616dc4cfed8542",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "681008c2dfdf240b7fa08b79",
+      "why": "adaptive:multimodal; Biology; none"
+    },
+    {
+      "task_id": "685454ef8639de96a3d235fb",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e4516a08f8bb2615977fe",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "68387053052eb65850fefc95",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e458c2e254199a0fa2e02",
+      "why": "active_learning:multimodal; Computer Science; Create"
+    },
+    {
+      "task_id": "681b84ffb87b7f77f2d05477",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "681cfb9f6183be99a10c4e4a",
+      "why": "adaptive:text; Biology; Apply"
+    },
+    {
+      "task_id": "681008c2556062a8a1727f71",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683e451365e18627c73884a1",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "6843120a2e9311de43e068f9",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683870eeb037749cfac482e1",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e450e2d501a5ab198c496",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "683e3d8d0af7ff7dd7639d7b",
+      "why": "adaptive:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "6843160bd3b2bfc3c344af98",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e451039c99887dd712b89",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "683e3d9065e18627c7388002",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "68376de0f002cfbc8350a3a4",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "683e3d8d2e254199a0fa27a4",
+      "why": "adaptive:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "683e45142d5e3eede3bfbdc5",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "68387053806964a2566da1b8",
+      "why": "active_learning:multimodal; Physics; Analyze"
+    },
+    {
+      "task_id": "681cfb9f0e130c4d40215ed0",
+      "why": "adaptive:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "68387052b037749cfac4827c",
+      "why": "active_learning:multimodal; Biology; Create"
+    },
+    {
+      "task_id": "683e451098da731381469199",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "681cfd7a46a1279c844e62ca",
+      "why": "adaptive:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683628c751ca82bef87522ed",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "683629236118df7e576e0b85",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45159394b13fefb08eb7",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681cfdceec58ead1410f5452",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "681cffc826597ca6548b8c1d",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "681b80ddc0645eabf975d2fb",
+      "why": "adaptive:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "681904ae013a6ffe335931b0",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e3d90a64d60dc2e267d41",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "680979013d9d7eb8a361d50a",
+      "why": "assessment:text; Chemistry; Analyze"
+    },
+    {
+      "task_id": "684a8cd6194a3de4373fed1e",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e3d8e9c8055de99fb55b8",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "6810216f2c5fd824d4f53a1a",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "683e3d8d9394b13fefb087f2",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "681a876a41e29645bc3c8571",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "683775882f4468651311d4b1",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "68387054ed1412eef1300021",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6842a1fb0c7748874c889af5",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "681cffc8152f4bd92bc2a270",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "68377627d6e464671b84dc67",
+      "why": "assessment:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "685454ee2187108ef9b08a95",
+      "why": "adaptive:text; Biology; Apply"
+    },
+    {
+      "task_id": "681cfcca41f2915eaf79891b",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6836292325d9d55d0df0462c",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "68387053328fdda5d51a61bc",
+      "why": "active_learning:multimodal; Calculus; none"
+    },
+    {
+      "task_id": "683629231260a1a3fbc93f77",
+      "why": "assessment:text; Computer Science; Create"
+    },
+    {
+      "task_id": "683e458e65e18627c738859d",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "68377545152c55f1cadef42a",
+      "why": "adaptive:text; Computer Science; Create"
+    },
+    {
+      "task_id": "6837754619214e0eed328cb8",
+      "why": "adaptive:text; Computer Science; Create"
+    },
+    {
+      "task_id": "683870ee7bb2930a9b430f15",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "681336fcacebcc53b24dbff4",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6847710be96863adfe4924b0",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "681cfc8c785e9bceace0e170",
+      "why": "assessment:text; Biology; Remember"
+    },
+    {
+      "task_id": "685454eec5d43a37be94b474",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68377588415e67c44f4734b6",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "68545549d47f86662cf32b64",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e450eb4f61c885835b478",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "685455c7930e1af9135df031",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "683629236f90b7ca1827f1f3",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "68377627d2804145d4f296a5",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "6854554944fbb3cf43c297c6",
+      "why": "assessment:text; Biology; Remember"
+    },
+    {
+      "task_id": "681008c282c35b63b6d9c68f",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45893a109788e3f7e5f2",
+      "why": "active_learning:multimodal; Biology; Create"
+    },
+    {
+      "task_id": "683e3d8dbd7caf8a4644f860",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "685455491c115c624d9552b8",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "681904ae38eb27c158f618cb",
+      "why": "adaptive:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e458c39c99887dd712c28",
+      "why": "active_learning:multimodal; Biology; Understand"
+    },
+    {
+      "task_id": "681cffc8423b8a534abc7bb1",
+      "why": "active_learning:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "684771b3001aed0b224ab341",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "681a87214c3f3a64bb787392",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "681904ae47ec182ef081cc59",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45898619d1d443f30523",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "684a8cd6f08ce27c3bf577e0",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e458eac89e71e0ce600c6",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683775dc0a6dba7869a5c576",
+      "why": "adaptive:multimodal; Chemistry; Analyze"
+    },
+    {
+      "task_id": "6843160acafd33210e81708c",
+      "why": "active_learning:text; Computer Science; Create"
+    },
+    {
+      "task_id": "681a876b69aba25329fa1450",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "684a8c41d3b4bb8eaeda2328",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "685455c7714d62d3ac325d5c",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "6842a1fab8e8a60a16f55ffc",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68377588cbb6263fa01c02b6",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "6811d40e36d04d3bc7965f72",
+      "why": "adaptive:multimodal; Chemistry; Analyze"
+    },
+    {
+      "task_id": "681cfdced677bdf1b0f93b62",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "683e4589a08f8bb26159787e",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6836292317ffad9b33f90f2c",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e4512f37c3bccc4ec7db5",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "680c443acc8fba6dcbac6606",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "6811d993d391e676ed896378",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "68377588ca52a73e154571c8",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "6843120ace8f5cc405ec576c",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "681a852bd9ffc8a7123b3a56",
+      "why": "active_learning:text; Physics; Create"
+    },
+    {
+      "task_id": "683870ef5d89b27d1fd81a13",
+      "why": "active_learning:text; Biology; none"
+    },
+    {
+      "task_id": "683e3d8d3482feddb4d05e65",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "68376d91c5b329d497cbe8ca",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683870525afc1229ea941253",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "68545549560be313d9ec6a66",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "685455482e6607c815072671",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "684a8c40ad4c4ea90e9b4522",
+      "why": "adaptive:text; Biology; Understand"
+    },
+    {
+      "task_id": "68387054806964a2566da1d7",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e45162c6221565bb39d60",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "683e451455b71d5f5598c49a",
+      "why": "assessment:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683776270a6dba7869a5c599",
+      "why": "assessment:multimodal; Biology; Understand"
+    },
+    {
+      "task_id": "683e3d8fa08f8bb26159720b",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6814f360fc84134572ed2ca4",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683870eef3e14cbf586a983a",
+      "why": "active_learning:text; Biology; Understand"
+    },
+    {
+      "task_id": "683628c8bd1df5c44ef30a5d",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e458d2a32fba415085b4c",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683775dc2f4468651311d6ad",
+      "why": "adaptive:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681cfc8c26597ca6548b8acf",
+      "why": "assessment:text; Biology; Analyze"
+    },
+    {
+      "task_id": "6843120a2b986bd2d9ca5f3f",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "685454ee44fbb3cf43c29765",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6814f3600b45a3f9aad3050a",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "68387051052eb65850fefc75",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "6847710ae96863adfe49248d",
+      "why": "adaptive:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e3d8e3a109788e3f7e05a",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683870524cb63a4dd64bd8f4",
+      "why": "active_learning:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "683e458e3482feddb4d0648a",
+      "why": "active_learning:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "683775452f4468651311d48d",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "685454ef513ee4759d9bd93a",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e458ea08f8bb261597919",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6843160a35032f156fbd7ee7",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "68376d914fb3a630f1b21d32",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "680fb68e6f70dc99e9b1abae",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "6842a1fb24d494a616ad26ba",
+      "why": "adaptive:text; Biology; Analyze"
+    },
+    {
+      "task_id": "685455c77728ae576b847fb6",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6843160b603d9905c26efc17",
+      "why": "active_learning:text; Physics; Understand"
+    },
+    {
+      "task_id": "68377545554504bec1ae4eaf",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "6847710ac4590722c4324810",
+      "why": "adaptive:text; Physics; Analyze"
+    },
+    {
+      "task_id": "685454f022969a049b1c9d99",
+      "why": "adaptive:text; Biology; Analyze"
+    },
+    {
+      "task_id": "683775459fb2fd83d696ca43",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6842a1fb5b975e19cd0c270f",
+      "why": "adaptive:text; Computer Science; Analyze"
+    },
+    {
+      "task_id": "6842a1fb0015fc211142e86e",
+      "why": "adaptive:text; Biology; none"
+    },
+    {
+      "task_id": "681cfc8c152f4bd92bc2a07a",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "68377588d2804145d4f294d6",
+      "why": "assessment:text; Statistics; Evaluate"
+    },
+    {
+      "task_id": "68376de0c8871949419d8c15",
+      "why": "assessment:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "68545548424059c5f6deab80",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e4514225c80e89ef01988",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "683e45182d5e3eede3bfbe24",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "6847710b5f4fdb5c45e43ea2",
+      "why": "adaptive:text; Biology; Analyze"
+    },
+    {
+      "task_id": "684771b362247cf826ecc66f",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e458d2d501a5ab198c5de",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683e4510bd7caf8a464501d6",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "681a852b783949ce43fd950c",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6837758838196d53dde65e4d",
+      "why": "assessment:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "6842a1fb4b1edd8240cf8ec1",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683870ee8013600271284854",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "6811d40ebde5795a4c76a31d",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683e458c9394b13fefb08f75",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "683e458f39c99887dd712c66",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "68477209c4915de7a58b3d02",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "684771b29f5075c5d5824b50",
+      "why": "assessment:text; Biology; Create"
+    },
+    {
+      "task_id": "681a852b65d35cd56e4a2daa",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e4510fb5afd217fd9d159",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "68376d91a8d738cb85b3ef6a",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683e45163482feddb4d063cc",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "683870537ae15972ddd10cd3",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "681cffc83c96c09201619bf8",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "681b84ff91c807fd63251628",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "6843120a24db2a33eac08779",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "6847710b748618a10eb516c8",
+      "why": "adaptive:text; Biology; Analyze"
+    },
+    {
+      "task_id": "681cffc8d677bdf1b0f93c91",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "685455497272e9f8923e172d",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "684772091b2bfa550f749674",
+      "why": "active_learning:text; Computer Science; Create"
+    },
+    {
+      "task_id": "683e458e5ac03bbadfe24389",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "681338307de5cf1656381731",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "6842a1fb4b3ada7c29040359",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "68545548714d62d3ac325d31",
+      "why": "assessment:text; Biology; Remember"
+    },
+    {
+      "task_id": "6837754519214e0eed328c96",
+      "why": "adaptive:text; Computer Science; Analyze"
+    },
+    {
+      "task_id": "683e45113a967938ab5f5dc3",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "681008c22b489fdb2b7a4a89",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e458f38791d6d309f7626",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "681336fce566f93318db74ab",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "681cfc8c729b88d1db246cfa",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "68133830184c6a1ea2fec983",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "685455c7ad07ff0ed76d41f7",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "681a8721b07ca4da41ff1d4e",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e458c8619d1d443f3059f",
+      "why": "active_learning:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "680c443abeb0334815689acb",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "684a8cd6ec8079342f4289f5",
+      "why": "assessment:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e3d8d55b71d5f5598bef7",
+      "why": "adaptive:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "683e45891eb8a249fd792bf4",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "684a8cd60f2d31d3b4e0979f",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68545549a47330cab0e42b22",
+      "why": "assessment:text; Statistics; Evaluate"
+    },
+    {
+      "task_id": "6842a1fb47bc4df9e8a03f8a",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6811d40e1eb359631447bbed",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "68096a17d9108896c270f6b6",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e458f65e18627c73885bc",
+      "why": "active_learning:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "68477209748618a10eb5172a",
+      "why": "active_learning:text; Physics; Understand"
+    },
+    {
+      "task_id": "6843120ab58df3216dab416d",
+      "why": "assessment:text; Biology; none"
+    },
+    {
+      "task_id": "683870ee5afc1229ea9412b8",
+      "why": "active_learning:text; Biology; Understand"
+    },
+    {
+      "task_id": "684a8c40a2df538ed4adb6d6",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e458938791d6d309f75e8",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683775dcd27550109b72e4e1",
+      "why": "adaptive:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "683e3d8dcb225e8f5aa68f63",
+      "why": "adaptive:multimodal; Statistics; Analyze"
+    },
+    {
+      "task_id": "6847710b9a6b1451d91de173",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "681a87214c4922f0466cf15f",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "68377627152c55f1cadef6a8",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "683e3d8e0af7ff7dd7639d9d",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "6843160bf56d6ef965adacc6",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "683870eef3c2e8dde818b666",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e458c5ac03bbadfe2434b",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e3d8f2c6221565bb39655",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683e450e225c80e89ef01948",
+      "why": "assessment:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683e3d8c5f104dac1d4d666a",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e458c55b71d5f5598c568",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "6847720954afe630835408ec",
+      "why": "active_learning:text; Calculus; Analyze"
+    },
+    {
+      "task_id": "6843160b3ce5f17a8c3fc394",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6843160afafb508401fb046b",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "681a852bfc0ea1887b377a8f",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "6842a1fceec1338496adc7bc",
+      "why": "adaptive:text; Biology; Create"
+    },
+    {
+      "task_id": "684771b3a30ca13e9cde7784",
+      "why": "assessment:text; Biology; Apply"
+    },
+    {
+      "task_id": "684a8cd6a8da4aded13ef58d",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "68377588496507faa0915ab7",
+      "why": "assessment:text; Statistics; Evaluate"
+    },
+    {
+      "task_id": "683e450f3a109788e3f7e525",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "6843160a7996124c02b92ea1",
+      "why": "active_learning:text; Computer Science; none"
+    },
+    {
+      "task_id": "6843120a9fab58968f2128c9",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "68097901a15aca03d4ff7d74",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "684a8cd69bca034aa640fe78",
+      "why": "assessment:text; Calculus; Evaluate"
+    },
+    {
+      "task_id": "683e458e3a967938ab5f5ea0",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "681cfc8cb4e0809f6fae0767",
+      "why": "assessment:text; Calculus; Understand"
+    },
+    {
+      "task_id": "683e3d905f104dac1d4d66cc",
+      "why": "adaptive:multimodal; Biology; Remember"
+    },
+    {
+      "task_id": "68545548ad07ff0ed76d41cc",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "6842a1fbb8f271121fd79472",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "681cfd7a41f2915eaf798959",
+      "why": "adaptive:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "681cfd7ad66359ff7194ddfc",
+      "why": "adaptive:multimodal; Computer Science; Create"
+    },
+    {
+      "task_id": "683775467c71f24d6187a95c",
+      "why": "adaptive:text; Biology; Understand"
+    },
+    {
+      "task_id": "683870ef18aa062037da7cdb",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45121eb8a249fd792b55",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "683e3d8d5f104dac1d4d668c",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e450f8103655aef73fbf0",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "683e4513cb225e8f5aa693a3",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681cfb9fd677bdf1b0f93af7",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "681a8721d276597945af81e7",
+      "why": "adaptive:text; Computer Science; Create"
+    },
+    {
+      "task_id": "683629234a6179ad16f2a9c1",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "684772099a6b1451d91de1bd",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "6810216fbe57055e015742ec",
+      "why": "assessment:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e3d8ea08f8bb2615971eb",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e458fbd7caf8a4645036d",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e45172d5e3eede3bfbe03",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681cfcca152f4bd92bc2a0aa",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6847710aa1869a5efc97c6d5",
+      "why": "adaptive:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "6811d40ea1d9c30bb57338c2",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "68477209e96863adfe492508",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683870ee052eb65850fefcd8",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e451765e18627c73884df",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "681cfdce5db7f3af72e15829",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "68376d91e8c500427aef84b4",
+      "why": "adaptive:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "68377545155e0b0f68c5f186",
+      "why": "adaptive:text; Physics; Analyze"
+    },
+    {
+      "task_id": "683e3d8dac89e71e0ce5f7f9",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "681cffc846a1279c844e6432",
+      "why": "active_learning:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683e458d3a109788e3f7e66e",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683870ee84a49ceaf5b70b8b",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "6843120ab230fe547590e245",
+      "why": "assessment:text; Biology; Apply"
+    },
+    {
+      "task_id": "6847710bde93ff93d7ba427f",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "685454eecda0c5d0f3d211fd",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "6837754538196d53dde65e1c",
+      "why": "adaptive:text; Biology; Analyze"
+    },
+    {
+      "task_id": "681a852c7b03dd3b17f42438",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "680c443919944493ab9a5fea",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "680fb640382c5243e04d7ef6",
+      "why": "assessment:text; Biology; Create"
+    },
+    {
+      "task_id": "6838705208e12e382c260607",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "6842a1fbeec1338496adc799",
+      "why": "adaptive:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683628c71260a1a3fbc939d1",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "681cfb9fdbed21a8e4bde8fa",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45163a967938ab5f5e20",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "683775881e7704eb674782c3",
+      "why": "assessment:text; Biology; Apply"
+    },
+    {
+      "task_id": "683e45132667944fdee505f2",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "683e3d8d65e18627c7387f93",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "685455482187108ef9b08af1",
+      "why": "assessment:text; Biology; Understand"
+    },
+    {
+      "task_id": "683e4518b4f61c885835b57d",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "68477209a1869a5efc97c721",
+      "why": "active_learning:text; Biology; Analyze"
+    },
+    {
+      "task_id": "684a8c40bde8e5fe198faf2d",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "681cffc8516d8f36be368d33",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "6843160ace8f5cc405ec5b01",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "685455c7f56b8827a94946ad",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45132d501a5ab198c4e2",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "681a876a19e68743d1d48c7d",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "681b80dd09b78cf6f4722695",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "681cffc8b797e1b221ac5b64",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "68387053f3e14cbf586a97f7",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "68387053b037749cfac4829c",
+      "why": "active_learning:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "68377588d6e464671b84dab1",
+      "why": "assessment:text; Computer Science; Analyze"
+    },
+    {
+      "task_id": "683e3d8d2d501a5ab198c05b",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6837754691fac7d3a4bdc674",
+      "why": "adaptive:text; Chemistry; none"
+    },
+    {
+      "task_id": "683e4514fb5afd217fd9d1af",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "683e45112667944fdee505b4",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "683775dc364cb9ba5cecc15d",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "681338316147772084b31c14",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683e45152c6221565bb39d41",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "68377588b65734e747ac890a",
+      "why": "assessment:text; Biology; Understand"
+    },
+    {
+      "task_id": "683870ee635e201ec4afa35b",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "68377627ca52a73e1545735e",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "684a8c44ec8079342f4289bf",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6838705308e12e382c260635",
+      "why": "active_learning:multimodal; Chemistry; Understand"
+    },
+    {
+      "task_id": "683776279fb2fd83d696cc71",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "683e451398da7313814691f6",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "68387052925f37fe4fe43947",
+      "why": "active_learning:multimodal; Computer Science; Create"
+    },
+    {
+      "task_id": "681a852b798fa579a49a7bcf",
+      "why": "active_learning:text; Biology; Understand"
+    },
+    {
+      "task_id": "683e45105f104dac1d4d6d47",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "681cfd7a7f159325757a2141",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "685455c77a61803fa9dfda2d",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e3d8fac89e71e0ce5f81a",
+      "why": "adaptive:multimodal; Biology; none"
+    },
+    {
+      "task_id": "6811d40e6b7f984ce18baebb",
+      "why": "adaptive:multimodal; Computer Science; Understand"
+    },
+    {
+      "task_id": "68377588d27550109b72e3aa",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e45175f104dac1d4d6e19",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "6847720925bf4abe09f74bfd",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683775dd144eb8ef82cd50d4",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "6811d99312b580af1a4e3d2a",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "68545549513ee4759d9bd965",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "683e45132e254199a0fa2d63",
+      "why": "assessment:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "680fb68e2a852554e1acc357",
+      "why": "active_learning:text; Biology; Analyze"
+    },
+    {
+      "task_id": "685455492ae3f8515f9eaef7",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683870eed0567185c898a7ca",
+      "why": "active_learning:text; Biology; Apply"
+    },
+    {
+      "task_id": "681904ae3a028c9bf27245e1",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683775ddd2804145d4f29677",
+      "why": "adaptive:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "68387054725ec86f14f01241",
+      "why": "active_learning:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683e3d8f3482feddb4d05e86",
+      "why": "adaptive:multimodal; Physics; Understand"
+    },
+    {
+      "task_id": "683e3d8c2667944fdee500d2",
+      "why": "adaptive:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "68387052b790747a1c2a372e",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "681cfb9f46a1279c844e628e",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e458c5f104dac1d4d6e7a",
+      "why": "active_learning:multimodal; Biology; Create"
+    },
+    {
+      "task_id": "68477209756f1682065c9d15",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e450e5f104dac1d4d6d27",
+      "why": "assessment:multimodal; Statistics; Analyze"
+    },
+    {
+      "task_id": "683e3d8f38791d6d309f6cd1",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "680fb68e560185b6cf5a79e1",
+      "why": "active_learning:text; Computer Science; Create"
+    },
+    {
+      "task_id": "6843120a7ef11492f6a07f2d",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "680c4439975049b9144f36ea",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "6843160a2e9311de43e06c90",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "685454eea737f46cf2298096",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "683870534ac132aeac946558",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "681904ae192c3c4c2cd70d32",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "684771b3cf8ba842e93ec6de",
+      "why": "assessment:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "68376d91da7aa3dd1e05e2a0",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "681b80ddec36498056e4178c",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "685454ee424059c5f6deab0a",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "68387053fd0caa1cb84ff6db",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e45108103655aef73fc0f",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "68377627d27550109b72e510",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681a876a89f259ad681c8dde",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e458f3482feddb4d064a9",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "6814f360545fa5b9888e1ee7",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "684772095817461e60913ee8",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683870ed08e12e382c260678",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "680c44398c8ddccf859753a5",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683870ef896f97b90e668cd9",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "68097912014bb68a4c65e4a1",
+      "why": "assessment:text; Biology; Apply"
+    },
+    {
+      "task_id": "683e458f2e254199a0fa2e40",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "6843120af2decb7f190ec363",
+      "why": "assessment:text; Calculus; Understand"
+    },
+    {
+      "task_id": "683e458b2667944fdee50653",
+      "why": "active_learning:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "6847720962247cf826ecc694",
+      "why": "active_learning:text; Biology; Analyze"
+    },
+    {
+      "task_id": "683e451055b71d5f5598c445",
+      "why": "assessment:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e3d8d1434d28919164496",
+      "why": "adaptive:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "683e3d8c1eb8a249fd792686",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "681cffc87f159325757a22c5",
+      "why": "active_learning:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683e4512b4f61c885835b4e2",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "683e451538791d6d309f7587",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "683e458b1eb8a249fd792c32",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "683e45183482feddb4d063eb",
+      "why": "assessment:multimodal; Physics; Analyze"
+    },
+    {
+      "task_id": "683775dc5d69f13be82d5c94",
+      "why": "adaptive:multimodal; Physics; Apply"
+    },
+    {
+      "task_id": "683775450a6dba7869a5c385",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "68545548fc51d7cd57aa6ff6",
+      "why": "assessment:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683628c74a6179ad16f2a24d",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "681b9468c7fa869399857716",
+      "why": "active_learning:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "683e45109394b13fefb08e44",
+      "why": "assessment:multimodal; Physics; Evaluate"
+    },
+    {
+      "task_id": "68376de1c596c43935ed5a4d",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "6837754580920782a0a280b5",
+      "why": "adaptive:text; Biology; Analyze"
+    },
+    {
+      "task_id": "684a8d191d9e675e3e074876",
+      "why": "active_learning:text; Computer Science; Analyze"
+    },
+    {
+      "task_id": "6847710a74c7f1cb6eb0b17b",
+      "why": "adaptive:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68477209d041366db0d095b3",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "681a876a8f8c26da596f0f95",
+      "why": "assessment:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "6854554822969a049b1c9dc4",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e4516a08f8bb26159781d",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "683870ef7ae15972ddd10d19",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "683e3d8e3a967938ab5f554b",
+      "why": "adaptive:multimodal; Chemistry; Understand"
+    },
+    {
+      "task_id": "683e3d8f2b6d2a6c45002ccc",
+      "why": "adaptive:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "681cfba0516d8f36be368b74",
+      "why": "adaptive:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "683870ed645e685361fd4ee4",
+      "why": "active_learning:text; Calculus; Apply"
+    },
+    {
+      "task_id": "684772090dada71058f60cfd",
+      "why": "active_learning:text; Physics; Create"
+    },
+    {
+      "task_id": "683e45182c6221565bb39d7f",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "681b80dd850f62964ac697d2",
+      "why": "adaptive:multimodal; Statistics; Apply"
+    },
+    {
+      "task_id": "6847720874c7f1cb6eb0b1d5",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683870eedcbb35f4810dc4ee",
+      "why": "active_learning:text; Physics; Apply"
+    },
+    {
+      "task_id": "683775dcb65734e747ac8b26",
+      "why": "adaptive:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "681cfb9f423b8a534abc79ba",
+      "why": "adaptive:text; Biology; Apply"
+    },
+    {
+      "task_id": "6814f36060299aa0c488ccd0",
+      "why": "adaptive:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "68096a17273083445eec7f02",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e45153482feddb4d0638e",
+      "why": "assessment:multimodal; Statistics; Evaluate"
+    },
+    {
+      "task_id": "68376de03745c97be2e39868",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "683e3d8d2d5e3eede3bfb896",
+      "why": "adaptive:multimodal; Chemistry; none"
+    },
+    {
+      "task_id": "683870514ec27bcbae89a18e",
+      "why": "active_learning:multimodal; Biology; Apply"
+    },
+    {
+      "task_id": "683e451539c99887dd712bc7",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "68545549f8ab7067dd48b799",
+      "why": "assessment:text; Physics; Apply"
+    },
+    {
+      "task_id": "684a8c40194a3de4373fecf9",
+      "why": "adaptive:text; Chemistry; Remember"
+    },
+    {
+      "task_id": "683870ef328fdda5d51a6203",
+      "why": "active_learning:text; Statistics; Apply"
+    },
+    {
+      "task_id": "684a8c40562837a83a9ac6b2",
+      "why": "adaptive:text; Physics; Apply"
+    },
+    {
+      "task_id": "681b9468c537a889cd24aac7",
+      "why": "active_learning:multimodal; Calculus; Apply"
+    },
+    {
+      "task_id": "684a8cd6a60b9b723ead6268",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "68377627496507faa0915cd6",
+      "why": "assessment:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "683e450ea08f8bb261597736",
+      "why": "assessment:multimodal; Chemistry; Evaluate"
+    },
+    {
+      "task_id": "683e45172a32fba415085acc",
+      "why": "assessment:multimodal; Biology; Evaluate"
+    },
+    {
+      "task_id": "683628c7428073c98da6939e",
+      "why": "adaptive:text; Calculus; Apply"
+    },
+    {
+      "task_id": "683e3d8d65e18627c7387fb5",
+      "why": "adaptive:multimodal; Biology; none"
+    },
+    {
+      "task_id": "68377588554504bec1ae4f00",
+      "why": "assessment:text; Computer Science; Analyze"
+    },
+    {
+      "task_id": "683e3d902b6d2a6c45002cec",
+      "why": "adaptive:multimodal; Calculus; Analyze"
+    },
+    {
+      "task_id": "683776272f4468651311d6dc",
+      "why": "assessment:multimodal; Calculus; Evaluate"
+    },
+    {
+      "task_id": "683e3d8e2d5e3eede3bfb8b8",
+      "why": "active_learning:multimodal; Computer Science; Analyze"
+    },
+    {
+      "task_id": "681a852b8198dc9530134603",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e3d8f186f61a0732e2640",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "68376d9111f1cc270ae5084a",
+      "why": "adaptive:multimodal; Biology; Analyze"
+    },
+    {
+      "task_id": "683e458e2e254199a0fa2e21",
+      "why": "active_learning:multimodal; Computer Science; Apply"
+    },
+    {
+      "task_id": "683e4516d3bdf2dc57e053e3",
+      "why": "assessment:multimodal; Computer Science; Evaluate"
+    },
+    {
+      "task_id": "684a8cd63b901ee3995f3936",
+      "why": "assessment:text; Biology; Apply"
+    },
+    {
+      "task_id": "683e458f8103655aef73fd55",
+      "why": "active_learning:multimodal; Chemistry; Apply"
+    },
+    {
+      "task_id": "683870efdcbb35f4810dc50f",
+      "why": "active_learning:text; Chemistry; Apply"
+    },
+    {
+      "task_id": "6843160a0015fc211142fa11",
+      "why": "active_learning:text; Computer Science; Apply"
+    },
+    {
+      "task_id": "681008c2755b3a002e0e65bf",
+      "why": "adaptive:multimodal; Statistics; Create"
+    },
+    {
+      "task_id": "684a8cd60c6c6ac5176925ef",
+      "why": "assessment:text; Statistics; Apply"
+    },
+    {
+      "task_id": "685454efd47f86662cf32b39",
+      "why": "adaptive:text; Biology; Understand"
+    }
+  ]
+}
