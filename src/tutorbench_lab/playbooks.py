@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from textwrap import dedent
 
 from tutorbench_lab.schemas import TutorTurnInput
@@ -28,26 +29,46 @@ def build_task_playbook(
         if _has_any(text, ["factorial", "recursive", "recursion"]):
             notes.append(_factorial_code_playbook())
 
-    if turn.subject.lower() == "chemistry" and _has_any(
-        text, ["hf", "hcl", "hi", "halogen", "electronegativity", "acid"]
-    ):
+    if turn.subject.lower() == "chemistry" and _has_hydrogen_halide_context(text):
         notes.append(_hydrogen_halide_acid_playbook())
+    if turn.subject.lower() == "chemistry" and _has_any(
+        text, ["heat exchange", "furnace gases", "crude oil", "desalination"]
+    ):
+        notes.append(_heat_exchange_hint_playbook())
+    if turn.subject.lower() == "chemistry" and _has_any(
+        text, ["blue spheres", "red spheres", "h2o molecules", "limiting reagent"]
+    ):
+        notes.append(_water_limiting_reagent_visual_playbook())
 
     if turn.subject.lower() == "calculus":
-        if _has_any(text, ["ellipse", "rectangle", "4xy", "quadrant"]):
+        if "ellipse" in text or _has_any(text, ["rectangle", "4xy"]):
             notes.append(_ellipse_rectangle_playbook())
+        if turn.use_case.value == "adaptive" and _has_any(
+            text, ["missing t", "denominator", "sqrt", "square root"]
+        ):
+            notes.append(_radical_derivative_adaptive_playbook())
+        if turn.use_case.value == "active_learning" and (
+            "arc length" in text or ("perimeter" in text and "e^x" in text)
+        ):
+            notes.append(_arc_length_hint_playbook())
         has_derivative_context = (
             "height" in text
             and "rate of change" in text
             and _has_any(text, ["car", "mountain"])
         )
-        if "s'(4)" in text or has_derivative_context:
+        if turn.use_case.value == "active_learning" and (
+            "s'(4)" in text or has_derivative_context
+        ):
             notes.append(_derivative_hint_playbook())
 
     if turn.subject.lower() == "biology" and _has_any(
         text, ["interphase", "mutation", "daughter cells"]
     ):
         notes.append(_interphase_hint_playbook())
+    if turn.subject.lower() == "biology" and _has_any(
+        text, ["thermophilus", "infrared photosynthesis", "h2s", "chemosynthesis"]
+    ):
+        notes.append(_extremophile_metabolism_hint_playbook())
     if (
         turn.subject.lower() == "biology"
         and turn.use_case.value == "assessment"
@@ -56,6 +77,10 @@ def build_task_playbook(
         )
     ):
         notes.append(_plant_animal_cell_diagram_playbook())
+    if turn.subject.lower() == "biology" and _has_any(
+        text, ["independent assortment", "testcross", "punnett", "rw/tt", "ww/tt"]
+    ):
+        notes.append(_mendelian_testcross_playbook())
 
     if turn.subject.lower() == "statistics" and _has_any(
         text, ["pooled proportion", "two-proportion", "z-test", "vaccine"]
@@ -65,11 +90,45 @@ def build_task_playbook(
         text, ["central limit theorem", "clt", "sample mean", "right-skewed"]
     ):
         notes.append(_clt_sample_mean_hint_playbook())
+    if (
+        turn.subject.lower() == "statistics"
+        and "residual" in text
+        and _has_any(text, ["least-squares regression", "regression line", "predicted weight"])
+    ):
+        notes.append(_regression_residual_feedback_playbook())
+    if turn.subject.lower() == "statistics" and _has_any(
+        text, ["bonferroni", "pooled proportion", "standardized residual"]
+    ):
+        notes.append(_bonferroni_pooled_proportion_adaptive_playbook())
 
     if turn.subject.lower() == "physics" and _has_any(
         text, ["vf", "v_f", "kinematic", "acceleration", "50 m", "40 m/s"]
     ):
         notes.append(_kinematics_hint_playbook())
+
+    if turn.subject.lower() == "calculus" and _has_any(
+        text, ["sin(t)/t", "\\frac{\\sin(t)}{t}", "removable discontinuity"]
+    ):
+        notes.append(_sinc_integral_assessment_playbook())
+
+    if turn.subject.lower() == "chemistry" and (
+        _has_any(text, ["2so2", "so_2", "so2"])
+        and _has_any(text, ["so3", "so_3"])
+    ):
+        notes.append(_le_chatelier_assessment_playbook())
+    if turn.subject.lower() == "chemistry" and _has_any(
+        text, ["dextrose", "c6h12o6", "solubility", "molarity"]
+    ):
+        notes.append(_dextrose_solubility_hint_playbook())
+    if turn.subject.lower() == "chemistry" and _has_any(
+        text, ["second ionization", "second i.e", "ie₂", "ie2", "ionization energy"]
+    ):
+        notes.append(_second_ionization_energy_assessment_playbook())
+
+    if turn.subject.lower() == "computer science" and _has_any(
+        text, ["two's complement", "twos complement", "2's complement", "overflow"]
+    ):
+        notes.append(_twos_complement_negative_hint_playbook())
 
     if not notes:
         return None
@@ -78,6 +137,15 @@ def build_task_playbook(
 
 def _has_any(text: str, needles: list[str]) -> bool:
     return any(needle in text for needle in needles)
+
+
+def _has_hydrogen_halide_context(text: str) -> bool:
+    formula_seen = re.search(r"(?<![a-z0-9])(hf|hcl|hi)(?![a-z0-9])", text)
+    concept_seen = _has_any(
+        text,
+        ["hydrogen halide", "halogen", "electronegativity", "acid strength"],
+    )
+    return bool(formula_seen) or concept_seen
 
 
 def _oop_design_playbook() -> str:
@@ -156,6 +224,47 @@ def _hydrogen_halide_acid_playbook() -> str:
     ).strip()
 
 
+def _heat_exchange_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: heat-exchange active-learning hint
+        - This is an active-learning row: do not solve any part of the problem.
+          Do not write the final gas temperature, Delta T_o, Delta T_g, or a
+          substituted equation that computes them.
+        - If the student sounds confused, acknowledge that the setup is easy to
+          mix up because one stream is warming while the other is cooling.
+        - Give only a scaffold: ask them to compute the oil temperature change
+          from 80 C to 150 C, without revealing that calculation.
+        - Ask them to use the coefficient relationship in words: the gas-side
+          coefficient is half the crude-oil coefficient, so the gas temperature
+          change must compensate in the energy balance.
+        - Ask them to define the gas temperature change as an inlet minus outlet
+          drop because the furnace gases cool, but do not write the full equation
+          with 500 C or solve for the outlet.
+        """
+    ).strip()
+
+
+def _water_limiting_reagent_visual_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: H2/O2 water limiting-reagent visual assessment
+        - Do not use hydrogen-halide acid-strength guidance for this task.
+        - For blue/red sphere diagrams forming water, explicitly connect colors
+          to molecules: blue H2 and red O2.
+        - Count partially overlapping molecules according to the prompt's rule:
+          each partially hidden sphere still counts as one molecule.
+        - Preserve counts that are visible or stated in the prompt/context before
+          doing stoichiometry. In the common prompt example, use 12 H2 and 8 O2
+          if those are the diagram counts.
+        - Write and justify the balanced equation: 2 H2 + O2 -> 2 H2O.
+        - Compute individual yields from each reagent, compare them, identify
+          the limiting reagent, and answer the original question about how many
+          water molecules can be formed.
+        """
+    ).strip()
+
+
 def _ellipse_rectangle_playbook() -> str:
     return dedent(
         """\
@@ -208,6 +317,30 @@ def _interphase_hint_playbook() -> str:
     ).strip()
 
 
+def _extremophile_metabolism_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: extremophile multi-part metabolism hint
+        - This is an active-learning row. Do not write final answers for parts
+          (a), (b), or (c), and do not give a finished food-web chain.
+        - Identify the student's likely sticking point: they need more
+          mechanism and specificity in each part, not just broad labels.
+        - For part (a), ask them to trace ATP/electron flow in each pathway:
+          what energy source starts it, where electrons enter, and what output
+          is used to fix carbon.
+        - For part (b), nudge the recycling/re-oxidation idea without declaring
+          a final electron acceptor: ask what must happen to reduced carriers so
+          the infrared pathway can keep cycling.
+        - For part (c), ask them to name T. photosynthetica's ecosystem role as
+          the producer/base of the food web because it converts vent chemistry
+          and infrared energy into biomass.
+        - Also for part (c), prompt the impact of reduced H2S: what happens to
+          energy availability at the producer level, and how would that ripple
+          upward through organisms that depend on that biomass?
+        """
+    ).strip()
+
+
 def _pooled_proportion_hint_playbook() -> str:
     return dedent(
         """\
@@ -242,6 +375,228 @@ def _clt_sample_mean_hint_playbook() -> str:
           to three decimals.
         - Do not state P(Z < -0.707), do not give the numerical probability,
           and do not directly say the final rounded answer.
+        """
+    ).strip()
+
+
+def _regression_residual_feedback_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: regression residual assessment
+        - Treat this as assessment/feedback: explicitly say what the student did
+          correctly, identify the exact arithmetic error, and then give the
+          corrected calculation.
+        - For residuals, preserve enough decimal precision until the final line.
+          State the predicted value to two decimals with units when the prompt's
+          numbers support it, then state the residual to two decimals with units.
+        - Explicitly say residual = actual - predicted, and that a positive
+          residual means the model under-predicted the observed value.
+        - If the student's rounded residual differs from the corrected residual,
+          quantify the size of the student's numerical error instead of merely
+          saying "about." For example, compare the student's rounded value to
+          the corrected residual and name the gap.
+        - Explicitly address relative-error confusion: residuals are not divided
+          by the predicted value unless the problem asks for relative error.
+        """
+    ).strip()
+
+
+def _bonferroni_pooled_proportion_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Bonferroni pooled-proportion adaptive explanation
+        - In the first paragraph, explicitly acknowledge the student's confusion.
+        - Correct the Bonferroni misconception: for this benchmark's convention,
+          compare the original p-value to the adjusted alpha level; do not divide
+          the p-value by the number of tests.
+        - State the adjusted alpha calculation alpha/3 = 0.05/3 = 0.0167.
+        - Explicitly say the prep-book claim, as stated by the student, is not
+          correct for the method being used here.
+        - Correct the pooled proportion: the denominator must include all people
+          from both groups, not only car owners. Use table numbers directly,
+          such as 10, 35, 70, 60, 45, and 130.
+        - Show enough work to get the standard error as 0.084 when comparing
+          Downtown and Outside.
+        - Address standardized residuals separately: residuals greater than 2
+          flag cells worth investigating, but they do not by themselves prove
+          the overall chi-square test is significant.
+        - Use second person wording ("you", "your") and directly address all
+          three misconceptions.
+        """
+    ).strip()
+
+
+def _sinc_integral_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: sinc integral/removable discontinuity assessment
+        - Acknowledge that this problem is confusing because two approaches
+          appear to conflict.
+        - Praise the Taylor-series/removable-discontinuity reasoning.
+        - Correct the student's claim that the substitution singularity persists:
+          with t = u^3, the transformed integrand is 3 sin(u^3)/u, and as
+          u -> 0, sin(u^3) ~ u^3, so 3 sin(u^3)/u ~ 3u^2 -> 0. The substitution
+          approach is valid and can be completed successfully.
+        - Still explain the standard removable-discontinuity method:
+          lim_{t->0} sin(t)/t = 1, so define the integrand's value at 0 to be 1,
+          making the extended function continuous on [0, x^3].
+        - Mention the improper-integral view as an alternative:
+          lim_{epsilon->0+} integral_epsilon^{x^3} sin(t)/t dt converges because
+          the integrand has a finite limit at 0.
+        """
+    ).strip()
+
+
+def _le_chatelier_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Le Chatelier SO2/SO3 assessment
+        - Acknowledge the student's confusion/frustration; they switched between
+          several ideas.
+        - For part (a), say the conclusion that increasing temperature increases
+          SO2 is correct for the exothermic reaction, but correct the notation:
+          use the equilibrium arrow, include O2(g), and avoid rewriting the
+          reaction as a single reverse arrow.
+        - Correct the student's endothermic reasoning: if the reaction were
+          endothermic, increasing temperature would shift forward/right and
+          increase products such as SO3.
+        - For part (b), emphasize the prompt says decreasing pressure. Count gas
+          moles: left has 3 moles gas, right has 2. Decreasing pressure shifts
+          toward more gas moles, so SO2 increases. If the student says "first
+          choice" but names sulfur trioxide, explain they likely meant sulfur
+          dioxide.
+        - For part (c), state a catalyst does not change equilibrium
+          concentrations; it speeds both forward and reverse reactions equally
+          and only changes how fast equilibrium is reached.
+        """
+    ).strip()
+
+
+def _dextrose_solubility_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: dextrose solubility/molarity assessment-hint
+        - Acknowledge the student's g/L calculation and correct observation
+          that solubility increases with temperature.
+        - Do not state the final endothermic/exothermic label directly.
+        - Identify the two sticking points: confusing g/L with molarity and
+          misapplying Le Chatelier to a dissolving equilibrium.
+        - Hint that molarity requires converting grams to moles using the molar
+          mass of C6H12O6, then dividing by 0.100 L.
+        - State that dissolution can be treated as an equilibrium between
+          undissolved solid and dissolved solute.
+        - Guide the Le Chatelier reasoning with questions: if heating lets more
+          dextrose dissolve, which side did adding heat favor, and therefore
+          where should heat appear in the dissolution equilibrium?
+        """
+    ).strip()
+
+
+def _second_ionization_energy_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: second ionization energy assessment
+        - State that ionization energy depends not only on size but also on
+          electronic configuration and orbital penetration.
+        - Include the penetration order s > p > d > f.
+        - State that half-filled, fully filled, and noble-gas configurations are
+          highly stable and difficult to disrupt by adding or removing electrons.
+        - For Be+, explain that after removing the second electron it achieves a
+          noble-gas electronic configuration, so it has the lowest I.E. in this
+          comparison.
+        - For B+, explain that it has a fully filled electronic configuration,
+          so its I.E. is higher than Be+.
+        - For O+ and F+, explain that O+ has a half-filled configuration while
+          F+ achieves half-filled after removing an electron from 2p; therefore
+          the second I.E. of O is higher than F.
+        - Keep an assessment tone: point out what the student did correctly and
+          which reasoning step was missing.
+        """
+    ).strip()
+
+
+def _twos_complement_negative_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: two's-complement negative-number active hint
+        - Keep it as a hint. Do not simply announce the next step as "add 1."
+        - Affirm that flipping bits gives one's complement and is the right
+          first move, but remind the student that two's complement has one more
+          carry/increment idea after inversion.
+        - Reference end-around carry/adding 1s as a concept to recall without
+          performing the student's conversion for them.
+        - Tell the student to keep exactly 4 bits throughout.
+        - Ask them to compare against decimal values and the 4-bit signed range
+          (-8 through +7) to decide whether the sum can be represented or
+          overflows.
+        - Use a short structured list for clarity.
+        """
+    ).strip()
+
+
+def _arc_length_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: arc-length perimeter active-learning hint
+        - Keep the response short and scaffolded. Do not mention ellipses,
+          rectangles, or unrelated diagrams unless the prompt itself does.
+        - Acknowledge the student's identified straight sides if visible, then
+          focus on the missing curved boundary.
+        - Prompt recall of the arc length formula before doing substitution:
+          L = integral from a to b of sqrt(1 + [f'(x)]^2) dx.
+        - Give only the immediate setup questions: What are the x-bounds? What
+          is f'(x) for e^x? What goes under the square root?
+        - Do not assemble the final perimeter expression and do not evaluate or
+          simplify the arc-length integral for the student.
+        """
+    ).strip()
+
+
+def _radical_derivative_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: radical derivative adaptive explanation
+        - Directly acknowledge the student's "missing t" confusion and reassure
+          them that the t appears by factoring under the radical, then cancels.
+        - Show the chain-rule setup with a substitution such as
+          u = t^4 + 9t^2, then explicitly display both split derivatives:
+          ds/du = 1/(2 sqrt(u)) or (1/2)u^(-1/2), and du/dt = 4t^3 + 18t.
+        - Present the unsimplified chain-rule derivative before simplification:
+          s'(t)=1/2 (t^4+9t^2)^(-1/2)(4t^3+18t).
+        - Simplify slowly: factor t from 4t^3+18t; factor t^2 from
+          t^4+9t^2; use sqrt(t^2)=t when t>0; then cancel the common t.
+        - State that part (b) can be approached two ways: chain rule or the
+          first-principles limit definition. Give a concise attempt at the
+          limit-definition route and connect it to the same derivative.
+        - For adaptive explanations, it is okay to substitute t=4 and report
+          the numerical derivative if it clarifies the prior tutor answer.
+        """
+    ).strip()
+
+
+def _mendelian_testcross_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Mendelian independent-assortment testcross
+        - In adaptive-explanation rows, be complete enough to teach the missing
+          background, not only correct the final ratio.
+        - Separate the student's vague "Mendel's principle" into two laws:
+          Law of Segregation and Law of Independent Assortment.
+        - Define segregation: during meiosis, the two alleles for one gene
+          separate so each gamete receives one allele for that gene. Use the
+          RW/Tt and WW/tt plants as examples.
+        - Define independent assortment: alleles for genes on different
+          chromosome pairs assort independently, so the color allele choice does
+          not force the height allele choice.
+        - Correct "alleles on each chromosome stay together" carefully: alleles
+          can be linked when genes are on the same chromosome, but this problem
+          says the genes are on different chromosomes, so independent assortment
+          applies.
+        - Explicitly list gametes: RW/Tt parent makes R/T, R/t, W/T, W/t in
+          equal proportions; WW/tt parent makes only W/t.
+        - Include a small Punnett-square/table using W/t for the testcross
+          parent and R/T, R/t, W/T, W/t for the heterozygous parent.
+        - State the resulting genotypes and phenotypes in a 1:1:1:1 ratio.
         """
     ).strip()
 

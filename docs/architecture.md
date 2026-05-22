@@ -45,8 +45,10 @@ The agentic strategy is rubric-blind:
   returns `REVISE`, and uses the full composer policy during revisions.
 - Task-family playbooks: deterministic, rubric-blind guidance for recurring
   TutorBench tutoring patterns such as hydrogen-halide acidity, ellipse area
-  optimization, recursive factorial feedback, CLT sample-mean hints, and
-  plant/animal cell diagrams.
+  optimization, recursive factorial feedback, CLT sample-mean hints,
+  Bonferroni/pooled-proportion corrections, chemistry equilibrium reasoning,
+  two's-complement hints, ionization-energy feedback, and plant/animal cell
+  diagrams.
 - Deterministic final guards: narrow post-composition repairs for brittle
   task-family anchors that the LLM critic may miss, such as exact visual
   anchors, exact factorial verification, and active-learning spoiler templates.
@@ -55,10 +57,22 @@ No candidate step receives sample-specific TutorBench rubrics. Rubrics are used
 only in the judge.
 
 The trace for each agentic response stores these stages as
-`route_plan`, `stage_latency_ms`, `stage_usage`, `perception_transcript`,
-`specialist_audit`, `solver_analysis`, `answer_contract`,
+`route_plan`, `stage_latency_ms`, `stage_usage`, `stage_rate_limits`,
+`perception_transcript`, `specialist_audit`, `solver_analysis`, `answer_contract`,
 `domain_verification`, `draft`, `critic_attempts`, and
 `revision_attempts`.
+
+## Throughput
+
+The CLI supports concurrent `run` and `judge` execution via `--workers`, plus
+`--run-id` and `--resume` for interrupted runs. Anthropic calls capture
+non-secret rate-limit headers so high-parallel runs can be audited after the
+fact. A cheap Sonnet probe on the current key reported bucket limits of
+`20,000` requests, `2,000,000` input tokens, and `400,000` output tokens; a
+full `office_hours_dev50` agentic run at `--workers 16` completed without
+throttling, with minimum observed remaining headers still near the top of the
+bucket. Use `--workers 16` for dev-set iteration; move higher only after
+checking trace `stage_rate_limits`.
 
 ## Evaluation Parity
 
@@ -99,6 +113,13 @@ The first dev50 sanity slice showed baseline Sonnet at `69.63%` and the agentic
 tutor at `72.14%` across three rows. It also exposed a statistics active-learning
 regression on a CLT sample-mean hint; adding a CLT playbook moved that row from
 `44.4%` to `100%` locally.
+
+The current clean `office_hours_dev50` checkpoint is baseline Sonnet `59.68%`
+versus agentic `74.72%` over 50 rows, a +15.04 point gain. That run includes
+the latest Bonferroni/pooled-proportion adaptivity, dextrose solubility,
+two's-complement negative-number hints, sinc removable discontinuities,
+Le Chatelier feedback, and second-ionization-energy feedback. It remains a
+local public-HF dev-set score, not a leaderboard claim.
 
 ## Office Hours Transfer Path
 

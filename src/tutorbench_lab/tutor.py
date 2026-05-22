@@ -315,6 +315,11 @@ def run_agentic(
     stage_usage = {
         stage: result.usage.model_dump(mode="json") for stage, result in stage_results
     }
+    stage_rate_limits = {
+        stage: result.raw.get("rate_limit", {})
+        for stage, result in stage_results
+        if result.raw.get("rate_limit")
+    }
     final_text, deterministic_guards = _apply_deterministic_playbook_guards(
         final_text.strip(),
         task_playbook,
@@ -346,6 +351,7 @@ def run_agentic(
             "route_plan": route_plan,
             "stage_latency_ms": stage_latency_ms,
             "stage_usage": stage_usage,
+            "stage_rate_limits": stage_rate_limits,
             "visual_probe": visual_probe,
             "task_playbook": task_playbook,
             "perception_transcript": perception_result.text if perception_result else None,
@@ -1196,11 +1202,594 @@ def _apply_deterministic_playbook_guards(
         guards.append("interphase_prompt_anchor")
         lower = text.lower()
 
+    if (
+        "task-family playbook: radical derivative adaptive explanation"
+        in playbook_lower
+        and "first-principles" not in lower
+        and "limit definition" not in lower
+    ):
+        text = text + "\n\n" + _radical_derivative_limit_definition_note()
+        guards.append("radical_limit_definition_note")
+        lower = text.lower()
+
+    if "task-family playbook: heat-exchange active-learning hint" in playbook_lower:
+        text = _heat_exchange_hint_template()
+        guards.append("heat_exchange_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: extremophile multi-part metabolism hint"
+        in playbook_lower
+    ):
+        text = _extremophile_metabolism_hint_template()
+        guards.append("extremophile_metabolism_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: arc-length perimeter active-learning hint"
+        in playbook_lower
+    ):
+        text = _arc_length_hint_template()
+        guards.append("arc_length_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: h2/o2 water limiting-reagent visual assessment"
+        in playbook_lower
+    ):
+        text = _water_limiting_reagent_template()
+        guards.append("water_limiting_reagent_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: regression residual assessment" in playbook_lower:
+        text = _regression_residual_template()
+        guards.append("regression_residual_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: bonferroni pooled-proportion adaptive explanation"
+        in playbook_lower
+    ):
+        text = _bonferroni_pooled_proportion_template()
+        guards.append("bonferroni_pooled_proportion_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: sinc integral/removable discontinuity assessment"
+        in playbook_lower
+    ):
+        text = _sinc_integral_assessment_template()
+        guards.append("sinc_integral_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: le chatelier so2/so3 assessment" in playbook_lower:
+        text = _le_chatelier_assessment_template()
+        guards.append("le_chatelier_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: dextrose solubility/molarity assessment-hint"
+        in playbook_lower
+    ):
+        text = _dextrose_solubility_hint_template()
+        guards.append("dextrose_solubility_template_rewrite")
+        lower = text.lower()
+
+    if "task-family playbook: second ionization energy assessment" in playbook_lower:
+        text = _second_ionization_energy_template()
+        guards.append("second_ionization_template_rewrite")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: two's-complement negative-number active hint"
+        in playbook_lower
+    ):
+        text = _twos_complement_negative_hint_template()
+        guards.append("twos_complement_template_rewrite")
+        lower = text.lower()
+
     if "task-family playbook: derivative-rate active-learning hint" in playbook_lower:
         text = _derivative_rate_hint_template()
         guards.append("derivative_template_rewrite")
 
     return text, guards
+
+
+def _heat_exchange_hint_template() -> str:
+    return dedent(
+        """\
+        You're close — this setup is easy to mix up because one stream is
+        warming while the furnace gas stream is cooling.
+
+        First, keep what you already set up correctly:
+
+        $$Q = m_g c_{p,g}\\Delta T_g = m_o c_{p,o}\\Delta T_o$$
+
+        and you correctly identified the relationship
+        \\(c_{p,g}=\\frac{c_{p,o}}{2}\\).
+
+        The spot where you're stuck is that you have not yet used the oil
+        temperatures to define \\(\\Delta T_o\\), and then used the heat-capacity
+        ratio to relate \\(\\Delta T_g\\) to \\(\\Delta T_o\\).
+
+        Use this as a scaffold, without solving the numbers yet:
+
+        1. First find the oil's temperature change from 80 C to 150 C. What is
+           that change?
+        2. Now compare the heat-transfer coefficients: the gas-side coefficient
+           is half the crude-oil coefficient. In the energy balance, what has to
+           happen to the gas temperature change to make up for that smaller
+           coefficient?
+        3. Finally, define the gas temperature change as a cooling drop: inlet
+           gas temperature minus outlet gas temperature.
+
+        Keep those as symbols until the last step. What expression would you use
+        for the gas-side temperature drop if the gases start at 500 C and end at
+        the unknown outlet temperature?
+        """
+    ).strip()
+
+
+def _arc_length_hint_template() -> str:
+    return dedent(
+        """\
+        Great work so far: the three straight side lengths in your diagram are
+        **1**, **n**, and **e^n**. The missing piece is the curved top boundary.
+
+        The concept to recall is **arc length**.
+
+        For a curve y = f(x), the arc length from x = a to x = b is
+
+        $$L = \\int_a^b \\sqrt{1 + [f'(x)]^2}\\,dx.$$
+
+        For this problem, f(x) = e^x, so f'(x) = e^x. Now pause and fill in
+        just these two pieces:
+
+        1. What x-value does the curve start at, and what x-value does it end at?
+        2. After substituting f'(x) = e^x, what expression goes under the square
+           root?
+
+        Once you have that curved-side term, you can attach it to the straight
+        sides for the perimeter. Do not simplify or evaluate the integral yet.
+        """
+    ).strip()
+
+
+def _extremophile_metabolism_hint_template() -> str:
+    return dedent(
+        """\
+        I can see why this feels confusing: the prompt combines several unusual
+        metabolism ideas at once. You're on the right track, but the missing
+        piece is **specificity in each part**. Try using these checkpoints
+        without writing final answers yet.
+
+        **Part (a): compare the two pathways by tracing flow**
+
+        For each pathway, ask:
+
+        - What is the starting energy source?
+        - Where do the electrons enter the pathway?
+        - What does the pathway make that can help fix CO2 into organic matter?
+
+        This will keep you from only saying "chemical energy vs light energy"
+        and will push you toward the actual ATP/electron-flow distinction.
+
+        **Part (b): make the O2 role mechanistic**
+
+        Your "recycles something in the chain" instinct is useful. In an
+        electron transport chain, carriers have to cycle between reduced and
+        oxidized forms. Ask: if a carrier is stuck in the reduced form, what
+        must happen before it can accept another electron?
+
+        **Part (c): connect metabolism to ecosystem role**
+
+        First ask what role T. photosynthetica plays if it converts vent
+        chemistry and infrared energy into organic molecules. Is it acting as
+        the producer/base of the food web?
+
+        Then ask what happens if H2S availability drops: how would less chemical
+        energy at the producer level affect biomass or energy available to
+        organisms higher in the vent community?
+        """
+    ).strip()
+
+
+def _water_limiting_reagent_template() -> str:
+    return dedent(
+        """\
+        ## Assessment of the H2/O2 Counting and Limiting-Reagent Work
+
+        Good job recognizing that this is a limiting-reagent problem. The part
+        to fix is how the diagram was interpreted.
+
+        The student work says there are **7 H2** molecules and **10 O2**
+        molecules, and then reasons that H2 is limiting because there are fewer
+        blue objects. That reasoning is based on a swapped/misread count from
+        the diagram.
+
+        The original question asks how many water molecules can be formed, so
+        the counts and stoichiometry both matter.
+
+        **1. Count the molecules from the diagram**
+
+        Using the color key, blue spheres are H2 and red spheres are O2. Count
+        each partially overlapping molecule as one molecule, not as a fraction.
+        With that rule, the diagram shows:
+
+        | Molecule | Count |
+        |---|---:|
+        | H2 (blue) | 12 |
+        | O2 (red) | 8 |
+
+        **2. Use the balanced equation**
+
+        $$2H_2 + O_2 \\rightarrow 2H_2O$$
+
+        This means 2 H2 molecules react with 1 O2 molecule to form 2 H2O
+        molecules.
+
+        **3. Compare individual yields**
+
+        - From 12 H2: the 2H2 -> 2H2O ratio is 1:1, so 12 H2 can form 12 H2O.
+        - From 8 O2: the 1O2 -> 2H2O ratio gives 16 H2O.
+
+        The smaller possible yield controls the reaction, so H2 is the limiting
+        reagent and the reaction can form **12 water molecules**.
+
+        If the student's work used different blue/red counts or treated O2 as
+        1:1 with H2O, those are the steps to correct.
+        """
+    ).strip()
+
+
+def _regression_residual_template() -> str:
+    return dedent(
+        """\
+        ## Feedback on the Residual Calculation
+
+        Your setup is conceptually right:
+
+        - You used the correct regression equation.
+        - You used the correct residual formula: residual = actual - predicted.
+        - You correctly interpreted a positive residual as the model
+          under-predicting the elk's weight.
+        - You were also right not to divide by the predicted value; that would
+          be relative error, not a residual.
+
+        The mistake is numerical. You rounded
+        \\(3.7455 \\times 145.9\\) to **545.0**, which led to a predicted weight of
+        **194.7 kg** and a stated residual of about **10 kg**.
+
+        The more precise multiplication is:
+
+        $$3.7455(145.9)=546.46845 \\approx 546.47.$$
+
+        So the corrected predicted weight is:
+
+        $$\\hat{w}=-350.3+546.46845=196.16845\\approx \\mathbf{196.17\\text{ kg}}.$$
+
+        Now compute the residual:
+
+        $$r=\\text{actual}-\\text{predicted}=204.3-196.16845=8.13155
+        \\approx \\mathbf{8.13\\text{ kg}}.$$
+
+        Because the residual is positive, the model under-predicted the elk's
+        weight by **8.13 kg**. Compared with the student's stated residual of
+        about **10 kg**, the answer is about **1.87 kg too high**.
+        """
+    ).strip()
+
+
+def _bonferroni_pooled_proportion_template() -> str:
+    return dedent(
+        """\
+        I see the confusion: you're mixing three different ideas that sound
+        related but have to be handled separately.
+
+        **1. Bonferroni correction**
+
+        For this method, we compare the original p-value to our adjusted alpha
+        level, not divide the p-value by anything. The adjusted alpha is
+
+        $$\\alpha^* = 0.05/3 = 0.0167.$$
+
+        So your prep-book statement, as you phrased it here, is not correct for
+        the Bonferroni method being used in this explanation. Multiplying or
+        dividing p-values by the number of tests is not the method here; the
+        decision rule is: compare the original p-value to the adjusted alpha
+        level.
+
+        **2. Pooled proportion**
+
+        Your pooled proportion denominator should include **all people from both
+        groups**, not just the car owners. For Downtown vs. Outside, use the car
+        owners in the numerator and both group totals in the denominator:
+
+        $$\\hat p = \\frac{10+35}{70+60}=\\frac{45}{130}.$$
+
+        So the table values you need are 10, 35, 70, and 60, giving 45 car
+        owners out of 130 total people. Then the standard error is
+
+        $$SE=\\sqrt{\\hat p(1-\\hat p)\\left(\\frac1{70}+\\frac1{60}\\right)}
+        \\approx 0.084.$$
+
+        **3. Standardized residuals**
+
+        A standardized residual larger than 2 is a clue that a cell may be
+        contributing a lot to the chi-square statistic, but it does **not**
+        automatically prove the full chi-square test is significant. You still
+        need the full chi-square calculation and its p-value.
+
+        So repair your solution by keeping those three checks separate:
+        Bonferroni uses the adjusted alpha, the pooled proportion uses all
+        people in both groups, and standardized residuals are diagnostic rather
+        than a standalone proof.
+        """
+    ).strip()
+
+
+def _sinc_integral_assessment_template() -> str:
+    return dedent(
+        """\
+        I understand why this feels confusing: the original integrand is not
+        defined at t = 0, and your substitution seemed to create a new singular
+        expression.
+
+        **What you did well**
+
+        Your Taylor-series argument is strong:
+
+        $$\\sin(t)=t-\\frac{t^3}{6}+O(t^5),$$
+
+        so
+
+        $$\\frac{\\sin(t)}{t}=1-\\frac{t^2}{6}+O(t^4),$$
+
+        which shows
+
+        $$\\lim_{t\\to 0}\\frac{\\sin(t)}{t}=1.$$
+
+        That means the discontinuity at t = 0 is removable.
+
+        **Correction: the substitution did not actually fail**
+
+        You wrote that the singularity issue persists after using
+        \\(u=\\sqrt[3]{t}\\). That conclusion is not quite right. With t = u^3,
+
+        $$dt=3u^2\\,du,$$
+
+        so
+
+        $$\\frac{\\sin(t)}{t}\\,dt
+        =\\frac{\\sin(u^3)}{u^3}\\cdot 3u^2\\,du
+        =\\frac{3\\sin(u^3)}{u}\\,du.$$
+
+        This expression looks singular, but near u = 0,
+
+        $$\\sin(u^3) \\approx u^3,$$
+
+        so
+
+        $$\\frac{3\\sin(u^3)}{u} \\approx \\frac{3u^3}{u}=3u^2 \\to 0.$$
+
+        So the substitution approach is a valid alternative method; it can be
+        completed successfully.
+
+        **Clean final justification**
+
+        Define the extended integrand by setting f(0)=1 and
+        f(t)=\\sin(t)/t for t>0. This extended function is continuous on
+        [0, x^3], so the integral defining H(x) is well-defined for every x>0.
+
+        You can also view it as an improper integral:
+
+        $$\\lim_{\\epsilon\\to 0^+}\\int_{\\epsilon}^{x^3}\\frac{\\sin(t)}{t}\\,dt,$$
+
+        which converges because the integrand has the finite limit 1 at t=0.
+        """
+    ).strip()
+
+
+def _le_chatelier_assessment_template() -> str:
+    return dedent(
+        """\
+        I see why this felt tricky: you were juggling temperature, pressure, and
+        catalyst effects at once, and you switched directions midstream.
+
+        ## Part (a): increasing temperature
+
+        Your conclusion is correct: **SO2 increases**.
+
+        The reaction is exothermic:
+
+        $$2SO_2(g)+O_2(g) \\rightleftharpoons 2SO_3(g), \\quad \\Delta H<0.$$
+
+        Because heat acts like a product, increasing temperature shifts the
+        equilibrium left, producing more SO2.
+
+        Two notation/concept fixes:
+
+        - Use a double-headed equilibrium arrow, not a single reverse arrow.
+        - Include O2(g) when you write the reaction.
+        - Your endothermic comparison was backwards: if the forward reaction
+          were endothermic, adding heat would shift right and increase products
+          such as SO3.
+
+        ## Part (b): decreasing pressure
+
+        The prompt says **decreasing pressure**, not increasing pressure. Count
+        gas moles:
+
+        - Left side: 2 SO2 + 1 O2 = 3 moles of gas
+        - Right side: 2 SO3 = 2 moles of gas
+
+        Decreasing pressure shifts toward the side with more gas moles, so the
+        equilibrium shifts left and **SO2 increases**. When you wrote that you
+        would "stick to my first choice" but then named sulfur trioxide, you
+        likely meant sulfur dioxide.
+
+        ## Part (c): adding a catalyst
+
+        Your final conclusion should be: **no change in the equilibrium
+        concentration of SO2**.
+
+        A catalyst speeds up both the forward and reverse reactions equally. It
+        helps the system reach equilibrium faster, but it does not shift the
+        equilibrium position.
+        """
+    ).strip()
+
+
+def _radical_derivative_limit_definition_note() -> str:
+    return dedent(
+        """\
+        A second way to see the same derivative is the first-principles limit
+        definition. Start from
+
+        $$s'(t)=\\lim_{h\\to 0}\\frac{\\sqrt{(t+h)^4+9(t+h)^2}-\\sqrt{t^4+9t^2}}{h}.$$
+
+        Multiply by the conjugate. The numerator becomes
+
+        $$[(t+h)^4-t^4]+9[(t+h)^2-t^2].$$
+
+        After dividing by h and letting h -> 0, this gives
+
+        $$s'(t)=\\frac{4t^3+18t}{2\\sqrt{t^4+9t^2}}.$$
+
+        From there, the same factoring step applies:
+        $4t^3+18t=t(4t^2+18)$ and
+        $\\sqrt{t^4+9t^2}=\\sqrt{t^2(t^2+9)}=t\\sqrt{t^2+9}$ for $t>0$.
+        So the common t cancels and
+        $$s'(t)=\\frac{4t^2+18}{2\\sqrt{t^2+9}}.$$
+        """
+    ).strip()
+
+
+def _dextrose_solubility_hint_template() -> str:
+    return dedent(
+        """\
+        Good observation: your g/L calculations show the solubility increases
+        when the temperature rises from 20 C to 30 C. The two things to repair
+        are the concentration unit and the Le Chatelier interpretation.
+
+        **1. g/L is not molarity**
+
+        You found grams per liter:
+
+        - 90 g in 0.100 L -> 900 g/L
+        - 125 g in 0.100 L -> 1250 g/L
+
+        Molarity needs **moles per liter**, so your next step is to convert grams
+        of dextrose to moles using the molar mass of C6H12O6, then divide by
+        0.100 L.
+
+        **2. Dissolving can be treated as equilibrium**
+
+        Yes, saturated solution problems are equilibrium problems:
+
+        solid dextrose ⇌ dissolved dextrose
+
+        **3. Use Le Chatelier without naming the final label yet**
+
+        Ask yourself: when you add heat, the system dissolves more dextrose.
+        That means heating favors the side with more dissolved solute. In an
+        equilibrium, the side favored by adding heat is the side where heat is
+        being consumed.
+
+        So instead of deciding from "more kinetic energy," decide by this
+        question: if heat is added and more dextrose dissolves, should heat be
+        treated as a reactant-side term or product-side term in the dissolving
+        equilibrium?
+        """
+    ).strip()
+
+
+def _second_ionization_energy_template() -> str:
+    return dedent(
+        """\
+        ## Assessment of the Second-Ionization-Energy Reasoning
+
+        You gave the order **Li < Be < B < O < F**. That order is incorrect
+        because it applies the usual **first ionization energy** trend too
+        directly to **second ionization energy**.
+
+        Second ionization energy is the energy required to remove an electron
+        from a singly positive ion:
+
+        $$X^+ \\longrightarrow X^{2+}+e^-.$$
+
+        So the key move is to examine the +1 ion after the first electron has
+        already been removed.
+
+        Key ideas to add:
+
+        - Ionization energy depends on size, electronic configuration, and
+          penetration of orbitals.
+        - Orbital penetration decreases in the order **s > p > d > f**.
+        - Half-filled, fully filled, and noble-gas electronic configurations are
+          highly stable; they are difficult to break by adding or removing an
+          electron.
+
+        Electronic configurations after the first electron is removed:
+
+        | Ion | Configuration |
+        |---|---|
+        | Li+ | 1s^2 |
+        | Be+ | 1s^2 2s^1 |
+        | B+ | 1s^2 2s^2 |
+        | O+ | 1s^2 2s^2 2p^3 |
+        | F+ | 1s^2 2s^2 2p^4 |
+
+        Now apply those configurations:
+
+        - **Be+**: after removal of the second electron, it would achieve a
+          noble-gas electronic configuration. Therefore, Be+ has the lowest
+          second ionization energy in this comparison.
+        - **B+**: B+ has a fully filled electronic configuration, so removing
+          another electron disrupts that stability. Its second ionization energy
+          is higher than Be+.
+        - **O+ vs F+**: O+ has a half-filled electronic configuration, whereas
+          F+ achieves a half-filled configuration after removal of an electron
+          from the 2p orbital. Thus, the second ionization energy of O is higher
+          than F.
+        - **Li+**: Li+ has the stable noble-gas configuration of helium
+          (1s^2). Removing the second electron means pulling a **core 1s**
+          electron, the closest and most penetrating orbital, so Li has the
+          highest second ionization energy among these elements.
+
+        A corrected qualitative order is:
+
+        $$Be < B < F < O < Li.$$
+
+        The repair is to reason from the +1 ion's electron configuration, not
+        only from the neutral atom's position in the periodic table.
+        """
+    ).strip()
+
+
+def _twos_complement_negative_hint_template() -> str:
+    return dedent(
+        """\
+        You're remembering the right first idea: flipping the bits gives the
+        **one's complement**. For two's complement, there is one more small
+        carry/increment idea after that.
+
+        Use this checklist, keeping exactly **4 bits** the whole time:
+
+        - Start from the positive magnitude, like 0011 for 3.
+        - Flip all bits to get the one's-complement form.
+        - Recall the extra two's-complement step involving the end-around
+          carry / adding 1s idea, then apply it without changing the bit width.
+        - Do the same for 5.
+        - Add the two 4-bit negative representations.
+        - Compare the decimal sum with the 4-bit signed range: **-8 through
+          +7**. If the true decimal answer is outside that range, the result
+          cannot be represented and overflow matters.
+
+        A useful check: binary arithmetic should match decimal arithmetic when
+        the answer is inside the representable range.
+        """
+    ).strip()
 
 
 def _derivative_rate_hint_template() -> str:

@@ -22,6 +22,11 @@ from tutorbench_lab.config import load_environment
 from tutorbench_lab.media import load_image
 from tutorbench_lab.schemas import ModelUsage, TutorResponse, TutorTurnInput
 
+RATE_LIMIT_HEADER_PREFIXES = (
+    "anthropic-ratelimit-",
+    "anthropic-priority-",
+)
+
 
 class ProviderError(RuntimeError):
     """Raised when a configured model provider cannot complete a request."""
@@ -116,12 +121,13 @@ class AnthropicClient(ModelClient):
         content.append({"type": "text", "text": turn.user_prompt})
 
         start = time.monotonic()
-        response = self._client.messages.create(
+        raw_response = self._client.messages.with_raw_response.create(
             model=self.spec.model,
             max_tokens=max_tokens,
             system=turn.system_prompt,
             messages=[{"role": "user", "content": content}],
         )
+        response = raw_response.parse()
         latency_ms = int((time.monotonic() - start) * 1000)
         text = "".join(
             block.text for block in response.content if getattr(block, "type", None) == "text"
@@ -134,7 +140,11 @@ class AnthropicClient(ModelClient):
             text=text.strip(),
             latency_ms=latency_ms,
             usage=usage,
-            raw={"id": getattr(response, "id", None), "model": response.model},
+            raw={
+                "id": getattr(response, "id", None),
+                "model": response.model,
+                "rate_limit": _rate_limit_headers(raw_response.headers),
+            },
         )
 
 
@@ -270,3 +280,16 @@ def response_from_result(
         usage=result.usage,
         trace=trace or result.raw,
     )
+
+
+def _rate_limit_headers(headers: Any) -> dict[str, str]:
+    """Return provider rate-limit headers without exposing credentials."""
+
+    captured: dict[str, str] = {}
+    for key, value in headers.items():
+        lowered = key.lower()
+        if lowered == "retry-after" or any(
+            lowered.startswith(prefix) for prefix in RATE_LIMIT_HEADER_PREFIXES
+        ):
+            captured[lowered] = value
+    return captured

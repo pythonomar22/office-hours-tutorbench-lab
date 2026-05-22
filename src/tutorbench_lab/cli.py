@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from uuid import uuid4
 
@@ -297,6 +298,25 @@ def run(
         "--request-timeout-s",
         help="Per-provider request timeout in seconds.",
     ),
+    workers: int = typer.Option(
+        1,
+        "--workers",
+        min=1,
+        help=(
+            "Number of examples to process concurrently. "
+            "Keep at 1 for strict provider-rate safety."
+        ),
+    ),
+    run_id: str | None = typer.Option(
+        None,
+        "--run-id",
+        help="Optional stable run ID. Useful with --resume after interrupted runs.",
+    ),
+    resume: bool = typer.Option(
+        False,
+        "--resume",
+        help="Skip task IDs already present in this run's responses.jsonl.",
+    ),
 ) -> None:
     """Generate candidate tutor responses."""
 
@@ -346,11 +366,20 @@ def run(
             seed=seed,
         )
 
-    run_id = str(uuid4())
+    run_id = run_id or str(uuid4())
     run_dir = output_dir / run_id
     out_path = run_dir / "responses.jsonl"
+    if resume and out_path.exists():
+        completed = {
+            record.example.task_id for record in read_model_jsonl(out_path, RunRecord)
+        }
+        examples = [example for example in examples if example.task_id not in completed]
+        console.print(
+            f"Resuming run [bold]{run_id}[/bold]; "
+            f"skipping {len(completed)} completed task ID(s)"
+        )
 
-    for index, example in enumerate(examples, start=1):
+    def generate_record(index: int, example) -> RunRecord:
         console.print(f"[{index}/{len(examples)}] {example.task_id} {strategy.value}")
         if strategy == Strategy.DRY_RUN:
             turn = dry_turn_for_example(example)
@@ -373,17 +402,29 @@ def run(
                 max_tokens=max_tokens,
                 max_revision_attempts=max_revision_attempts,
                 request_timeout_s=request_timeout_s,
-                progress_callback=lambda stage: console.print(f"  - {stage}"),
+                progress_callback=lambda stage: console.print(
+                    f"  - [{index}/{len(examples)}] {stage}"
+                ),
             )
-        append_jsonl(
-            out_path,
-            record_for_response(
-                example=example,
-                turn=turn,
-                response=response,
-                run_id=run_id,
-            ),
+        return record_for_response(
+            example=example,
+            turn=turn,
+            response=response,
+            run_id=run_id,
         )
+
+    if workers == 1:
+        for index, example in enumerate(examples, start=1):
+            append_jsonl(out_path, generate_record(index, example))
+    else:
+        console.print(f"Running with [bold]{workers}[/bold] worker threads")
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {
+                executor.submit(generate_record, index, example): index
+                for index, example in enumerate(examples, start=1)
+            }
+            for future in as_completed(futures):
+                append_jsonl(out_path, future.result())
 
     console.print(f"Wrote responses to [bold]{out_path}[/bold]")
 
@@ -400,6 +441,20 @@ def judge(
         "--request-timeout-s",
         help="Per-provider request timeout in seconds.",
     ),
+    workers: int = typer.Option(
+        1,
+        "--workers",
+        min=1,
+        help=(
+            "Number of responses to judge concurrently. "
+            "Keep at 1 for strict provider-rate safety."
+        ),
+    ),
+    resume: bool = typer.Option(
+        False,
+        "--resume",
+        help="Skip task IDs already present in the output judgments file.",
+    ),
 ) -> None:
     """Judge candidate responses with sample-specific rubrics."""
 
@@ -413,16 +468,37 @@ def judge(
     if limit is not None:
         records = records[:limit]
     out_path = output_path or responses_path.with_name("judged.jsonl")
+    if resume and out_path.exists():
+        completed = {
+            record.run.example.task_id
+            for record in read_model_jsonl(out_path, JudgedRunRecord)
+        }
+        records = [
+            record for record in records if record.example.task_id not in completed
+        ]
+        console.print(f"Resuming judge; skipping {len(completed)} completed task ID(s)")
 
-    for index, record in enumerate(records, start=1):
+    def judge_record(index: int, record: RunRecord) -> JudgedRunRecord:
         console.print(f"[{index}/{len(records)}] judging {record.example.task_id}")
-        judged = judge_run_record(
+        return judge_run_record(
             record,
             judge_model=judge_model,
             max_tokens=max_tokens,
             request_timeout_s=request_timeout_s,
         )
-        append_jsonl(out_path, judged)
+
+    if workers == 1:
+        for index, record in enumerate(records, start=1):
+            append_jsonl(out_path, judge_record(index, record))
+    else:
+        console.print(f"Judging with [bold]{workers}[/bold] worker threads")
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {
+                executor.submit(judge_record, index, record): index
+                for index, record in enumerate(records, start=1)
+            }
+            for future in as_completed(futures):
+                append_jsonl(out_path, future.result())
 
     console.print(f"Wrote judgments to [bold]{out_path}[/bold]")
 

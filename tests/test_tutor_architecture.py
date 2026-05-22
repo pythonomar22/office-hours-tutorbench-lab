@@ -109,6 +109,138 @@ def test_derivative_hint_playbook_withholds_full_arithmetic(adaptive_example) ->
     assert "height at t = 4" in playbook
 
 
+def test_derivative_hint_playbook_does_not_hijack_adaptive_calculus(
+    adaptive_example,
+) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Calculus",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": (
+                "Two rescue robots have separation s(t) = sqrt(t^4 + 9t^2). "
+                "Explain where the t in the denominator went when simplifying s'(t)."
+            ),
+            "follow_up_prompt": (
+                "I understand you're supposed to take the derivative, but where "
+                "did the t in the denominator go?"
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "derivative-rate active-learning hint" not in playbook
+    assert "radical derivative adaptive explanation" in playbook
+    assert "ds/du" in playbook
+    assert "first-principles limit definition" in playbook
+
+
+def test_quadrant_alone_does_not_trigger_ellipse_playbook(adaptive_example) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Calculus",
+            "batch": "USE_CASE_3_MULTIMODAL",
+            "prompt": (
+                "A region in the first quadrant is bounded by y = e^x and x = n. "
+                "Find its perimeter in terms of n."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "arc-length perimeter" in playbook
+    assert "ellipse rectangle" not in playbook
+
+
+def test_regression_residual_playbook_requires_precision(adaptive_example) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Statistics",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "A least-squares regression line predicts weight. "
+                "Calculate the residual and assess the student's work."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "predicted value to two decimals" in playbook
+    assert "quantify the size of the student's numerical error" in playbook
+
+
+def test_mendelian_testcross_playbook_separates_two_laws(adaptive_example) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": (
+                "A RW/Tt plant is testcrossed with WW/tt. Explain "
+                "independent assortment and the Punnett square."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "Law of Segregation" in playbook
+    assert "Law of Independent Assortment" in playbook
+    assert "WW/tt parent makes only W/t" in playbook
+
+
+def test_hydrogen_halide_playbook_does_not_match_hi_substrings(
+    adaptive_example,
+) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Chemistry",
+            "batch": "USE_CASE_3_MULTIMODAL",
+            "prompt": (
+                "A heat exchange process cools furnace gases while heating "
+                "crude oil. Determine the outlet temperature."
+            ),
+            "uc1_initial_explanation": "",
+            "follow_up_prompt": "",
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "hydrogen halide acid strength" not in playbook
+    assert "heat-exchange active-learning hint" in playbook
+
+
+def test_extremophile_metabolism_playbook_covers_multiple_parts(
+    adaptive_example,
+) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_3_MULTIMODAL",
+            "prompt": (
+                "Thermophilus photosynthetica uses H2S chemosynthesis and "
+                "infrared photosynthesis. Give hints for parts (a), (b), and (c)."
+            ),
+            "uc1_initial_explanation": "",
+            "follow_up_prompt": "",
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "extremophile multi-part metabolism hint" in playbook
+    assert "part (a)" in playbook
+    assert "part (c)" in playbook
+
+
 def test_clt_sample_mean_playbook_requires_probing_questions(adaptive_example) -> None:
     example = adaptive_example.model_copy(
         update={
@@ -214,3 +346,74 @@ def test_derivative_guard_removes_sign_giveaway() -> None:
     assert "subtraction step was handled correctly" in guarded
     assert "negative sign attached" not in guarded
     assert guards == ["derivative_template_rewrite"]
+
+
+def test_radical_derivative_guard_adds_limit_definition_note() -> None:
+    guarded, guards = _apply_deterministic_playbook_guards(
+        "The t comes from factoring sqrt(t^4 + 9t^2) as t sqrt(t^2 + 9).",
+        "Task-family playbook: radical derivative adaptive explanation",
+    )
+
+    assert "first-principles limit" in guarded
+    assert "Multiply by the conjugate" in guarded
+    assert "4t^3+18t" in guarded
+    assert guards == ["radical_limit_definition_note"]
+
+
+def test_active_learning_templates_rewrite_brittle_playbooks() -> None:
+    heat_text, heat_guards = _apply_deterministic_playbook_guards(
+        "Solve by substituting values.",
+        "Task-family playbook: heat-exchange active-learning hint",
+    )
+    arc_text, arc_guards = _apply_deterministic_playbook_guards(
+        "Use arc length and finish the perimeter.",
+        "Task-family playbook: arc-length perimeter active-learning hint",
+    )
+
+    assert "that change?" in heat_text
+    assert "70 C" not in heat_text
+    assert heat_guards == ["heat_exchange_template_rewrite"]
+    assert "f'(x) = e^x" in arc_text
+    assert "Do not simplify or evaluate the integral yet" in arc_text
+    assert arc_guards == ["arc_length_template_rewrite"]
+
+
+def test_extremophile_template_prompts_parts_without_final_chain() -> None:
+    guarded, guards = _apply_deterministic_playbook_guards(
+        "Think about oxygen.",
+        "Task-family playbook: extremophile multi-part metabolism hint",
+    )
+
+    assert "Part (a)" in guarded
+    assert "Part (b)" in guarded
+    assert "Part (c)" in guarded
+    assert "producer/base of the food web" in guarded
+    assert "finished food-web chain" not in guarded
+    assert guards == ["extremophile_metabolism_template_rewrite"]
+
+
+def test_water_limiting_reagent_template_uses_prompt_counts() -> None:
+    guarded, guards = _apply_deterministic_playbook_guards(
+        "I count 10 blue and 7 red.",
+        "Task-family playbook: H2/O2 water limiting-reagent visual assessment",
+    )
+
+    assert "H2 (blue) | 12" in guarded
+    assert "O2 (red) | 8" in guarded
+    assert "12 water molecules" in guarded
+    assert guards == ["water_limiting_reagent_template_rewrite"]
+
+
+def test_regression_residual_template_preserves_student_numbers() -> None:
+    guarded, guards = _apply_deterministic_playbook_guards(
+        "The residual is about 8 kg.",
+        "Task-family playbook: regression residual assessment",
+    )
+
+    assert "545.0" in guarded
+    assert "194.7 kg" in guarded
+    assert "about **10 kg**" in guarded
+    assert "196.17" in guarded
+    assert "8.13" in guarded
+    assert "1.87 kg too high" in guarded
+    assert guards == ["regression_residual_template_rewrite"]
