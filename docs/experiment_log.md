@@ -36,12 +36,23 @@ local public-HF/dev-set results unless explicitly marked as official.
 
 ## Current Claim Status
 
-- Claim level: dev-set result only.
+- Claim level: validation-set result, not official leaderboard.
 - Parity level: `public-hf-comparable`, not leaderboard-exact.
-- Next eval set: `eval_sets/validation150.json`, 150 rows excluding dev10/dev50,
-  balanced as 25 rows per use-case/modality bucket.
+- Current validation set: `eval_sets/validation150.json`, 150 rows excluding
+  dev10/dev50, balanced as 25 rows per use-case/modality bucket.
+- Current validation checkpoint: `validation150-retired-playbooks-v3`
+  - Score: `72.13%`, CI `69.02%-75.35%`.
+  - Same-set Sonnet baseline: `59.65%`, CI `56.14%-63.22%`.
+  - Delta vs baseline: `+12.48` points.
+  - Use-case scores: active learning `75.65%`, adaptive `72.24%`, assessment
+    `68.49%`.
+  - Modality scores: text `74.87%`, multimodal `69.38%`.
+  - Main changes since dev50: narrowed playbook routing by use case, added
+    parallel error logging/resume safety, and retired brittle deterministic
+    playbooks for coffee/under-filling, two-proportion hints, regression
+    residuals, and two's-complement hints after validation showed the generic
+    agent beat those rewrites.
 - Blockers before any benchmark claim:
-  - Run `validation150` without row-by-row tuning.
   - Run full pinned public-HF dataset.
   - Calibrate local judge by reproducing at least one published baseline/model
     ordering on the same protocol.

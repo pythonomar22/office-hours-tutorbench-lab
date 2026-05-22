@@ -93,5 +93,10 @@ tutor further.
 The current dev10 and dev50 scores are iteration scores. They are useful because
 they exposed real tutoring failure modes, but they should not be cited as
 benchmark performance. The latest dev50 checkpoint is `85.28%` local ARRw with
-a `80.11%-89.66%` bootstrap CI; the next meaningful score is `validation150`,
-then the full public-HF release.
+a `80.11%-89.66%` bootstrap CI.
+
+The current validation checkpoint is `validation150-retired-playbooks-v3` at
+`72.13%` local ARRw with a `69.02%-75.35%` bootstrap CI, versus `59.65%` for a
+same-set Sonnet baseline. This is stronger evidence than dev50, but the next
+meaningful claim step is still the full pinned public-HF release followed by
+judge calibration and official Scale submission.

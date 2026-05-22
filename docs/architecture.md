@@ -46,9 +46,11 @@ The agentic strategy is rubric-blind:
 - Task-family playbooks: deterministic, rubric-blind guidance for recurring
   TutorBench tutoring patterns such as hydrogen-halide acidity, ellipse area
   optimization, recursive factorial feedback, CLT sample-mean hints,
-  Bonferroni/pooled-proportion corrections, chemistry equilibrium reasoning,
-  two's-complement hints, ionization-energy feedback, and plant/animal cell
-  diagrams.
+  Bonferroni corrections, chemistry equilibrium reasoning, ionization-energy
+  feedback, and plant/animal cell diagrams. Playbook routing is intentionally
+  conservative: validation150 showed that several specific deterministic
+  rewrites underperformed the generic agent, so coffee/under-filling,
+  two-proportion, regression-residual, and two's-complement routes are retired.
 - Deterministic final guards: narrow post-composition repairs for brittle
   task-family anchors that the LLM critic may miss, such as exact visual
   anchors, exact factorial verification, and active-learning spoiler templates.
@@ -65,9 +67,11 @@ The trace for each agentic response stores these stages as
 ## Throughput
 
 The CLI supports concurrent `run` and `judge` execution via `--workers`, plus
-`--run-id` and `--resume` for interrupted runs. Anthropic calls capture
-non-secret rate-limit headers so high-parallel runs can be audited after the
-fact. A cheap Sonnet probe on the current key reported bucket limits of
+`--run-id` and `--resume` for interrupted runs. Parallel failures are logged to
+run-local error JSONL files so completed rows are preserved and only missing
+task IDs need to be resumed. Anthropic calls capture non-secret rate-limit
+headers so high-parallel runs can be audited after the fact. A cheap Sonnet
+probe on the current key reported bucket limits of
 `20,000` requests, `2,000,000` input tokens, and `400,000` output tokens. Full
 `office_hours_dev50` agentic and judge runs at `--workers 24` completed without
 throttling, with minimum observed remaining headers still near the top of the
@@ -105,7 +109,7 @@ debug set. The current comparison ladder is:
 
 1. `office_hours_dev10` for quick trace debugging.
 2. `office_hours_dev50` for architecture iteration, excluding dev10 rows.
-3. A future `validation150` for sparse inspection.
+3. `validation150` for sparse inspection.
 4. Full public-HF run after architecture freeze.
 5. Official Scale submission for leaderboard claims.
 
@@ -123,6 +127,14 @@ pendulum, binary-tree reconstruction, Bayes/conditional probability, matrix
 search, sulphonation hyperconjugation, charged-ring potential, and z-test vs
 t-test feedback. It remains a local public-HF dev-set score, not a leaderboard
 claim.
+
+The current clean `validation150` checkpoint is baseline Sonnet `59.65%` versus
+agentic `72.13%` over 150 rows, a +12.48 point same-set gain. The main
+architectural lesson was subtractive: broad deterministic templates were
+overfitting dev50. Retiring the brittle coffee/under-filling, two-proportion,
+regression-residual, and two's-complement playbooks improved validation from
+roughly `69.4%` to `72.13%` while reducing deterministic guard usage. This is
+still a local public-HF-comparable result, not an official leaderboard claim.
 
 ## Office Hours Transfer Path
 

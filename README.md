@@ -166,8 +166,11 @@ uv run tutorbench-lab analyze-run runs/<run_id>/judged.jsonl
 ## Current Target
 
 The working target is `>=70%` local full-set ARRw before treating the system as
-plausibly leaderboard-beating. The current public leaderboard target should be
-rechecked before submission because it can change.
+plausibly leaderboard-beating. We have now crossed that threshold on the
+held-out `validation150` set: baseline Sonnet `59.65%` vs agentic
+`72.13%` in `runs/validation150-retired-playbooks-v3/`, a +12.48 point
+same-set gain. The current public leaderboard target should be rechecked before
+submission because it can change.
 
 Important: local public-HF results are not automatically leaderboard results.
 Run the parity audit before making any comparison claim:
@@ -188,3 +191,8 @@ Current clean `office_hours_dev50` checkpoint: baseline Sonnet
 `59.68%` vs agentic `85.28%` in
 `runs/b0a72ccc-6f9f-4625-9ca7-a1f7f37d34cc/`, a +25.60 point gain. This is a
 local public-HF dev-set score, not a leaderboard claim.
+
+Current `validation150` checkpoint: baseline Sonnet `59.65%` vs agentic
+`72.13%`, CI `69.02%-75.35%`, in
+`runs/validation150-retired-playbooks-v3/`. This is a local
+public-HF-comparable validation score, not an official leaderboard result.

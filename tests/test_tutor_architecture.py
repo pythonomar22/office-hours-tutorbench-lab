@@ -155,7 +155,9 @@ def test_quadrant_alone_does_not_trigger_ellipse_playbook(adaptive_example) -> N
     assert "ellipse rectangle" not in playbook
 
 
-def test_regression_residual_playbook_requires_precision(adaptive_example) -> None:
+def test_regression_residual_playbook_is_retired_for_generic_agent(
+    adaptive_example,
+) -> None:
     example = adaptive_example.model_copy(
         update={
             "subject": "Statistics",
@@ -167,11 +169,7 @@ def test_regression_residual_playbook_requires_precision(adaptive_example) -> No
         }
     )
 
-    playbook = build_task_playbook(build_turn_input(example))
-
-    assert playbook is not None
-    assert "predicted value to two decimals" in playbook
-    assert "quantify the size of the student's numerical error" in playbook
+    assert build_task_playbook(build_turn_input(example)) is None
 
 
 def test_titration_pka_playbook_does_not_route_to_dextrose(
@@ -242,6 +240,76 @@ def test_biology_failure_family_playbooks_cover_active_and_assessment(
     )
 
 
+def test_interphase_guidance_is_use_case_aware_not_active_only(
+    adaptive_example,
+) -> None:
+    assessment = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "Assess a student's interphase answer about whether mutations "
+                "can be inherited by daughter cells."
+            ),
+        }
+    )
+    adaptive = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": "Explain interphase and mutation inheritance.",
+            "follow_up_prompt": (
+                "I thought mutations during interphase could never reach "
+                "daughter cells. Why not?"
+            ),
+        }
+    )
+
+    assessment_playbook = build_task_playbook(build_turn_input(assessment))
+    adaptive_playbook = build_task_playbook(build_turn_input(adaptive))
+
+    assert assessment_playbook is not None
+    assert adaptive_playbook is not None
+    assert "Match the prompt's use case" in assessment_playbook
+    assert "Match the prompt's use case" in adaptive_playbook
+
+
+def test_active_hint_playbooks_do_not_hijack_adaptive_rows(adaptive_example) -> None:
+    gene_x_adaptive = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": (
+                "Methylation near Gene X, a tumor suppressor, changes cancer "
+                "incidence and expression."
+            ),
+            "follow_up_prompt": "Why would methylation make the outcome look worse?",
+        }
+    )
+    clt_adaptive = adaptive_example.model_copy(
+        update={
+            "subject": "Statistics",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": "Explain the central limit theorem for sample means.",
+            "follow_up_prompt": (
+                "I still do not understand whether the original population needs to be normal."
+            ),
+        }
+    )
+    factorial_adaptive = adaptive_example.model_copy(
+        update={
+            "subject": "Computer Science",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": "Explain recursive factorial code.",
+            "follow_up_prompt": "Why does the recursive call move toward zero?",
+        }
+    )
+
+    for example in [gene_x_adaptive, clt_adaptive, factorial_adaptive]:
+        playbook = build_task_playbook(build_turn_input(example))
+        assert playbook is None
+
+
 def test_physics_playbooks_prevent_kinematics_hijack(adaptive_example) -> None:
     conical = adaptive_example.model_copy(
         update={
@@ -251,9 +319,7 @@ def test_physics_playbooks_prevent_kinematics_hijack(adaptive_example) -> None:
                 "A mass on a string is in uniform circular motion at a constant "
                 "angle theta. Derive the period."
             ),
-            "follow_up_prompt": (
-                "How do I get rid of tension and speed to find the period?"
-            ),
+            "follow_up_prompt": ("How do I get rid of tension and speed to find the period?"),
         }
     )
     magnetic = adaptive_example.model_copy(
@@ -365,9 +431,7 @@ def test_two_proportion_playbook_is_not_generic_z_test(adaptive_example) -> None
             "subject": "Statistics",
             "batch": "USE_CASE_3_TEXT",
             "prompt": "A vaccine and placebo study asks for a proportion test.",
-            "follow_up_prompt": (
-                "I am confused about whether to pool p_v and p_p."
-            ),
+            "follow_up_prompt": ("I am confused about whether to pool p_v and p_p."),
         }
     )
 
@@ -375,8 +439,60 @@ def test_two_proportion_playbook_is_not_generic_z_test(adaptive_example) -> None
     vaccine_playbook = build_task_playbook(build_turn_input(vaccine))
 
     assert generic_playbook is None or "two-proportion z-test" not in generic_playbook
-    assert vaccine_playbook is not None
-    assert "two-proportion z-test" in vaccine_playbook
+    assert vaccine_playbook is None
+
+
+def test_assessment_playbooks_do_not_hijack_active_or_adaptive_rows(
+    adaptive_example,
+) -> None:
+    titration_assessment = adaptive_example.model_copy(
+        update={
+            "subject": "Chemistry",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "Assess a student's lactic acid titration pKa calculation using "
+                "Henderson-Hasselbalch and half-equivalence."
+            ),
+        }
+    )
+    residual_active = adaptive_example.model_copy(
+        update={
+            "subject": "Statistics",
+            "batch": "USE_CASE_3_TEXT",
+            "prompt": (
+                "A least-squares regression line predicts weight. Give a hint "
+                "for calculating the residual."
+            ),
+        }
+    )
+
+    assert build_task_playbook(build_turn_input(titration_assessment)) is None
+    assert build_task_playbook(build_turn_input(residual_active)) is None
+
+
+def test_retired_brittle_playbooks_do_not_route(adaptive_example) -> None:
+    coffee = adaptive_example.model_copy(
+        update={
+            "subject": "Statistics",
+            "batch": "USE_CASE_3_TEXT",
+            "prompt": (
+                "A coffee shop table asks: given morning, probability of cold beverage."
+            ),
+        }
+    )
+    twos = adaptive_example.model_copy(
+        update={
+            "subject": "Computer Science",
+            "batch": "USE_CASE_3_TEXT",
+            "prompt": (
+                "The student is converting a negative number using two's "
+                "complement and is confused about overflow."
+            ),
+        }
+    )
+
+    assert build_task_playbook(build_turn_input(coffee)) is None
+    assert build_task_playbook(build_turn_input(twos)) is None
 
 
 def test_remaining_dev50_failure_family_playbooks_route_cleanly(
@@ -398,16 +514,6 @@ def test_remaining_dev50_failure_family_playbooks_route_cleanly(
             "batch": "USE_CASE_3_TEXT",
             "prompt": "Penicillin allergy medical record reaction probability.",
             "follow_up_prompt": "Isn't P(R|A) enough, or do I need Bayes?",
-        }
-    )
-    coffee = adaptive_example.model_copy(
-        update={
-            "subject": "Statistics",
-            "batch": "USE_CASE_3_TEXT",
-            "prompt": (
-                "A coffee shop table asks: given morning, probability of cold "
-                "beverage."
-            ),
         }
     )
     ring = adaptive_example.model_copy(
@@ -438,10 +544,7 @@ def test_remaining_dev50_failure_family_playbooks_route_cleanly(
     assert "sulphonation hyperconjugation" in build_task_playbook(
         build_turn_input(sulphonation)
     )
-    assert "penicillin allergy Bayes" in build_task_playbook(
-        build_turn_input(penicillin)
-    )
-    assert "coffee-shop conditional" in build_task_playbook(build_turn_input(coffee))
+    assert "penicillin allergy Bayes" in build_task_playbook(build_turn_input(penicillin))
     assert "rotating charged ring" in build_task_playbook(build_turn_input(ring))
     assert "z-test vs t-test" in build_task_playbook(
         build_turn_input(t_test),

@@ -68,6 +68,26 @@ app = typer.Typer(no_args_is_help=True, help="TutorBench evaluation lab.")
 console = Console()
 
 
+def _append_parallel_error(
+    path: Path,
+    *,
+    phase: str,
+    index: int,
+    task_id: str,
+    exc: BaseException,
+) -> None:
+    append_jsonl(
+        path,
+        {
+            "phase": phase,
+            "index": index,
+            "task_id": task_id,
+            "error_type": type(exc).__name__,
+            "error": str(exc),
+        },
+    )
+
+
 @app.callback()
 def main(
     env_file: Path = typer.Option(
@@ -87,7 +107,7 @@ def doctor(
         False,
         "--ping",
         help="Ping provider model-list endpoints. This is cheap and does not generate.",
-    )
+    ),
 ) -> None:
     """Check which provider keys are configured."""
 
@@ -332,9 +352,7 @@ def run(
         else max_revision_attempts_default()
     )
     request_timeout_s = (
-        request_timeout_s
-        if request_timeout_s is not None
-        else request_timeout_default()
+        request_timeout_s if request_timeout_s is not None else request_timeout_default()
     )
     examples = load_examples_jsonl(examples_path)
     if task_id:
@@ -371,9 +389,7 @@ def run(
     run_dir = output_dir / run_id
     out_path = run_dir / "responses.jsonl"
     if resume and out_path.exists():
-        completed = {
-            record.example.task_id for record in read_model_jsonl(out_path, RunRecord)
-        }
+        completed = {record.example.task_id for record in read_model_jsonl(out_path, RunRecord)}
         examples = [example for example in examples if example.task_id not in completed]
         console.print(
             f"Resuming run [bold]{run_id}[/bold]; "
@@ -419,13 +435,39 @@ def run(
             append_jsonl(out_path, generate_record(index, example))
     else:
         console.print(f"Running with [bold]{workers}[/bold] worker threads")
+        error_count = 0
+        errors_path = run_dir / "errors.jsonl"
         with ThreadPoolExecutor(max_workers=workers) as executor:
             futures = {
-                executor.submit(generate_record, index, example): index
+                executor.submit(generate_record, index, example): (
+                    index,
+                    example.task_id,
+                )
                 for index, example in enumerate(examples, start=1)
             }
             for future in as_completed(futures):
-                append_jsonl(out_path, future.result())
+                index, task_id_for_error = futures[future]
+                try:
+                    append_jsonl(out_path, future.result())
+                except Exception as exc:
+                    error_count += 1
+                    _append_parallel_error(
+                        errors_path,
+                        phase="run",
+                        index=index,
+                        task_id=task_id_for_error,
+                        exc=exc,
+                    )
+                    console.print(
+                        f"[red]run failed[/red] for {task_id_for_error}; "
+                        f"logged to [bold]{errors_path}[/bold]"
+                    )
+        if error_count:
+            console.print(
+                f"Wrote partial responses to [bold]{out_path}[/bold]; "
+                f"{error_count} task(s) failed. Resume this run after inspection."
+            )
+            raise typer.Exit(code=1)
 
     console.print(f"Wrote responses to [bold]{out_path}[/bold]")
 
@@ -461,9 +503,7 @@ def judge(
 
     judge_model = judge_model or judge_model_default()
     request_timeout_s = (
-        request_timeout_s
-        if request_timeout_s is not None
-        else request_timeout_default()
+        request_timeout_s if request_timeout_s is not None else request_timeout_default()
     )
     records = list(read_model_jsonl(responses_path, RunRecord))
     if limit is not None:
@@ -471,12 +511,9 @@ def judge(
     out_path = output_path or responses_path.with_name("judged.jsonl")
     if resume and out_path.exists():
         completed = {
-            record.run.example.task_id
-            for record in read_model_jsonl(out_path, JudgedRunRecord)
+            record.run.example.task_id for record in read_model_jsonl(out_path, JudgedRunRecord)
         }
-        records = [
-            record for record in records if record.example.task_id not in completed
-        ]
+        records = [record for record in records if record.example.task_id not in completed]
         console.print(f"Resuming judge; skipping {len(completed)} completed task ID(s)")
 
     def judge_record(index: int, record: RunRecord) -> JudgedRunRecord:
@@ -493,13 +530,39 @@ def judge(
             append_jsonl(out_path, judge_record(index, record))
     else:
         console.print(f"Judging with [bold]{workers}[/bold] worker threads")
+        error_count = 0
+        errors_path = out_path.with_name("judge_errors.jsonl")
         with ThreadPoolExecutor(max_workers=workers) as executor:
             futures = {
-                executor.submit(judge_record, index, record): index
+                executor.submit(judge_record, index, record): (
+                    index,
+                    record.example.task_id,
+                )
                 for index, record in enumerate(records, start=1)
             }
             for future in as_completed(futures):
-                append_jsonl(out_path, future.result())
+                index, task_id_for_error = futures[future]
+                try:
+                    append_jsonl(out_path, future.result())
+                except Exception as exc:
+                    error_count += 1
+                    _append_parallel_error(
+                        errors_path,
+                        phase="judge",
+                        index=index,
+                        task_id=task_id_for_error,
+                        exc=exc,
+                    )
+                    console.print(
+                        f"[red]judge failed[/red] for {task_id_for_error}; "
+                        f"logged to [bold]{errors_path}[/bold]"
+                    )
+        if error_count:
+            console.print(
+                f"Wrote partial judgments to [bold]{out_path}[/bold]; "
+                f"{error_count} task(s) failed. Resume this judge after inspection."
+            )
+            raise typer.Exit(code=1)
 
     console.print(f"Wrote judgments to [bold]{out_path}[/bold]")
 

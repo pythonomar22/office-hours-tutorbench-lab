@@ -22,29 +22,46 @@ def build_task_playbook(
     if extra_context:
         text = text + "\n" + extra_context.lower()
     notes: list[str] = []
+    use_case = turn.use_case.value
 
     if turn.subject.lower() == "computer science":
-        if _has_binary_tree_traversal_context(text):
+        if use_case == "assessment" and _has_binary_tree_traversal_context(text):
             notes.append(_binary_tree_traversal_assessment_playbook())
-        if _has_kth_smallest_matrix_context(text):
+        if use_case == "assessment" and _has_kth_smallest_matrix_context(text):
             notes.append(_kth_smallest_matrix_assessment_playbook())
         if _has_oop_design_context(text):
             notes.append(_oop_design_playbook())
-        if _has_any(text, ["factorial", "recursive", "recursion"]):
+        if use_case == "assessment" and _has_any(text, ["factorial", "recursive", "recursion"]):
             notes.append(_factorial_code_playbook())
 
-    if turn.subject.lower() == "chemistry" and _has_titration_pka_context(text):
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "adaptive"
+        and _has_titration_pka_context(text)
+    ):
         notes.append(_titration_pka_adaptive_playbook())
-    if turn.subject.lower() == "chemistry" and _has_sulphonation_context(text):
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "adaptive"
+        and _has_sulphonation_context(text)
+    ):
         notes.append(_sulphonation_hyperconjugation_playbook())
-    if turn.subject.lower() == "chemistry" and _has_hydrogen_halide_context(text):
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "adaptive"
+        and _has_hydrogen_halide_context(text)
+    ):
         notes.append(_hydrogen_halide_acid_playbook())
-    if turn.subject.lower() == "chemistry" and _has_any(
-        text, ["heat exchange", "furnace gases", "crude oil", "desalination"]
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "active_learning"
+        and _has_any(text, ["heat exchange", "furnace gases", "crude oil", "desalination"])
     ):
         notes.append(_heat_exchange_hint_playbook())
-    if turn.subject.lower() == "chemistry" and _has_any(
-        text, ["blue spheres", "red spheres", "h2o molecules", "limiting reagent"]
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "assessment"
+        and _has_any(text, ["blue spheres", "red spheres", "h2o molecules", "limiting reagent"])
     ):
         notes.append(_water_limiting_reagent_visual_playbook())
 
@@ -73,12 +90,16 @@ def build_task_playbook(
         text, ["interphase", "mutation", "daughter cells"]
     ):
         notes.append(_interphase_hint_playbook())
-    if turn.subject.lower() == "biology" and _has_any(
-        text, ["arctic fox", "coat color", "denaturation", "melanin"]
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "active_learning"
+        and _has_any(text, ["arctic fox", "coat color", "denaturation", "melanin"])
     ):
         notes.append(_arctic_fox_denaturation_hint_playbook())
-    if turn.subject.lower() == "biology" and _has_any(
-        text, ["gene x", "tumor suppressor", "methylation near"]
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "active_learning"
+        and _has_any(text, ["gene x", "tumor suppressor", "methylation near"])
     ):
         notes.append(_gene_x_methylation_hint_playbook())
     if (
@@ -93,76 +114,104 @@ def build_task_playbook(
         and _has_aerobic_respiration_context(text)
     ):
         notes.append(_aerobic_respiration_assessment_playbook())
-    if turn.subject.lower() == "biology" and _has_any(
-        text, ["thermophilus", "infrared photosynthesis", "h2s", "chemosynthesis"]
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "active_learning"
+        and _has_any(text, ["thermophilus", "infrared photosynthesis", "h2s", "chemosynthesis"])
     ):
         notes.append(_extremophile_metabolism_hint_playbook())
     if (
         turn.subject.lower() == "biology"
         and turn.use_case.value == "assessment"
-        and _has_any(
-            text, ["plant cell", "animal cell", "cell wall", "chloroplast"]
-        )
+        and _has_any(text, ["plant cell", "animal cell", "cell wall", "chloroplast"])
     ):
         notes.append(_plant_animal_cell_diagram_playbook())
-    if turn.subject.lower() == "biology" and _has_any(
-        text, ["independent assortment", "testcross", "punnett", "rw/tt", "ww/tt"]
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "adaptive"
+        and _has_any(text, ["independent assortment", "testcross", "punnett", "rw/tt", "ww/tt"])
     ):
         notes.append(_mendelian_testcross_playbook())
 
-    if turn.subject.lower() == "statistics" and _has_two_proportion_context(text):
-        notes.append(_pooled_proportion_hint_playbook())
-    if turn.subject.lower() == "statistics" and _has_t_test_vs_z_test_context(text):
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "assessment"
+        and _has_t_test_vs_z_test_context(text)
+    ):
         notes.append(_t_test_vs_z_test_assessment_playbook())
-    if turn.subject.lower() == "statistics" and _has_penicillin_bayes_context(text):
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "active_learning"
+        and _has_penicillin_bayes_context(text)
+    ):
         notes.append(_penicillin_bayes_hint_playbook())
-    if turn.subject.lower() == "statistics" and _has_coffee_conditional_context(text):
-        notes.append(_coffee_conditional_probability_hint_playbook())
-    if turn.subject.lower() == "statistics" and _has_any(
-        text, ["central limit theorem", "clt", "sample mean", "right-skewed"]
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "active_learning"
+        and _has_any(text, ["central limit theorem", "clt", "sample mean", "right-skewed"])
+        and not _has_any(text, ["coffee shop", "espresso", "under-filling"])
     ):
         notes.append(_clt_sample_mean_hint_playbook())
     if (
         turn.subject.lower() == "statistics"
-        and "residual" in text
-        and _has_any(text, ["least-squares regression", "regression line", "predicted weight"])
-    ):
-        notes.append(_regression_residual_feedback_playbook())
-    if turn.subject.lower() == "statistics" and _has_any(
-        text, ["bonferroni", "pooled proportion", "standardized residual"]
+        and use_case == "adaptive"
+        and _has_any(text, ["bonferroni", "pooled proportion", "standardized residual"])
     ):
         notes.append(_bonferroni_pooled_proportion_adaptive_playbook())
 
-    if turn.subject.lower() == "physics" and _has_conical_pendulum_context(text):
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "adaptive"
+        and _has_conical_pendulum_context(text)
+    ):
         notes.append(_conical_pendulum_adaptive_playbook())
-    if turn.subject.lower() == "physics" and _has_magnetic_triangle_context(text):
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "adaptive"
+        and _has_magnetic_triangle_context(text)
+    ):
         notes.append(_magnetic_triangle_adaptive_playbook())
-    if turn.subject.lower() == "physics" and _has_rotating_charged_ring_context(text):
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "active_learning"
+        and _has_rotating_charged_ring_context(text)
+    ):
         notes.append(_rotating_charged_ring_hint_playbook())
-    if turn.subject.lower() == "physics" and _has_kinematics_hint_context(text):
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "active_learning"
+        and _has_kinematics_hint_context(text)
+    ):
         notes.append(_kinematics_hint_playbook())
 
-    if turn.subject.lower() == "calculus" and _has_any(
-        text, ["sin(t)/t", "\\frac{\\sin(t)}{t}", "removable discontinuity"]
+    if (
+        turn.subject.lower() == "calculus"
+        and use_case == "assessment"
+        and _has_any(text, ["sin(t)/t", "\\frac{\\sin(t)}{t}", "removable discontinuity"])
     ):
         notes.append(_sinc_integral_assessment_playbook())
 
-    if turn.subject.lower() == "chemistry" and (
-        _has_any(text, ["2so2", "so_2", "so2"])
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "assessment"
+        and _has_any(text, ["2so2", "so_2", "so2"])
         and _has_any(text, ["so3", "so_3"])
     ):
         notes.append(_le_chatelier_assessment_playbook())
-    if turn.subject.lower() == "chemistry" and _has_dextrose_solubility_context(text):
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "active_learning"
+        and _has_dextrose_solubility_context(text)
+    ):
         notes.append(_dextrose_solubility_hint_playbook())
-    if turn.subject.lower() == "chemistry" and _has_any(
-        text, ["second ionization", "second i.e", "ie₂", "ie2", "ionization energy"]
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "assessment"
+        and _has_any(
+            text, ["second ionization", "second i.e", "ie₂", "ie2", "ionization energy"]
+        )
     ):
         notes.append(_second_ionization_energy_assessment_playbook())
-
-    if turn.subject.lower() == "computer science" and _has_any(
-        text, ["two's complement", "twos complement", "2's complement", "overflow"]
-    ):
-        notes.append(_twos_complement_negative_hint_playbook())
 
     if not notes:
         return None
@@ -205,8 +254,7 @@ def _has_sulphonation_context(text: str) -> bool:
 
 def _has_aerobic_respiration_context(text: str) -> bool:
     return _has_any(text, ["aerobic respiration", "anaerobic respiration"]) or (
-        "glycolysis" in text
-        and _has_any(text, ["krebs", "citric acid", "electron transport"])
+        "glycolysis" in text and _has_any(text, ["krebs", "citric acid", "electron transport"])
     )
 
 
@@ -265,12 +313,8 @@ def _has_oxygen_co2_adaptive_context(text: str) -> bool:
 
 
 def _has_two_proportion_context(text: str) -> bool:
-    return (
-        _has_any(text, ["pooled proportion", "two-proportion", "two proportion"])
-        or (
-            _has_any(text, ["vaccine", "placebo"])
-            and _has_any(text, ["p_v", "p_p", "proportion"])
-        )
+    return _has_any(text, ["pooled proportion", "two-proportion", "two proportion"]) or (
+        _has_any(text, ["vaccine", "placebo"]) and _has_any(text, ["p_v", "p_p", "proportion"])
     )
 
 
@@ -698,6 +742,10 @@ def _interphase_hint_playbook() -> str:
     return dedent(
         """\
         Task-family playbook: interphase mutation active-learning hint
+        - Match the prompt's use case: in assessment, explicitly identify what
+          the student got right/wrong; in adaptive explanation, directly answer
+          the student's confusion; in active learning, keep the correction
+          scaffolded without writing the student's final sentence for them.
         - Start with this explicit reconnection or a close paraphrase:
           "Since the original question asks you to describe interphase in the
           context of cell division..."
