@@ -1,0 +1,125 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 0.9444444444444444,
+      "ci_low": 0.8780487804878049,
+      "count": 2,
+      "mean_arrw": 0.9112466124661247,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": 0.8366191124811815,
+      "ci_low": 0.49518203296367796,
+      "count": 6,
+      "mean_arrw": 0.6618337757614245,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7142857142857143,
+      "name": "Create"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.7297297297297297,
+      "count": 2,
+      "mean_arrw": 0.8648648648648649,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8648648648648649,
+      "name": "Remember"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.9024267968233486,
+      "ci_low": 0.6458814164915605,
+      "count": 8,
+      "mean_arrw": 0.7983519517912456,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 0.861805201427843,
+      "ci_low": 0.5141509433962264,
+      "count": 4,
+      "mean_arrw": 0.678890143512785,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.5,
+      "count": 3,
+      "mean_arrw": 0.7692307692307693,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8780487804878049,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 0.918918918918919,
+      "ci_low": 0.6124426313105559,
+      "count": 4,
+      "mean_arrw": 0.7701063597290012,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": 0.9444444444444444,
+      "ci_low": 0.36893203883495146,
+      "count": 3,
+      "mean_arrw": 0.6810354043363752,
+      "name": "Physics"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7931034482758621,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 0.9066091954022988,
+      "ci_low": 0.5981494920174165,
+      "count": 4,
+      "mean_arrw": 0.7683855218012667,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 0.8714568226763348,
+      "ci_low": 0.5912162162162162,
+      "count": 4,
+      "mean_arrw": 0.739299839909596,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 0.9864864864864865,
+      "ci_low": 0.5199422723694569,
+      "count": 4,
+      "mean_arrw": 0.7679086853844136,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": 0.8722617451601586,
+    "ci_low": 0.6311862292034887,
+    "count": 12,
+    "mean_arrw": 0.7585313490317588,
+    "name": "overall"
+  },
+  "run_id": "heldout-v8-regression-probe"
+}

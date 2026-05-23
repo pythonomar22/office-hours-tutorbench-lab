@@ -10,6 +10,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from tutorbench_lab.blend import BlendPolicy, blend_run_records
 from tutorbench_lab.config import (
     candidate_model_default,
     critic_model_default,
@@ -566,6 +567,47 @@ def judge(
             raise typer.Exit(code=1)
 
     console.print(f"Wrote judgments to [bold]{out_path}[/bold]")
+
+
+@app.command("blend-responses")
+def blend_responses(
+    primary_path: Path,
+    auxiliary_path: Path,
+    output_path: Path,
+    run_id: str = typer.Option(
+        "blend-conservative-v10",
+        "--run-id",
+        help="Run ID to write into the blended response records.",
+    ),
+    policy: BlendPolicy = typer.Option(
+        BlendPolicy.CONSERVATIVE_V10,
+        "--policy",
+        help="Rubric-blind deterministic routing policy.",
+    ),
+) -> None:
+    """Blend two response files with a rubric-blind deterministic router."""
+
+    primary_records = list(read_model_jsonl(primary_path, RunRecord))
+    auxiliary_records = list(read_model_jsonl(auxiliary_path, RunRecord))
+    records = blend_run_records(
+        primary_records,
+        auxiliary_records,
+        run_id=run_id,
+        policy=policy,
+    )
+    auxiliary_count = sum(
+        1
+        for record in records
+        if record.response.trace.get("blend_selected_source") == "auxiliary"
+    )
+    write_jsonl(output_path, records)
+    console.print(
+        f"Wrote {len(records)} blended response row(s) to [bold]{output_path}[/bold]"
+    )
+    console.print(
+        f"Selected auxiliary for [bold]{auxiliary_count}[/bold] row(s) "
+        f"using policy [bold]{policy.value}[/bold]"
+    )
 
 
 @app.command()

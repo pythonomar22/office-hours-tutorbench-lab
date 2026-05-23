@@ -124,6 +124,7 @@ class AnthropicClient(ModelClient):
         raw_response = self._client.messages.with_raw_response.create(
             model=self.spec.model,
             max_tokens=max_tokens,
+            temperature=0,
             system=turn.system_prompt,
             messages=[{"role": "user", "content": content}],
         )

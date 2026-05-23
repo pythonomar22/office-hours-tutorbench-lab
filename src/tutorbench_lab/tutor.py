@@ -16,6 +16,7 @@ from tutorbench_lab.constants import (
     DEFAULT_SOLVER_MODEL,
     DEFAULT_VERIFIER_MODEL,
 )
+from tutorbench_lab.numeric_probe import build_numeric_probe
 from tutorbench_lab.playbooks import build_task_playbook
 from tutorbench_lab.protocol import build_turn_input
 from tutorbench_lab.providers import GenerateResult, make_client, response_from_result
@@ -145,6 +146,10 @@ def run_agentic(
             client=solver_client,
             max_tokens=900,
         )
+    numeric_probe = build_numeric_probe(
+        base_turn,
+        perception_result.text if perception_result else None,
+    )
     task_playbook = build_task_playbook(
         base_turn,
         extra_context=perception_result.text if perception_result else None,
@@ -156,6 +161,7 @@ def run_agentic(
             base_turn,
             perception_transcript=perception_result.text if perception_result else None,
             visual_probe=visual_probe,
+            numeric_probe=numeric_probe,
             task_playbook=task_playbook,
         )
         specialist_audit_result = generate_stage(
@@ -183,6 +189,7 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        numeric_probe=numeric_probe,
         task_playbook=task_playbook,
     )
     solver_result = generate_stage(
@@ -200,6 +207,7 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        numeric_probe=numeric_probe,
         task_playbook=task_playbook,
     )
     contract_result = generate_stage(
@@ -218,6 +226,7 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        numeric_probe=numeric_probe,
         task_playbook=task_playbook,
     )
     verification_result = generate_stage(
@@ -237,6 +246,7 @@ def run_agentic(
         if specialist_audit_result
         else None,
         visual_probe=visual_probe,
+        numeric_probe=numeric_probe,
         task_playbook=task_playbook,
     )
     composer_result = generate_stage(
@@ -264,6 +274,7 @@ def run_agentic(
             if specialist_audit_result
             else None,
             visual_probe=visual_probe,
+            numeric_probe=numeric_probe,
             task_playbook=task_playbook,
         )
         critic_result = generate_stage(
@@ -283,6 +294,7 @@ def run_agentic(
             if specialist_audit_result
             else None,
             visual_probe=visual_probe,
+            numeric_probe=numeric_probe,
             task_playbook=task_playbook,
         )
         coverage_critic_result = generate_stage(
@@ -342,6 +354,7 @@ def run_agentic(
             if specialist_audit_result
             else None,
             visual_probe=visual_probe,
+            numeric_probe=numeric_probe,
             task_playbook=task_playbook,
         )
         revision_result = generate_stage(
@@ -404,6 +417,7 @@ def run_agentic(
             "stage_usage": stage_usage,
             "stage_rate_limits": stage_rate_limits,
             "visual_probe": visual_probe,
+            "numeric_probe": numeric_probe,
             "task_playbook": task_playbook,
             "perception_transcript": perception_result.text if perception_result else None,
             "specialist_audit": specialist_audit_text,
@@ -518,6 +532,7 @@ def _specialist_audit_turn(
     *,
     perception_transcript: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
@@ -526,6 +541,9 @@ def _specialist_audit_turn(
         else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    numeric_probe_block = (
+        f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else ""
+    )
     task_playbook_block = (
         f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
         if task_playbook
@@ -586,6 +604,12 @@ def _specialist_audit_turn(
                 an ICE table or likelihood derivation against the prompt. Do not
                 call a visible expression correct unless you can quote or
                 closely paraphrase it.
+                For graphs, charts, tables, and spectra, create a "locked visual
+                values" note when the student's copied numbers differ from the
+                visible tick/grid/axis evidence. Use the best visible reading
+                and mark it approximate only when exact ticks are not printed,
+                but do not discard a clear discrepancy merely because the graph
+                is hand-drawn or low resolution.
 
                 For adaptive-explanation rows, identify the exact visible facts
                 needed to answer the student's follow-up, but do not let an
@@ -603,6 +627,7 @@ def _specialist_audit_turn(
                 {base_turn.user_prompt}
                 {perception_block}
                 {visual_probe_block}
+                {numeric_probe_block}
                 {task_playbook_block}
 
                 Return the specialist audit only.
@@ -618,6 +643,7 @@ def _solver_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     use_case_note = ""
@@ -637,6 +663,9 @@ def _solver_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    numeric_probe_block = (
+        f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else ""
+    )
     task_playbook_block = (
         f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
         if task_playbook
@@ -658,6 +687,11 @@ def _solver_turn(
                 text and image, resolve it from the image evidence rather than
                 guessing. Be especially careful with numbered labels, signs,
                 units, code lines, and handwritten claims.
+                For chart, table, graph, and spectrum rows, propagate visible
+                numeric discrepancies instead of softening them away: if the
+                perception or audit estimates a plotted value and the student
+                used a different value, treat that as a candidate student error
+                that the final response likely needs to name.
                 For trigonometric graphs, verify the function from the graph's
                 y-intercept, phase, period, and labels before accepting the
                 student's written identification; keep f(x), F(x), and any
@@ -681,6 +715,10 @@ def _solver_turn(
                 evidence for visible marker endpoints, code lines, and current
                 label mappings. If it conflicts with the perception transcript,
                 explicitly resolve the conflict before planning the tutor's goal.
+                When a local numeric probe is provided, treat it as a calculator
+                sanity check for visible arithmetic. If your arithmetic conflicts
+                with it, recompute and resolve the conflict explicitly before
+                accepting or rejecting the student's numerical step.
 
                 For adaptive-explanation rows, the conversation context is the
                 task. If the student's follow-up is about the provided initial
@@ -704,6 +742,7 @@ def _solver_turn(
                 + perception_block
                 + specialist_block
                 + visual_probe_block
+                + numeric_probe_block
                 + task_playbook_block
                 + "\n\nReturn private analysis with: facts from prompt/image, "
                 "transcribed image details when present, correct reasoning, "
@@ -721,6 +760,7 @@ def _contract_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
@@ -732,6 +772,9 @@ def _contract_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    numeric_probe_block = (
+        f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else ""
+    )
     task_playbook_block = (
         f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
         if task_playbook
@@ -770,6 +813,7 @@ def _contract_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {numeric_probe_block}
                 {task_playbook_block}
 
                 Private diagnosis:
@@ -815,6 +859,7 @@ def _verification_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
@@ -826,6 +871,9 @@ def _verification_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    numeric_probe_block = (
+        f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else ""
+    )
     task_playbook_block = (
         f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
         if task_playbook
@@ -845,6 +893,9 @@ def _verification_turn(
                   tests, edge cases, and API/doc-comment expectations
                 - diagrams/images: compare numbered labels/arrows to actual
                   structures, and produce a correction table when useful
+                - charts/tables/graphs/spectra: compare visible values to the
+                  student's copied values and preserve discrepancies for the
+                  final tutor response
                 - active learning: state what intermediate checkpoints may be
                   disclosed and what final answer must be withheld
 
@@ -867,6 +918,9 @@ def _verification_turn(
                 minority yellow/gold border pixels, do not call it cell wall;
                 classify it as the inner boundary/cell membrane when it sits on
                 the plant-cell boundary region.
+                If the local numeric probe provides a simple arithmetic value,
+                use it as an external calculator check. Do not contradict it
+                without showing a corrected recomputation.
                 If a rubric-blind task-family playbook provides a known
                 correction map for a recurring plant/animal cell diagram, treat
                 that map as the tie-breaker for ambiguous numbered labels and
@@ -883,6 +937,7 @@ def _verification_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {numeric_probe_block}
                 {task_playbook_block}
 
                 Private diagnosis:
@@ -907,6 +962,7 @@ def _composer_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     return base_turn.model_copy(
@@ -920,6 +976,7 @@ def _composer_turn(
                 perception_transcript=perception_transcript,
                 specialist_audit=specialist_audit,
                 visual_probe=visual_probe,
+                numeric_probe=numeric_probe,
                 task_playbook=task_playbook,
             )
             + "\n\nNow write the student-facing tutor response.",
@@ -1024,6 +1081,12 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         mistakes, name the first conceptual mistake and also any later
         arithmetic, notation, unit, code, or interpretation slip that a student
         would need to fix.
+        If a graph, chart, table, code screenshot, or handwritten line has a
+        visible value that differs from the student's copied value, explicitly
+        mention the discrepancy and use the visible value for assessment. Do
+        not soften it into "methodology is fine" unless the visual evidence is
+        genuinely unreadable. If the local numeric probe is provided, use it as
+        a calculator sanity check before calling a numerical step wrong.
 
         For code assessment, quote the exact faulty line, mention its line
         number when visible, provide corrected code when useful, suggest at
@@ -1063,6 +1126,7 @@ def _composer_user_prompt(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> str:
     return (
@@ -1074,6 +1138,7 @@ def _composer_user_prompt(
         )
         + (f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else "")
         + (f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else "")
+        + (f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else "")
         + (
             f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
             if task_playbook
@@ -1100,6 +1165,7 @@ def _critic_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
@@ -1111,6 +1177,9 @@ def _critic_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    numeric_probe_block = (
+        f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else ""
+    )
     task_playbook_block = (
         f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
         if task_playbook
@@ -1136,6 +1205,11 @@ def _critic_turn(
                 accepts a visible step as correct without quoting the exact
                 line/expression/code/label being accepted, or if it contradicts
                 the specialist evidence audit without explicitly resolving why.
+                Request revision if the draft contradicts a local numeric probe
+                or calls an arithmetic step wrong when the probe supports it.
+                Request revision if a visible chart/table/graph value differs
+                from the student's copied value and the draft ignores that
+                discrepancy.
                 When a rubric-blind task-family playbook is provided, request
                 revision if the draft ignores a relevant required move from it.
                 If the playbook uses words like "required", "quote", "state",
@@ -1194,6 +1268,7 @@ def _critic_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {numeric_probe_block}
                 {task_playbook_block}
 
                 Private diagnosis:
@@ -1223,6 +1298,7 @@ def _coverage_critic_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     perception_block = (
@@ -1234,6 +1310,9 @@ def _coverage_critic_turn(
         f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
     )
     visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    numeric_probe_block = (
+        f"\n\nLocal numeric probe:\n{numeric_probe}" if numeric_probe else ""
+    )
     task_playbook_block = (
         f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
         if task_playbook
@@ -1287,6 +1366,12 @@ def _coverage_critic_turn(
                 Request revision if a multimodal response does not anchor to
                 visible work, labels, code lines, equations, or student wording
                 when those details are available.
+                Request revision if a multimodal chart/table/graph discrepancy
+                is visible in the perception or specialist audit and the draft
+                does not explicitly tell the student which visible value they
+                copied incorrectly.
+                Request revision if a local numeric probe catches arithmetic
+                and the draft ignores or contradicts it.
                 Request revision if a multimodal draft broadly says the work is
                 correct while the perception transcript, specialist audit, or
                 verifier notes include visible unresolved mistakes. Request
@@ -1308,6 +1393,7 @@ def _coverage_critic_turn(
                 {perception_block}
                 {specialist_block}
                 {visual_probe_block}
+                {numeric_probe_block}
                 {task_playbook_block}
 
                 Private diagnosis:
@@ -1338,6 +1424,7 @@ def _revision_turn(
     perception_transcript: str | None = None,
     specialist_audit: str | None = None,
     visual_probe: str | None = None,
+    numeric_probe: str | None = None,
     task_playbook: str | None = None,
 ) -> TutorTurnInput:
     return base_turn.model_copy(
@@ -1352,6 +1439,7 @@ def _revision_turn(
                 perception_transcript=perception_transcript,
                 specialist_audit=specialist_audit,
                 visual_probe=visual_probe,
+                numeric_probe=numeric_probe,
                 task_playbook=task_playbook,
             )
             + "\n\n"

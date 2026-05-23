@@ -1,0 +1,865 @@
+{
+  "playbooks": [
+    {
+      "count": 5,
+      "mean_arrw": 0.6110404477536262,
+      "name": "none"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.972972972972973,
+      "name": "AP CSA MemberInfo removeMembers assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Hardy-Weinberg graph-reading assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7142857142857143,
+      "name": "OOP design / inventory class"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8780487804878049,
+      "name": "chlorine PES / bromide binding-energy explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7297297297297297,
+      "name": "towing-rope horizontal-components assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9444444444444444,
+      "name": "tractor-airplane Newton's-law active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8076923076923077,
+      "name": "trihybrid ideal-peas active-learning hint"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 52.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.543859649122807,
+      "passed_positive_weight": 62.0,
+      "positive_weight": 114.0,
+      "rows_with_failure": 6,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 35.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.6568627450980392,
+      "passed_positive_weight": 67.0,
+      "positive_weight": 102.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 53.0,
+      "name": "instruction_following",
+      "negative_criteria": 0,
+      "pass_rate": 0.7791666666666667,
+      "passed_positive_weight": 187.0,
+      "positive_weight": 240.0,
+      "rows_with_failure": 8,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.8611111111111112,
+      "passed_positive_weight": 31.0,
+      "positive_weight": 36.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 13.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.9037037037037037,
+      "passed_positive_weight": 122.0,
+      "positive_weight": 135.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 14.0,
+      "positive_weight": 14.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 24.0,
+      "positive_weight": 24.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 0.9444444444444444,
+        "ci_low": 0.8780487804878049,
+        "count": 2,
+        "mean_arrw": 0.9112466124661247,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.8366191124811815,
+        "ci_low": 0.49518203296367796,
+        "count": 6,
+        "mean_arrw": 0.6618337757614245,
+        "name": "Apply"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.7142857142857143,
+        "name": "Create"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.7297297297297297,
+        "count": 2,
+        "mean_arrw": 0.8648648648648649,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8648648648648649,
+        "name": "Remember"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.9024267968233486,
+        "ci_low": 0.6458814164915605,
+        "count": 8,
+        "mean_arrw": 0.7983519517912456,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.861805201427843,
+        "ci_low": 0.5141509433962264,
+        "count": 4,
+        "mean_arrw": 0.678890143512785,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.5,
+        "count": 3,
+        "mean_arrw": 0.7692307692307693,
+        "name": "Biology"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8780487804878049,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.918918918918919,
+        "ci_low": 0.6124426313105559,
+        "count": 4,
+        "mean_arrw": 0.7701063597290012,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 0.9444444444444444,
+        "ci_low": 0.36893203883495146,
+        "count": 3,
+        "mean_arrw": 0.6810354043363752,
+        "name": "Physics"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.7931034482758621,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 0.9066091954022988,
+        "ci_low": 0.5981494920174165,
+        "count": 4,
+        "mean_arrw": 0.7683855218012667,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.8714568226763348,
+        "ci_low": 0.5912162162162162,
+        "count": 4,
+        "mean_arrw": 0.739299839909596,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.9864864864864865,
+        "ci_low": 0.5199422723694569,
+        "count": 4,
+        "mean_arrw": 0.7679086853844136,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 0,
+    "overall": {
+      "ci_high": 0.8697695618427326,
+      "ci_low": 0.6300816607649361,
+      "count": 12,
+      "mean_arrw": 0.7585313490317588,
+      "name": "overall"
+    },
+    "run_id": "heldout-v8-regression-probe"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 483127,
+    "generation_output_tokens": 60883,
+    "judge_input_tokens": 31843,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 3154,
+    "mean_generation_latency_ms": 107576.41666666667,
+    "mean_judge_latency_ms": 4164.333333333333,
+    "negative_weight_review_count": 0,
+    "row_count": 12,
+    "run_id": "heldout-v8-regression-probe",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1994000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19999
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2394000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 12,
+      "coverage_critic_0": 12,
+      "coverage_critic_1": 1,
+      "coverage_critic_2": 1,
+      "critic_0": 12,
+      "critic_1": 1,
+      "critic_2": 1,
+      "domain_verifier": 12,
+      "perception": 8,
+      "planner": 12,
+      "revision_1": 1,
+      "revision_2": 1,
+      "solver": 12,
+      "specialist_audit": 8
+    },
+    "stage_mean_latency_ms": {
+      "composer": 15620.92,
+      "coverage_critic_0": 6080,
+      "coverage_critic_1": 10169,
+      "coverage_critic_2": 5125,
+      "critic_0": 5447.5,
+      "critic_1": 7586,
+      "critic_2": 4201,
+      "domain_verifier": 12151.5,
+      "perception": 14880.38,
+      "planner": 20640.67,
+      "revision_1": 8615,
+      "revision_2": 7984,
+      "solver": 21025.58,
+      "specialist_audit": 19575
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 26.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.36585365853658536,
+      "passed_positive_weight": 15.0,
+      "positive_weight": 41.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 0.5,
+      "passed_positive_weight": 5.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 30.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.5522388059701493,
+      "passed_positive_weight": 37.0,
+      "positive_weight": 67.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 21.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.7407407407407407,
+      "passed_positive_weight": 60.0,
+      "positive_weight": 81.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 30.0,
+      "name": "Not applicable",
+      "negative_criteria": 0,
+      "pass_rate": 0.76,
+      "passed_positive_weight": 95.0,
+      "positive_weight": 125.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 11.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.7924528301886793,
+      "passed_positive_weight": 42.0,
+      "positive_weight": 53.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 0.803921568627451,
+      "passed_positive_weight": 41.0,
+      "positive_weight": 51.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.8461538461538461,
+      "passed_positive_weight": 55.0,
+      "positive_weight": 65.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 2.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 0.9130434782608695,
+      "passed_positive_weight": 21.0,
+      "positive_weight": 23.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.36893203883495146,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that the circuit consists of 12V power source, a 3ohm resistor, an upper branch with a 6ohm resistor, and a lower branch with 5ohm and 6ohm resistors.",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the 3ohm resistor is in series with the upper and lower branches in the circuit.",
+          "criterion_index": 5,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the upper and lower branch are in parallel.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must calculate the total resistance of the lower branch using 5 ohm + 6 ohm.",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the total resistance of the lower branch as 11ohms.",
+          "criterion_index": 9,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 13,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work ### What You Got Right Your instinct to use Ohm's Law is exactly right, and your algebra is correct: $$V = IR \\implies I = \\frac{V}{R}$$ You also correctly identified the source voltage as 12 V, and your arithmetic (12 \u00f7 3 = 4) is...",
+      "rubric_count": 23,
+      "subject": "Physics",
+      "task_id": "683e450e225c80e89ef01948",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.5,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student\u2019s lack of background knowledge regarding importance of meiosis to sexual reproduction.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explain that humans can\u2019t use mitosis to make sperm and eggs because the embryo would be genetically identical to the parent.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that genetic diversity created by meiosis is crucial for a population to adapt to changing environments and prevent the harmful impacts of mutations.",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Why Meiosis Must Produce Haploid Cells Great instinct to ask \"why\" \u2014 the earlier explanation showed *what* happens in one generation, but didn't explain the deeper reason meiosis halves the chromosome number. Let's fix that. --- ### The Core Idea: Fertil...",
+      "rubric_count": 10,
+      "subject": "Biology",
+      "task_id": "685454ee2187108ef9b08a95",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5283018867924528,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must hint for the student to consider that the `CombinedTable` constructor takes two extant `SingleTable` objects and simply assigns them new names within `Combined...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must hint for the student to consider that the two `SingleTable` objects exist simultaneously within the `CombinedTable` scope and their original scope.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must remind the student that the `CombinedTable` constructor lacks the `new` keyword, showing that no new `SingleTable` objects are explicitly created.",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must remind the student that Java is pass-by-value such that it copies object references (not objects themselves), so it is certain that the constructor did not cop...",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must not provide the next step directly by telling the student to move the desirability calculation to the `getDesirability` method.",
+          "criterion_index": 9,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your instinct is right \u2014 the constructor **is** a valid place to put the desirability calculation, and your overall architecture (store it in a field, return it from the getter) is coherent. Your `getNumSeats()` implementation is also correct. That said, th...",
+      "rubric_count": 13,
+      "subject": "Computer Science",
+      "task_id": "68477209c4915de7a58b3d02",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.7142857142857143,
+      "bloom_taxonomy": "Create",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must provide an implementation with `boolean` as the type of `numberOfDoors`.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response could provide static variables as an alternative approach.",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "OOP design / inventory class",
+      "response_preview": "You're thinking of an **enum** (enumeration) \u2014 that's almost certainly what you had in mind! ## Why Enum Fits Here The key insight is that `numberOfDoors` isn't really a free-range integer \u2014 it can *only* ever be `2` or `4`. That's a small, fixed set of val...",
+      "rubric_count": 5,
+      "subject": "Computer Science",
+      "task_id": "681a8721d276597945af81e7",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.7297297297297297,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must identify that the student calculated the vertical, not horizontal, component of the force.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must reach the correct final answer of $1.45 \\text{m s}^{-2}$.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "towing-rope horizontal-components assessment",
+      "response_preview": "## Assessment of Your Solution Your diagram and general approach show good physical intuition \u2014 you correctly identified that only the **horizontal components** of the rope tensions drive the forward acceleration, and you set up Newton's Second Law (F_net =...",
+      "rubric_count": 9,
+      "subject": "Physics",
+      "task_id": "683e4510bd7caf8a464501d6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.7931034482758621,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must guide the student to question their use of 'z' by asking about the conditions for using a z-statistic vs. a t-statistic.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should provide a hint towards finding the \"degrees of freedom\" (df) if a t-distribution is needed.",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## You're at exactly the right step \u2014 and being stuck on z is completely normal here! You correctly wrote: *\"I have my M, \u03c3, and n, but I'm stuck on what z is\u2026\"* \u2014 that's the right self-diagnosis. Here's how to reason through it. --- ### Finding the Critica...",
+      "rubric_count": 9,
+      "subject": "Statistics",
+      "task_id": "683e4589a08f8bb26159787e",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.8076923076923077,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly read from the image that the student has created a Punnett square with gamete combinations including \"wGF\", \"WgF\", \"wgF\", WgF\", \"WGf\", \"WGF\", \"wgf\",...",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a hint about applying the final probability to the 1000 offspring by asking how to determine the portion of total peas that will be ideal.",
+          "criterion_index": 11,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "trihybrid ideal-peas active-learning hint",
+      "response_preview": "## Great start setting up the grid \u2014 let's figure out what goes in that left column! Before filling in the row labels, you need to pin down **Parent 2's exact genotype**. Here's the framework to get there. --- ### Step 1: Dominance map (heads-up \u2014 color is...",
+      "rubric_count": 12,
+      "subject": "Biology",
+      "task_id": "681cffc846a1279c844e6432",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.8648648648648649,
+      "bloom_taxonomy": "Remember",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response has to say that an array index is an offset from the array's location in memory.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great question \u2014 this gets at the *physical* difference, not just the logical one. --- **The core distinction: does the data move, or do only the directions change?** **In an array**, every element lives in a fixed, side-by-side block of memory \u2014 like assig...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "6814f360736eaea472ce9b26",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8780487804878049,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must clarify that the teacher's statement \"More electrons = stronger binding\" applies to periodic trends across a period, not ion formation, using an example like F...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "chlorine PES / bromide binding-energy explanation",
+      "response_preview": "## Correcting Part C \u2014 and an Important Fix to My Earlier Answer First, I owe you a correction: **my previous response was wrong** when it said Br\u207b would have a *lower* binding energy than chlorine for the Peak X orbital. Your directional conclusion \u2014 that...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "683775dc0a6dba7869a5c576",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.9444444444444444,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must not provide the equation for the force on the airplane, $F_\\text{tractor}-F_\\text{friction}=m_\\text{airplane}a_\\text{airplane}$.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical_negative",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "tractor-airplane Newton's-law active hint",
+      "response_preview": "## Part (a): Excellent Work \u2713 Your setup and arithmetic for part (a) are completely correct: - Net force: 18,500 \u2212 2,300 = 16,200 N \u2713 - Total mass: 16,200 / 0.140 = 115,714 kg \u2713 - Airplane mass: 115,714 \u2212 1,950 \u2248 **114,000 kg** \u2713 --- ## Part (b): Getting St...",
+      "rubric_count": 6,
+      "subject": "Physics",
+      "task_id": "68387053806964a2566da1b8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.972972972972973,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should mention the efficiency of their approach (why removeIf or removeAll is more efficient then manual remove).",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "AP CSA MemberInfo removeMembers assessment",
+      "response_preview": "## Assessment of Your `removeMembers` Implementation ### What You Got Right Your overall structure is solid: - \u2705 Using a separate `toRemove` list and a second loop to call `memberList.remove()` is the **correct** way to avoid a `ConcurrentModificationExcept...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "684771b3cf8ba842e93ec6de",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "Hardy-Weinberg graph-reading assessment",
+      "response_preview": "## Assessment of Your Hardy-Weinberg Work Your logical structure throughout this problem is genuinely solid \u2014 you correctly identified the right framework and executed it consistently. There is one upstream error in reading the bar chart that flows into all...",
+      "rubric_count": 14,
+      "subject": "Biology",
+      "task_id": "683e45172a32fba415085acc",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    }
+  ]
+}

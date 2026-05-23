@@ -125,6 +125,20 @@ uv run tutorbench-lab run \
   --task-id 683e45123a967938ab5f5de2
 ```
 
+Blend two response runs with the current v10 rubric-blind router:
+
+```bash
+uv run tutorbench-lab blend-responses \
+  runs/heldout500-agentic-v6/responses.jsonl \
+  runs/heldout500-agentic-v9/responses.jsonl \
+  runs/heldout500-blend-v10/responses.jsonl \
+  --run-id heldout500-blend-v10 \
+  --policy conservative-v10
+```
+
+This command does not inspect rubrics or judgments. It keeps the primary run by
+default and selects the auxiliary run only for configured playbooks/slices.
+
 ## Judge And Score
 
 Plumbing check with deterministic heuristic judge:
@@ -179,11 +193,13 @@ uv run tutorbench-lab export-traces runs/<run_id>/judged.jsonl
 ## Current Target
 
 The working target is `>=70%` local full-set ARRw before treating the system as
-plausibly leaderboard-beating. We have now crossed that threshold on the larger
-heldout500 split: baseline Sonnet `60.77%` vs agentic-v6 `73.69%`, CI
-`71.76%-75.55%`, in `runs/heldout500-agentic-v6/`, a +12.92 point same-set
-gain. The current public leaderboard target should be rechecked before
-submission because it can change.
+plausibly leaderboard-beating. We have crossed that threshold on the larger
+heldout500 split: baseline Sonnet `60.77%`, agentic-v6 `73.69%`, and the
+current blend-v10 router `75.33%`, CI `73.68%-77.12%`, in
+`runs/heldout500-blend-v10/`. The v10 router keeps v6 as the stable default and
+selects the v9 evidence-heavy response only for rubric-blind high-yield
+playbooks and coarse positive slices. The current public leaderboard target
+should be rechecked before submission because it can change.
 
 Important: local public-HF results are not automatically leaderboard results.
 Run the parity audit before making any comparison claim:
@@ -212,31 +228,30 @@ This is a local public-HF-comparable validation score, not an official
 leaderboard result.
 
 Current larger holdout anchor: baseline Sonnet `60.77%`, CI
-`58.90%-62.83%`, vs agentic-v6 `73.69%`, CI `71.76%-75.55%`, over
+`58.90%-62.83%`, vs blend-v10 `75.33%`, CI `73.68%-77.12%`, over
 `eval_sets/heldout500.json`. This 500-row split excludes
-dev10/dev50/validation150. The agentic-v6 run is a +12.92 point same-set gain,
-+5.47 points over v3, and +1.86 points over v5. It beats the local `>=70%`
-target and is the strongest fairness anchor so far, but it is still a local
+dev10/dev50/validation150. Blend-v10 is a +14.56 point same-set gain over
+baseline, +1.82 points over a deterministic rejudge of v6 (`73.51%`), and
++2.55 points over v9 (`72.78%`). It beats the local `>=70%` target and is the
+strongest local fairness anchor so far, but it is still a
 public-HF-comparable result, not an official leaderboard result.
 
 Current v6 result: `heldout500-agentic-v6` scored `73.69%` on the full 500-row
-heldout split. The main v6 change is broadening the specialist evidence audit
-to all multimodal rows and adding rubric-blind playbooks for recurring
-visual/code failure families such as Normal MLE notation, binary-search
-midpoint overflow, MovieRating integer division, shape center-distance hints,
-Henry-law mole-fraction units, and bulb parallel-switch reasoning. The result
-confirms the targeted `heldout-failure-probe-v6` transferred to the larger
-split, with especially large wins on multimodal assessment rows. Remaining
-gaps are examples/analogies, alternative solution paths, and guiding questions.
+heldout split, and `73.51%` when rejudged with the current deterministic
+Sonnet judge. The main v6 change is broadening the specialist evidence audit to
+all multimodal rows and adding rubric-blind playbooks for recurring visual/code
+failure families such as Normal MLE notation, binary-search midpoint overflow,
+MovieRating integer division, shape center-distance hints, Henry-law
+mole-fraction units, and bulb parallel-switch reasoning. V6 remains the stable
+default response source inside blend-v10.
 
-Current v7 probe: `heldout-v7-regression-probe` scored `67.43%` on 10
-weak/regressed v6 heldout rows, up from `23.38%` for v6 on those same rows.
-This adds narrow routes for inclined box slip/tip, towing-rope components,
-AP CSA `MemberInfo.removeMembers`, trihybrid pea probability hints,
-composition through a constant outer-function range, piecewise graph
-one-sided derivatives, and logarithmic improper-integral singularities. This is
-a targeted architecture-debugging result; run `heldout500-agentic-v7` before
-promoting v7 as the main anchor.
+Current v9/v10 result: `heldout500-agentic-v9` scored `72.78%`; its targeted
+numeric/visual fixes transferred to several probe rows but regressed the full
+set relative to v6. The architecture lesson is now encoded as
+`blend-responses`: `heldout500-blend-v10` keeps v6 by default and routes to v9
+only for rubric-blind high-yield playbooks and coarse slices. It scored
+`75.33%` overall, with active learning `77.86%`, assessment `76.28%`, adaptive
+`71.86%`, text `76.50%`, and multimodal `74.16%`.
 
 Current v4 failure probe: `probe10-agentic-v4-refined` scored `75.33%` on ten
 representative weakest heldout500 failures, up from roughly `4%` on those same

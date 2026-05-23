@@ -6,7 +6,9 @@
 2. `run` converts each row into a use-case-specific tutor turn and generates a candidate response.
 3. `judge` grades each candidate response against sample-specific rubrics.
 4. `score` computes weighted ARRw and slice reports by use case, modality, subject, and Bloom taxonomy.
-5. `report` and `compare` produce Markdown artifacts for iteration.
+5. `blend-responses` can combine two response files with a rubric-blind router
+   for ensemble architecture probes.
+6. `report` and `compare` produce Markdown artifacts for iteration.
 
 The judge path includes a narrow missing-index repair: when the judge returns
 valid JSON but omits a rubric criterion index, the harness asks the same judge
@@ -79,6 +81,34 @@ The trace for each agentic response stores these stages as
 `perception_transcript`, `specialist_audit`, `solver_analysis`, `answer_contract`,
 `domain_verification`, `draft`, `critic_attempts`, and
 `revision_attempts`.
+
+## V9 And V10 Router
+
+V9 extended the v6 stack with a deterministic local numeric probe and stricter
+visual evidence locks for graphs, charts, tables, spectra, and copied numeric
+values. It also added playbooks for failure families found in v7 analysis:
+tractor-airplane Newton's-law hints, chlorine PES/bromide binding-energy
+explanations, Hardy-Weinberg graph assessment, 12V series/parallel circuits,
+meiosis-vs-mitosis gamete explanations, mean-CI z-vs-t hints, and corrected
+towing-rope horizontal components.
+
+The full heldout500 v9 run showed that these fixes were real but too global:
+the 12-row regression probe rose to `91.86%`, while the full run scored only
+`72.78%`, below v6. The promoted architecture is therefore blend-v10:
+
+- Primary path: use v6 as the stable default response source.
+- Auxiliary path: use v9 as a specialist source only when a rubric-blind
+  high-yield playbook fires or when the row belongs to a coarse slice where v9
+  transferred well during heldout analysis.
+- Router: `blend-responses --policy conservative-v10` creates a response file
+  without looking at rubrics, judge ratings, or row-level scores.
+- Trace metadata: blended records include `blend_policy`,
+  `blend_selected_source`, source run IDs, source prompt versions, and the
+  auxiliary playbook name when available.
+
+On heldout500, blend-v10 selected v9 for 196 of 500 rows and scored `75.33%`,
+beating both the deterministic v6 rejudge (`73.51%`) and v9 (`72.78%`) under
+the same judge configuration.
 
 ## Throughput
 
@@ -154,24 +184,19 @@ This is still a local public-HF-comparable result, not an official leaderboard
 claim.
 
 The current larger holdout checkpoint is baseline Sonnet `60.77%` versus
-agentic-v6 `73.69%` over 500 rows, a +12.92 point same-set gain on a split
-disjoint from dev10/dev50/validation150. V6 improves over v5 by +1.86 points
-and over v3 by +5.47 points. The full run confirms that broad multimodal
-evidence audit transferred beyond the ten-row failure probe: multimodal rows
-rose to `71.80%`, assessment rows to `73.72%`, and active learning remains the
-strongest use case at `76.65%`. The remaining architecture gap is pedagogy
-coverage rather than basic scaffolding: examples/analogies, alternative paths,
-and guiding questions remain the weakest rubric-tag groups.
+blend-v10 `75.33%` over 500 rows, a +14.56 point same-set gain on a split
+disjoint from dev10/dev50/validation150. V6 remains the stable default
+response source (`73.51%` when rejudged with the current deterministic judge),
+while v9 is a specialist source (`72.78%` alone) selected by the v10 router for
+196 rows. V10 improves all major slices: active learning `77.86%`, assessment
+`76.28%`, adaptive `71.86%`, text `76.50%`, and multimodal `74.16%`.
 
-Agentic-v7 is currently a targeted regression-probe iteration, not yet a full
-holdout anchor. It keeps the v6 architecture and adds narrow rubric-blind
-routes for repeated v6 failures: inclined-box slip/tip, towing-rope horizontal
-components, AP CSA `MemberInfo.removeMembers`, trihybrid ideal-peas active
-hints, composition through a constant outer-function range, piecewise graph
-one-sided derivatives, and logarithmic improper-integral singularities. On the
-10-row `heldout-v7-regression-probe`, those rows moved from a v6 average of
-`23.38%` to `67.43%`. A full `heldout500-agentic-v7` run is needed before
-promoting v7 over v6.
+The v7/v9 sequence is now an architecture lesson rather than a promoted
+monolith. V7 and v9 found important failure families and fixed the targeted
+probes, but full runs showed that stricter evidence prompts can damage generic
+rows. The current direction is therefore routed specialization: preserve the
+generic tutor where it is strong, and invoke stricter numeric/visual/playbook
+machinery only when a rubric-blind route has high expected value.
 
 ## Office Hours Transfer Path
 

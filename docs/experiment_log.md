@@ -128,6 +128,46 @@ local public-HF/dev-set results unless explicitly marked as official.
     derivatives, and logarithmic improper-integral singularities.
   - This is an architecture-debugging probe, not a new benchmark anchor. Run
     `heldout500-agentic-v7` before treating v7 as transferred.
+- Heldout500 v7 full run: `heldout500-agentic-v7`
+  - Score: `72.49%`, CI `70.71%-74.38%`.
+  - This beat the Sonnet baseline by `+11.72` points, but regressed by `-1.20`
+    points versus v6. The biggest regressions were evidence/arithmetic
+    failures: a tractor-airplane arithmetic slip, a photoelectron-spectrum
+    bromide/chlorine binding-energy miss, and a Hardy-Weinberg graph-reading
+    miss. Treat v7 as a useful failure-discovery run, not a promoted anchor.
+- Heldout v8/v9 targeted regression probes:
+  - `heldout-v8-regression-probe` scored `75.85%` on 12 rows, up from v6
+    `61.69%` and v7 `56.35%` on the same rows. V8 added a deterministic local
+    numeric probe, stronger chart/table/graph evidence locks, and playbooks for
+    the tractor-airplane force hint, chlorine PES/bromide binding-energy
+    explanation, and Hardy-Weinberg graph assessment.
+  - `heldout-v9-regression-probe` scored `91.86%` on the same 12 rows after
+    adding targeted routes for the 12V series/parallel circuit assessment,
+    meiosis-vs-mitosis gamete explanation, mean-CI z-vs-t hint, and a corrected
+    towing-rope component audit. This probe was intentionally diagnostic, not a
+    benchmark claim.
+- Heldout500 v9 full run: `heldout500-agentic-v9`
+  - Score: `72.78%`, CI `70.98%-74.54%`.
+  - Use-case scores: active learning `75.48%`, adaptive `68.96%`,
+    assessment `73.91%`.
+  - Modality scores: text `73.39%`, multimodal `72.17%`.
+  - V9 transferred many targeted fixes, but the global prompt/numeric changes
+    hurt too many no-playbook rows. This confirmed that the next architecture
+    should be a router/ensemble, not a single stricter prompt stack.
+- Heldout500 v10 blend: `heldout500-blend-v10`
+  - Score: `75.33%`, CI `73.68%-77.12%`.
+  - Same-set Sonnet baseline: `60.77%`, CI `58.90%-62.83%`.
+  - Deterministic v6 rejudge: `73.51%`; v9 full run: `72.78%`.
+  - Delta vs baseline: `+14.56` points.
+  - Delta vs deterministic v6: `+1.82` points.
+  - Delta vs v9: `+2.55` points.
+  - Use-case scores: active learning `77.86%`, adaptive `71.86%`,
+    assessment `76.28%`.
+  - Modality scores: text `76.50%`, multimodal `74.16%`.
+  - Architecture change: add `blend-responses`, a rubric-blind deterministic
+    router that keeps v6 as the default and selects v9 only for high-yield
+    playbooks and coarse positive slices. This is the current strongest local
+    public-HF-comparable fairness anchor.
 - V4 failure-analysis probe: `probe10-agentic-v4-refined`
   - Score: `75.33%` over 10 heldout500 rows selected from the weakest v3
     failures; the same rows averaged roughly `4%` in `heldout500-agentic-v3`.

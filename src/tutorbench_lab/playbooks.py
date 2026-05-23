@@ -72,6 +72,12 @@ def build_task_playbook(
         notes.append(_uranium_lead_mass_ratio_playbook())
     if (
         turn.subject.lower() == "chemistry"
+        and use_case == "adaptive"
+        and _has_photoelectron_br_binding_context(text)
+    ):
+        notes.append(_photoelectron_br_binding_playbook())
+    if (
+        turn.subject.lower() == "chemistry"
         and use_case == "active_learning"
         and _has_any(text, ["heat exchange", "furnace gases", "crude oil", "desalination"])
     ):
@@ -167,6 +173,12 @@ def build_task_playbook(
         notes.append(_natural_selection_assessment_playbook())
     if (
         turn.subject.lower() == "biology"
+        and use_case == "assessment"
+        and _has_hardy_weinberg_graph_context(text)
+    ):
+        notes.append(_hardy_weinberg_graph_assessment_playbook())
+    if (
+        turn.subject.lower() == "biology"
         and use_case == "active_learning"
         and _has_any(text, ["arctic fox", "coat color", "denaturation", "melanin"])
     ):
@@ -231,6 +243,12 @@ def build_task_playbook(
         and _has_lac_operon_context(text)
     ):
         notes.append(_lac_operon_adaptive_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "adaptive"
+        and _has_meiosis_mitosis_gamete_context(text)
+    ):
+        notes.append(_meiosis_mitosis_gamete_playbook())
 
     if (
         turn.subject.lower() == "statistics"
@@ -263,6 +281,12 @@ def build_task_playbook(
         and not _has_any(text, ["coffee shop", "espresso", "under-filling"])
     ):
         notes.append(_clt_sample_mean_hint_playbook())
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "active_learning"
+        and _has_ci_z_vs_t_context(text)
+    ):
+        notes.append(_ci_z_vs_t_active_playbook())
     if (
         turn.subject.lower() == "statistics"
         and use_case == "adaptive"
@@ -326,6 +350,12 @@ def build_task_playbook(
         notes.append(_kinematics_hint_playbook())
     if (
         turn.subject.lower() == "physics"
+        and use_case == "active_learning"
+        and _has_tractor_airplane_context(text)
+    ):
+        notes.append(_tractor_airplane_active_playbook())
+    if (
+        turn.subject.lower() == "physics"
         and use_case == "assessment"
         and _has_crackle_derivative_context(text)
     ):
@@ -342,6 +372,12 @@ def build_task_playbook(
         and _has_towing_rope_components_context(text)
     ):
         notes.append(_towing_rope_components_assessment_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "assessment"
+        and _has_series_parallel_circuit_context(text)
+    ):
+        notes.append(_series_parallel_circuit_assessment_playbook())
     if (
         turn.subject.lower() == "calculus"
         and use_case == "assessment"
@@ -387,6 +423,48 @@ def _has_hydrogen_halide_context(text: str) -> bool:
         ["hydrogen halide", "halogen", "electronegativity", "acid strength"],
     )
     return bool(formula_seen) or concept_seen
+
+
+def _has_photoelectron_br_binding_context(text: str) -> bool:
+    return _has_any(text, ["photoelectron", "binding energy", "peak x"]) and _has_any(
+        text,
+        ["br-", "br⁻", "bromide", "chlorine", "273 mj/mol"],
+    )
+
+
+def _has_hardy_weinberg_graph_context(text: str) -> bool:
+    return _has_any(text, ["hardy-weinberg", "hardy weinberg"]) and _has_any(
+        text,
+        ["mice", "brown", "white", "recessive phenotype"],
+    )
+
+
+def _has_tractor_airplane_context(text: str) -> bool:
+    return _has_any(text, ["tractor", "airplane", "passenger loading"]) and _has_any(
+        text,
+        ["1.85", "2300", "0.140", "2200"],
+    )
+
+
+def _has_meiosis_mitosis_gamete_context(text: str) -> bool:
+    return _has_any(text, ["meiosis", "mitosis"]) and _has_any(
+        text,
+        ["gamete", "sperm", "eggs", "diploid", "haploid"],
+    )
+
+
+def _has_ci_z_vs_t_context(text: str) -> bool:
+    return _has_any(text, ["confidence interval", "ci ="]) and _has_any(
+        text,
+        ["what z is", "z is", "z*", "mean of the population", "independent random samples"],
+    )
+
+
+def _has_series_parallel_circuit_context(text: str) -> bool:
+    return _has_any(text, ["current of the 3", "3ω", "3ohm", "3 ohm", "3Ω"]) and _has_any(
+        text,
+        ["12v", "12 v", "6ω", "6ohm", "6 ohm", "6Ω", "5ω", "5ohm", "5 ohm", "5Ω"],
+    )
 
 
 def _has_titration_pka_context(text: str) -> bool:
@@ -1195,6 +1273,29 @@ def _lac_operon_adaptive_playbook() -> str:
     ).strip()
 
 
+def _meiosis_mitosis_gamete_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: meiosis-vs-mitosis gamete explanation
+        - Acknowledge the student's missing background explicitly: it is natural
+          to ask why gametes need a special cell division at all.
+        - Answer both questions: meiosis makes haploid gametes to keep the
+          chromosome number stable after fertilization; mitosis makes diploid
+          genetically identical cells for growth/repair.
+        - Include the chromosome-balance chain: 2n parent -> n gametes by
+          meiosis -> n+n fertilization -> 2n offspring. Contrast it with
+          diploid gametes: 2n+2n -> 4n, then chromosome number can keep doubling
+          across generations.
+        - Also explain the genetic-diversity reason: mitosis-made sperm/eggs
+          would be essentially genetic copies of the parent cell, while meiosis
+          creates variation through crossing over and independent assortment.
+        - State why diversity matters: it helps populations adapt to changing
+          environments and reduces the chance that harmful mutations are passed
+          along unchanged in every gamete.
+        """
+    ).strip()
+
+
 def _oxygen_co2_adaptive_playbook() -> str:
     return dedent(
         """\
@@ -1734,6 +1835,34 @@ def _ellipse_rectangle_playbook() -> str:
     ).strip()
 
 
+def _photoelectron_br_binding_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: chlorine PES / bromide binding-energy explanation
+        - Treat Peak X as the inner-shell orbital identified by the prompt/image;
+          in the common chlorine PES row, Peak X is the 1s orbital.
+        - If the student asks about Br- versus chlorine, answer the follow-up
+          directly: the corresponding 1s orbital in Br- has higher binding
+          energy than chlorine's 1s orbital because bromine has a much larger
+          nuclear charge (Z=35 vs Z=17), while outer-shell shielding barely
+          affects 1s electrons.
+        - Correct the misconception carefully: adding an electron increases
+          electron-electron repulsion/shielding; it does not increase nuclear
+          attraction, because nuclear attraction comes from protons.
+        - Scope the teacher's heuristic: "more electrons = stronger binding" is
+          not a safe rule for ion formation. If using an example, compare a
+          neutral atom to its anion such as F vs F-, where the extra electron
+          does not add protons and tends to reduce effective pull on valence
+          electrons.
+        - Use the given proportionality BE proportional to (Z_eff)^2/n^2. For
+          the 1s-to-1s comparison, n is the same; the larger Z_eff dominates.
+        - Include the rough ratio check when useful: Z_eff(Cl 1s) is about 16
+          and Z_eff(Br- 1s) is about 34, so Br-'s 1s binding energy is roughly
+          (34/16)^2 times chlorine's 273 MJ/mol, i.e. much higher.
+        """
+    ).strip()
+
+
 def _start_codon_insertion_assessment_playbook() -> str:
     return dedent(
         """\
@@ -1949,6 +2078,27 @@ def _clt_sample_mean_hint_playbook() -> str:
           to three decimals.
         - Do not state P(Z < -0.707), do not give the numerical probability,
           and do not directly say the final rounded answer.
+        """
+    ).strip()
+
+
+def _ci_z_vs_t_active_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: mean-CI z-vs-t active-learning hint
+        - Keep this as a hint. Do not give the final critical value or the final
+          confidence interval.
+        - Acknowledge that the student's formula shape is close, but ask a
+          prior decision question before looking up z: do we know the population
+          standard deviation sigma, or did we estimate spread from this sample?
+        - Guide them to question z vs t. If sigma is unknown and s comes from a
+          sample, the appropriate critical value usually comes from a
+          t-distribution, not z.
+        - Hint toward degrees of freedom without giving the final interval:
+          for a one-sample t interval, df = n - 1; ask what df is when n = 16.
+        - If visible work has a transcription or sample-standard-deviation
+          issue, mention it briefly as something to fix after choosing the right
+          critical-value family.
         """
     ).strip()
 
@@ -2284,6 +2434,26 @@ def _mendelian_testcross_playbook() -> str:
     ).strip()
 
 
+def _hardy_weinberg_graph_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Hardy-Weinberg graph-reading assessment
+        - Do not assess only the Hardy-Weinberg method. First read the chart
+          values and compare them with the student's copied values.
+        - In the common mice bar-chart row, the graph values are 320 brown mice
+          and 180 white mice, not 300 and 150. State this as the first visible
+          error if the student used 300/150.
+        - Then compute from the graph values: total = 500; q^2 = 180/500 =
+          0.36; q = 0.6; p = 1 - q = 0.4; heterozygotes = 2pq = 0.48 = 48%.
+        - Also correct any notation issue: p^2 + 2pq + q^2 = 1, and q is the
+          recessive allele frequency while q^2 is the homozygous recessive
+          genotype/phenotype frequency.
+        - Give constructive feedback that the student's structure is close, but
+          the graph-reading error changes all three numerical answers.
+        """
+    ).strip()
+
+
 def _trihybrid_ideal_peas_active_playbook() -> str:
     return dedent(
         """\
@@ -2328,6 +2498,32 @@ def _kinematics_hint_playbook() -> str:
           not give the sign or numerical acceleration.
         - Mention that after acceleration is found, a different kinematic
           equation involving v_i, v_f, a, and t can be used for time.
+        """
+    ).strip()
+
+
+def _tractor_airplane_active_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: tractor-airplane Newton's-law active hint
+        - Keep this as a hint. Do not give the final tractor-on-airplane force
+          for part (b).
+        - Preserve the student's successful part (a) work when it is visible:
+          1.85 x 10^4 = 18,500 and 18,500 - 2,300 = 16,200; then
+          16,200 / 0.140 - 1,950 = 113,764.2857 kg, so the rounded 114,000 kg
+          answer is correctly executed.
+        - Do not invent an arithmetic error in part (a). If an internal audit
+          says 18,500 - 2,300 = 15,700, reject that audit because it is a
+          calculator error.
+        - For part (b), tell the student to isolate the airplane alone and draw
+          a free-body diagram with the tractor's contact force forward and the
+          2,200 N airplane friction backward.
+        - Hint toward Newton's second law by asking what net force is required
+          to accelerate the airplane mass from part (a) at 0.140 m/s^2, then
+          how friction changes the contact force.
+        - Avoid writing the complete equation
+          F_tractor - F_friction = m_airplane a as a final setup if the row asks
+          only for a hint; phrase it as guided questions instead.
         """
     ).strip()
 
@@ -2383,10 +2579,13 @@ def _towing_rope_components_assessment_playbook() -> str:
         - Read the diagram before praising the student's force count. In the
           common tow/rope row, only the front two taut ropes contribute to the
           forward acceleration; do not say all four ropes contribute.
-        - Distinguish the horizontal and vertical components. If the diagram
-          shows a horizontal leg and a slanted rope length, use the ratio for
-          the horizontal component of tension; do not take cos(2/2.9) as if the
-          ratio itself were an angle.
+        - Distinguish the horizontal and vertical components. In the common
+          cylinder row, the visible 2.00 m is the radius/vertical offset and
+          2.9 m is the slanted attachment distance, so 2/2.9 is the vertical
+          component fraction. The horizontal component fraction is
+          sqrt(2.9^2 - 2.0^2) / 2.9, about 2.1/2.9.
+        - Explicitly say the student's cos(2/2.9) move calculates/uses the
+          wrong component and also treats a ratio as an angle.
         - State the corrected force balance in words before numbers:
           net horizontal force = number of contributing ropes times the
           horizontal component of each tension, then F_net = ma.
@@ -2394,7 +2593,31 @@ def _towing_rope_components_assessment_playbook() -> str:
           component ratio; avoid inventing extra errors about scientific
           notation or units.
         - For the common 5.50e3 kg / 5.50e3 N row, the corrected acceleration
-          is about 1.45 m/s^2. Give the corrected value in assessment mode.
+          is about 1.45 m/s^2. Give the corrected value in assessment mode,
+          even if a generic verifier recomputes 1.38 from the wrong leg.
+        """
+    ).strip()
+
+
+def _series_parallel_circuit_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: 12V 3-ohm series/parallel circuit assessment
+        - Do not collapse the whole circuit into one series loop. In the common
+          row asking for the current through the 3-ohm resistor, the 3-ohm
+          resistor is in series with an equivalent branch network.
+        - State the visible topology: 12 V source, 3-ohm resistor, upper branch
+          with a 6-ohm resistor, and lower branch with a 5-ohm and 6-ohm
+          resistor in series.
+        - Explain that the upper 6-ohm branch and lower 5+6=11-ohm branch are
+          in parallel, so compute their equivalent resistance before adding the
+          3-ohm series resistor.
+        - Show the parallel calculation:
+          1/R_eq = 1/6 + 1/11 = 17/66, so R_eq = 66/17 ≈ 3.88 ohms.
+        - Then add the series resistor: R_total ≈ 3 + 3.88 = 6.88 ohms.
+        - The current through the 3-ohm series resistor equals the total current:
+          I = 12/6.88 ≈ 1.74 A. State that the student's 4 A comes from using
+          only the 3-ohm resistor as if all 12 V were across it.
         """
     ).strip()
 

@@ -1200,6 +1200,113 @@ def test_clt_sample_mean_playbook_requires_probing_questions(adaptive_example) -
     assert "Do not state P(Z < -0.707)" in playbook
 
 
+def test_v8_failure_playbooks_route_to_evidence_and_arithmetic_families(
+    adaptive_example,
+) -> None:
+    tractor = adaptive_example.model_copy(
+        update={
+            "batch": "USE_CASE_3_MULTIMODAL",
+            "subject": "Physics",
+            "prompt": (
+                "Commercial airplanes are pushed by a tractor. A 1950-kg tractor "
+                "exerts 1.85x10^4 N and resisting forces total 2300 N. "
+                "Acceleration is 0.140 m/s^2. Part (b) says 2200 N friction is "
+                "experienced by the airplane."
+            ),
+            "follow_up_prompt": "Provide hints for part (b).",
+        }
+    )
+    pes = adaptive_example.model_copy(
+        update={
+            "subject": "Chemistry",
+            "prompt": (
+                "The complete photoelectron spectrum for chlorine has Peak X "
+                "with binding energy 273 MJ/mol."
+            ),
+            "follow_up_prompt": (
+                "I am confused about Br- binding energy and chlorine."
+            ),
+        }
+    )
+    mice = adaptive_example.model_copy(
+        update={
+            "batch": "USE_CASE_2_MULTIMODAL",
+            "subject": "Biology",
+            "prompt": (
+                "In a population of mice with brown and white fur, use "
+                "Hardy-Weinberg equilibrium."
+            ),
+            "follow_up_prompt": "I used 300 brown mice and 150 white mice.",
+        }
+    )
+
+    tractor_playbook = build_task_playbook(build_turn_input(tractor))
+    pes_playbook = build_task_playbook(build_turn_input(pes))
+    mice_playbook = build_task_playbook(build_turn_input(mice))
+
+    assert tractor_playbook is not None
+    assert "tractor-airplane Newton's-law" in tractor_playbook
+    assert "18,500 - 2,300 = 16,200" in tractor_playbook
+    assert pes_playbook is not None
+    assert "chlorine PES / bromide binding-energy" in pes_playbook
+    assert "1s orbital" in pes_playbook
+    assert mice_playbook is not None
+    assert "Hardy-Weinberg graph-reading" in mice_playbook
+    assert "320 brown mice" in mice_playbook
+    assert "180 white mice" in mice_playbook
+
+
+def test_v9_failure_playbooks_cover_remaining_probe_gaps(adaptive_example) -> None:
+    circuit = adaptive_example.model_copy(
+        update={
+            "batch": "USE_CASE_2_MULTIMODAL",
+            "subject": "Physics",
+            "prompt": (
+                "Consider the image. What is the current of the 3Ω resistor in "
+                "a 12V circuit with 6Ω, 5Ω, and 6Ω resistors?"
+            ),
+            "follow_up_prompt": "The student used I = 12/3 = 4 amps.",
+        }
+    )
+    meiosis = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "prompt": (
+                "Somatic cells undergo mitosis, whereas germ cells undergo "
+                "meiosis. What if meiosis produced diploid gametes?"
+            ),
+            "follow_up_prompt": (
+                "Why can't humans just use mitosis to make sperm and eggs?"
+            ),
+        }
+    )
+    ci_hint = adaptive_example.model_copy(
+        update={
+            "batch": "USE_CASE_3_MULTIMODAL",
+            "subject": "Statistics",
+            "prompt": (
+                "Independent random samples are listed. Determine the 90% "
+                "confidence interval for the mean of the population."
+            ),
+            "follow_up_prompt": "I have M, s, and n, but I am stuck on what z is.",
+        }
+    )
+
+    circuit_playbook = build_task_playbook(build_turn_input(circuit))
+    meiosis_playbook = build_task_playbook(build_turn_input(meiosis))
+    ci_playbook = build_task_playbook(build_turn_input(ci_hint))
+
+    assert circuit_playbook is not None
+    assert "series/parallel circuit" in circuit_playbook
+    assert "1/R_eq = 1/6 + 1/11" in circuit_playbook
+    assert meiosis_playbook is not None
+    assert "meiosis-vs-mitosis" in meiosis_playbook
+    assert "genetic-diversity" in meiosis_playbook
+    assert ci_playbook is not None
+    assert "z-vs-t" in ci_playbook
+    assert "df = n - 1" in ci_playbook
+
+
 def test_deterministic_guards_add_brittle_playbook_anchors() -> None:
     playbook = "\n\n".join(
         [

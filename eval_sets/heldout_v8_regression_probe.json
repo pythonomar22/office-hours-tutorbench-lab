@@ -1,0 +1,59 @@
+{
+  "description": "Targeted probe for agentic-v8 after heldout500-v7 regressed. Mixes large v7 regressions caused by evidence/arithmetic failures with large v7 wins that should be preserved. This is a debugging probe, not a benchmark claim.",
+  "name": "heldout_v8_regression_probe",
+  "selection_policy": [
+    "source_runs=runs/heldout500-agentic-v6/judged.jsonl,runs/heldout500-agentic-v7/judged.jsonl",
+    "worst_v7_regressions_plus_representative_v7_wins",
+    "created=2026-05-23"
+  ],
+  "task_ids": [
+    {
+      "task_id": "68387053806964a2566da1b8",
+      "why": "worst v7 regression; active Physics multimodal; internal arithmetic audit falsely rejected correct tractor-airplane part (a)"
+    },
+    {
+      "task_id": "683775dc0a6dba7869a5c576",
+      "why": "large v7 regression; adaptive Chemistry multimodal; chlorine PES / Br- binding-energy visual-domain miss"
+    },
+    {
+      "task_id": "683e45172a32fba415085acc",
+      "why": "large v7 regression; assessment Biology multimodal; Hardy-Weinberg chart values softened away"
+    },
+    {
+      "task_id": "683e450e225c80e89ef01948",
+      "why": "large v7 regression; assessment Physics multimodal; visible work and downstream arithmetic miss"
+    },
+    {
+      "task_id": "685454ee2187108ef9b08a95",
+      "why": "large v7 regression; adaptive Biology text; test whether temperature-zero plus coverage critic stabilizes generic rows"
+    },
+    {
+      "task_id": "68477209c4915de7a58b3d02",
+      "why": "large v7 regression; active Computer Science text; spoiler/coverage balance"
+    },
+    {
+      "task_id": "681a8721d276597945af81e7",
+      "why": "large v7 regression inside OOP design playbook; checks playbook precision"
+    },
+    {
+      "task_id": "684771b3cf8ba842e93ec6de",
+      "why": "large v7 win; AP CSA MemberInfo removeMembers assessment should be preserved"
+    },
+    {
+      "task_id": "683e4510bd7caf8a464501d6",
+      "why": "large v7 win; towing-rope horizontal-components playbook should be preserved"
+    },
+    {
+      "task_id": "681cffc846a1279c844e6432",
+      "why": "large v7 win; trihybrid ideal-peas active hint should be preserved"
+    },
+    {
+      "task_id": "683e4589a08f8bb26159787e",
+      "why": "large v7 win without playbook; checks generic active-learning stability"
+    },
+    {
+      "task_id": "6814f360736eaea472ce9b26",
+      "why": "large v7 win without playbook; checks generic multimodal adaptive stability"
+    }
+  ]
+}

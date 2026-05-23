@@ -1,0 +1,125 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9444444444444444,
+      "count": 2,
+      "mean_arrw": 0.9722222222222222,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": 0.9954954954954955,
+      "ci_low": 0.7952951136913401,
+      "count": 6,
+      "mean_arrw": 0.9165767727088482,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7142857142857143,
+      "name": "Create"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 1.0,
+      "count": 2,
+      "mean_arrw": 1.0,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8648648648648649,
+      "name": "Remember"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.9930555555555556,
+      "ci_low": 0.925487987987988,
+      "count": 8,
+      "mean_arrw": 0.9641444328944329,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 0.9864864864864865,
+      "ci_low": 0.6684636118598383,
+      "count": 4,
+      "mean_arrw": 0.8274750491731624,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9038461538461539,
+      "count": 3,
+      "mean_arrw": 0.967948717948718,
+      "name": "Biology"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 0.918918918918919,
+      "ci_low": 0.6684636118598383,
+      "count": 4,
+      "mean_arrw": 0.7936912653893786,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9444444444444444,
+      "count": 3,
+      "mean_arrw": 0.9814814814814815,
+      "name": "Physics"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 0.9759615384615384,
+      "ci_low": 0.6929426705370101,
+      "count": 4,
+      "mean_arrw": 0.8677330269311401,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.7857142857142857,
+      "count": 4,
+      "mean_arrw": 0.8947876447876448,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9797297297297298,
+      "count": 4,
+      "mean_arrw": 0.9932432432432432,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 0,
+  "overall": {
+    "ci_high": 0.9794698544698545,
+    "ci_low": 0.8422755639736772,
+    "count": 12,
+    "mean_arrw": 0.9185879716540094,
+    "name": "overall"
+  },
+  "run_id": "heldout-v9-regression-probe"
+}

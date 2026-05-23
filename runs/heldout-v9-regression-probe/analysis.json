@@ -1,0 +1,709 @@
+{
+  "playbooks": [
+    {
+      "count": 2,
+      "mean_arrw": 0.7437531871494136,
+      "name": "none"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "12V 3-ohm series/parallel circuit assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.972972972972973,
+      "name": "AP CSA MemberInfo removeMembers assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "Hardy-Weinberg graph-reading assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7142857142857143,
+      "name": "OOP design / inventory class"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "chlorine PES / bromide binding-energy explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "mean-CI z-vs-t active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "meiosis-vs-mitosis gamete explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "towing-rope horizontal-components assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9444444444444444,
+      "name": "tractor-airplane Newton's-law active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9038461538461539,
+      "name": "trihybrid ideal-peas active-learning hint"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 17.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.8508771929824561,
+      "passed_positive_weight": 97.0,
+      "positive_weight": 114.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.8611111111111112,
+      "passed_positive_weight": 31.0,
+      "positive_weight": 36.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 16.0,
+      "name": "instruction_following",
+      "negative_criteria": 0,
+      "pass_rate": 0.9333333333333333,
+      "passed_positive_weight": 224.0,
+      "positive_weight": 240.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.9925925925925926,
+      "passed_positive_weight": 134.0,
+      "positive_weight": 135.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 14.0,
+      "positive_weight": 14.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 24.0,
+      "positive_weight": 24.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 102.0,
+      "positive_weight": 102.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.9444444444444444,
+        "count": 2,
+        "mean_arrw": 0.9722222222222222,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.9954954954954955,
+        "ci_low": 0.7952951136913401,
+        "count": 6,
+        "mean_arrw": 0.9165767727088482,
+        "name": "Apply"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.7142857142857143,
+        "name": "Create"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 1.0,
+        "count": 2,
+        "mean_arrw": 1.0,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8648648648648649,
+        "name": "Remember"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.9930555555555556,
+        "ci_low": 0.925487987987988,
+        "count": 8,
+        "mean_arrw": 0.9641444328944329,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.9864864864864865,
+        "ci_low": 0.6684636118598383,
+        "count": 4,
+        "mean_arrw": 0.8274750491731624,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.9038461538461539,
+        "count": 3,
+        "mean_arrw": 0.967948717948718,
+        "name": "Biology"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.918918918918919,
+        "ci_low": 0.6684636118598383,
+        "count": 4,
+        "mean_arrw": 0.7936912653893786,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.9444444444444444,
+        "count": 3,
+        "mean_arrw": 0.9814814814814815,
+        "name": "Physics"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 0.9759615384615384,
+        "ci_low": 0.6929426705370101,
+        "count": 4,
+        "mean_arrw": 0.8677330269311401,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.7857142857142857,
+        "count": 4,
+        "mean_arrw": 0.8947876447876448,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.9797297297297298,
+        "count": 4,
+        "mean_arrw": 0.9932432432432432,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 0,
+    "overall": {
+      "ci_high": 0.9817221067221067,
+      "ci_low": 0.8391430514072024,
+      "count": 12,
+      "mean_arrw": 0.9185879716540094,
+      "name": "overall"
+    },
+    "run_id": "heldout-v9-regression-probe"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 445949,
+    "generation_output_tokens": 60865,
+    "judge_input_tokens": 32150,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 3144,
+    "mean_generation_latency_ms": 106176.66666666667,
+    "mean_judge_latency_ms": 4718.75,
+    "negative_weight_review_count": 0,
+    "row_count": 12,
+    "run_id": "heldout-v9-regression-probe",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1994000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19999
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2394000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 12,
+      "coverage_critic_0": 12,
+      "critic_0": 12,
+      "domain_verifier": 12,
+      "perception": 8,
+      "planner": 12,
+      "solver": 12,
+      "specialist_audit": 8
+    },
+    "stage_mean_latency_ms": {
+      "composer": 15780.08,
+      "coverage_critic_0": 6340.92,
+      "critic_0": 5462.42,
+      "domain_verifier": 12162.08,
+      "perception": 15368.25,
+      "planner": 20631.58,
+      "solver": 22051.5,
+      "specialist_audit": 20253.88
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 11.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.8641975308641975,
+      "passed_positive_weight": 70.0,
+      "positive_weight": 81.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.8780487804878049,
+      "passed_positive_weight": 36.0,
+      "positive_weight": 41.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.9056603773584906,
+      "passed_positive_weight": 48.0,
+      "positive_weight": 53.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 2.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 0.9130434782608695,
+      "passed_positive_weight": 21.0,
+      "positive_weight": 23.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.9230769230769231,
+      "passed_positive_weight": 60.0,
+      "positive_weight": 65.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.9253731343283582,
+      "passed_positive_weight": 62.0,
+      "positive_weight": 67.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Not applicable",
+      "negative_criteria": 0,
+      "pass_rate": 0.96,
+      "passed_positive_weight": 120.0,
+      "positive_weight": 125.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 51.0,
+      "positive_weight": 51.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.6226415094339622,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must hint for the student to consider that the `CombinedTable` constructor takes two extant `SingleTable` objects and simply assigns them new names within `Combined...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must hint for the student to consider that the two `SingleTable` objects exist simultaneously within the `CombinedTable` scope and their original scope.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must remind the student that the `CombinedTable` constructor lacks the `new` keyword, showing that no new `SingleTable` objects are explicitly created.",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must remind the student that Java is pass-by-value such that it copies object references (not objects themselves), so it is certain that the constructor did not cop...",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your confusion here is completely reasonable \u2014 both locations are **syntactically valid**, so there's no obvious compile-time signal telling you which to pick. Let me help you think through the tradeoff. First, two things you've already done correctly: - St...",
+      "rubric_count": 13,
+      "subject": "Computer Science",
+      "task_id": "68477209c4915de7a58b3d02",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.7142857142857143,
+      "bloom_taxonomy": "Create",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must provide an implementation with `boolean` as the type of `numberOfDoors`.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response could provide static variables as an alternative approach.",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "OOP design / inventory class",
+      "response_preview": "You're thinking of something real \u2014 great instinct! The concept you're likely recalling is an **enum** (short for *enumeration*). ## Why `int` Falls Short Here The problem with `private int numberOfDoors` is that `int` accepts *any* integer \u2014 so nothing in...",
+      "rubric_count": 5,
+      "subject": "Computer Science",
+      "task_id": "681a8721d276597945af81e7",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8648648648648649,
+      "bloom_taxonomy": "Remember",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response has to say that an array index is an offset from the array's location in memory.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great question \u2014 this gets at the heart of why linked lists exist as a data structure. **The core difference: what has to move?** Think of an array like a row of assigned seats in a theater. If you want to insert a new person in the middle, **everyone after...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "6814f360736eaea472ce9b26",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.9038461538461539,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly read from the image that the student has created a Punnett square with gamete combinations including \"wGF\", \"WgF\", \"wgF\", WgF\", \"WGf\", \"WGF\", \"wgf\",...",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "trihybrid ideal-peas active-learning hint",
+      "response_preview": "## Great start \u2014 you've got the right idea! Placing the first parent's gametes (from **WwGgFf**) as column headers is exactly right. Those 8 gamete combinations belong across the top. Now you need the **row labels**, which come from the *second* parent's ga...",
+      "rubric_count": 12,
+      "subject": "Biology",
+      "task_id": "681cffc846a1279c844e6432",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.9444444444444444,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must not provide the equation for the force on the airplane, $F_\\text{tractor}-F_\\text{friction}=m_\\text{airplane}a_\\text{airplane}$.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical_negative",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "tractor-airplane Newton's-law active hint",
+      "response_preview": "## Great work on Part (a)! Your setup, algebra, and arithmetic are all correct. To confirm: $$\\frac{1.85\\times10^4 \\text{ N} - 2300 \\text{ N}}{0.140 \\text{ m/s}^2} - 1950 \\text{ kg} = 113{,}764 \\text{ kg} \\approx 114{,}000 \\text{ kg} \u2713$$ --- ## Hint for Par...",
+      "rubric_count": 6,
+      "subject": "Physics",
+      "task_id": "68387053806964a2566da1b8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.972972972972973,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should mention the efficiency of their approach (why removeIf or removeAll is more efficient then manual remove).",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "AP CSA MemberInfo removeMembers assessment",
+      "response_preview": "## Assessment of Your `removeMembers` Implementation ### What You Got Right \u2705 Your overall **architecture** is exactly right \u2014 and that's the harder part to get correct: 1. **Two-list structure**: Using one list for return candidates (`removed`) and a separ...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "684771b3cf8ba842e93ec6de",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "chlorine PES / bromide binding-energy explanation",
+      "response_preview": "## Good News First: Your Conclusion Is Right \u2014 But for the Wrong Reason You're correct that Br\u207b would have a **higher** binding energy than chlorine for the corresponding orbital. However, I also need to be upfront: the previous explanation I gave you was *...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "683775dc0a6dba7869a5c576",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "Hardy-Weinberg graph-reading assessment",
+      "response_preview": "## Assessment of Your Hardy-Weinberg Work Your logical structure is genuinely solid \u2014 you identified the right framework and the right methods for all three parts. But there is one critical error at the very start that changes every numerical answer, plus t...",
+      "rubric_count": 14,
+      "subject": "Biology",
+      "task_id": "683e45172a32fba415085acc",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "12V 3-ohm series/parallel circuit assessment",
+      "response_preview": "## Assessment of Your Work ### What You Got Right \u2705 Your instinct to use **Ohm's Law (V = IR \u2192 I = V/R)** is exactly right \u2014 that's the correct tool here. Your algebraic rearrangement is valid, and your arithmetic (12 \u00f7 3 = 4) is numerically correct. The vo...",
+      "rubric_count": 23,
+      "subject": "Physics",
+      "task_id": "683e450e225c80e89ef01948",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "meiosis-vs-mitosis gamete explanation",
+      "response_preview": "## Why Meiosis \u2014 Not Mitosis \u2014 Makes Gametes That's a really natural question, and you're right that the earlier explanation showed *what happens* when diploid gametes form without fully explaining *why* haploidy is required in the first place. Let's fix th...",
+      "rubric_count": 10,
+      "subject": "Biology",
+      "task_id": "685454ee2187108ef9b08a95",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "mean-CI z-vs-t active-learning hint",
+      "response_preview": "## You're asking exactly the right question \u2014 let's resolve it before looking anything up! Your formula shape is correct: CI = (M \u2212 z(\u03c3/\u221an), M + z(\u03c3/\u221an)) captures the right structure. And identifying that you need a critical value is precisely the right ins...",
+      "rubric_count": 9,
+      "subject": "Statistics",
+      "task_id": "683e4589a08f8bb26159787e",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "towing-rope horizontal-components assessment",
+      "response_preview": "## Assessment of Your Solution Your overall approach \u2014 identifying rope tensions, resolving them into components, and applying Newton's second law \u2014 is on the right track. However, there are **four specific errors** that lead to the wrong answer. Let's go t...",
+      "rubric_count": 9,
+      "subject": "Physics",
+      "task_id": "683e4510bd7caf8a464501d6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    }
+  ]
+}
