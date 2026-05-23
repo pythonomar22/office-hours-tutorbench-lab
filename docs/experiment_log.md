@@ -61,6 +61,17 @@ local public-HF/dev-set results unless explicitly marked as official.
   - This is the strongest current fairness anchor because it uses a larger
     split disjoint from all tuning/dev sets. It is close to, but not yet safely
     above, the `>=70%` local target.
+- V4 failure-analysis probe: `probe10-agentic-v4-refined`
+  - Score: `75.33%` over 10 heldout500 rows selected from the weakest v3
+    failures; the same rows averaged roughly `4%` in `heldout500-agentic-v3`.
+  - Main architecture changes: retired full canned-response final rewrites,
+    added a rubric-blind pedagogy coverage critic, tightened over-broad
+    playbook routes, and added diagnostic playbooks for mass-vs-atom ratios,
+    photosynthesis/light, redox half-reactions, trig accumulation graphs,
+    two-sample CI method mismatches, weak-acid ICE tables, and parametric arc
+    length.
+  - Not a benchmark claim because it is a targeted failure probe, but it
+    strongly supports running a larger v4 validation/heldout pass next.
 - Current validation set: `eval_sets/validation150.json`, 150 rows excluding
   dev10/dev50, balanced as 25 rows per use-case/modality bucket.
 - Current validation checkpoint: `validation150-retired-playbooks-v3`

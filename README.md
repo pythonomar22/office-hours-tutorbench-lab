@@ -213,3 +213,9 @@ Current larger holdout anchor: baseline Sonnet `60.77%`, CI
 dev10/dev50/validation150. The agentic run is a +7.46 point same-set gain and a
 stronger fairness anchor than dev50/validation150, but it is still a local
 public-HF-comparable result, not an official leaderboard result.
+
+Current v4 failure probe: `probe10-agentic-v4-refined` scored `75.33%` on ten
+representative weakest heldout500 failures, up from roughly `4%` on those same
+rows in `heldout500-agentic-v3`. V4 retires full canned final rewrites, adds a
+rubric-blind pedagogy coverage critic, and moves recurring failures into
+diagnostic playbooks that guide the solver instead of replacing the response.

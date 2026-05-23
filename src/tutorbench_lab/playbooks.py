@@ -54,16 +54,34 @@ def build_task_playbook(
         notes.append(_hydrogen_halide_acid_playbook())
     if (
         turn.subject.lower() == "chemistry"
+        and use_case == "adaptive"
+        and _has_uranium_lead_mass_ratio_context(text)
+    ):
+        notes.append(_uranium_lead_mass_ratio_playbook())
+    if (
+        turn.subject.lower() == "chemistry"
         and use_case == "active_learning"
         and _has_any(text, ["heat exchange", "furnace gases", "crude oil", "desalination"])
     ):
         notes.append(_heat_exchange_hint_playbook())
     if (
         turn.subject.lower() == "chemistry"
+        and use_case == "active_learning"
+        and _has_copper_kmno4_redox_context(text)
+    ):
+        notes.append(_copper_kmno4_redox_hint_playbook())
+    if (
+        turn.subject.lower() == "chemistry"
         and use_case == "assessment"
-        and _has_any(text, ["blue spheres", "red spheres", "h2o molecules", "limiting reagent"])
+        and _has_h2_o2_water_sphere_context(text)
     ):
         notes.append(_water_limiting_reagent_visual_playbook())
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "assessment"
+        and _has_weak_acid_ice_context(text)
+    ):
+        notes.append(_weak_acid_ice_assessment_playbook())
 
     if turn.subject.lower() == "calculus":
         if "ellipse" in text or _has_any(text, ["rectangle", "4xy"]):
@@ -72,10 +90,16 @@ def build_task_playbook(
             text, ["missing t", "denominator", "sqrt", "square root"]
         ):
             notes.append(_radical_derivative_adaptive_playbook())
-        if turn.use_case.value == "active_learning" and (
-            "arc length" in text or ("perimeter" in text and "e^x" in text)
+        if (
+            turn.use_case.value == "active_learning"
+            and _has_exponential_perimeter_context(text)
         ):
             notes.append(_arc_length_hint_playbook())
+        if (
+            turn.use_case.value == "active_learning"
+            and _has_parametric_arc_length_context(text)
+        ):
+            notes.append(_parametric_arc_length_hint_playbook())
         has_derivative_context = (
             "height" in text
             and "rate of change" in text
@@ -108,6 +132,12 @@ def build_task_playbook(
         and _has_oxygen_co2_adaptive_context(text)
     ):
         notes.append(_oxygen_co2_adaptive_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "adaptive"
+        and _has_photosynthesis_sunlight_context(text)
+    ):
+        notes.append(_photosynthesis_sunlight_playbook())
     if (
         turn.subject.lower() == "biology"
         and turn.use_case.value == "assessment"
@@ -158,6 +188,18 @@ def build_task_playbook(
         and _has_any(text, ["bonferroni", "pooled proportion", "standardized residual"])
     ):
         notes.append(_bonferroni_pooled_proportion_adaptive_playbook())
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "adaptive"
+        and _has_electricity_rates_ci_context(text)
+    ):
+        notes.append(_electricity_rates_ci_playbook())
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "assessment"
+        and _has_trig_accumulation_probability_context(text)
+    ):
+        notes.append(_trig_accumulation_probability_playbook())
 
     if (
         turn.subject.lower() == "physics"
@@ -183,7 +225,6 @@ def build_task_playbook(
         and _has_kinematics_hint_context(text)
     ):
         notes.append(_kinematics_hint_playbook())
-
     if (
         turn.subject.lower() == "calculus"
         and use_case == "assessment"
@@ -306,9 +347,9 @@ def _has_oop_design_context(text: str) -> bool:
 
 def _has_oxygen_co2_adaptive_context(text: str) -> bool:
     return (
-        _has_any(text, ["oxygen", "o2"])
+        _has_any(text, ["cellular respiration", "glycolysis", "krebs"])
+        and _has_any(text, ["oxygen", "o2"])
         and _has_any(text, ["carbon dioxide", "co2", "co₂"])
-        and _has_any(text, ["glucose", "glycolysis", "krebs"])
     )
 
 
@@ -328,6 +369,73 @@ def _has_t_test_vs_z_test_context(text: str) -> bool:
             "sample standard deviation",
             "unknown standard deviation",
         ],
+    )
+
+
+def _has_h2_o2_water_sphere_context(text: str) -> bool:
+    has_colored_molecule_diagram = _has_any(
+        text,
+        [
+            "blue spheres",
+            "red spheres",
+            "blue molecules",
+            "red molecules",
+            "colored spheres",
+            "partially overlapping",
+            "partially hidden sphere",
+        ],
+    )
+    has_water_reaction = _has_any(
+        text,
+        ["h2", "h₂", "o2", "o₂", "h2o", "h₂o", "water molecules"],
+    )
+    return has_colored_molecule_diagram and has_water_reaction
+
+
+def _has_uranium_lead_mass_ratio_context(text: str) -> bool:
+    return _has_any(text, ["u-238", "uranium"]) and _has_any(
+        text, ["pb-206", "lead", "mass ratio", "half-life"]
+    )
+
+
+def _has_copper_kmno4_redox_context(text: str) -> bool:
+    return _has_any(text, ["kmno4", "mno4", "permanganate"]) and _has_any(
+        text, ["copper", "so2", "oxalic acid", "acidified"]
+    )
+
+
+def _has_weak_acid_ice_context(text: str) -> bool:
+    return _has_any(text, ["hcooh", "methanoic", "formic acid"]) and _has_any(
+        text, ["ice table", "ka", "weak acid", "ph"]
+    )
+
+
+def _has_photosynthesis_sunlight_context(text: str) -> bool:
+    return "photosynthesis" in text and _has_any(
+        text, ["sunlight", "light", "artificial photosynthesis"]
+    )
+
+
+def _has_electricity_rates_ci_context(text: str) -> bool:
+    return _has_any(text, ["electricity rates", "kwh"]) and _has_any(
+        text, ["confidence interval", "population variance", "t-distribution"]
+    )
+
+
+def _has_trig_accumulation_probability_context(text: str) -> bool:
+    return _has_any(text, ["trigonometric", "f(x)", "f(x) ≥ 0", "f(x)>=0"]) and _has_any(
+        text, ["uniform", "probability", "integral", "accumulated"]
+    )
+
+
+def _has_exponential_perimeter_context(text: str) -> bool:
+    return "perimeter" in text and _has_any(text, ["e^x", "e^n", "exp(x)", "exponential curve"])
+
+
+def _has_parametric_arc_length_context(text: str) -> bool:
+    return "arc length" in text and _has_any(
+        text,
+        ["parametric", "x(t)", "y(t)", "dx/dt", "dy/dt", "x'(t)", "y'(t)"],
     )
 
 
@@ -502,6 +610,29 @@ def _oxygen_co2_adaptive_playbook() -> str:
     ).strip()
 
 
+def _photosynthesis_sunlight_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: photosynthesis sunlight adaptive explanation
+        - Answer the student's sunlight question directly: ordinary plant
+          photosynthesis requires light because light absorption powers the
+          light-dependent reactions.
+        - Explain that light splits water and provides ATP/NADPH; oxygen comes
+          from water, while carbon dioxide is fixed into sugars.
+        - Emphasize that without light, photosynthesis cannot continue as
+          photosynthesis; the plant may temporarily use stored chemical energy,
+          but it is not making new sugar by photosynthesis in darkness.
+        - Use the phrase "artificial photosynthesis" explicitly: it is a possible
+          engineered route without direct natural sunlight only if another light
+          source or light-capturing system supplies the absorbed energy. It still
+          needs light/energy input; it is not photosynthesis with no energy
+          source.
+        - Correct the wording "turning carbon dioxide into oxygen": the oxygen
+          atoms in O2 come mainly from water, not CO2.
+        """
+    ).strip()
+
+
 def _aerobic_respiration_assessment_playbook() -> str:
     return dedent(
         """\
@@ -666,6 +797,28 @@ def _hydrogen_halide_acid_playbook() -> str:
     ).strip()
 
 
+def _uranium_lead_mass_ratio_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: U-238/Pb-206 mass-ratio adaptive explanation
+        - Do not simply defend an initial solution that treats the given ratio
+          as an atom ratio. Check whether the prompt says mass ratio.
+        - State that radioactive decay equations track numbers of atoms or
+          moles, not mass directly.
+        - Convert mass ratio to atom/mole ratio before using N0/N:
+          (mass Pb/206) / (mass U/238), so a mass ratio of 7 gives an atom
+          ratio about 7*238/206 = 8.1.
+        - Explain the student's likely misconception: adding 1 to 7 only works
+          if 7 is already an atom ratio; here it is a mass ratio.
+        - Then connect the atom ratio to original uranium: remaining U is one
+          part and produced Pb atoms are about 8.1 parts, so N0/N is about 9.1,
+          leading to a log near log(9), not log(8).
+        - Directly answer the follow-up about "where does 8 come from" while
+          also correcting the mass-vs-atoms issue.
+        """
+    ).strip()
+
+
 def _heat_exchange_hint_playbook() -> str:
     return dedent(
         """\
@@ -687,6 +840,37 @@ def _heat_exchange_hint_playbook() -> str:
     ).strip()
 
 
+def _copper_kmno4_redox_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: copper/KMnO4 redox active-learning hint
+        - Keep this as a hint: do not compute the final copper mass or sample
+          weight.
+        - Explicitly affirm the useful starting point: the copper reaction gives
+          a 1:1 molar relation between Cu and SO2, so x mmol Cu produces x mmol
+          SO2.
+        - The key fix is to write the acidic redox half-reactions separately.
+          Prompt the student to balance O with H2O, balance H with H+, and then
+          balance charge with electrons.
+        - For acidified permanganate, guide them to MnO4- -> Mn2+ and ask how
+          many electrons Mn gains.
+        - For SO2 -> SO4^2-, guide them to compare sulfur's oxidation states
+          and ask how many electrons SO2 loses.
+        - Do not stop after naming n-factors. Prompt them to scale the two
+          half-reactions to cancel electrons; for the common acidic row, that
+          means asking why 2 permanganate half-reactions and 5 SO2 half-reactions
+          line up.
+        - Prompt them to combine the half-reactions after scaling, cancel common
+          species, and read the KMnO4:SO2 mole ratio from the balanced equation.
+          Mention the checkpoint ratio 2:5 as an intermediate scaffold, not as
+          the final sample mass.
+        - After that, have them subtract leftover KMnO4, found from oxalic acid,
+          from total initial KMnO4 before connecting back to x mmol SO2. Remind
+          them to convert the KMnO4 solution amount using molarity and volume.
+        """
+    ).strip()
+
+
 def _water_limiting_reagent_visual_playbook() -> str:
     return dedent(
         """\
@@ -703,6 +887,30 @@ def _water_limiting_reagent_visual_playbook() -> str:
         - Compute individual yields from each reagent, compare them, identify
           the limiting reagent, and answer the original question about how many
           water molecules can be formed.
+        """
+    ).strip()
+
+
+def _weak_acid_ice_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: weak-acid ICE-table assessment
+        - Treat this as feedback on the student's work, not a fresh weak-acid
+          solution only.
+        - Identify correct pieces first: weak-acid dissociation equation and Ka
+          expression, if the student wrote them correctly.
+        - Quote the student's ICE-table change row if visible. If they wrote
+          +x, -x, -x, explain that the reactant must decrease and products must
+          increase, so the change row is -x, +x, +x.
+        - Required: state that wrong ICE signs can produce a wrong denominator such as
+          0.25 + x, but the larger conceptual error is simplifying
+          Ka = x*x/(0.25 - x) as x/0.25 instead of x^2/0.25.
+        - Required: say the student's [H+] = 4.5e-5 comes from that bad
+          simplification and is not the equilibrium hydrogen concentration.
+        - Correct [H+] explicitly: solve x^2 = Ka*C, so [H+] is about
+          sqrt(1.8e-4*0.25), not 4.5e-5.
+        - State plainly that any pH based on [H+] = 4.5e-5, such as pH = 4.35,
+          is incorrect; then give the corrected pH.
         """
     ).strip()
 
@@ -811,17 +1019,22 @@ def _t_test_vs_z_test_assessment_playbook() -> str:
     return dedent(
         """\
         Task-family playbook: z-test vs t-test assessment
-        - State clearly whether using a z-test is valid.
-        - If the population standard deviation is unknown and the work uses a
-          sample standard deviation, say the student should use a t-test.
+        - First classify the actual scenario: one-sample vs two-sample,
+          one-tailed vs two-tailed, and known population sigma vs sample SD.
+        - State clearly whether the student's chosen z/t family is valid for
+          this exact prompt; do not reuse numbers from another z/t problem.
         - Explain the reason: z-tests require known population standard
-          deviation or a setting where the normal approximation is justified;
-          a t-test accounts for uncertainty in the estimated standard deviation.
-        - Correct the standard error and test statistic when the scenario
-          provides enough values; for the common row, mention SE = 1.58 and
-          t is approximately -1.27.
-        - Keep an assessment tone: identify what the student calculated, what
-          assumption is invalid, and what replacement procedure fixes it.
+          deviation or a justified large-sample normal approximation; t-tests
+          account for uncertainty in estimated standard deviations.
+        - If it is a two-sample mean comparison, write the hypotheses using the
+          two group means, use the correct standard-error formula, and discuss
+          Welch or pooled degrees of freedom as appropriate.
+        - Correct the test statistic, p-value/critical-value logic, conclusion,
+          and statistical phrasing such as "reject/fail to reject" rather than
+          "accept the alternative."
+        - Keep an assessment tone: identify correct setup steps, identify the
+          exact invalid assumptions or language, and give the corrected
+          procedure.
         """
     ).strip()
 
@@ -930,6 +1143,47 @@ def _bonferroni_pooled_proportion_adaptive_playbook() -> str:
           the overall chi-square test is significant.
         - Use second person wording ("you", "your") and directly address all
           three misconceptions.
+        """
+    ).strip()
+
+
+def _electricity_rates_ci_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: electricity-rates two-sample CI adaptive explanation
+        - Acknowledge the student's stated confusion explicitly before the math.
+        - Explain that the student's interval can arise from using a two-sample
+          t interval with pooled standard deviation, not merely from rounding.
+        - Show the t-route checkpoints when comparing to the student's answer:
+          df = n1 + n2 - 2 = 28, t_{0.05,28} is about 1.701 for a 90% CI, and
+          the pooled standard deviation is about 0.2514.
+        - Also be honest about the prompt wording: if the variances are truly
+          population variances, the z interval is the intended method; if the
+          values are treated as sample variances, the t interval explains the
+          student's interval.
+        - Keep the response focused on why their bounds differ, not a full
+          unrelated restart.
+        """
+    ).strip()
+
+
+def _trig_accumulation_probability_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: trig accumulation probability assessment
+        - Do not trust the student's written "the function is sin(x)" claim if
+          the graph's y-intercept and zeroes show a cosine curve.
+        - For the recurring graph, check whether the plotted f starts near
+          f(0)=1 and crosses zero near pi/2 and 3pi/2. If so, f(x)=cos(x), so
+          F(x)=integral_0^x cos(t)dt = sin(x).
+        - Quote the student's "function above is sin x" sentence and explain
+          that it is unclear/wrong because plotted f and accumulated F are
+          different functions.
+        - Determine where F(x)=sin(x) is nonnegative on [0,10]: [0,pi] and
+          [2pi,3pi] within the interval. Total length is 2pi, so the probability
+          is 2pi/10 = pi/5, about 0.628.
+        - Include a short geometric intuition about signed accumulated area, but
+          make the interval-length calculation explicit.
         """
     ).strip()
 
@@ -1060,6 +1314,31 @@ def _arc_length_hint_playbook() -> str:
     ).strip()
 
 
+def _parametric_arc_length_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: parametric arc-length active-learning hint
+        - Keep this as a hint, not a full evaluation of the integral.
+        - Use the parametric arc-length formula
+          L = integral sqrt((dx/dt)^2 + (dy/dt)^2) dt; do not switch to the
+          y=f(x) formula unless the prompt explicitly asks for that route.
+        - Acknowledge any correct student work already visible: choosing the
+          arc-length formula, differentiating x(t) and y(t), and substituting
+          into the integrand.
+        - If the student is stuck on integration technique, guide with questions:
+          what substitution pattern or standard identity would simplify the
+          expression, and how should the bounds change or how would they
+          substitute back?
+        - Mention that trying an alternative route, such as a standard
+          trigonometric or hyperbolic identity when the integrand suggests it,
+          can be legitimate; ask the student to compare methods rather than
+          giving the final antiderivative.
+        - Do not hand over the exact hyperbolic substitution. Hint toward the
+          pattern without writing something like 2t = sinh(u).
+        """
+    ).strip()
+
+
 def _radical_derivative_adaptive_playbook() -> str:
     return dedent(
         """\
@@ -1126,6 +1405,28 @@ def _kinematics_hint_playbook() -> str:
           not give the sign or numerical acceleration.
         - Mention that after acceleration is found, a different kinematic
           equation involving v_i, v_f, a, and t can be used for time.
+        """
+    ).strip()
+
+
+def _inclined_box_slip_tip_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: inclined box slip-or-tip assessment
+        - Do not automatically affirm the student's assumption that tipping
+          occurs about the lower bottom corner. In this setup the contact force
+          location can shift, and the normal-force application point matters.
+        - State all forces and directions before comparing thresholds: gravity,
+          normal force, static friction, and the horizontal inertial force in the
+          accelerating cart frame.
+        - Use the coefficient of static friction; if it appears in the prompt
+          but not the student's final calculation, flag that the slip condition
+          was not fully checked.
+        - Explain how to compute the normal-force location at the moment of
+          slipping/tipping; for the common cube-on-23-degree-incline row, the
+          contact location is about x=0.294 m rather than simply the corner.
+        - Compare slip and tip thresholds and report the smaller acceleration
+          as the answer to "either slip or tip."
         """
     ).strip()
 

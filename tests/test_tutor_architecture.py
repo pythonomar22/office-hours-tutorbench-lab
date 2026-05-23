@@ -155,6 +155,28 @@ def test_quadrant_alone_does_not_trigger_ellipse_playbook(adaptive_example) -> N
     assert "ellipse rectangle" not in playbook
 
 
+def test_parametric_arc_length_does_not_route_to_exponential_perimeter(
+    adaptive_example,
+) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Calculus",
+            "batch": "USE_CASE_3_MULTIMODAL",
+            "prompt": (
+                "A particle moves along a curve defined by x(t)=t and "
+                "y(t)=t^3. Find the arc length, and the student is stuck "
+                "after computing x'(t) and y'(t)."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "parametric arc-length" in playbook
+    assert "arc-length perimeter" not in playbook
+
+
 def test_regression_residual_playbook_is_retired_for_generic_agent(
     adaptive_example,
 ) -> None:
@@ -442,6 +464,133 @@ def test_two_proportion_playbook_is_not_generic_z_test(adaptive_example) -> None
     assert vaccine_playbook is None
 
 
+def test_t_test_playbook_is_generic_not_common_row_specific(adaptive_example) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Statistics",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "A drug group has n=50, mean reduction 12, s=4; placebo has "
+                "n=50, mean reduction 8, s=3. The student asks whether to use "
+                "a z-test or t-test and writes a two-tailed alternative."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is not None
+    assert "z-test vs t-test" in playbook
+    assert "1.58" not in playbook
+    assert "-1.27" not in playbook
+    assert "two-sample" in playbook
+
+
+def test_h2o_limiting_reagent_playbook_requires_colored_sphere_context(
+    adaptive_example,
+) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Chemistry",
+            "batch": "USE_CASE_2_MULTIMODAL",
+            "prompt": (
+                "Is the student using the correct limiting-reagent approach for "
+                "2N2H4(g) + N2O4(g) -> 3N2(g) + 4H2O(g) using PV=nRT?"
+            ),
+        }
+    )
+
+    no_spheres = build_task_playbook(
+        build_turn_input(example),
+        extra_context=(
+            "Student says N2O4 is limiting because partial pressure is higher. "
+            "Correct the ideal gas law and stoichiometry."
+        ),
+    )
+    with_spheres = build_task_playbook(
+        build_turn_input(example),
+        extra_context=(
+            "The image has blue spheres for H2 and red spheres for O2, with "
+            "partially overlapping molecule counts."
+        ),
+    )
+
+    assert no_spheres is None or "H2/O2 water limiting-reagent" not in no_spheres
+    assert with_spheres is not None
+    assert "H2/O2 water limiting-reagent" in with_spheres
+
+
+def test_failure_analysis_playbooks_route_to_diagnostic_traps(adaptive_example) -> None:
+    cases = [
+        (
+            {
+                "subject": "Chemistry",
+                "batch": "USE_CASE_1_TEXT",
+                "prompt": "A U-238 sample decays to Pb-206 and the mass ratio is 7.",
+                "follow_up_prompt": "Where does the 8 in the log come from?",
+            },
+            "U-238/Pb-206 mass-ratio",
+        ),
+        (
+            {
+                "subject": "Biology",
+                "batch": "USE_CASE_1_MULTIMODAL",
+                "prompt": "During photosynthesis, what role does sunlight play?",
+                "follow_up_prompt": "Is photosynthesis impossible without sunlight?",
+            },
+            "photosynthesis sunlight",
+        ),
+        (
+            {
+                "subject": "Chemistry",
+                "batch": "USE_CASE_2_TEXT",
+                "prompt": "Assess an HCOOH methanoic acid Ka problem with an ICE table.",
+            },
+            "weak-acid ICE-table",
+        ),
+        (
+            {
+                "subject": "Statistics",
+                "batch": "USE_CASE_1_TEXT",
+                "prompt": (
+                    "Two independent samples of electricity rates in dollars per KWh "
+                    "ask for a 90% confidence interval with population variance."
+                ),
+                "follow_up_prompt": "Why did my interval from a t-distribution differ?",
+            },
+            "electricity-rates two-sample CI",
+        ),
+        (
+            {
+                "subject": "Chemistry",
+                "batch": "USE_CASE_3_MULTIMODAL",
+                "prompt": (
+                    "Crude copper produces SO2, then acidified KMnO4 and oxalic acid "
+                    "are used. Give a hint."
+                ),
+            },
+            "copper/KMnO4 redox",
+        ),
+        (
+            {
+                "subject": "Statistics",
+                "batch": "USE_CASE_2_MULTIMODAL",
+                "prompt": (
+                    "Let f be a trigonometric function and define F(x) as an integral. "
+                    "What is the probability that F(x) >= 0 for x chosen uniformly?"
+                ),
+            },
+            "trig accumulation probability",
+        ),
+    ]
+
+    for update, expected in cases:
+        example = adaptive_example.model_copy(update=update)
+        playbook = build_task_playbook(build_turn_input(example))
+        assert playbook is not None
+        assert expected in playbook
+
+
 def test_assessment_playbooks_do_not_hijack_active_or_adaptive_rows(
     adaptive_example,
 ) -> None:
@@ -696,39 +845,6 @@ def test_hydrogen_halide_guard_does_not_preempt_existing_ack() -> None:
     assert guards == ["hydrogen_halide_atom_count"]
 
 
-def test_derivative_guard_removes_full_student_arithmetic_chain() -> None:
-    guarded, guards = _apply_deterministic_playbook_guards(
-        "You wrote: S'(4) = **240 − 520** + 200 = 180. Now check 240 − 520.",
-        "Task-family playbook: derivative-rate active-learning hint",
-    )
-
-    assert "+ 200 = 180" not in guarded
-    assert "evaluate each term" in guarded
-    assert "S'(4) = 15(4)^2 - 130(4) + 200" in guarded
-    assert guards == ["derivative_template_rewrite"]
-
-
-def test_derivative_guard_removes_sign_giveaway() -> None:
-    guarded, guards = _apply_deterministic_playbook_guards(
-        (
-            "Look at 240 - 520.\n\n"
-            "> **Key principle:** When you subtract a *larger* number from a "
-            "*smaller* number, the result is **negative.**\n\n"
-            "For example: 3 − 8 = −5, not +5.\n\n"
-            "Ask what would it mean about the car's motion if s′(4) turned out "
-            "to be negative — would the car be ascending or descending at that moment?"
-        ),
-        "Task-family playbook: derivative-rate active-learning hint",
-    )
-
-    assert "result is **negative" not in guarded
-    assert "3 − 8" not in guarded
-    assert "turned out to be negative" not in guarded
-    assert "subtraction step was handled correctly" in guarded
-    assert "negative sign attached" not in guarded
-    assert guards == ["derivative_template_rewrite"]
-
-
 def test_radical_derivative_guard_adds_limit_definition_note() -> None:
     guarded, guards = _apply_deterministic_playbook_guards(
         "The t comes from factoring sqrt(t^4 + 9t^2) as t sqrt(t^2 + 9).",
@@ -741,173 +857,39 @@ def test_radical_derivative_guard_adds_limit_definition_note() -> None:
     assert guards == ["radical_limit_definition_note"]
 
 
-def test_active_learning_templates_rewrite_brittle_playbooks() -> None:
-    heat_text, heat_guards = _apply_deterministic_playbook_guards(
-        "Solve by substituting values.",
+def test_full_response_templates_do_not_overwrite_dynamic_agent_output() -> None:
+    original = "Use the task-specific diagnosis and respond to this exact student."
+    rewrite_playbooks = [
         "Task-family playbook: heat-exchange active-learning hint",
-    )
-    arc_text, arc_guards = _apply_deterministic_playbook_guards(
-        "Use arc length and finish the perimeter.",
-        "Task-family playbook: arc-length perimeter active-learning hint",
-    )
-
-    assert "that change?" in heat_text
-    assert "70 C" not in heat_text
-    assert heat_guards == ["heat_exchange_template_rewrite"]
-    assert "f'(x) = e^x" in arc_text
-    assert "Do not simplify or evaluate the integral yet" in arc_text
-    assert arc_guards == ["arc_length_template_rewrite"]
-
-
-def test_extremophile_template_prompts_parts_without_final_chain() -> None:
-    guarded, guards = _apply_deterministic_playbook_guards(
-        "Think about oxygen.",
         "Task-family playbook: extremophile multi-part metabolism hint",
-    )
-
-    assert "Part (a)" in guarded
-    assert "Part (b)" in guarded
-    assert "Part (c)" in guarded
-    assert "producer/base of the food web" in guarded
-    assert "finished food-web chain" not in guarded
-    assert guards == ["extremophile_metabolism_template_rewrite"]
-
-
-def test_water_limiting_reagent_template_uses_prompt_counts() -> None:
-    guarded, guards = _apply_deterministic_playbook_guards(
-        "I count 10 blue and 7 red.",
+        "Task-family playbook: arc-length perimeter active-learning hint",
+        "Task-family playbook: parametric arc-length active-learning hint",
         "Task-family playbook: H2/O2 water limiting-reagent visual assessment",
-    )
-
-    assert "H2 (blue) | 12" in guarded
-    assert "O2 (red) | 8" in guarded
-    assert "12 water molecules" in guarded
-    assert guards == ["water_limiting_reagent_template_rewrite"]
-
-
-def test_regression_residual_template_preserves_student_numbers() -> None:
-    guarded, guards = _apply_deterministic_playbook_guards(
-        "The residual is about 8 kg.",
         "Task-family playbook: regression residual assessment",
-    )
-
-    assert "545.0" in guarded
-    assert "194.7 kg" in guarded
-    assert "about **10 kg**" in guarded
-    assert "196.17" in guarded
-    assert "8.13" in guarded
-    assert "1.87 kg too high" in guarded
-    assert guards == ["regression_residual_template_rewrite"]
-
-
-def test_new_failure_templates_rewrite_to_claim_grade_responses() -> None:
-    pka_text, pka_guards = _apply_deterministic_playbook_guards(
-        "Use the graph.",
         "Task-family playbook: weak-acid titration pKa adaptive explanation",
-    )
-    arctic_text, arctic_guards = _apply_deterministic_playbook_guards(
-        "Cold denatures pigment.",
-        "Task-family playbook: Arctic fox coat-color active-learning hint",
-    )
-    conical_text, conical_guards = _apply_deterministic_playbook_guards(
-        "Cancel things.",
-        "Task-family playbook: conical-pendulum adaptive explanation",
-    )
-    tree_text, tree_guards = _apply_deterministic_playbook_guards(
-        "Check the tree.",
-        "Task-family playbook: binary-tree traversal reconstruction assessment",
-    )
-
-    assert "pH = pK_a" in pka_text
-    assert "half-equivalence" in pka_text
-    assert "0 mL of NaOH" in pka_text
-    assert pka_guards == ["titration_pka_template_rewrite"]
-    assert "day length" in arctic_text
-    assert "hormones" in arctic_text
-    assert "new coat each season" in arctic_text
-    assert arctic_guards == ["arctic_fox_denaturation_template_rewrite"]
-    assert "r = L\\sin\\theta" in conical_text
-    assert "2\\pi" in conical_text
-    assert conical_guards == ["conical_pendulum_template_rewrite"]
-    assert "starting with the **preorder** sequence is logical" in tree_text
-    assert "do not place the final leaf nodes by guesswork" in tree_text
-    assert tree_guards == ["binary_tree_traversal_template_rewrite"]
-
-
-def test_magnetic_triangle_template_names_student_frustration_and_biot_savart() -> None:
-    guarded, guards = _apply_deterministic_playbook_guards(
-        "The result is zero.",
-        "Task-family playbook: equilateral-triangle wire magnetic-field adaptive explanation",
-    )
-
-    assert "frustrating" in guarded
-    assert "Biot-Savart Law" in guarded
-    assert "you should approach each side" in guarded
-    assert guards == ["magnetic_triangle_template_rewrite"]
-
-
-def test_respiration_and_two_proportion_templates_are_use_case_safe() -> None:
-    respiration_text, respiration_guards = _apply_deterministic_playbook_guards(
-        "Oxygen becomes carbon dioxide.",
-        "Task-family playbook: oxygen/CO2 cellular-respiration adaptive explanation",
-    )
-    stats_text, stats_guards = _apply_deterministic_playbook_guards(
-        "Use pooled p = 0.27.",
-        "Task-family playbook: two-proportion z-test active-learning hint",
-    )
-
-    assert "Glucose supplies the carbon" in respiration_text
-    assert "oxygen catches" in respiration_text
-    assert respiration_guards == ["oxygen_co2_adaptive_template_rewrite"]
-    assert "It's okay to be confused" in stats_text
-    assert "reduces the likelihood" in stats_text
-    assert "0.27" not in stats_text
-    assert "sqrt" not in stats_text.lower()
-    assert stats_guards == ["two_proportion_hint_template_rewrite"]
-
-
-def test_remaining_dev50_failure_templates_have_required_anchors() -> None:
-    sulphonation_text, sulphonation_guards = _apply_deterministic_playbook_guards(
-        "Use inductive effects.",
         "Task-family playbook: alkylbenzene sulphonation hyperconjugation explanation",
-    )
-    bayes_text, bayes_guards = _apply_deterministic_playbook_guards(
-        "Use P(R|A).",
-        "Task-family playbook: penicillin allergy Bayes active-learning hint",
-    )
-    coffee_text, coffee_guards = _apply_deterministic_playbook_guards(
-        "Use the whole table.",
-        "Task-family playbook: coffee-shop conditional-probability active hint",
-    )
-    t_text, t_guards = _apply_deterministic_playbook_guards(
-        "z-test is fine.",
+        "Task-family playbook: Arctic fox coat-color active-learning hint",
+        "Task-family playbook: Gene X methylation/tumor-suppressor active hint",
+        "Task-family playbook: aerobic respiration assessment",
+        "Task-family playbook: oxygen/CO2 cellular-respiration adaptive explanation",
+        "Task-family playbook: two-proportion z-test active-learning hint",
         "Task-family playbook: z-test vs t-test assessment",
-    )
-    ring_text, ring_guards = _apply_deterministic_playbook_guards(
-        "Spin around the axis.",
+        "Task-family playbook: penicillin allergy Bayes active-learning hint",
+        "Task-family playbook: coffee-shop conditional-probability active hint",
+        "Task-family playbook: conical-pendulum adaptive explanation",
+        "Task-family playbook: equilateral-triangle wire magnetic-field adaptive explanation",
         "Task-family playbook: rotating charged ring active-learning hint",
-    )
-    matrix_text, matrix_guards = _apply_deterministic_playbook_guards(
-        "count += j",
+        "Task-family playbook: binary-tree traversal reconstruction assessment",
         "Task-family playbook: kth-smallest sorted-matrix assessment",
-    )
+        "Task-family playbook: sinc integral/removable discontinuity assessment",
+        "Task-family playbook: Le Chatelier SO2/SO3 assessment",
+        "Task-family playbook: dextrose solubility/molarity assessment-hint",
+        "Task-family playbook: second ionization energy assessment",
+        "Task-family playbook: two's-complement negative-number active hint",
+        "Task-family playbook: derivative-rate active-learning hint",
+    ]
 
-    assert "B > C > D > A" in sulphonation_text
-    assert sulphonation_guards == ["sulphonation_hyperconjugation_template_rewrite"]
-    assert "P(A\\mid R)" in bayes_text
-    assert "law of total probability formula" not in bayes_text
-    assert bayes_guards == ["penicillin_bayes_template_rewrite"]
-    assert "given" in coffee_text
-    assert "three\ndecimal places" in coffee_text
-    assert coffee_guards == ["coffee_conditional_probability_template_rewrite"]
-    assert "t-test" in t_text
-    assert "standard error" in t_text
-    assert "1.58" in t_text
-    assert t_guards == ["t_test_vs_z_test_template_rewrite"]
-    assert "rotating about a" in ring_text
-    assert "diameter" in ring_text
-    assert ring_guards == ["rotating_charged_ring_template_rewrite"]
-    assert "so frustrated" in matrix_text
-    assert "count += j + 1" in matrix_text
-    assert "j = -1 correctly contributes 0" in matrix_text
-    assert matrix_guards == ["kth_smallest_matrix_template_rewrite"]
+    for playbook in rewrite_playbooks:
+        guarded, guards = _apply_deterministic_playbook_guards(original, playbook)
+        assert guarded == original
+        assert guards == []

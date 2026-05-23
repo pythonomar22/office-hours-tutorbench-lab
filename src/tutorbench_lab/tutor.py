@@ -272,17 +272,57 @@ def run_agentic(
             client=critic_client,
             max_tokens=900,
         )
-        latest_critic_text = critic_result.text
+        coverage_critic_turn = _coverage_critic_turn(
+            base_turn,
+            solver_result.text,
+            final_text,
+            answer_contract=contract_result.text,
+            domain_verification=verification_result.text,
+            perception_transcript=perception_result.text if perception_result else None,
+            specialist_audit=specialist_audit_result.text
+            if specialist_audit_result
+            else None,
+            visual_probe=visual_probe,
+            task_playbook=task_playbook,
+        )
+        coverage_critic_result = generate_stage(
+            f"coverage_critic_{attempt_index}",
+            coverage_critic_turn,
+            client=critic_client,
+            max_tokens=900,
+        )
+        latest_critic_text = "\n\n".join(
+            [
+                f"Generic critic:\n{critic_result.text}",
+                f"Pedagogy coverage critic:\n{coverage_critic_result.text}",
+            ]
+        )
         critic_attempts.append(
             {
+                "stage": f"critic_{attempt_index}",
+                "kind": "generic",
                 "attempt": attempt_index,
                 "text": critic_result.text,
                 "latency_ms": critic_result.latency_ms,
                 "usage": critic_result.usage.model_dump(mode="json"),
             }
         )
+        critic_attempts.append(
+            {
+                "stage": f"coverage_critic_{attempt_index}",
+                "kind": "pedagogy_coverage",
+                "attempt": attempt_index,
+                "text": coverage_critic_result.text,
+                "latency_ms": coverage_critic_result.latency_ms,
+                "usage": coverage_critic_result.usage.model_dump(mode="json"),
+            }
+        )
         if _critic_requests_revision(critic_result.text):
             revision_feedback.append(f"Generic critic:\n{critic_result.text}")
+        if _critic_requests_revision(coverage_critic_result.text):
+            revision_feedback.append(
+                f"Pedagogy coverage critic:\n{coverage_critic_result.text}"
+            )
 
         if not revision_feedback:
             break
@@ -450,6 +490,13 @@ def _perception_turn(base_turn: TutorTurnInput) -> TutorTurnInput:
                 units, signs, and any written student claim. If something is
                 ambiguous, say it is ambiguous instead of guessing.
 
+                For trigonometric graphs, inspect the y-intercept and phase
+                before naming the function. A curve passing through (0, 1) at
+                x=0 is cosine-like; a curve passing through (0, 0) with positive
+                initial slope is sine-like. Keep the plotted function, any
+                defined accumulated function such as F(x), and the student's
+                written claim separate instead of trusting the student's label.
+
                 For numbered diagrams, do not trust the student's label list by
                 itself. Inspect where each arrow or number points in the image.
                 Return a table with: number, student's written label if visible,
@@ -595,6 +642,10 @@ def _solver_turn(
                 text and image, resolve it from the image evidence rather than
                 guessing. Be especially careful with numbered labels, signs,
                 units, code lines, and handwritten claims.
+                For trigonometric graphs, verify the function from the graph's
+                y-intercept, phase, period, and labels before accepting the
+                student's written identification; keep f(x), F(x), and any
+                antiderivative/accumulation definition distinct.
 
                 Independently recompute every arithmetic, algebra, derivative,
                 formula-substitution, and code-execution step. Do not mark a
@@ -618,6 +669,11 @@ def _solver_turn(
                 solving a different image-only problem, and do not announce that
                 the image conflicts with the conversation unless the student
                 explicitly asks about that conflict.
+
+                If a rubric-blind task-family playbook names specific visible
+                student expressions or common traps, verify whether they appear
+                in this row and include them explicitly in the diagnosis. Do not
+                replace those required checks with a more generic explanation.
                 """
             ).strip()
             + use_case_note,
@@ -672,6 +728,10 @@ def _contract_turn(
                 - response mode and disclosure boundary
                 - exact student wording/work to anchor on
                 - concepts, formulas, definitions, examples, or analogies to include
+                - correct steps to affirm and incorrect steps to diagnose
+                - guiding questions/checkpoints for active-learning responses
+                - alternative paths or method-choice advice when the student is
+                  comparing approaches
                 - numerical/code/diagram facts that must be correct
                 - things the response must avoid
 
@@ -768,6 +828,10 @@ def _verification_turn(
                 silently convert the task into "move the arrow to match the
                 student's label." For assessment rows, verify the corrected final
                 result/code/table that should be shown.
+                For trigonometric graph images, verify the plotted curve from
+                the y-intercept and phase before accepting the student's claimed
+                function name. Explicitly distinguish the plotted f from an
+                accumulated/antiderivative F.
                 For plant/animal cell diagrams, enforce these anchors:
                 cytoplasm is the lightly colored interior fill, cell membrane is
                 a thin flexible outline/inner boundary, cell wall is the thick
@@ -881,6 +945,10 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         wording or visible work. Include formulas, numerical values,
         code snippets, definitions, trade-offs, examples, or analogies
         when they are needed to make the teaching point concrete.
+        If the student is choosing among methods, explicitly say whether
+        multiple paths are valid and give a decision rule for choosing among
+        them. If the response is a hint, include one or two pointed guiding
+        questions or checkpoint prompts, not just a generic nudge.
         If the answer contract conflicts with the use-case policy or
         independent verifier, follow the use-case policy and verifier.
 
@@ -895,8 +963,10 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
           mismatch.
         - Assessment: state what is correct, what is wrong, why it is
           wrong, and the corrected result, corrected answer, corrected
-          code, or correction table. Do not withhold the final correction
-          merely to be Socratic.
+          code, or correction table. When useful, name the error type
+          (conceptual, arithmetic, formula/setup, notation, visual-label,
+          compile/runtime, or edge-case). Do not withhold the final
+          correction merely to be Socratic.
         - Active learning: do not reveal the final requested answer,
           conclusion, or target variable, but give a specific next step.
           It is allowed to provide an intermediate formula, setup, or
@@ -1022,6 +1092,9 @@ def _critic_turn(
                 multimodal draft appears to misread the image.
                 When a rubric-blind task-family playbook is provided, request
                 revision if the draft ignores a relevant required move from it.
+                If the playbook uses words like "required", "quote", "state",
+                or names exact student expressions, request revision when the
+                draft does not explicitly include those visible checks.
                 For plant/animal cell assessment playbooks, request revision if
                 the draft does not explicitly state that marker 5 should be
                 labelled Cell Wall.
@@ -1043,6 +1116,9 @@ def _critic_turn(
                 student to move arrows to preserve wrong labels. Request revision
                 if a calculus/physics/statistics answer affirms a student's
                 arithmetic without showing independent verification.
+                Request revision if a trigonometric graph response appears to
+                accept the student's sin/cos label without checking the graph's
+                y-intercept and separating f(x) from F(x).
                 Request revision if an active-learning response gives the
                 requested final numerical answer, uses "solve/isolate for" on
                 the final target variable, or withholds useful intermediate
@@ -1051,6 +1127,109 @@ def _critic_turn(
                 draft writes the full arithmetic chain "240 - 520 + 200", tells
                 the student to add 200 after 240 - 520, or omits an explicit
                 reread prompt contrasting height s(4) with rate s'(4).
+                """
+            ).strip(),
+            "user_prompt": dedent(
+                f"""\
+                Original task:
+                {base_turn.user_prompt}
+                {perception_block}
+                {specialist_block}
+                {visual_probe_block}
+                {task_playbook_block}
+
+                Private diagnosis:
+                {solver_analysis}
+
+                Answer contract:
+                {answer_contract or "not provided"}
+
+                Independent domain verification:
+                {domain_verification or "not provided"}
+
+                Draft response:
+                {draft_response}
+                """
+            ).strip(),
+        }
+    )
+
+
+def _coverage_critic_turn(
+    base_turn: TutorTurnInput,
+    solver_analysis: str,
+    draft_response: str,
+    *,
+    answer_contract: str | None = None,
+    domain_verification: str | None = None,
+    perception_transcript: str | None = None,
+    specialist_audit: str | None = None,
+    visual_probe: str | None = None,
+    task_playbook: str | None = None,
+) -> TutorTurnInput:
+    perception_block = (
+        f"\n\nPerception transcript:\n{perception_transcript}"
+        if perception_transcript
+        else ""
+    )
+    specialist_block = (
+        f"\n\nSpecialist audit:\n{specialist_audit}" if specialist_audit else ""
+    )
+    visual_probe_block = f"\n\nLocal visual probe:\n{visual_probe}" if visual_probe else ""
+    task_playbook_block = (
+        f"\n\nRubric-blind task-family playbook:\n{task_playbook}"
+        if task_playbook
+        else ""
+    )
+    return base_turn.model_copy(
+        update={
+            "system_prompt": dedent(
+                """\
+                You are a rubric-blind pedagogy coverage critic for a STEM tutor.
+                Do not use or request sample-specific rubrics. Return either
+                PASS or REVISE, followed by concise reasons.
+
+                Focus on TutorBench-style tutoring skills that single-model
+                tutors often miss: acknowledging the student's state, identifying
+                exact misconceptions, recognizing correct work before correcting
+                errors, asking useful guiding questions, including examples or
+                analogies when they would help, providing alternative solution
+                paths when the student is comparing methods, and stating needed
+                definitions/formulas explicitly.
+
+                Request revision if the draft is a correct solve but weak
+                tutoring. Use this use-case checklist:
+
+                Adaptive explanation:
+                - directly answer the student's follow-up;
+                - name the exact misconception or missing link;
+                - state the relevant definition/law/formula;
+                - include a compact example, analogy, or alternate explanation
+                  when the idea is abstract;
+                - acknowledge confusion when the student expresses it.
+
+                Assessment and feedback:
+                - explicitly say what the student did correctly;
+                - quote or closely paraphrase the first incorrect step;
+                - classify the error when useful (conceptual, arithmetic,
+                  formula/setup, notation, code compile/runtime, visual label);
+                - give corrected values/code/table/conclusion, not only advice;
+                - maintain a constructive tone.
+
+                Active learning support:
+                - acknowledge at least one correct step or useful instinct;
+                - include one or two specific guiding questions or checkpoints;
+                - provide formulas or intermediate setup that help the next step;
+                - mention an alternative method if the student is choosing among
+                  methods, while explaining how to decide;
+                - do not reveal the final requested answer or final decision.
+
+                Request revision if a multimodal response does not anchor to
+                visible work, labels, code lines, equations, or student wording
+                when those details are available.
+                When a rubric-blind task-family playbook names exact traps or
+                required checks, treat those as the coverage checklist and
+                request revision if the draft only gives a generic explanation.
                 """
             ).strip(),
             "user_prompt": dedent(
@@ -1130,7 +1309,7 @@ def _apply_deterministic_playbook_guards(
     final_text: str,
     task_playbook: str | None,
 ) -> tuple[str, list[str]]:
-    """Apply small rubric-blind final guards for brittle task-family anchors."""
+    """Apply small rubric-blind final guards without replacing the agent's work."""
 
     if not task_playbook:
         return final_text, []
@@ -1222,6 +1401,12 @@ def _apply_deterministic_playbook_guards(
         text = text + "\n\n" + _radical_derivative_limit_definition_note()
         guards.append("radical_limit_definition_note")
         lower = text.lower()
+
+    # Full canned-response rewrites were useful during tiny dev-set debugging
+    # but failed badly on the larger holdout by overwriting correct, task-specific
+    # agent drafts with stale responses from a different member of the same broad
+    # family. V4 keeps only the small non-destructive anchors above.
+    return text, guards
 
     if "task-family playbook: heat-exchange active-learning hint" in playbook_lower:
         text = _heat_exchange_hint_template()
