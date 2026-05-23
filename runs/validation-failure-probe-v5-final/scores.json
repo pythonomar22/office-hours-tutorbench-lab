@@ -1,0 +1,125 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.47368421052631576,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": 0.9119582043343654,
+      "ci_low": 0.6041935647198805,
+      "count": 8,
+      "mean_arrw": 0.7761070270745193,
+      "name": "Apply"
+    },
+    {
+      "ci_high": 0.5789473684210527,
+      "ci_low": 0.5357142857142857,
+      "count": 2,
+      "mean_arrw": 0.5573308270676691,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.6774193548387096,
+      "count": 3,
+      "mean_arrw": 0.8109916367980884,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.8716931216931216,
+      "ci_low": 0.575266290726817,
+      "count": 8,
+      "mean_arrw": 0.7197072542467279,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 0.8934697855750487,
+      "ci_low": 0.5556796030480241,
+      "count": 6,
+      "mean_arrw": 0.7454198262797084,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": 0.9022222222222223,
+      "ci_low": 0.6339634031314846,
+      "count": 5,
+      "mean_arrw": 0.7729726910571812,
+      "name": "Biology"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.868421052631579,
+      "count": 2,
+      "mean_arrw": 0.9342105263157895,
+      "name": "Calculus"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.3181818181818182,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 0.6825396825396826,
+      "ci_low": 0.47368421052631576,
+      "count": 2,
+      "mean_arrw": 0.5781119465329991,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.9629629629629629,
+      "count": 2,
+      "mean_arrw": 0.9814814814814814,
+      "name": "Physics"
+    },
+    {
+      "ci_high": 0.5357142857142857,
+      "ci_low": 0.5238095238095238,
+      "count": 2,
+      "mean_arrw": 0.5297619047619048,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 0.8529411764705882,
+      "ci_low": 0.6825396825396826,
+      "count": 2,
+      "mean_arrw": 0.7677404295051353,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 0.9288888888888889,
+      "ci_low": 0.550108604845447,
+      "count": 5,
+      "mean_arrw": 0.7432024505708716,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 0.8772824919441461,
+      "ci_low": 0.5290561972589622,
+      "count": 7,
+      "mean_arrw": 0.7112405542553493,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 1,
+  "overall": {
+    "ci_high": 0.8459586400113714,
+    "ci_low": 0.6210326129388491,
+    "count": 14,
+    "mean_arrw": 0.7307269279751482,
+    "name": "overall"
+  },
+  "run_id": "validation-failure-probe-v5-final"
+}

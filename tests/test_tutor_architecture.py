@@ -72,6 +72,52 @@ def test_ellipse_playbook_corrects_partial_area(adaptive_example) -> None:
     assert "area = (2x)(2y) = 4xy" in playbook
 
 
+def test_playbook_router_rejects_wrong_family_false_positives(adaptive_example) -> None:
+    natural_selection = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "Assess a natural selection answer about a beetle population. "
+                "The student says an individual beetle mutates because it needs "
+                "to become darker despite existing genetic variation."
+            ),
+        }
+    )
+    parabola_area = adaptive_example.model_copy(
+        update={
+            "subject": "Calculus",
+            "batch": "USE_CASE_1_MULTIMODAL",
+            "prompt": "Answer the problem using the graph shown.",
+            "follow_up_prompt": (
+                "I'm confused how the area between the two parabolas was written "
+                "as an integral."
+            ),
+        }
+    )
+    trig_substitution = adaptive_example.model_copy(
+        update={
+            "subject": "Calculus",
+            "batch": "USE_CASE_1_TEXT",
+            "prompt": "Explain the u-substitution for an integral containing sqrt(tan 2x).",
+            "follow_up_prompt": (
+                "I do not know how to get dx in terms of du or why the denominator "
+                "has 1 + u^2."
+            ),
+        }
+    )
+
+    natural_playbook = build_task_playbook(build_turn_input(natural_selection))
+    parabola_playbook = build_task_playbook(build_turn_input(parabola_area))
+    trig_playbook = build_task_playbook(build_turn_input(trig_substitution))
+
+    assert natural_playbook is not None
+    assert "natural-selection misconception" in natural_playbook
+    assert "interphase mutation" not in natural_playbook
+    assert parabola_playbook is None or "ellipse rectangle" not in parabola_playbook
+    assert trig_playbook is None or "radical derivative" not in trig_playbook
+
+
 def test_cell_diagram_playbook_sets_label_five(adaptive_example) -> None:
     example = adaptive_example.model_copy(
         update={
@@ -404,6 +450,33 @@ def test_oop_playbook_does_not_match_car_substrings(adaptive_example) -> None:
     assert playbook is None or "OOP design / inventory class" not in playbook
 
 
+def test_oop_playbook_requires_inventory_design_context(adaptive_example) -> None:
+    code_recursion = adaptive_example.model_copy(
+        update={
+            "subject": "Computer Science",
+            "batch": "USE_CASE_1_MULTIMODAL",
+            "prompt": "A recursive method has a current value and stack overflow error.",
+        }
+    )
+    inventory_design = adaptive_example.model_copy(
+        update={
+            "subject": "Computer Science",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "Assess an object-oriented class design for cars, inventory, "
+                "and dealership responsibility."
+            ),
+        }
+    )
+
+    code_playbook = build_task_playbook(build_turn_input(code_recursion))
+    inventory_playbook = build_task_playbook(build_turn_input(inventory_design))
+
+    assert code_playbook is None or "OOP design / inventory class" not in code_playbook
+    assert inventory_playbook is not None
+    assert "OOP design / inventory class" in inventory_playbook
+
+
 def test_respiration_playbooks_split_adaptive_and_assessment(adaptive_example) -> None:
     adaptive = adaptive_example.model_copy(
         update={
@@ -582,6 +655,133 @@ def test_failure_analysis_playbooks_route_to_diagnostic_traps(adaptive_example) 
             },
             "trig accumulation probability",
         ),
+        (
+            {
+                "subject": "Biology",
+                "batch": "USE_CASE_2_TEXT",
+                "prompt": (
+                    "A DNA sequence has an insertion mutation that changes the "
+                    "mRNA and may affect the AUG start codon during translation."
+                ),
+            },
+            "start-codon insertion mutation",
+        ),
+        (
+            {
+                "subject": "Biology",
+                "batch": "USE_CASE_2_TEXT",
+                "prompt": (
+                    "Assess a natural selection explanation for beetle coloration "
+                    "across generations with predators and genetic variation."
+                ),
+            },
+            "natural-selection misconception",
+        ),
+        (
+            {
+                "subject": "Statistics",
+                "batch": "USE_CASE_2_MULTIMODAL",
+                "prompt": (
+                    "A survey asks a yes/no question about whether someone is "
+                    "hungry. The student changed it to hours since eating, but "
+                    "the prompt asks for a qualitative variable."
+                ),
+            },
+            "qualitative survey-variable",
+        ),
+        (
+            {
+                "subject": "Physics",
+                "batch": "USE_CASE_2_MULTIMODAL",
+                "prompt": (
+                    "Assess work for finding a gripper's crackle from its "
+                    "position function; the image defines crackle using jerk "
+                    "and higher derivatives."
+                ),
+            },
+            "crackle derivative assessment",
+        ),
+        (
+            {
+                "subject": "Calculus",
+                "batch": "USE_CASE_1_TEXT",
+                "prompt": (
+                    "Use u = tan(2x) in a u-substitution integral with dx, "
+                    "du, sec^2(2x), cos^2(2x), and the integrand."
+                ),
+                "follow_up_prompt": "Where did dx = du/[2(1+u^2)] come from?",
+            },
+            "trig u-substitution",
+        ),
+        (
+            {
+                "subject": "Calculus",
+                "batch": "USE_CASE_2_TEXT",
+                "prompt": "Assess the area enclosed by x = y^2 and the line y = x - 2.",
+            },
+            "sideways-parabola enclosed-area",
+        ),
+        (
+            {
+                "subject": "Computer Science",
+                "batch": "USE_CASE_3_MULTIMODAL",
+                "prompt": (
+                    "The student is implementing fastPower(b, x) for exponentiation "
+                    "b^x, including odd and negative exponents and a ??? return type."
+                ),
+            },
+            "fastPower exponentiation",
+        ),
+        (
+            {
+                "subject": "Biology",
+                "batch": "USE_CASE_3_TEXT",
+                "prompt": (
+                    "A BsmBI restriction enzyme recognition sequence is not "
+                    "palindromic; give a hint about checking the complementary "
+                    "strand and reverse complement."
+                ),
+            },
+            "non-palindromic restriction-enzyme",
+        ),
+        (
+            {
+                "subject": "Biology",
+                "batch": "USE_CASE_1_TEXT",
+                "prompt": (
+                    "Explain the lac operon with high glucose and high lactose, "
+                    "CAP-cAMP, RNA polymerase, promoter, and repressor."
+                ),
+                "follow_up_prompt": (
+                    "Why is transcription still low if lactose removes the repressor?"
+                ),
+            },
+            "lac-operon CAP-cAMP",
+        ),
+        (
+            {
+                "subject": "Statistics",
+                "batch": "USE_CASE_1_TEXT",
+                "prompt": (
+                    "A variance hypothesis test uses a chi-square statistic. "
+                    "The student found critical value 2.928 from a t-distribution "
+                    "and thinks they should reject the null."
+                ),
+            },
+            "chi-square variance-test",
+        ),
+        (
+            {
+                "subject": "Physics",
+                "batch": "USE_CASE_1_MULTIMODAL",
+                "prompt": (
+                    "A velocity-time graph asks for displacement from 6 and 10 "
+                    "seconds; the earlier explanation used a trapezoid crossing "
+                    "below the axis instead of signed area."
+                ),
+            },
+            "velocity-time signed-area",
+        ),
     ]
 
     for update, expected in cases:
@@ -591,17 +791,48 @@ def test_failure_analysis_playbooks_route_to_diagnostic_traps(adaptive_example) 
         assert expected in playbook
 
 
+def test_revised_failure_playbooks_name_required_checks(adaptive_example) -> None:
+    start_codon = adaptive_example.model_copy(
+        update={
+            "subject": "Biology",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "A DNA sequence has an insertion mutation that changes the "
+                "mRNA and may affect the AUG start codon during translation."
+            ),
+        }
+    )
+    crackle = adaptive_example.model_copy(
+        update={
+            "subject": "Physics",
+            "batch": "USE_CASE_2_MULTIMODAL",
+            "prompt": "Find the crackle x'''''(t) from a position function.",
+        }
+    )
+
+    start_playbook = build_task_playbook(build_turn_input(start_codon))
+    crackle_playbook = build_task_playbook(build_turn_input(crackle))
+
+    assert start_playbook is not None
+    assert "no peptide is synthesized" in start_playbook
+    assert "overlapping downstream AUG" in start_playbook
+    assert crackle_playbook is not None
+    assert "x'''''(t)" in crackle_playbook
+    assert "fifth derivative" in crackle_playbook
+
+
 def test_assessment_playbooks_do_not_hijack_active_or_adaptive_rows(
     adaptive_example,
 ) -> None:
-    titration_assessment = adaptive_example.model_copy(
+    titration_adaptive = adaptive_example.model_copy(
         update={
             "subject": "Chemistry",
-            "batch": "USE_CASE_2_TEXT",
+            "batch": "USE_CASE_1_TEXT",
             "prompt": (
-                "Assess a student's lactic acid titration pKa calculation using "
+                "Explain a student's lactic acid titration pKa calculation using "
                 "Henderson-Hasselbalch and half-equivalence."
             ),
+            "follow_up_prompt": "Why does the half-equivalence point matter for pKa?",
         }
     )
     residual_active = adaptive_example.model_copy(
@@ -615,7 +846,9 @@ def test_assessment_playbooks_do_not_hijack_active_or_adaptive_rows(
         }
     )
 
-    assert build_task_playbook(build_turn_input(titration_assessment)) is None
+    titration_playbook = build_task_playbook(build_turn_input(titration_adaptive))
+    assert titration_playbook is not None
+    assert "weak-acid titration assessment" not in titration_playbook
     assert build_task_playbook(build_turn_input(residual_active)) is None
 
 
@@ -642,6 +875,26 @@ def test_retired_brittle_playbooks_do_not_route(adaptive_example) -> None:
 
     assert build_task_playbook(build_turn_input(coffee)) is None
     assert build_task_playbook(build_turn_input(twos)) is None
+
+
+def test_underperforming_weak_acid_titration_playbook_is_retired(
+    adaptive_example,
+) -> None:
+    example = adaptive_example.model_copy(
+        update={
+            "subject": "Chemistry",
+            "batch": "USE_CASE_2_TEXT",
+            "prompt": (
+                "A monoprotic weak acid is titrated with NaOH. The prompt "
+                "mentions the half-equivalence point, equivalence point, pH, "
+                "pKa, and Henderson-Hasselbalch."
+            ),
+        }
+    )
+
+    playbook = build_task_playbook(build_turn_input(example))
+
+    assert playbook is None or "weak-acid titration assessment" not in playbook
 
 
 def test_remaining_dev50_failure_family_playbooks_route_cleanly(
@@ -855,6 +1108,17 @@ def test_radical_derivative_guard_adds_limit_definition_note() -> None:
     assert "Multiply by the conjugate" in guarded
     assert "4t^3+18t" in guarded
     assert guards == ["radical_limit_definition_note"]
+
+
+def test_crackle_guard_adds_fifth_derivative_audit() -> None:
+    guarded, guards = _apply_deterministic_playbook_guards(
+        "The fourth derivative is x''''(t) = 144t^2 - 144t + 48.",
+        "Task-family playbook: crackle derivative assessment",
+    )
+
+    assert "x'''''(t) = 288t - 144" in guarded
+    assert "x'''''(2) = 432 m/s^5" in guarded
+    assert guards == ["crackle_fifth_derivative_audit"]
 
 
 def test_full_response_templates_do_not_overwrite_dynamic_agent_output() -> None:

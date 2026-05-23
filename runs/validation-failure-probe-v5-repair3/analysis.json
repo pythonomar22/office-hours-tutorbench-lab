@@ -1,0 +1,395 @@
+{
+  "playbooks": [
+    {
+      "count": 1,
+      "mean_arrw": 0.4444444444444444,
+      "name": "crackle derivative assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "start-codon insertion mutation assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.3181818181818182,
+      "name": "weak-acid titration assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 15.0,
+      "name": "instruction_following",
+      "negative_criteria": 1,
+      "pass_rate": 0.5,
+      "passed_positive_weight": 15.0,
+      "positive_weight": 30.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.6774193548387096,
+      "passed_positive_weight": 21.0,
+      "positive_weight": 31.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.8148148148148148,
+      "passed_positive_weight": 22.0,
+      "positive_weight": 27.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 1.0,
+      "positive_weight": 1.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 6.0,
+      "positive_weight": 6.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 5.0,
+      "positive_weight": 5.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.3181818181818182,
+        "count": 3,
+        "mean_arrw": 0.5875420875420876,
+        "name": "Apply"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.4444444444444444,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.3181818181818182,
+        "count": 2,
+        "mean_arrw": 0.6590909090909091,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Biology"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.3181818181818182,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.4444444444444444,
+        "name": "Physics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.3181818181818182,
+        "count": 3,
+        "mean_arrw": 0.5875420875420876,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 1,
+    "overall": {
+      "ci_high": 1.0,
+      "ci_low": 0.3181818181818182,
+      "count": 3,
+      "mean_arrw": 0.5875420875420876,
+      "name": "overall"
+    },
+    "run_id": "validation-failure-probe-v5-repair3"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 93074,
+    "generation_output_tokens": 17913,
+    "judge_input_tokens": 7248,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 510,
+    "mean_generation_latency_ms": 111780.66666666667,
+    "mean_judge_latency_ms": 2916.3333333333335,
+    "negative_weight_review_count": 1,
+    "row_count": 3,
+    "run_id": "validation-failure-probe-v5-repair3",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1996000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19999
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2396000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 3,
+      "coverage_critic_0": 3,
+      "critic_0": 3,
+      "domain_verifier": 3,
+      "perception": 1,
+      "planner": 3,
+      "solver": 3,
+      "specialist_audit": 1
+    },
+    "stage_mean_latency_ms": {
+      "composer": 23338.33,
+      "coverage_critic_0": 9614.33,
+      "critic_0": 5291.67,
+      "domain_verifier": 13482,
+      "perception": 14608,
+      "planner": 18141.67,
+      "solver": 31592.33,
+      "specialist_audit": 16353
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.0,
+      "passed_positive_weight": 0.0,
+      "positive_weight": 5.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.2857142857142857,
+      "passed_positive_weight": 2.0,
+      "positive_weight": 7.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 1,
+      "pass_rate": 0.5,
+      "passed_positive_weight": 5.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.5,
+      "passed_positive_weight": 5.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.6666666666666666,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 15.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Not applicable",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 20.0,
+      "positive_weight": 20.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.3181818181818182,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state the correct subtraction in the HH equation: 9.25 \u2013 4.75 = 4.50, and identify the student's incorrect subtraction (9.25 \u2013 2.38 = 5.97) as an arithmetic er...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that a large [A\u207b]/[HA] ratio means very little HA remains, and that the student's verbal interpretation (\u201calmost all HA is converted\u201d) is incomplete an...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "weak-acid titration assessment",
+      "response_preview": "## Feedback on Your Titration Work ### What You Got Right Your final answer of **0.20 M** is correct, and the stoichiometric chain that produced it is exactly right: > moles NaOH = 0.1 M \u00d7 0.050 L = 0.005 mol \u2192 moles HA = 0.005 mol (monoprotic) > [HA]\u2080 = 0....",
+      "rubric_count": 7,
+      "subject": "Chemistry",
+      "task_id": "6843120a7996124c02b92b01",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must state that the student\u2019s final answer (0.200 M) is numerically correct, but the logic used to reach it is flawed due to incorrect assumptions.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.4444444444444444,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that the crackle, denoted $x\u2019\u2019\u2019\u2019\u2019(t)$, can be found by identifying the fifth derivative of the gripper\u2019s position function.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must reflect an accurate visual understanding of the prompt and student response, including the fact that the student only took the derivative twice (not five times...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must reflect the model\u2019s accurate visual reasoning from the prompt and student response that it should provide a full explanation of how to calculate $x\u2019\u2019\u2019\u2019\u2019(t)$ (i...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "crackle derivative assessment",
+      "response_preview": "## Feedback on Your Work You're right that repeated differentiation is the key idea here \u2014 good instinct! But there are three things to fix: the number of derivatives you took, one coefficient, and the units. --- ### What the Notation Is Telling You Look at...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "681cfdced476aa9b2b4633c7",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "start-codon insertion mutation assessment",
+      "response_preview": "## Assessment: DNA Insertion Mutation Analysis --- ### What You Got Right Your sequence work is excellent throughout: - \u2705 **Original mRNA:** 5'-AUGAGUAAUCGAGUUUAG-3' \u2014 correct - \u2705 **Original translation:** Met-Ser-Asn-Arg-Val (stop) \u2014 correct - \u2705 **Insertio...",
+      "rubric_count": 6,
+      "subject": "Biology",
+      "task_id": "681a876ab9d767de6644dc12",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    }
+  ]
+}

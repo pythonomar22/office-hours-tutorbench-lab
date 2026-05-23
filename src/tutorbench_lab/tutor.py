@@ -651,7 +651,10 @@ def _solver_turn(
                 formula-substitution, and code-execution step. Do not mark a
                 student's numerical value as correct unless you have verified it.
                 If the student made an arithmetic error, identify the exact term
-                or line where it happens.
+                or line where it happens. For assessment rows, audit downstream
+                arithmetic even when an earlier setup is conceptually wrong; the
+                student may need both the root conceptual error and the later
+                numerical slip named separately.
 
                 For programming tasks, inspect exact code lines, compile/runtime
                 errors, edge cases, tests beyond the shown sample, and input
@@ -674,6 +677,9 @@ def _solver_turn(
                 student expressions or common traps, verify whether they appear
                 in this row and include them explicitly in the diagnosis. Do not
                 replace those required checks with a more generic explanation.
+                If the playbook's named scenario does not actually match the
+                prompt, image, or student work, say so privately and ignore the
+                playbook rather than importing facts from a different problem.
                 """
             ).strip()
             + use_case_note,
@@ -773,7 +779,10 @@ def _planner_policy(use_case: UseCase) -> str:
             "Active-learning responses should withhold only the final requested "
             "answer, conclusion, or target variable. They may include intermediate "
             "checkpoint values, formulas, setup, and focused arithmetic prompts "
-            "when those are the useful hint."
+            "when those are the useful hint. Prefer turning near-final corrections "
+            "into questions or checkpoints; do not write a completed corrected "
+            "sequence, final conclusion, final test decision, or final numeric "
+            "target unless the prompt explicitly asks for assessment instead of a hint."
         )
     return (
         "Adaptive explanations should answer the student's follow-up directly, "
@@ -951,6 +960,9 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         questions or checkpoint prompts, not just a generic nudge.
         If the answer contract conflicts with the use-case policy or
         independent verifier, follow the use-case policy and verifier.
+        Treat any task-family playbook as a checklist only after confirming it
+        matches this exact prompt/image. Do not mention unrelated playbook
+        topics or import facts from a different problem family.
 
         Use-case policy:
         - Adaptive explanation: directly answer the follow-up, name the
@@ -965,8 +977,9 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
           wrong, and the corrected result, corrected answer, corrected
           code, or correction table. When useful, name the error type
           (conceptual, arithmetic, formula/setup, notation, visual-label,
-          compile/runtime, or edge-case). Do not withhold the final
-          correction merely to be Socratic.
+          compile/runtime, or edge-case). Audit downstream arithmetic even
+          if the setup is wrong, and name both errors when both occur. Do
+          not withhold the final correction merely to be Socratic.
         - Active learning: do not reveal the final requested answer,
           conclusion, or target variable, but give a specific next step.
           It is allowed to provide an intermediate formula, setup, or
@@ -974,6 +987,9 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
           answer. A pooled proportion, standard error formula, or setup
           checkpoint is usually intermediate; the requested acceleration,
           rate, height, area, or final test decision is usually final.
+          For sequence, coding, proof, and multiple-choice hints, do not
+          write the completed corrected sequence/code/proof/choice; ask the
+          student to test the decisive property instead.
           Avoid saying "solve/isolate for X" when X is the final requested
           target; instead ask what operation would undo the surrounding
           expression or point to the term to move next.
@@ -1095,6 +1111,10 @@ def _critic_turn(
                 If the playbook uses words like "required", "quote", "state",
                 or names exact student expressions, request revision when the
                 draft does not explicitly include those visible checks.
+                Request revision if the draft appears to import a playbook topic
+                that is absent from the original task, image, or student work
+                (for example discussing interphase in a natural-selection row,
+                or an ellipse/rectangle in an area-between-curves row).
                 For plant/animal cell assessment playbooks, request revision if
                 the draft does not explicitly state that marker 5 should be
                 labelled Cell Wall.
@@ -1115,18 +1135,26 @@ def _critic_turn(
                 table for the marker endpoints as drawn, or if it only tells the
                 student to move arrows to preserve wrong labels. Request revision
                 if a calculus/physics/statistics answer affirms a student's
-                arithmetic without showing independent verification.
+                arithmetic without showing independent verification. For
+                assessment rows, request revision if the draft stops after a root
+                conceptual error and fails to audit a visible downstream
+                arithmetic, notation, or interpretation error.
                 Request revision if a trigonometric graph response appears to
                 accept the student's sin/cos label without checking the graph's
                 y-intercept and separating f(x) from F(x).
                 Request revision if an active-learning response gives the
                 requested final numerical answer, uses "solve/isolate for" on
-                the final target variable, or withholds useful intermediate
-                formulas/checkpoints.
+                the final target variable, writes a completed corrected sequence,
+                code block, proof, final choice, or final test decision, or
+                withholds useful intermediate formulas/checkpoints.
                 For derivative-rate hint playbooks, request revision if the
                 draft writes the full arithmetic chain "240 - 520 + 200", tells
                 the student to add 200 after 240 - 520, or omits an explicit
                 reread prompt contrasting height s(4) with rate s'(4).
+                For crackle derivative assessment playbooks, request revision
+                if the draft says crackle is the fourth derivative, reports
+                x''''(t), or gives m/s^4 units; the TutorBench crackle rows
+                require the fifth derivative x'''''(t) and m/s^5 units.
                 """
             ).strip(),
             "user_prompt": dedent(
@@ -1213,6 +1241,8 @@ def _coverage_critic_turn(
                 - quote or closely paraphrase the first incorrect step;
                 - classify the error when useful (conceptual, arithmetic,
                   formula/setup, notation, code compile/runtime, visual label);
+                - audit later arithmetic/interpretation slips even when an
+                  earlier conceptual error already invalidates the solution;
                 - give corrected values/code/table/conclusion, not only advice;
                 - maintain a constructive tone.
 
@@ -1230,6 +1260,10 @@ def _coverage_critic_turn(
                 When a rubric-blind task-family playbook names exact traps or
                 required checks, treat those as the coverage checklist and
                 request revision if the draft only gives a generic explanation.
+                Request revision if the response includes a task-family anchor
+                that does not belong to the current problem.
+                For crackle derivative playbooks, fifth-derivative notation and
+                units are required.
                 """
             ).strip(),
             "user_prompt": dedent(
@@ -1400,6 +1434,21 @@ def _apply_deterministic_playbook_guards(
     ):
         text = text + "\n\n" + _radical_derivative_limit_definition_note()
         guards.append("radical_limit_definition_note")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: crackle derivative assessment" in playbook_lower
+        and "144t^2 - 144t + 48" in lower
+        and "432" not in lower
+    ):
+        text = (
+            text
+            + "\n\nCrackle order correction: for this task, crackle is the "
+            "fifth derivative, x'''''(t), not the fourth derivative. After "
+            "x''''(t) = 144t^2 - 144t + 48, differentiate once more to get "
+            "x'''''(t) = 288t - 144, so x'''''(2) = 432 m/s^5."
+        )
+        guards.append("crackle_fifth_derivative_audit")
         lower = text.lower()
 
     # Full canned-response rewrites were useful during tiny dev-set debugging

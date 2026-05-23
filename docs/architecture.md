@@ -17,7 +17,7 @@
 - UC3 active learning: input is the problem plus partial student work; output
   should be a hint or guiding question and must avoid giving the full answer.
 
-## Agentic Tutor V2
+## Agentic Tutor V5
 
 The agentic strategy is rubric-blind:
 
@@ -41,6 +41,10 @@ The agentic strategy is rubric-blind:
   and verifier notes.
 - Critic: checks the draft against the contract, verifier notes, truthfulness,
   calibration, acknowledgement, structure, and spoiler risk.
+- Pedagogy coverage critic: separately checks TutorBench-style tutoring
+  coverage, including exact misconception identification, correct-work
+  acknowledgement, examples/analogies, definitions/formulas, guiding questions,
+  multimodal anchoring, and wrong-family playbook leakage.
 - Revision loop: runs up to `TUTORBENCH_MAX_REVISION_ATTEMPTS` if the critic
   returns `REVISE`, and uses the full composer policy during revisions.
 - Task-family playbooks: deterministic, rubric-blind guidance for recurring
@@ -50,10 +54,11 @@ The agentic strategy is rubric-blind:
   feedback, and plant/animal cell diagrams. Playbook routing is intentionally
   conservative: validation150 showed that several specific deterministic
   rewrites underperformed the generic agent, so coffee/under-filling,
-  two-proportion, regression-residual, and two's-complement routes are retired.
+  two-proportion, regression-residual, two's-complement, and weak-acid
+  titration-assessment routes are retired.
 - Deterministic final guards: narrow post-composition repairs for brittle
   task-family anchors that the LLM critic may miss, such as exact visual
-  anchors, exact factorial verification, and active-learning spoiler templates.
+  anchors, exact factorial verification, and crackle derivative-order audits.
 
 No candidate step receives sample-specific TutorBench rubrics. Rubrics are used
 only in the judge.
@@ -129,12 +134,13 @@ t-test feedback. It remains a local public-HF dev-set score, not a leaderboard
 claim.
 
 The current clean `validation150` checkpoint is baseline Sonnet `59.65%` versus
-agentic `72.13%` over 150 rows, a +12.48 point same-set gain. The main
-architectural lesson was subtractive: broad deterministic templates were
-overfitting dev50. Retiring the brittle coffee/under-filling, two-proportion,
-regression-residual, and two's-complement playbooks improved validation from
-roughly `69.4%` to `72.13%` while reducing deterministic guard usage. This is
-still a local public-HF-comparable result, not an official leaderboard claim.
+agentic-v5 `77.21%` over 150 rows, a +17.57 point same-set gain and +4.15
+points over v4. The main v5 architectural lesson was route hygiene plus
+enforcement: wrong-family playbooks can poison otherwise good reasoning, and
+playbook requirements need critic/guard enforcement when the model is tempted
+to fall back to a plausible but benchmark-wrong school-level interpretation.
+This is still a local public-HF-comparable result, not an official leaderboard
+claim.
 
 ## Office Hours Transfer Path
 

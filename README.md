@@ -202,10 +202,10 @@ Current clean `office_hours_dev50` checkpoint: baseline Sonnet
 `runs/b0a72ccc-6f9f-4625-9ca7-a1f7f37d34cc/`, a +25.60 point gain. This is a
 local public-HF dev-set score, not a leaderboard claim.
 
-Current `validation150` checkpoint: baseline Sonnet `59.65%` vs agentic
-`72.13%`, CI `69.02%-75.35%`, in
-`runs/validation150-retired-playbooks-v3/`. This is a local
-public-HF-comparable validation score, not an official leaderboard result.
+Current `validation150` checkpoint: baseline Sonnet `59.65%` vs agentic-v5
+`77.21%`, CI `74.43%-80.05%`, in `runs/validation150-agentic-v5/`.
+This is a local public-HF-comparable validation score, not an official
+leaderboard result.
 
 Current larger holdout anchor: baseline Sonnet `60.77%`, CI
 `58.90%-62.83%`, vs agentic `68.23%`, CI `66.11%-70.23%`, over
@@ -219,3 +219,12 @@ representative weakest heldout500 failures, up from roughly `4%` on those same
 rows in `heldout500-agentic-v3`. V4 retires full canned final rewrites, adds a
 rubric-blind pedagogy coverage critic, and moves recurring failures into
 diagnostic playbooks that guide the solver instead of replacing the response.
+
+Current v5 validation result: `validation150-agentic-v5` scored `77.21%`, a
+`+17.57` point same-set gain over Sonnet baseline and `+4.15` points over
+`validation150-agentic-v4-refined`. V5 tightens wrong-family playbook routing,
+adds stricter active-learning spoiler checks and assessment arithmetic audits,
+and adds broad failure-family playbooks from trace analysis. A targeted
+`validation-failure-probe-v5-final` moved 14 weak validation rows from a v4
+average of `38.07%` to `73.07%`; the weak-acid titration route was retired
+because it regressed against the generic agent.

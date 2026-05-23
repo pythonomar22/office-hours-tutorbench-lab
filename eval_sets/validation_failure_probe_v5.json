@@ -1,0 +1,67 @@
+{
+  "description": "Targeted validation failure probe for agentic-v5 routing, active-learning spoiler control, and broad failure-family playbooks. This is a development probe, not a benchmark claim.",
+  "name": "validation_failure_probe_v5",
+  "selection_policy": [
+    "source_run=runs/validation150-agentic-v4-refined/analysis.md",
+    "top_v4_failure_rows_with_actionable_architecture_or_playbook_changes",
+    "created=2026-05-23"
+  ],
+  "task_ids": [
+    {
+      "task_id": "681a876ab9d767de6644dc12",
+      "why": "assessment/text/Biology; start-codon insertion mutation; v4 false interphase route"
+    },
+    {
+      "task_id": "683e4516cb225e8f5aa693e1",
+      "why": "assessment/multimodal/Statistics; qualitative survey-variable simplest-answer miss"
+    },
+    {
+      "task_id": "68376d91a3ac2c2617743efe",
+      "why": "adaptive/multimodal/Calculus; trig u-substitution misrouted to radical derivative"
+    },
+    {
+      "task_id": "683e458a9c195766bfe397d3",
+      "why": "active_learning/multimodal/Computer Science; fastPower hint coverage and spoiler risk"
+    },
+    {
+      "task_id": "681cfc8cd66359ff7194ddb1",
+      "why": "assessment/text/Calculus; sideways-parabola enclosed area missed subregion"
+    },
+    {
+      "task_id": "681a876a23b6cca56a90f2a0",
+      "why": "assessment/text/Biology; natural-selection misconception; v4 false interphase route"
+    },
+    {
+      "task_id": "681b80ddb17ff4fba2eec7e8",
+      "why": "adaptive/multimodal/Statistics; chi-square variance-test critical-value source"
+    },
+    {
+      "task_id": "683870ee806964a2566da1fd",
+      "why": "active_learning/text/Biology; non-palindromic restriction-enzyme complement hint"
+    },
+    {
+      "task_id": "681a872123b6cca56a90f246",
+      "why": "adaptive/text/Biology; lac-operon CAP-cAMP mechanism"
+    },
+    {
+      "task_id": "6814f3603103a8e315cd7d95",
+      "why": "adaptive/multimodal/Physics; velocity-time signed area and trapezoid shortcut"
+    },
+    {
+      "task_id": "683775dc913c16d05cd33839",
+      "why": "adaptive/multimodal/Computer Science; OOP playbook false positive on recursion"
+    },
+    {
+      "task_id": "6843120a7996124c02b92b01",
+      "why": "assessment/text/Chemistry; weak-acid titration Henderson-Hasselbalch audit"
+    },
+    {
+      "task_id": "681cfdced476aa9b2b4633c7",
+      "why": "assessment/multimodal/Physics; crackle derivative-order visual definition"
+    },
+    {
+      "task_id": "683e451300c66429fabd7419",
+      "why": "assessment/multimodal/Biology; pedigree inheritance residual hard case"
+    }
+  ]
+}

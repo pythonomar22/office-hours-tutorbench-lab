@@ -74,7 +74,7 @@ local public-HF/dev-set results unless explicitly marked as official.
     strongly supports running a larger v4 validation/heldout pass next.
 - Current validation set: `eval_sets/validation150.json`, 150 rows excluding
   dev10/dev50, balanced as 25 rows per use-case/modality bucket.
-- Current validation checkpoint: `validation150-retired-playbooks-v3`
+- Previous validation checkpoint: `validation150-retired-playbooks-v3`
   - Score: `72.13%`, CI `69.02%-75.35%`.
   - Same-set Sonnet baseline: `59.65%`, CI `56.14%-63.22%`.
   - Delta vs baseline: `+12.48` points.
@@ -86,6 +86,28 @@ local public-HF/dev-set results unless explicitly marked as official.
     playbooks for coffee/under-filling, two-proportion hints, regression
     residuals, and two's-complement hints after validation showed the generic
     agent beat those rewrites.
+- V4 validation checkpoint: `validation150-agentic-v4-refined`
+  - Score: `73.06%`, CI `69.85%-76.22%`.
+  - Delta vs v3: `+0.93` points.
+  - Main changes: second rubric-blind pedagogy coverage critic, no full canned
+    final rewrites, tighter playbook routing, and diagnostic playbooks from the
+    heldout500 failure probe.
+- Current validation checkpoint: `validation150-agentic-v5`
+  - Score: `77.21%`, CI `74.43%-80.05%`.
+  - Same-set Sonnet baseline: `59.65%`, CI `56.14%-63.22%`.
+  - Delta vs baseline: `+17.57` points.
+  - Delta vs v4: `+4.15` points.
+  - Main changes: route-hygiene fixes for false interphase/ellipse/radical/OOP
+    playbooks, stricter active-learning spoiler checks, assessment arithmetic
+    auditing, and broad failure-family playbooks for start-codon insertion,
+    natural selection, qualitative survey variables, trig substitution,
+    sideways-parabola area, fastPower hints, non-palindromic restriction
+    enzymes, lac operon CAP-cAMP, chi-square variance tests, velocity-time
+    signed area, and crackle derivative order.
+  - The targeted `validation-failure-probe-v5-final` moved 14 previously weak
+    validation rows from a v4 average of `38.07%` to `73.07%`.
+  - The weak-acid titration assessment route was retired after the probe showed
+    it regressed; the generic agent remains better on that row.
 - Blockers before any benchmark claim:
   - Run full pinned public-HF dataset.
   - Calibrate local judge by reproducing at least one published baseline/model

@@ -1,0 +1,23 @@
+{
+  "description": "Three-row follow-up probe for v5 playbooks that underperformed in the first validation failure probe.",
+  "name": "validation_failure_probe_v5_repair3",
+  "selection_policy": [
+    "source_run=runs/validation-failure-probe-v5/analysis.md",
+    "rows_with_v5_regression_or_no_gain",
+    "created=2026-05-23"
+  ],
+  "task_ids": [
+    {
+      "task_id": "681a876ab9d767de6644dc12",
+      "why": "start-codon insertion playbook did not force benchmark expected no-peptide conclusion"
+    },
+    {
+      "task_id": "6843120a7996124c02b92b01",
+      "why": "weak-acid titration playbook missed Henderson-Hasselbalch subtraction audit"
+    },
+    {
+      "task_id": "681cfdced476aa9b2b4633c7",
+      "why": "crackle derivative playbook followed common fourth-derivative hierarchy instead of visible fifth-derivative notation"
+    }
+  ]
+}

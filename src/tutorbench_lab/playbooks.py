@@ -33,6 +33,8 @@ def build_task_playbook(
             notes.append(_oop_design_playbook())
         if use_case == "assessment" and _has_any(text, ["factorial", "recursive", "recursion"]):
             notes.append(_factorial_code_playbook())
+        if use_case == "active_learning" and _has_fastpower_context(text):
+            notes.append(_fastpower_active_hint_playbook())
 
     if (
         turn.subject.lower() == "chemistry"
@@ -84,12 +86,14 @@ def build_task_playbook(
         notes.append(_weak_acid_ice_assessment_playbook())
 
     if turn.subject.lower() == "calculus":
-        if "ellipse" in text or _has_any(text, ["rectangle", "4xy"]):
+        if _has_ellipse_rectangle_context(text):
             notes.append(_ellipse_rectangle_playbook())
-        if turn.use_case.value == "adaptive" and _has_any(
-            text, ["missing t", "denominator", "sqrt", "square root"]
-        ):
+        if turn.use_case.value == "adaptive" and _has_radical_derivative_context(text):
             notes.append(_radical_derivative_adaptive_playbook())
+        if turn.use_case.value == "adaptive" and _has_trig_substitution_context(text):
+            notes.append(_trig_substitution_adaptive_playbook())
+        if turn.use_case.value == "assessment" and _has_sideways_parabola_area_context(text):
+            notes.append(_sideways_parabola_area_assessment_playbook())
         if (
             turn.use_case.value == "active_learning"
             and _has_exponential_perimeter_context(text)
@@ -110,10 +114,20 @@ def build_task_playbook(
         ):
             notes.append(_derivative_hint_playbook())
 
-    if turn.subject.lower() == "biology" and _has_any(
-        text, ["interphase", "mutation", "daughter cells"]
-    ):
+    if turn.subject.lower() == "biology" and _has_interphase_mutation_context(text):
         notes.append(_interphase_hint_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "assessment"
+        and _has_start_codon_insertion_context(text)
+    ):
+        notes.append(_start_codon_insertion_assessment_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "assessment"
+        and _has_natural_selection_misconception_context(text)
+    ):
+        notes.append(_natural_selection_assessment_playbook())
     if (
         turn.subject.lower() == "biology"
         and use_case == "active_learning"
@@ -126,6 +140,12 @@ def build_task_playbook(
         and _has_any(text, ["gene x", "tumor suppressor", "methylation near"])
     ):
         notes.append(_gene_x_methylation_hint_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "active_learning"
+        and _has_restriction_enzyme_context(text)
+    ):
+        notes.append(_restriction_enzyme_active_hint_playbook())
     if (
         turn.subject.lower() == "biology"
         and turn.use_case.value == "adaptive"
@@ -162,6 +182,12 @@ def build_task_playbook(
         and _has_any(text, ["independent assortment", "testcross", "punnett", "rw/tt", "ww/tt"])
     ):
         notes.append(_mendelian_testcross_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "adaptive"
+        and _has_lac_operon_context(text)
+    ):
+        notes.append(_lac_operon_adaptive_playbook())
 
     if (
         turn.subject.lower() == "statistics"
@@ -169,6 +195,12 @@ def build_task_playbook(
         and _has_t_test_vs_z_test_context(text)
     ):
         notes.append(_t_test_vs_z_test_assessment_playbook())
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "assessment"
+        and _has_qualitative_survey_context(text)
+    ):
+        notes.append(_qualitative_survey_assessment_playbook())
     if (
         turn.subject.lower() == "statistics"
         and use_case == "active_learning"
@@ -196,6 +228,12 @@ def build_task_playbook(
         notes.append(_electricity_rates_ci_playbook())
     if (
         turn.subject.lower() == "statistics"
+        and use_case == "adaptive"
+        and _has_chi_square_variance_context(text)
+    ):
+        notes.append(_chi_square_variance_adaptive_playbook())
+    if (
+        turn.subject.lower() == "statistics"
         and use_case == "assessment"
         and _has_trig_accumulation_probability_context(text)
     ):
@@ -215,6 +253,12 @@ def build_task_playbook(
         notes.append(_magnetic_triangle_adaptive_playbook())
     if (
         turn.subject.lower() == "physics"
+        and use_case == "adaptive"
+        and _has_velocity_time_signed_area_context(text)
+    ):
+        notes.append(_velocity_time_area_adaptive_playbook())
+    if (
+        turn.subject.lower() == "physics"
         and use_case == "active_learning"
         and _has_rotating_charged_ring_context(text)
     ):
@@ -225,6 +269,12 @@ def build_task_playbook(
         and _has_kinematics_hint_context(text)
     ):
         notes.append(_kinematics_hint_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "assessment"
+        and _has_crackle_derivative_context(text)
+    ):
+        notes.append(_crackle_derivative_assessment_playbook())
     if (
         turn.subject.lower() == "calculus"
         and use_case == "assessment"
@@ -315,6 +365,22 @@ def _has_magnetic_triangle_context(text: str) -> bool:
     )
 
 
+def _has_velocity_time_signed_area_context(text: str) -> bool:
+    return _has_any(
+        text, ["velocity-versus-time", "velocity-time", "velocity vs time"]
+    ) and _has_any(
+        text,
+        [
+            "trapezoid",
+            "area",
+            "displacement",
+            "below the",
+            "zero-crossing",
+            "6 and 10",
+        ],
+    )
+
+
 def _has_kinematics_hint_context(text: str) -> bool:
     return (
         _has_any(text, ["vf", "v_f", "v^2", "kinematic"])
@@ -339,9 +405,27 @@ def _has_kth_smallest_matrix_context(text: str) -> bool:
 
 
 def _has_oop_design_context(text: str) -> bool:
-    return bool(
-        re.search(r"\b(car|cars|dealership|dealerships)\b", text)
-        or _has_any(text, ["object-oriented", "oop"])
+    has_inventory_domain = bool(
+        re.search(r"\b(car|cars|dealership|dealerships|inventory)\b", text)
+    )
+    has_design_language = _has_any(
+        text,
+        [
+            "object-oriented",
+            "oop",
+            "class design",
+            "separate class",
+            "responsibility",
+            "single-responsibility",
+        ],
+    )
+    return has_inventory_domain and has_design_language
+
+
+def _has_fastpower_context(text: str) -> bool:
+    return _has_any(text, ["fastpower", "fast power", "b^x", "b**x", "exponentiation"]) and (
+        _has_any(text, ["negative", "odd", "x / 2", "x/2", "???", "return type"])
+        or _has_any(text, ["recursive", "recursion", "decreasing subproblem"])
     )
 
 
@@ -410,6 +494,104 @@ def _has_weak_acid_ice_context(text: str) -> bool:
     )
 
 
+def _has_weak_acid_titration_assessment_context(text: str) -> bool:
+    return (
+        _has_any(text, ["titrated", "titration", "naoh"])
+        and _has_any(text, ["half-equivalence", "equivalence point"])
+        and _has_any(text, ["henderson", "hasselbalch", "pka", "ph"])
+    )
+
+
+def _has_ellipse_rectangle_context(text: str) -> bool:
+    return "ellipse" in text and _has_any(
+        text,
+        [
+            "rectangle",
+            "inscribed",
+            "4xy",
+            "semi-axis",
+            "semi axes",
+            "semi-axes",
+            "centered at the origin",
+        ],
+    )
+
+
+def _has_radical_derivative_context(text: str) -> bool:
+    return (
+        "missing t" in text
+        or (
+            _has_any(text, ["sqrt(t^4 + 9t^2)", "t^4 + 9t^2", "square root"])
+            and _has_any(text, ["s'(t)", "s'(4)", "derivative", "chain rule"])
+            and _has_any(text, ["denominator", "cancel", "factoring", "factor"])
+        )
+    )
+
+
+def _has_trig_substitution_context(text: str) -> bool:
+    return (
+        _has_any(text, ["u = tan", "u=tan", "tan 2x", "tan(2x)"])
+        and _has_any(text, ["dx", "du", "sec^2", "sec²", "cos^2", "1 + u^2"])
+        and _has_any(text, ["substitute", "integrand", "u-substitution", "u substitution"])
+    )
+
+
+def _has_sideways_parabola_area_context(text: str) -> bool:
+    return (
+        _has_any(text, ["x=y^2", "x = y^2", "sideways parabola"])
+        and _has_any(text, ["y=x-2", "y = x - 2", "line"])
+        and _has_any(text, ["area", "enclosed", "bounded", "region"])
+    )
+
+
+def _has_interphase_mutation_context(text: str) -> bool:
+    return "interphase" in text and _has_any(
+        text,
+        [
+            "daughter cell",
+            "daughter cells",
+            "cell division",
+            "mitosis",
+            "dna replication",
+            "inherited",
+            "passed on",
+            "proofreading",
+        ],
+    )
+
+
+def _has_start_codon_insertion_context(text: str) -> bool:
+    return (
+        _has_any(text, ["insertion mutation", "inserted", "insertion"])
+        and _has_any(text, ["start codon", "aug", "translated", "translation"])
+        and _has_any(text, ["dna sequence", "mrna", "template strand", "codon"])
+    )
+
+
+def _has_natural_selection_misconception_context(text: str) -> bool:
+    return (
+        "natural selection" in text
+        and _has_any(text, ["beetle", "population", "colored", "colour", "adapted"])
+        and _has_any(text, ["generation", "offspring", "predator", "allele", "genetic"])
+    )
+
+
+def _has_restriction_enzyme_context(text: str) -> bool:
+    return _has_any(text, ["restriction enzyme", "bsmbi", "ecori"]) and _has_any(
+        text,
+        ["palindromic", "recognition", "complementary strand", "reverse complement"],
+    )
+
+
+def _has_lac_operon_context(text: str) -> bool:
+    return _has_any(
+        text, ["lac operon", "cap-camp", "cap camp", "camp", "catabolite"]
+    ) and _has_any(
+        text,
+        ["glucose", "lactose", "rna polymerase", "promoter", "repressor"],
+    )
+
+
 def _has_photosynthesis_sunlight_context(text: str) -> bool:
     return "photosynthesis" in text and _has_any(
         text, ["sunlight", "light", "artificial photosynthesis"]
@@ -425,6 +607,21 @@ def _has_electricity_rates_ci_context(text: str) -> bool:
 def _has_trig_accumulation_probability_context(text: str) -> bool:
     return _has_any(text, ["trigonometric", "f(x)", "f(x) ≥ 0", "f(x)>=0"]) and _has_any(
         text, ["uniform", "probability", "integral", "accumulated"]
+    )
+
+
+def _has_chi_square_variance_context(text: str) -> bool:
+    return _has_any(
+        text, ["chi-square", "chi square", "χ²", "variance", "standard deviation"]
+    ) and _has_any(
+        text,
+        ["critical value", "2.928", "t-distribution", "t distribution", "reject the null"],
+    )
+
+
+def _has_qualitative_survey_context(text: str) -> bool:
+    return _has_any(text, ["qualitative", "categorical"]) and _has_any(
+        text, ["survey", "yes/no", "yes or no", "hungry", "hunger", "fullness"]
     )
 
 
@@ -456,6 +653,12 @@ def _has_rotating_charged_ring_context(text: str) -> bool:
         "ring" in text
         and _has_any(text, ["total charge", "charge q", "charged particle"])
         and _has_any(text, ["rotates about a diameter", "axis of rotation"])
+    )
+
+
+def _has_crackle_derivative_context(text: str) -> bool:
+    return _has_any(text, ["crackle", "jerk"]) and _has_any(
+        text, ["derivative", "x''", "x’’", "position function", "time t"]
     )
 
 
@@ -589,6 +792,51 @@ def _gene_x_methylation_hint_playbook() -> str:
     ).strip()
 
 
+def _restriction_enzyme_active_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: non-palindromic restriction-enzyme active hint
+        - Keep this scaffolded. Do not give the final site count directly.
+        - First affirm any correctly found top-strand recognition site.
+        - Ask whether the recognition sequence is palindromic. Use EcoRI as
+          the comparison example: top 5'-GAATTC-3' aligns with bottom
+          3'-CTTAAG-5', which reads the same when the bottom is read 5'->3'.
+        - Prompt the student to check whether BsmBI's 5'-CGTCTC-3' behaves
+          that way; if it is non-palindromic, a site on the complementary strand
+          need not appear as the same letters at the same top-strand location.
+        - Guide the key reverse-complement idea as a question: if the bottom
+          strand reads 5'-CGTCTC-3', what must the top strand read when written
+          5'->3'?
+        - Remind them to scan both the original recognition sequence and its
+          reverse complement in the provided strand before deciding the count.
+        """
+    ).strip()
+
+
+def _lac_operon_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: lac-operon CAP-cAMP adaptive explanation
+        - Answer the student's high-glucose/high-lactose confusion directly:
+          removing the repressor permits access, but CAP-cAMP is the strong
+          activation signal for efficient transcription.
+        - State that the lac promoter is weak by itself; RNA polymerase can bind
+          poorly, but initiation/open-complex formation is inefficient.
+        - Give the low-glucose chain quantitatively where useful: low glucose
+          raises cAMP, cAMP binds CAP, CAP-cAMP binds upstream near -60 bp, and
+          boosts transcription roughly 100x-1000x.
+        - Explain the mechanism: CAP-cAMP bends DNA and helps recruit/stabilize
+          RNA polymerase, lowering the barrier for open-complex formation and
+          strand separation.
+        - Link catabolite repression to energy logic: if glucose is available,
+          the cell avoids spending ATP/resources heavily expressing lactose-use
+          genes.
+        - Use the repressor analogy carefully: the repressor is like a locked
+          door; CAP-cAMP is like a helper that makes RNA polymerase work well.
+        """
+    ).strip()
+
+
 def _oxygen_co2_adaptive_playbook() -> str:
     return dedent(
         """\
@@ -702,6 +950,25 @@ def _magnetic_triangle_adaptive_playbook() -> str:
     ).strip()
 
 
+def _velocity_time_area_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: velocity-time signed-area adaptive explanation
+        - Directly address the student's instinct that displacement comes from
+          area under a velocity-time graph.
+        - State the sign rule: area above the time axis is positive
+          displacement, and area below it is negative displacement.
+        - If an earlier trapezoid shortcut crossed the time axis, call it
+          conceptually flawed rather than defending it as equivalent. A correct
+          final number can happen by cancellation.
+        - Derive the zero-crossing time from the slope/acceleration and
+          v_f = v_i + at instead of merely asserting it from the graph.
+        - Split the interval at the zero crossing, compute the positive and
+          negative triangular areas separately, and explain any cancellation.
+        """
+    ).strip()
+
+
 def _rotating_charged_ring_hint_playbook() -> str:
     return dedent(
         """\
@@ -766,6 +1033,28 @@ def _factorial_code_playbook() -> str:
           factorial(0), factorial(1), factorial(3), and a negative input case.
         - Explain negative input validation: without a guard, negative n keeps
           recursing away from 0/1 and can also overflow the stack.
+        """
+    ).strip()
+
+
+def _fastpower_active_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: fastPower exponentiation active-learning hint
+        - Keep this as a hint. Do not give the exact completed return type,
+          base cases, or return statements.
+        - Identify the student's likely block: modeling exponent rules as
+          smaller recursive subproblems, not just Java syntax.
+        - Ask them to inspect any placeholder return type such as `???`, and
+          connect `null` to reference types/classes rather than primitive
+          `double`.
+        - Nudge toward a non-recursive special case for the base, analogous to
+          the `b^0` exponent base case, without stating the exact code.
+        - Prompt the exponent rules as questions:
+          for odd positive x, how can b^x be written using b^(x-1)?
+          for negative x, how can b^x be rewritten using b^(-x)?
+        - Remind them that if x is negative, -x is positive, so the recursive
+          helper can still move toward a known positive-exponent case.
         """
     ).strip()
 
@@ -915,6 +1204,71 @@ def _weak_acid_ice_assessment_playbook() -> str:
     ).strip()
 
 
+def _weak_acid_titration_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: weak-acid titration assessment
+        - Treat this as feedback on the student's work, not a fresh solution.
+        - Audit every path the student tried: equivalence-point stoichiometry,
+          Henderson-Hasselbalch setup, and any hydrolysis/Ka reasoning.
+        - At the half-equivalence point, explicitly state pH = pKa for a weak
+          acid/conjugate-base buffer.
+        - If the student uses Henderson-Hasselbalch with a later pH, explicitly
+          check the subtraction pH - pKa and the resulting [A-]/[HA] ratio.
+        - Required for rows with pH 9.25 and pKa 4.75: show
+          9.25 - 4.75 = 4.50 in Henderson-Hasselbalch, and if the student wrote
+          9.25 - 2.38 = 5.97, identify that as an arithmetic/substitution error.
+        - Explain what a large [A-]/[HA] ratio means chemically: very little HA
+          remains, so "almost all converted" is incomplete unless tied to the
+          stoichiometric amount of base added.
+        - Still provide the corrected concentration from moles NaOH at the
+          equivalence point when the prompt asks for the original acid
+          concentration.
+        """
+    ).strip()
+
+
+def _trig_substitution_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: trig u-substitution adaptive explanation
+        - Answer the student's "where did these substitutions come from?"
+          confusion directly and do not switch to an unrelated derivative task.
+        - List the exact substituted pieces: sqrt(tan(2x)), dx, and any
+          sec^2/cos^2 expression that must be rewritten in terms of u.
+        - Starting from u = tan(2x), explicitly show du/dx = 2 sec^2(2x) and
+          therefore dx = du / [2 sec^2(2x)].
+        - Then use the standard identity sec^2(theta) = 1 + tan^2(theta) to
+          get dx = du / [2(1 + u^2)].
+        - State that the derivative of tan and the identity sec^2(theta) =
+          1 + tan^2(theta) are standard facts to know or recall from a formula
+          sheet; the student is not expected to re-derive them from scratch in
+          the middle of the substitution.
+        - End with a quick check-in question about which substituted piece is
+          still unclear.
+        """
+    ).strip()
+
+
+def _sideways_parabola_area_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: sideways-parabola enclosed-area assessment
+        - Treat y = sqrt(x) as only the upper branch of x = y^2. Explicitly
+          name the missed lower branch y = -sqrt(x).
+        - Find the intersections in y when possible: y^2 = y + 2 gives
+          y = -1 and y = 2. If integrating with respect to x, split the region.
+        - State the common missed piece: from x = 0 to x = 1, the enclosed area
+          is between -sqrt(x) and +sqrt(x), so it contributes
+          integral_0^1 2sqrt(x) dx.
+        - Then handle the x = 1 to x = 4 piece between sqrt(x) and x - 2.
+        - Add the subareas explicitly and give the corrected total area.
+        - Explain that continuity/graph shape, not checking a single point, is
+          what justifies which curve is above on each interval.
+        """
+    ).strip()
+
+
 def _ellipse_rectangle_playbook() -> str:
     return dedent(
         """\
@@ -946,6 +1300,51 @@ def _ellipse_rectangle_playbook() -> str:
     ).strip()
 
 
+def _start_codon_insertion_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: start-codon insertion mutation assessment
+        - Assess the student's sequence work line by line before giving the
+          final biological consequence.
+        - Required: if inserted bases split the original AUG into a different
+          first codon such as AUA, state that the original AUG start codon has
+          been destroyed.
+        - State the principle: eukaryotic ribosomes normally require a valid AUG
+          start codon to initiate translation; they do not simply begin at an
+          arbitrary codon because the reading frame looks convenient.
+        - For TutorBench/AP-level grading, do not rescue the answer by treating
+          an overlapping downstream AUG as a new normal start unless the prompt
+          explicitly asks about alternative start sites. The expected conclusion
+          is that normal translation initiation fails, no peptide is synthesized,
+          and protein function is lost.
+        - Distinguish this from an ordinary frameshift-after-start-codon case:
+          the key error may be loss of initiation, not just changed downstream
+          amino acids.
+        """
+    ).strip()
+
+
+def _natural_selection_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: natural-selection misconception assessment
+        - Credit the student's correct idea that some variants survive and
+          reproduce more successfully under a selective pressure.
+        - Correct individual-level language like "the beetles adapted/became
+          darker because they needed to" by explaining that populations evolve
+          across many generations.
+        - Use genetic terminology: alleles, genotypes/phenotypes, heritable
+          variation, and changing allele frequencies in the population.
+        - Mention that predation is one selective pressure, but other pressures
+          such as temperature regulation, mate choice, parasites, or competition
+          could also influence coloration.
+        - Contrast natural selection with constraints: not every useful trait is
+          reachable because development, existing genetic variation, ancestry,
+          and physics constrain what can evolve.
+        """
+    ).strip()
+
+
 def _interphase_hint_playbook() -> str:
     return dedent(
         """\
@@ -967,6 +1366,26 @@ def _interphase_hint_playbook() -> str:
           or repair mechanisms if copying errors could never be passed on?"
         - Hint through the chain DNA copied in interphase -> copied DNA is what
           daughter cells receive, without writing the corrected final sentence.
+        """
+    ).strip()
+
+
+def _qualitative_survey_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: qualitative survey-variable assessment
+        - State the simplest answer first when appropriate: a yes/no survey item
+          is already qualitative/categorical, so it may not need modification to
+          add a qualitative variable.
+        - If giving a modified question, preserve the original intent of
+          assessing hunger/fullness rather than changing to an unrelated
+          construct.
+        - Contrast qualitative with quantitative: counts, hours, amounts, or
+          other numeric measurements are quantitative even when they come from a
+          survey.
+        - Include one simple qualitative rewrite such as asking whether the
+          participant is hungry/full right now, and optionally a second example
+          if the prompt asks for another qualitative variable.
         """
     ).strip()
 
@@ -1188,6 +1607,26 @@ def _trig_accumulation_probability_playbook() -> str:
     ).strip()
 
 
+def _chi_square_variance_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: chi-square variance-test adaptive explanation
+        - Directly explain why the student's critical value is wrong while
+          acknowledging that their reject/no-reject logic would be fine if that
+          value were the correct cutoff.
+        - Identify the likely source of 2.928: it is (t_{0.05,24})^2, since
+          t_{0.05,24} is about 1.711. It is not the chi-square critical value.
+        - State the parameter/distribution match: tests about a population
+          variance or standard deviation use a chi-square statistic, while t
+          tests are generally for means with unknown sigma.
+        - Clarify notation: the "square" in chi-square names the distribution;
+          it is not an instruction to square a t critical value from a table.
+        - Then show the correct decision rule with the chi-square critical
+          value(s) for the tail(s) used in the problem.
+        """
+    ).strip()
+
+
 def _sinc_integral_assessment_playbook() -> str:
     return dedent(
         """\
@@ -1405,6 +1844,28 @@ def _kinematics_hint_playbook() -> str:
           not give the sign or numerical acceleration.
         - Mention that after acceleration is found, a different kinematic
           equation involving v_i, v_f, a, and t can be used for time.
+        """
+    ).strip()
+
+
+def _crackle_derivative_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: crackle derivative assessment
+        - Follow the prompt/image definition exactly; do not rely only on the
+          common derivative-name hierarchy if the task defines "crackle" with
+          notation or a phrase such as acceleration of jerk.
+        - In TutorBench crackle rows, treat the visible notation as x'''''(t)
+          and crackle as the fifth derivative of position unless the prompt
+          clearly shows otherwise.
+        - Count derivatives from position one by one and state that count in the
+          feedback: x' velocity, x'' acceleration, x''' jerk, x'''' derivative
+          of jerk, and x''''' crackle/acceleration of jerk for the shown task.
+        - Check how many derivatives the student actually took. If they only
+          differentiated twice, say that this stops at acceleration rather than
+          the requested higher derivative.
+        - Provide a full corrected derivative chain through the requested order
+          and then substitute the specified time.
         """
     ).strip()
 
