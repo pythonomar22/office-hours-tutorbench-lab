@@ -61,7 +61,7 @@ local public-HF/dev-set results unless explicitly marked as official.
   - This is the strongest current fairness anchor because it uses a larger
     split disjoint from all tuning/dev sets. It is close to, but not yet safely
     above, the `>=70%` local target.
-- Current Heldout500 agentic checkpoint: `heldout500-agentic-v5`
+- Heldout500 agentic checkpoint: `heldout500-agentic-v5`
   - Score: `71.84%`, CI `69.84%-73.69%`.
   - Same-set Sonnet baseline: `60.77%`, CI `58.90%-62.83%`.
   - Delta vs baseline: `+11.07` points.
@@ -69,10 +69,8 @@ local public-HF/dev-set results unless explicitly marked as official.
   - Use-case scores: active learning `76.44%`, adaptive `68.34%`, assessment
     `70.72%`.
   - Modality scores: text `74.05%`, multimodal `69.60%`.
-  - This is the strongest current fairness anchor because it is larger and
-    disjoint from all development/validation splits, and it clears the local
-    `>=70%` target. It remains a local public-HF-comparable result, not an
-    official leaderboard result.
+  - This cleared the local `>=70%` target and became the first strong
+    heldout500 fairness anchor.
 - Heldout500 v6 failure probe: `heldout-failure-probe-v6`
   - Score: `64.42%` on the ten weakest `heldout500-agentic-v5` rows.
   - Those same rows averaged `12.64%` under v5, so the targeted delta is
@@ -92,6 +90,28 @@ local public-HF/dev-set results unless explicitly marked as official.
     weak-acid ICE, and Henry-law rows but regressed several active-learning
     rows. Treat this as evidence to verify v6 on a larger split before
     committing to further tightening.
+- Current Heldout500 agentic checkpoint: `heldout500-agentic-v6`
+  - Score: `73.69%`, CI `71.76%-75.55%`.
+  - Same-set Sonnet baseline: `60.77%`, CI `58.90%-62.83%`.
+  - Delta vs baseline: `+12.92` points.
+  - Delta vs `heldout500-agentic-v3`: `+5.47` points.
+  - Delta vs `heldout500-agentic-v5`: `+1.86` points.
+  - Use-case scores: active learning `76.65%`, adaptive `70.71%`,
+    assessment `73.72%`.
+  - Modality scores: text `75.58%`, multimodal `71.80%`.
+  - Subject scores are balanced from `72.54%` Biology through `75.96%`
+    Chemistry, with Physics at `75.01%`.
+  - The main full-run transfer win is multimodal evidence grounding:
+    multimodal rose from v5 `69.60%` to v6 `71.80%`, while assessment rose
+    from `70.72%` to `73.72%`.
+  - Remaining weakest skills: examples/analogies (`48.48%` pass rate),
+    alternative paths (`54.29%`), and guiding questions (`56.20%`).
+  - The judge needed one missing-criterion repair on row
+    `683e45893a109788e3f7e5f2`; the repair used the same judge model and only
+    the omitted criterion index. This is tracked in code and tests so complete
+    judged files do not require manual score edits.
+  - This is now the strongest local public-HF-comparable fairness anchor, but
+    it remains not an official leaderboard result.
 - V4 failure-analysis probe: `probe10-agentic-v4-refined`
   - Score: `75.33%` over 10 heldout500 rows selected from the weakest v3
     failures; the same rows averaged roughly `4%` in `heldout500-agentic-v3`.

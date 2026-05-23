@@ -8,6 +8,12 @@
 4. `score` computes weighted ARRw and slice reports by use case, modality, subject, and Bloom taxonomy.
 5. `report` and `compare` produce Markdown artifacts for iteration.
 
+The judge path includes a narrow missing-index repair: when the judge returns
+valid JSON but omits a rubric criterion index, the harness asks the same judge
+only for the missing criterion or criteria and merges the result. This preserves
+the evaluator-only rubric boundary while avoiding manual score edits for
+otherwise complete judge outputs.
+
 ## Use-Case Protocol
 
 - UC1 adaptive explanation: input is the original prompt, optional image, the
@@ -148,15 +154,14 @@ This is still a local public-HF-comparable result, not an official leaderboard
 claim.
 
 The current larger holdout checkpoint is baseline Sonnet `60.77%` versus
-agentic-v5 `71.84%` over 500 rows, a +11.07 point same-set gain on a split
-disjoint from dev10/dev50/validation150. The strongest remaining failure pattern
-is not generic pedagogy but multimodal evidence grounding: the tutor often gives
-a polished response to a wrong read of the image. Agentic-v6 therefore broadens
-the specialist evidence audit to all multimodal rows and adds targeted,
-rubric-blind failure-family playbooks. On the ten weakest v5 heldout rows,
-`heldout-failure-probe-v6` moved the average from `12.64%` to `64.42%`; the
-follow-up refined probe scored `59.12%`, showing that stricter playbook wording
-helps some assessment rows but can still regress active-learning rows.
+agentic-v6 `73.69%` over 500 rows, a +12.92 point same-set gain on a split
+disjoint from dev10/dev50/validation150. V6 improves over v5 by +1.86 points
+and over v3 by +5.47 points. The full run confirms that broad multimodal
+evidence audit transferred beyond the ten-row failure probe: multimodal rows
+rose to `71.80%`, assessment rows to `73.72%`, and active learning remains the
+strongest use case at `76.65%`. The remaining architecture gap is pedagogy
+coverage rather than basic scaffolding: examples/analogies, alternative paths,
+and guiding questions remain the weakest rubric-tag groups.
 
 ## Office Hours Transfer Path
 

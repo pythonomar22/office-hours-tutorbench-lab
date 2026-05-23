@@ -1,6 +1,14 @@
 from __future__ import annotations
 
-from tutorbench_lab.judge import compute_arrw, judge_run_record
+import pytest
+
+from tutorbench_lab.judge import (
+    JudgeRatingsMismatch,
+    compute_arrw,
+    judge_run_record,
+    parse_judge_json,
+    parse_judge_json_for_indices,
+)
 from tutorbench_lab.protocol import build_turn_input
 from tutorbench_lab.schemas import CriterionRating, JudgeResult, Strategy, TutorResponse
 from tutorbench_lab.tutor import record_for_response
@@ -58,3 +66,24 @@ def test_heuristic_judge_produces_judged_record(adaptive_example):
     assert judged.run.example.task_id == adaptive_example.task_id
     assert len(judged.judge.ratings) == len(adaptive_example.rubrics)
     assert 0.0 <= judged.arrw <= 1.0
+
+
+def test_judge_parser_reports_missing_indices_for_repair():
+    raw = '{"ratings":[{"criterion_index":0,"passed":true,"confidence":0.9}]}'
+
+    with pytest.raises(JudgeRatingsMismatch) as exc_info:
+        parse_judge_json(raw, expected_count=2)
+
+    assert exc_info.value.missing == [1]
+    assert exc_info.value.extra == []
+    assert [rating.criterion_index for rating in exc_info.value.ratings] == [0]
+
+
+def test_judge_parser_accepts_targeted_repair_indices():
+    raw = '{"ratings":[{"criterion_index":14,"passed":false,"confidence":0.8}]}'
+
+    ratings = parse_judge_json_for_indices(raw, expected_indices={14})
+
+    assert len(ratings) == 1
+    assert ratings[0].criterion_index == 14
+    assert ratings[0].passed is False

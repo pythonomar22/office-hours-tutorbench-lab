@@ -20,6 +20,22 @@ from tutorbench_lab.schemas import (
 _JSON_BLOCK_RE = re.compile(r"```(?:json)?\s*(.*?)```", re.DOTALL | re.IGNORECASE)
 
 
+class JudgeRatingsMismatch(ValueError):
+    """Raised when judge JSON is valid but does not cover the requested indices."""
+
+    def __init__(
+        self,
+        *,
+        missing: list[int],
+        extra: list[int],
+        ratings: list[CriterionRating],
+    ):
+        super().__init__(f"judge ratings mismatch; missing={missing}, extra={extra}")
+        self.missing = missing
+        self.extra = extra
+        self.ratings = ratings
+
+
 def judge_run_record(
     run: RunRecord,
     *,
@@ -63,16 +79,24 @@ def llm_judge(
     errors = []
     total_latency_ms = 0
     last_text = ""
+    best_partial: JudgeRatingsMismatch | None = None
+    last_usage = ModelUsage()
     for attempt in range(max_parse_attempts + 1):
         start = time.monotonic()
         result = client.generate(turn, max_tokens=max_tokens)
         total_latency_ms += int((time.monotonic() - start) * 1000)
         last_text = result.text
+        last_usage = result.usage
         try:
             ratings = parse_judge_json(
                 result.text,
                 expected_count=len(run.example.rubrics),
             )
+        except JudgeRatingsMismatch as exc:
+            errors.append(f"attempt {attempt + 1}: {exc}")
+            if exc.ratings and not exc.extra:
+                best_partial = exc
+            continue
         except ValueError as exc:
             errors.append(f"attempt {attempt + 1}: {exc}")
             continue
@@ -83,6 +107,34 @@ def llm_judge(
             raw_judge_output=result.text,
             latency_ms=total_latency_ms,
             usage=result.usage,
+        )
+    if best_partial:
+        repair_turn = build_missing_judge_turn(run, best_partial.missing)
+        start = time.monotonic()
+        repair = client.generate(repair_turn, max_tokens=max(1000, max_tokens // 2))
+        total_latency_ms += int((time.monotonic() - start) * 1000)
+        repair_ratings = parse_judge_json_for_indices(
+            repair.text,
+            expected_indices=set(best_partial.missing),
+        )
+        ratings_by_idx = {
+            rating.criterion_index: rating for rating in best_partial.ratings
+        }
+        ratings_by_idx.update(
+            {rating.criterion_index: rating for rating in repair_ratings}
+        )
+        ratings = [ratings_by_idx[idx] for idx in sorted(ratings_by_idx)]
+        return JudgeResult(
+            task_id=run.example.task_id,
+            judge_model=judge_model,
+            ratings=ratings,
+            raw_judge_output=(
+                last_text
+                + "\n\n--- missing-rating-repair ---\n"
+                + repair.text
+            ),
+            latency_ms=total_latency_ms,
+            usage=_merge_usage(last_usage, repair.usage),
         )
     raise ValueError(
         "judge output could not be parsed after retries: "
@@ -146,20 +198,109 @@ def build_judge_turn(run: RunRecord) -> TutorTurnInput:
     )
 
 
+def build_missing_judge_turn(run: RunRecord, missing_indices: list[int]) -> TutorTurnInput:
+    rubric_lines = []
+    for idx in missing_indices:
+        rubric = run.example.rubrics[idx]
+        weight_note = (
+            "LIKELY_NEGATIVE_WEIGHT: pass means the undesirable behavior is present"
+            if rubric.negative_weight_candidate
+            else "POSITIVE_WEIGHT: pass means the response satisfies this criterion"
+        )
+        rubric_lines.append(
+            f"{idx}. [{rubric.severity}; {weight_note}] {rubric.criteria}"
+        )
+
+    user_prompt = dedent(
+        f"""\
+        Original TutorBench task:
+        {run.turn_input.user_prompt}
+
+        Candidate tutor response:
+        {run.response.text}
+
+        Missing rubric criteria to grade:
+        {chr(10).join(rubric_lines)}
+
+        Grade only these missing criterion indices independently as pass/fail.
+        Return JSON only. The ratings list must contain exactly these indices:
+        {missing_indices}
+
+        Use exactly this compact shape:
+        {{
+          "ratings": [
+            {{"criterion_index": {missing_indices[0]}, "passed": true, "confidence": 0.9}}
+          ]
+        }}
+        """
+    ).strip()
+
+    return TutorTurnInput(
+        task_id=run.example.task_id,
+        use_case=run.example.use_case,
+        modality=run.example.modality,
+        subject=run.example.subject,
+        system_prompt=dedent(
+            """\
+            You are a careful TutorBench judge repairing an incomplete
+            judgment. Apply only the provided missing criterion or criteria to
+            the candidate response. Return strict JSON only, without rationale
+            strings or explanatory text.
+            """
+        ).strip(),
+        user_prompt=user_prompt,
+        image=run.example.image,
+        prompt_version="judge-v1-missing-repair",
+    )
+
+
 def parse_judge_json(raw: str, *, expected_count: int) -> list[CriterionRating]:
+    ratings = _load_judge_ratings(raw)
+    return _validate_judge_indices(ratings, expected_indices=set(range(expected_count)))
+
+
+def parse_judge_json_for_indices(
+    raw: str, *, expected_indices: set[int]
+) -> list[CriterionRating]:
+    ratings = _load_judge_ratings(raw)
+    return _validate_judge_indices(ratings, expected_indices=expected_indices)
+
+
+def _load_judge_ratings(raw: str) -> list[CriterionRating]:
     payload_text = _extract_json(raw)
     payload = json.loads(payload_text)
     ratings_raw = payload.get("ratings")
     if not isinstance(ratings_raw, list):
         raise ValueError("judge output must contain a ratings list")
-    ratings = [CriterionRating.model_validate(item) for item in ratings_raw]
+    return [CriterionRating.model_validate(item) for item in ratings_raw]
+
+
+def _validate_judge_indices(
+    ratings: list[CriterionRating], *, expected_indices: set[int]
+) -> list[CriterionRating]:
     seen = {rating.criterion_index for rating in ratings}
-    expected = set(range(expected_count))
-    if seen != expected:
-        missing = sorted(expected - seen)
-        extra = sorted(seen - expected)
-        raise ValueError(f"judge ratings mismatch; missing={missing}, extra={extra}")
+    if seen != expected_indices:
+        missing = sorted(expected_indices - seen)
+        extra = sorted(seen - expected_indices)
+        raise JudgeRatingsMismatch(missing=missing, extra=extra, ratings=ratings)
     return sorted(ratings, key=lambda item: item.criterion_index)
+
+
+def _merge_usage(first: ModelUsage, second: ModelUsage) -> ModelUsage:
+    return ModelUsage(
+        input_tokens=_sum_optional(first.input_tokens, second.input_tokens),
+        output_tokens=_sum_optional(first.output_tokens, second.output_tokens),
+        total_tokens=_sum_optional(first.total_tokens, second.total_tokens),
+        estimated_cost_usd=_sum_optional(
+            first.estimated_cost_usd, second.estimated_cost_usd
+        ),
+    )
+
+
+def _sum_optional(first: float | int | None, second: float | int | None):
+    if first is None and second is None:
+        return None
+    return (first or 0) + (second or 0)
 
 
 def compute_arrw(run: RunRecord, judge: JudgeResult) -> tuple[float, float, bool]:
