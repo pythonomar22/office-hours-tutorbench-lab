@@ -1,0 +1,861 @@
+{
+  "playbooks": [
+    {
+      "count": 2,
+      "mean_arrw": 0.553030303030303,
+      "name": "inclined box slip-or-tip assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.972972972972973,
+      "name": "AP CSA MemberInfo removeMembers assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8611111111111112,
+      "name": "composition constant-range assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7391304347826086,
+      "name": "logarithmic improper-integral assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.6527777777777778,
+      "name": "none"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.38461538461538464,
+      "name": "piecewise graph nondifferentiability explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "towing-rope horizontal-components assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8076923076923077,
+      "name": "trihybrid ideal-peas active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.21875,
+      "name": "weak-acid ICE-table assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 11.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.47619047619047616,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 21.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 55.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 1,
+      "pass_rate": 0.5703125,
+      "passed_positive_weight": 73.0,
+      "positive_weight": 128.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 70.0,
+      "name": "instruction_following",
+      "negative_criteria": 2,
+      "pass_rate": 0.7008547008547008,
+      "passed_positive_weight": 164.0,
+      "positive_weight": 234.0,
+      "rows_with_failure": 8,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.7619047619047619,
+      "passed_positive_weight": 16.0,
+      "positive_weight": 21.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 27.0,
+      "name": "truthfulness",
+      "negative_criteria": 1,
+      "pass_rate": 0.782258064516129,
+      "passed_positive_weight": 97.0,
+      "positive_weight": 124.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 0.9333333333333333,
+      "passed_positive_weight": 14.0,
+      "positive_weight": 15.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 0.96,
+      "passed_positive_weight": 24.0,
+      "positive_weight": 25.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 2.0,
+      "positive_weight": 2.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.38461538461538464,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.8480595980595981,
+        "ci_low": 0.4162336506086506,
+        "count": 6,
+        "mean_arrw": 0.6263756107506108,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.7391304347826086,
+        "count": 3,
+        "mean_arrw": 0.8667471819645732,
+        "name": "Evaluate"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.9519230769230769,
+        "ci_low": 0.5037393162393162,
+        "count": 4,
+        "mean_arrw": 0.7633547008547009,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.8252056404230317,
+        "ci_low": 0.3714424651924652,
+        "count": 6,
+        "mean_arrw": 0.6149486319323276,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8076923076923077,
+        "name": "Biology"
+      },
+      {
+        "ci_high": 0.8611111111111112,
+        "ci_low": 0.38461538461538464,
+        "count": 3,
+        "mean_arrw": 0.6616189768363682,
+        "name": "Calculus"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.21875,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.972972972972973,
+        "ci_low": 0.6527777777777778,
+        "count": 2,
+        "mean_arrw": 0.8128753753753755,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.2727272727272727,
+        "count": 3,
+        "mean_arrw": 0.702020202020202,
+        "name": "Physics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 0.8076923076923077,
+        "ci_low": 0.6527777777777778,
+        "count": 2,
+        "mean_arrw": 0.7302350427350428,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.38461538461538464,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.899348105869845,
+        "ci_low": 0.44899891774891776,
+        "count": 7,
+        "mean_arrw": 0.6997178749896141,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 3,
+    "overall": {
+      "ci_high": 0.8370540691192865,
+      "ci_low": 0.47845344489366226,
+      "count": 10,
+      "mean_arrw": 0.6743110595012769,
+      "name": "overall"
+    },
+    "run_id": "heldout-v7-regression-probe"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 497006,
+    "generation_output_tokens": 69554,
+    "judge_input_tokens": 31426,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 2911,
+    "mean_generation_latency_ms": 135568.7,
+    "mean_judge_latency_ms": 4941.5,
+    "negative_weight_review_count": 3,
+    "row_count": 10,
+    "run_id": "heldout-v7-regression-probe",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1994000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19999
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2394000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 10,
+      "coverage_critic_0": 10,
+      "coverage_critic_1": 2,
+      "coverage_critic_2": 2,
+      "critic_0": 10,
+      "critic_1": 2,
+      "critic_2": 2,
+      "domain_verifier": 10,
+      "perception": 4,
+      "planner": 10,
+      "revision_1": 2,
+      "revision_2": 2,
+      "solver": 10,
+      "specialist_audit": 4
+    },
+    "stage_mean_latency_ms": {
+      "composer": 22138.1,
+      "coverage_critic_0": 9182.8,
+      "coverage_critic_1": 9640.5,
+      "coverage_critic_2": 10093,
+      "critic_0": 7710.7,
+      "critic_1": 10620,
+      "critic_2": 12723,
+      "domain_verifier": 14882.1,
+      "perception": 15668.25,
+      "planner": 19580.5,
+      "revision_1": 18234.5,
+      "revision_2": 15932,
+      "solver": 32430.1,
+      "specialist_audit": 19821.25
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 35.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 2,
+      "pass_rate": 0.5882352941176471,
+      "passed_positive_weight": 50.0,
+      "positive_weight": 85.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.6739130434782609,
+      "passed_positive_weight": 31.0,
+      "positive_weight": 46.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 21.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.6911764705882353,
+      "passed_positive_weight": 47.0,
+      "positive_weight": 68.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 11.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.7708333333333334,
+      "passed_positive_weight": 37.0,
+      "positive_weight": 48.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.8,
+      "passed_positive_weight": 40.0,
+      "positive_weight": 50.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 16.0,
+      "name": "Not applicable",
+      "negative_criteria": 1,
+      "pass_rate": 0.8072289156626506,
+      "passed_positive_weight": 67.0,
+      "positive_weight": 83.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 0.8333333333333334,
+      "passed_positive_weight": 5.0,
+      "positive_weight": 6.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 0.8571428571428571,
+      "passed_positive_weight": 30.0,
+      "positive_weight": 35.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 6.0,
+      "positive_weight": 6.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.21875,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the student used incorrect signs in the change row of your ICE table: +x -x, -x.",
+          "criterion_index": 0,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the errors in the ICE table caused an incorrect setup of the Ka expression as 1.8 \u00d7 10\u207b\u2074 = (x * x)/(0.25 + x).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that while the ICE table had setup errors, the incorrect simplification of the Ka expression was the main reason for the incorrect molarity of H+",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the student incorrectly simplified 1.8 * 10^(-4) =(x * x) / {0.25 -x) to 1.8 * 10^(-4) = x / 0.25",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the student incorrectly determined the molarity of H+ as 4.5 * 10^(-5).",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "text",
+      "playbook": "weak-acid ICE-table assessment",
+      "response_preview": "## Feedback on Your Methanoic Acid Problem First: your frustration is completely understandable \u2014 the \"what do I do with Ka?\" step is exactly where most students get stuck. Let's fix that gap directly. --- ## \u2705 What You Got Right - **Ionization equation:**...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "6843120a2b986bd2d9ca5f3f",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2727272727272727,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly identify the student\u2019s assumption that the box tips at its bottom corner is incorrect.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must show mathematically or explain how each force in the system acts on the box explicitly stating correct values for all forces (normal 423 N perpendicular to inc...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must calculate the distance $x=0.294 m$ where the normal force is applied to the box by the cart at the moment of slipping.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should specify what directions are assumed positive when summing moments and forces.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "inclined box slip-or-tip assessment",
+      "response_preview": "## Assessment of Your Work ### What You Got Right Your tipping analysis is genuinely well-executed: - \u2705 Correctly identifying the **lower corner of the box** (at the bottom of the incline) as the pivot point for tipping. - \u2705 Correctly placing the normal for...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "68377588415e67c44f4734b6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.38461538461538464,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state for $x=-2$ that the function is continuous there, the left-hand derivative is $0$, the right-hand derivative is $-2$, and classify the point as a corner/...",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state for $x=0$ that the function is continuous there, the left-hand derivative is $-2$, the right-hand derivative is $0$, and classify the point as a corner/c...",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must directly correct the student\u2019s idea that \u201cwe can just set the derivative at $x=-2$ to 0\u201d by quoting the actual left/right values ($0$ and $-2$) and stating tha...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explicitly mention that the function is continuous at $x=-2$ by noting the same $y$-value from left and right.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "piecewise graph nondifferentiability explanation",
+      "response_preview": "Great that you're pushing back \u2014 and I owe you a correction first, because something I said earlier was wrong, and that's part of why this is confused. --- ## Correction: x = \u22122 is a jump discontinuity, not a corner I told you earlier that the function was...",
+      "rubric_count": 10,
+      "subject": "Calculus",
+      "task_id": "683e3d902b6d2a6c45002cec",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.6527777777777778,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly recognize that the student is stuck due to unfamiliarity working with variables of different dimensionalities and variables that represent rates of...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must hint for the student to consider the dimensionality of variables, with `currentFood` being in grams and `foodTakenPerPerson` being in grams per person.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that operators like addition and subtraction only simplify to a single term if the two operands have the same dimensionality.",
+          "criterion_index": 9,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that type casting to an integer results in truncation, meaning that the decimal portions of the number are entirely discarded.",
+          "criterion_index": 11,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must avoid providing a next step directly by telling the student how to use `Math.random` correctly in the code, like comparing it to 0.05 or multiplying it by 41.",
+          "criterion_index": 13,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "You're genuinely close here \u2014 the if/else structure is right, setting `currentFood = 0` for mold is right, and subtracting from `currentFood` is the correct operation. The frustration is understandable, but you're almost there! --- ## Resolving the `??` \u2014 y...",
+      "rubric_count": 16,
+      "subject": "Computer Science",
+      "task_id": "684772095817461e60913ee8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.7391304347826086,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the student\u2019s claim \u201cthe integral converges for all $|k|>2$\u201d is incorrect and must give the correct condition: the integral converges for all $|k|>2...",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response may add an encouraging or empathetic remark (e.g., \u201cGood job spotting the antiderivative\u2026\u201d).",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "logarithmic improper-integral assessment",
+      "response_preview": "## Assessment of Your Work ### What You Got Right - \u2713 **Simplifying the lower limit:** $(k-2)(k+2) = k^2 - 4$ is correct. - \u2713 **Noting $|k|>2 \\Rightarrow k^2-4 > 0$:** The lower limit is positive, so $\\ln(k^2-4)$ is defined there. - \u2713 **Behavior at $+\\infty...",
+      "rubric_count": 7,
+      "subject": "Calculus",
+      "task_id": "684a8cd69bca034aa640fe78",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.8076923076923077,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly read from the image that the student has created a Punnett square with gamete combinations including \"wGF\", \"WgF\", \"wgF\", WgF\", \"WGf\", \"WGF\", \"wgf\",...",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a hint about applying the final probability to the 1000 offspring by asking how to determine the portion of total peas that will be ideal.",
+          "criterion_index": 11,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "trihybrid ideal-peas active-learning hint",
+      "response_preview": "Great job setting up the column headers for Parent 1 \u2014 identifying that the **row labels belong to Parent 2's gametes** is exactly right. Let's figure out what Parent 2's genotype actually is, because that's what determines those row labels (and how many of...",
+      "rubric_count": 12,
+      "subject": "Biology",
+      "task_id": "681cffc846a1279c844e6432",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.8333333333333334,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student incorrectly chose center of mass rather than the lower edge as the pivot.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must equate the torques of gravity and the pseudo-force through the center of the mass by using $$\\frac{g\\cdot \\sin\u03b8+a \\cdot \\cos\u03b8}{g\\cdot \\cos\u03b8-a \\cdot \\sin\u03b8}=\\fra...",
+          "criterion_index": 15,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that we can simplify to $$a_{tip}=g \\frac{\\cos\u03b8-\\sin\u03b8}{\\cos\u03b8+\\sin\u03b8}=9.81 m\\cdot s^{-2} \\cdot \\frac{\\cos(23\u00b0)-\\sin(23\u00b0)}{\\cos(23\u00b0)+\\sin(23\u00b0)}$$.",
+          "criterion_index": 16,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "text",
+      "playbook": "inclined box slip-or-tip assessment",
+      "response_preview": "## Assessment of Your Work You've correctly identified that this is a slip-vs-tip comparison problem, and you've set up the right general structure (check slipping, check tipping, compare thresholds). However, there is one **foundational error that propagat...",
+      "rubric_count": 18,
+      "subject": "Physics",
+      "task_id": "6854554822969a049b1c9dc4",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.8611111111111112,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "composition constant-range assessment",
+      "response_preview": "## Assessment of Your Work --- ### What You Got Right - \u2705 **$f(x)$ is continuous on all of $\\mathbb{R}$** \u2014 correct. - \u2705 **$f(x)$ has corners at $x = \\pm 1$** \u2014 correct in isolation; those are genuine non-differentiability points of $f$. - \u2705 **The integers...",
+      "rubric_count": 9,
+      "subject": "Calculus",
+      "task_id": "683776272f4468651311d6dc",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must explicitly state that the student\u2019s final answer (e.g., c + d=6) is incorrect.",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.972972972972973,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should mention the efficiency of their approach (why removeIf or removeAll is more efficient then manual remove).",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "AP CSA MemberInfo removeMembers assessment",
+      "response_preview": "## Feedback on `removeMembers` ### What You Got Right Your **structural instinct is excellent**. Using two separate lists \u2014 one for members to return, one for members to remove \u2014 is exactly the right design. You also correctly: - Avoid modifying `memberList...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "684771b3cf8ba842e93ec6de",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "towing-rope horizontal-components assessment",
+      "response_preview": "## Assessment of Your Solution Your physical intuition and setup are on the right track in important ways \u2014 but there are **two errors** that compound to give a final answer that is too large. Let me work through each one. --- ### \u2705 What You Did Correctly -...",
+      "rubric_count": 9,
+      "subject": "Physics",
+      "task_id": "683e4510bd7caf8a464501d6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    }
+  ]
+}

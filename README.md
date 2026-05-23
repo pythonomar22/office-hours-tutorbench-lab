@@ -229,6 +229,15 @@ confirms the targeted `heldout-failure-probe-v6` transferred to the larger
 split, with especially large wins on multimodal assessment rows. Remaining
 gaps are examples/analogies, alternative solution paths, and guiding questions.
 
+Current v7 probe: `heldout-v7-regression-probe` scored `67.43%` on 10
+weak/regressed v6 heldout rows, up from `23.38%` for v6 on those same rows.
+This adds narrow routes for inclined box slip/tip, towing-rope components,
+AP CSA `MemberInfo.removeMembers`, trihybrid pea probability hints,
+composition through a constant outer-function range, piecewise graph
+one-sided derivatives, and logarithmic improper-integral singularities. This is
+a targeted architecture-debugging result; run `heldout500-agentic-v7` before
+promoting v7 as the main anchor.
+
 Current v4 failure probe: `probe10-agentic-v4-refined` scored `75.33%` on ten
 representative weakest heldout500 failures, up from roughly `4%` on those same
 rows in `heldout500-agentic-v3`. V4 retires full canned final rewrites, adds a

@@ -43,6 +43,8 @@ def build_task_playbook(
             notes.append(_movie_rating_active_hint_playbook())
         if use_case == "active_learning" and _has_shape_oop_center_context(text):
             notes.append(_shape_oop_center_active_hint_playbook())
+        if use_case == "assessment" and _has_member_info_remove_members_context(text):
+            notes.append(_member_info_remove_members_assessment_playbook())
 
     if (
         turn.subject.lower() == "chemistry"
@@ -114,6 +116,21 @@ def build_task_playbook(
             notes.append(_trig_substitution_adaptive_playbook())
         if turn.use_case.value == "assessment" and _has_sideways_parabola_area_context(text):
             notes.append(_sideways_parabola_area_assessment_playbook())
+        if (
+            turn.use_case.value == "assessment"
+            and _has_composition_constant_range_context(text)
+        ):
+            notes.append(_composition_constant_range_assessment_playbook())
+        if (
+            turn.use_case.value == "adaptive"
+            and _has_piecewise_nondifferentiability_context(text)
+        ):
+            notes.append(_piecewise_nondifferentiability_adaptive_playbook())
+        if (
+            turn.use_case.value == "assessment"
+            and _has_log_integral_singularity_context(text)
+        ):
+            notes.append(_log_integral_singularity_assessment_playbook())
         if (
             turn.use_case.value == "active_learning"
             and _has_exponential_perimeter_context(text)
@@ -202,6 +219,12 @@ def build_task_playbook(
         and _has_any(text, ["independent assortment", "testcross", "punnett", "rw/tt", "ww/tt"])
     ):
         notes.append(_mendelian_testcross_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "active_learning"
+        and _has_trihybrid_ideal_peas_context(text)
+    ):
+        notes.append(_trihybrid_ideal_peas_active_playbook())
     if (
         turn.subject.lower() == "biology"
         and use_case == "adaptive"
@@ -307,6 +330,18 @@ def build_task_playbook(
         and _has_crackle_derivative_context(text)
     ):
         notes.append(_crackle_derivative_assessment_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "assessment"
+        and _has_inclined_box_slip_tip_context(text)
+    ):
+        notes.append(_inclined_box_slip_tip_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "assessment"
+        and _has_towing_rope_components_context(text)
+    ):
+        notes.append(_towing_rope_components_assessment_playbook())
     if (
         turn.subject.lower() == "calculus"
         and use_case == "assessment"
@@ -503,6 +538,15 @@ def _has_shape_oop_center_context(text: str) -> bool:
     )
 
 
+def _has_member_info_remove_members_context(text: str) -> bool:
+    return (
+        _has_any(text, ["memberinfo", "member info"])
+        and _has_any(text, ["removemembers", "remove members"])
+        and _has_any(text, ["good standing", "ingoodstanding"])
+        and _has_any(text, ["graduation", "gradyear", "grad year"])
+    )
+
+
 def _has_oxygen_co2_adaptive_context(text: str) -> bool:
     return (
         _has_any(text, ["cellular respiration", "glycolysis", "krebs"])
@@ -630,6 +674,30 @@ def _has_sideways_parabola_area_context(text: str) -> bool:
     )
 
 
+def _has_composition_constant_range_context(text: str) -> bool:
+    return (
+        _has_any(text, ["h(x)", "f(g(x))", "h = f(g"])
+        and _has_any(text, ["discontinuities in g", "discontinuities of g", "g(x)"])
+        and _has_any(text, ["f(x) = 2", "f(x)=2", "constant"])
+    )
+
+
+def _has_piecewise_nondifferentiability_context(text: str) -> bool:
+    return (
+        _has_any(text, ["piecewise-defined", "piecewise defined"])
+        and _has_any(text, ["fails to be differentiable", "nondifferentiable"])
+        and _has_any(text, ["left-hand derivative", "right-hand derivative"])
+    )
+
+
+def _has_log_integral_singularity_context(text: str) -> bool:
+    return (
+        _has_any(text, ["ln{x}", "ln x", "\\ln{x}", "\\ln x"])
+        and _has_any(text, ["(k-2)(k+2)", "k^2 - 4", "k−2"])
+        and _has_any(text, ["converges", "integral"])
+    )
+
+
 def _has_interphase_mutation_context(text: str) -> bool:
     return "interphase" in text and _has_any(
         text,
@@ -666,6 +734,15 @@ def _has_restriction_enzyme_context(text: str) -> bool:
     return _has_any(text, ["restriction enzyme", "bsmbi", "ecori"]) and _has_any(
         text,
         ["palindromic", "recognition", "complementary strand", "reverse complement"],
+    )
+
+
+def _has_trihybrid_ideal_peas_context(text: str) -> bool:
+    return (
+        _has_any(text, ["pea", "peas"])
+        and _has_any(text, ["heterozygous for three", "three independent traits"])
+        and _has_any(text, ["round", "green", "firm", "ideal"])
+        and _has_any(text, ["1000", "offspring", "punnett"])
     )
 
 
@@ -751,6 +828,25 @@ def _has_rotating_charged_ring_context(text: str) -> bool:
 def _has_crackle_derivative_context(text: str) -> bool:
     return _has_any(text, ["crackle", "jerk"]) and _has_any(
         text, ["derivative", "x''", "x’’", "position function", "time t"]
+    )
+
+
+def _has_inclined_box_slip_tip_context(text: str) -> bool:
+    return (
+        _has_any(text, ["inclined base", "inclined plane", "incline"])
+        and _has_any(text, ["cart", "box"])
+        and _has_any(text, ["static friction", "coefficient of static friction", "mu_s"])
+        and _has_any(text, ["slip", "sliding"])
+        and _has_any(text, ["tip", "tipping"])
+    )
+
+
+def _has_towing_rope_components_context(text: str) -> bool:
+    return (
+        _has_any(text, ["rope", "ropes", "tension"])
+        and _has_any(text, ["horizontal component", "horizontal force", "cos"])
+        and _has_any(text, ["2.9", "2.0", "5.50", "5500"])
+        and _has_any(text, ["acceleration", "newton"])
     )
 
 
@@ -1272,6 +1368,31 @@ def _oop_design_playbook() -> str:
     ).strip()
 
 
+def _member_info_remove_members_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: AP CSA MemberInfo removeMembers assessment
+        - Treat this as code feedback, not a generic praise pass.
+        - State the two required behaviors separately:
+          (1) return an ArrayList of members whose gradYear is <= the cutoff
+          and who are in good standing; (2) remove every member whose gradYear
+          is <= the cutoff from memberList, regardless of standing.
+        - If the student's logic only removes or returns the good-standing
+          graduates, say that this gives both the wrong returned list and the
+          wrong remaining memberList. Use a tiny named-member example.
+        - Provide corrected Java code. It may collect candidates in a temporary
+          list and call removeAll, or use an Iterator/removeIf safely, but it
+          must not remove from memberList inside an enhanced for-loop.
+        - Explain why the chosen removal method avoids
+          ConcurrentModificationException.
+        - Include at least one edge case: no graduates, all graduates, or a
+          not-good-standing graduate who should be removed but not returned.
+        - End with a short takeaway about separating "return" criteria from
+          "remove" criteria.
+        """
+    ).strip()
+
+
 def _factorial_code_playbook() -> str:
     return dedent(
         """\
@@ -1533,6 +1654,51 @@ def _sideways_parabola_area_assessment_playbook() -> str:
         - Add the subareas explicitly and give the corrected total area.
         - Explain that continuity/graph shape, not checking a single point, is
           what justifies which curve is above on each interval.
+        """
+    ).strip()
+
+
+def _composition_constant_range_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: composition constant-range assessment
+        - Do not assume discontinuities of g automatically become
+          discontinuities or nondifferentiability points of h = f(g(x)).
+        - First determine the range of g on the interval in question. If the
+          image/prompt shows g(x) stays inside an interval where f is constant,
+          state that h can be constant even when g has jumps.
+        - For the common row where g(x) stays in (-1, 1) and f(x)=2 on that
+          interval, conclude h(x)=2 throughout the interval, so h is continuous
+          and differentiable there.
+        - Correct the student's core misconception explicitly: composition can
+          hide discontinuities when the outer function maps both one-sided
+          input values to the same output.
+        - State the requested counts/values after the explanation, rather than
+          only discussing candidate discontinuity points.
+        """
+    ).strip()
+
+
+def _piecewise_nondifferentiability_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: piecewise graph nondifferentiability explanation
+        - Answer the student's follow-up directly; do not discuss only the
+          point they mention if the prompt asks for all nondifferentiable
+          points.
+        - For each candidate x-value visible in the graph, check continuity
+          first, then compare left-hand and right-hand slopes/derivatives.
+        - State the exact one-sided derivative values when the graph gives
+          straight pieces. For the common graph row, x=-2 has left derivative
+          0 and right derivative -2; x=0 has left derivative -2 and right
+          derivative 0. Both are continuous corners/sharp turns.
+        - Explicitly correct the misconception "continuous means
+          differentiable": continuity is necessary but not sufficient.
+        - Explicitly correct "just set the derivative at x=-2 to 0": a
+          derivative at a point must be unique, so unequal one-sided
+          derivatives mean no derivative exists.
+        - Use a simple image analogy, such as a smooth road versus a sharp
+          elbow/corner, and acknowledge that the distinction is easy to mix up.
         """
     ).strip()
 
@@ -1916,6 +2082,29 @@ def _sinc_integral_assessment_playbook() -> str:
     ).strip()
 
 
+def _log_integral_singularity_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: logarithmic improper-integral assessment
+        - Assess both parts of the student's reasoning: the behavior at
+          infinity and any singularities inside the integration interval.
+        - Identify the singularity at x=1 because ln(1)=0. Positivity of the
+          lower limit alone is not enough.
+        - State the antiderivative/check: integral 1/[x(ln x)^2] dx =
+          -1/ln x, so the tail converges when started safely above 1.
+        - Correct any comparison claim such as
+          1/[x(ln x)^2] < 1/x^(2+epsilon); for large x this comparison is not
+          valid in that direction and does not prove convergence.
+        - Tie the conclusion back to the parameter: the lower limit is
+          k^2-4. Mention the exact lower-limit singular case k^2-4=1, and
+          note more generally that starting below or at 1 makes the interval
+          hit the x=1 singularity.
+        - Be explicit that the student's "for all |k|>2" statement is false,
+          then give the corrected condition in words or inequalities.
+        """
+    ).strip()
+
+
 def _le_chatelier_assessment_playbook() -> str:
     return dedent(
         """\
@@ -2095,6 +2284,33 @@ def _mendelian_testcross_playbook() -> str:
     ).strip()
 
 
+def _trihybrid_ideal_peas_active_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: trihybrid ideal-peas active-learning hint
+        - Keep this as a hint. Do not compute the final number of ideal peas.
+        - Identify the student's likely block: choosing the second parent's
+          worst-case genotype and then multiplying independent single-trait
+          probabilities, rather than building a full 8x8 Punnett square.
+        - State the dominance map needed for the hint if the prompt/image uses
+          these symbols: round = W dominant, green = g recessive, firm = F
+          dominant.
+        - Ask the student which genotype(s) the second parent could have while
+          still always looking ideal, then ask which of those gives the lowest
+          chance of ideal offspring.
+        - Nudge them to split the trihybrid cross into three one-gene crosses:
+          shape, color, and texture. Ask for the probability of round, then
+          green, then firm.
+        - Ask how independent assortment lets them multiply those three trait
+          probabilities, and only after that ask how to apply the fraction to
+          1000 peas.
+        - If mentioning the visible Punnett square, anchor to the column/row
+          gametes but do not spend the whole hint fixing duplicate headers
+          unless that is the student's immediate blocker.
+        """
+    ).strip()
+
+
 def _kinematics_hint_playbook() -> str:
     return dedent(
         """\
@@ -2156,6 +2372,29 @@ def _inclined_box_slip_tip_playbook() -> str:
           contact location is about x=0.294 m rather than simply the corner.
         - Compare slip and tip thresholds and report the smaller acceleration
           as the answer to "either slip or tip."
+        """
+    ).strip()
+
+
+def _towing_rope_components_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: towing-rope horizontal-components assessment
+        - Read the diagram before praising the student's force count. In the
+          common tow/rope row, only the front two taut ropes contribute to the
+          forward acceleration; do not say all four ropes contribute.
+        - Distinguish the horizontal and vertical components. If the diagram
+          shows a horizontal leg and a slanted rope length, use the ratio for
+          the horizontal component of tension; do not take cos(2/2.9) as if the
+          ratio itself were an angle.
+        - State the corrected force balance in words before numbers:
+          net horizontal force = number of contributing ropes times the
+          horizontal component of each tension, then F_net = ma.
+        - Identify equivalent notations as valid when they express the same
+          component ratio; avoid inventing extra errors about scientific
+          notation or units.
+        - For the common 5.50e3 kg / 5.50e3 N row, the corrected acceleration
+          is about 1.45 m/s^2. Give the corrected value in assessment mode.
         """
     ).strip()
 

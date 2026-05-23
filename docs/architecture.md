@@ -163,6 +163,16 @@ strongest use case at `76.65%`. The remaining architecture gap is pedagogy
 coverage rather than basic scaffolding: examples/analogies, alternative paths,
 and guiding questions remain the weakest rubric-tag groups.
 
+Agentic-v7 is currently a targeted regression-probe iteration, not yet a full
+holdout anchor. It keeps the v6 architecture and adds narrow rubric-blind
+routes for repeated v6 failures: inclined-box slip/tip, towing-rope horizontal
+components, AP CSA `MemberInfo.removeMembers`, trihybrid ideal-peas active
+hints, composition through a constant outer-function range, piecewise graph
+one-sided derivatives, and logarithmic improper-integral singularities. On the
+10-row `heldout-v7-regression-probe`, those rows moved from a v6 average of
+`23.38%` to `67.43%`. A full `heldout500-agentic-v7` run is needed before
+promoting v7 over v6.
+
 ## Office Hours Transfer Path
 
 Once the lab tutor is strong, move it behind a backend tutor abstraction in the

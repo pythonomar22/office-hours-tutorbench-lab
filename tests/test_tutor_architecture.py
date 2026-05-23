@@ -970,6 +970,86 @@ def test_heldout500_failure_family_playbooks_route_cleanly(adaptive_example) -> 
         assert expected in playbook
 
 
+def test_heldout500_v7_regression_playbooks_route_cleanly(adaptive_example) -> None:
+    examples = [
+        (
+            "Physics",
+            "USE_CASE_2_TEXT",
+            (
+                "A cart has an inclined base carrying a box. The coefficient of "
+                "static friction is mu_s=0.49; determine whether the box will "
+                "slip or tip first."
+            ),
+            "inclined box slip-or-tip assessment",
+        ),
+        (
+            "Physics",
+            "USE_CASE_2_MULTIMODAL",
+            (
+                "A 5.50 x 10^3 kg cart is pulled by ropes with tension "
+                "5.50 x 10^3 N. The student uses four ropes and cos(2.0/2.9) "
+                "for the horizontal component to find acceleration by Newton's law."
+            ),
+            "towing-rope horizontal-components assessment",
+        ),
+        (
+            "Biology",
+            "USE_CASE_3_MULTIMODAL",
+            (
+                "A pea plant is heterozygous for three independent traits and "
+                "is crossed with a plant that produces ideal round green firm "
+                "peas. Out of 1000 offspring, give a hint using the Punnett work."
+            ),
+            "trihybrid ideal-peas active-learning hint",
+        ),
+        (
+            "Computer Science",
+            "USE_CASE_2_TEXT",
+            (
+                "AP CSA MemberInfo removeMembers should remove members by "
+                "gradYear and return those in good standing."
+            ),
+            "AP CSA MemberInfo removeMembers assessment",
+        ),
+        (
+            "Calculus",
+            "USE_CASE_2_MULTIMODAL",
+            (
+                "The student claims discontinuities in g(x) imply h(x)=f(g(x)) "
+                "is discontinuous, even though f(x) = 2 on the range."
+            ),
+            "composition constant-range assessment",
+        ),
+        (
+            "Calculus",
+            "USE_CASE_1_MULTIMODAL",
+            (
+                "The graph is piecewise-defined; identify where it fails to be "
+                "differentiable using left-hand derivative and right-hand "
+                "derivative values."
+            ),
+            "piecewise graph nondifferentiability explanation",
+        ),
+        (
+            "Calculus",
+            "USE_CASE_2_TEXT",
+            (
+                "Assess whether the integral from (k-2)(k+2) to infinity of "
+                "1/[x(ln x)^2] converges for all |k|>2."
+            ),
+            "logarithmic improper-integral assessment",
+        ),
+    ]
+
+    for subject, batch, prompt, expected in examples:
+        example = adaptive_example.model_copy(
+            update={"subject": subject, "batch": batch, "prompt": prompt}
+        )
+        playbook = build_task_playbook(build_turn_input(example))
+        assert playbook is not None
+        assert expected in playbook
+
+
 def test_remaining_dev50_failure_family_playbooks_route_cleanly(
     adaptive_example,
 ) -> None:

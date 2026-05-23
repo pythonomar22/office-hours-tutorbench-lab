@@ -112,6 +112,22 @@ local public-HF/dev-set results unless explicitly marked as official.
     judged files do not require manual score edits.
   - This is now the strongest local public-HF-comparable fairness anchor, but
     it remains not an official leaderboard result.
+- Heldout500 v7 regression probe: `heldout-v7-regression-probe`
+  - Score: `67.43%` on 10 weak/regressed heldout500 rows selected after v6
+    analysis.
+  - Those same rows averaged `23.38%` under v6, so the targeted delta is
+    `+44.05` points.
+  - Row wins: AP CSA `removeMembers` `16.22% -> 97.30%`, towing-rope
+    components `18.92% -> 100.00%`, composition constant-range assessment
+    `16.67% -> 86.11%`, trihybrid peas active hint `23.08% -> 80.77%`, and
+    inclined box slip/tip `50.00% -> 83.33%` on one text row.
+  - Main v7 changes: wire the dormant inclined-box slip/tip playbook; add
+    rubric-blind routes for towing-rope horizontal components, AP CSA
+    `MemberInfo.removeMembers`, trihybrid ideal-peas active hints, composition
+    through a constant outer-function range, piecewise graph one-sided
+    derivatives, and logarithmic improper-integral singularities.
+  - This is an architecture-debugging probe, not a new benchmark anchor. Run
+    `heldout500-agentic-v7` before treating v7 as transferred.
 - V4 failure-analysis probe: `probe10-agentic-v4-refined`
   - Score: `75.33%` over 10 heldout500 rows selected from the weakest v3
     failures; the same rows averaged roughly `4%` in `heldout500-agentic-v3`.
