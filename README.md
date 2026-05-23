@@ -112,7 +112,7 @@ Candidate generation never sees sample-specific rubrics.
 
 The current agentic route is not a single prompt. It can run visual
 perception, local visual probes for labelled diagrams, a specialist
-multimodal-assessment audit, private solving, use-case-aware answer planning,
+multimodal evidence audit, private solving, use-case-aware answer planning,
 independent verification, composition, generic critic passes, and bounded
 revisions. Each generated row stores per-stage latency and token usage in the
 trace so we can decide which rows deserve the full pipeline later.
@@ -175,10 +175,10 @@ uv run tutorbench-lab export-traces runs/<run_id>/judged.jsonl
 ## Current Target
 
 The working target is `>=70%` local full-set ARRw before treating the system as
-plausibly leaderboard-beating. We have now crossed that threshold on the
-held-out `validation150` set: baseline Sonnet `59.65%` vs agentic
-`72.13%` in `runs/validation150-retired-playbooks-v3/`, a +12.48 point
-same-set gain. The current public leaderboard target should be rechecked before
+plausibly leaderboard-beating. We have now crossed that threshold on the larger
+heldout500 split: baseline Sonnet `60.77%` vs agentic-v5 `71.84%`, CI
+`69.84%-73.69%`, in `runs/heldout500-agentic-v5/`, a +11.07 point same-set
+gain. The current public leaderboard target should be rechecked before
 submission because it can change.
 
 Important: local public-HF results are not automatically leaderboard results.
@@ -208,11 +208,23 @@ This is a local public-HF-comparable validation score, not an official
 leaderboard result.
 
 Current larger holdout anchor: baseline Sonnet `60.77%`, CI
-`58.90%-62.83%`, vs agentic `68.23%`, CI `66.11%-70.23%`, over
+`58.90%-62.83%`, vs agentic-v5 `71.84%`, CI `69.84%-73.69%`, over
 `eval_sets/heldout500.json`. This 500-row split excludes
-dev10/dev50/validation150. The agentic run is a +7.46 point same-set gain and a
-stronger fairness anchor than dev50/validation150, but it is still a local
-public-HF-comparable result, not an official leaderboard result.
+dev10/dev50/validation150. The agentic-v5 run is a +11.07 point same-set gain,
+beats the local `>=70%` target, and is the strongest fairness anchor so far,
+but it is still a local public-HF-comparable result, not an official
+leaderboard result.
+
+Current v6 failure probe: `heldout-failure-probe-v6` scored `64.42%` on the
+ten weakest `heldout500-agentic-v5` rows, up from `12.64%` on those same rows
+under v5. The main v6 change is broadening the specialist evidence audit to all
+multimodal rows and adding rubric-blind playbooks for recurring visual/code
+failure families such as Normal MLE notation, binary-search midpoint overflow,
+MovieRating integer division, shape center-distance hints, Henry-law
+mole-fraction units, and bulb parallel-switch reasoning. The refined variant
+`heldout-failure-probe-v6-refined` scored `59.12%`; it improved some assessment
+rows but regressed active-learning rows, so treat the first v6 probe as the
+cleaner next architecture signal until a full heldout v6 run verifies it.
 
 Current v4 failure probe: `probe10-agentic-v4-refined` scored `75.33%` on ten
 representative weakest heldout500 failures, up from roughly `4%` on those same

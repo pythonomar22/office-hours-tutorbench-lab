@@ -38,7 +38,7 @@ DEFAULT_EXAMPLES_JSONL = DEFAULT_DATA_DIR / "processed" / "examples.jsonl"
 DEFAULT_HF_METADATA_PATH = DEFAULT_DATA_DIR / "processed" / "hf_metadata.json"
 
 PROMPT_VERSION = "paper-v1"
-AGENT_PROMPT_VERSION = "agentic-v5"
+AGENT_PROMPT_VERSION = "agentic-v6"
 
 DEFAULT_CANDIDATE_MODEL = "anthropic:claude-sonnet-4-6"
 DEFAULT_JUDGE_MODEL = "anthropic:claude-sonnet-4-6"

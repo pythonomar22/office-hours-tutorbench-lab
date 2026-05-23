@@ -1,0 +1,850 @@
+{
+  "playbooks": [
+    {
+      "count": 2,
+      "mean_arrw": 0.7797619047619048,
+      "name": "Henry-law mole-fraction assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "MovieRating active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8026315789473685,
+      "name": "Normal MLE assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9038461538461539,
+      "name": "binary-search midpoint overflow assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7872340425531915,
+      "name": "bulbs-in-parallel switch adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.2682926829268293,
+      "name": "days-in-month switch adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.5121951219512195,
+      "name": "geometric-shapes OOP center-distance active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.5454545454545454,
+      "name": "hydrogen iodide to iodoethylene assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.0625,
+      "name": "weak-acid ICE-table assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 25.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.6666666666666666,
+      "passed_positive_weight": 50.0,
+      "positive_weight": 75.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 60.0,
+      "name": "instruction_following",
+      "negative_criteria": 2,
+      "pass_rate": 0.6842105263157895,
+      "passed_positive_weight": 130.0,
+      "positive_weight": 190.0,
+      "rows_with_failure": 7,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 65.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 2,
+      "pass_rate": 0.6919431279620853,
+      "passed_positive_weight": 146.0,
+      "positive_weight": 211.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "visual_perception",
+      "negative_criteria": 1,
+      "pass_rate": 0.7272727272727273,
+      "passed_positive_weight": 40.0,
+      "positive_weight": 55.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "truthfulness",
+      "negative_criteria": 2,
+      "pass_rate": 0.8275862068965517,
+      "passed_positive_weight": 72.0,
+      "positive_weight": 87.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 0.9565217391304348,
+      "passed_positive_weight": 22.0,
+      "positive_weight": 23.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 0.9655172413793104,
+      "passed_positive_weight": 28.0,
+      "positive_weight": 29.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 1.0,
+      "positive_weight": 1.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 0.8181818181818181,
+        "ci_low": 0.22449186991869918,
+        "count": 5,
+        "mean_arrw": 0.5085827790096082,
+        "name": "Apply"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.5121951219512195,
+        "name": "Create"
+      },
+      {
+        "ci_high": 0.9038461538461539,
+        "ci_low": 0.8026315789473685,
+        "count": 3,
+        "mean_arrw": 0.8664449585502217,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.7872340425531915,
+        "name": "Understand"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.9101673402585256,
+        "ci_low": 0.537750132586666,
+        "count": 7,
+        "mean_arrw": 0.7381509604402722,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.6666666666666666,
+        "ci_low": 0.0625,
+        "count": 3,
+        "mean_arrw": 0.42487373737373735,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": 0.8060064935064936,
+        "ci_low": 0.21354166666666666,
+        "count": 4,
+        "mean_arrw": 0.5418695887445888,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.9519230769230769,
+        "ci_low": 0.3902439024390244,
+        "count": 4,
+        "mean_arrw": 0.6710834896810507,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.7872340425531915,
+        "name": "Physics"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8026315789473685,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.5121951219512195,
+        "count": 2,
+        "mean_arrw": 0.7560975609756098,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.7872340425531915,
+        "ci_low": 0.2682926829268293,
+        "count": 2,
+        "mean_arrw": 0.5277633627400105,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.8363697705802969,
+        "ci_low": 0.40228174603174605,
+        "count": 6,
+        "mean_arrw": 0.6456593479619795,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 5,
+    "overall": {
+      "ci_high": 0.8211449524719402,
+      "ci_low": 0.4455748012150451,
+      "count": 10,
+      "mean_arrw": 0.6441677935203117,
+      "name": "overall"
+    },
+    "run_id": "heldout-failure-probe-v6"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 490161,
+    "generation_output_tokens": 63042,
+    "judge_input_tokens": 37982,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 2618,
+    "mean_generation_latency_ms": 123665.6,
+    "mean_judge_latency_ms": 4879.7,
+    "negative_weight_review_count": 5,
+    "row_count": 10,
+    "run_id": "heldout-failure-probe-v6",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1981000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19999
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2381000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 10,
+      "coverage_critic_0": 10,
+      "coverage_critic_1": 2,
+      "critic_0": 10,
+      "critic_1": 2,
+      "domain_verifier": 10,
+      "perception": 7,
+      "planner": 10,
+      "revision_1": 2,
+      "solver": 10,
+      "specialist_audit": 7
+    },
+    "stage_mean_latency_ms": {
+      "composer": 19489.1,
+      "coverage_critic_0": 7834.6,
+      "coverage_critic_1": 8929.5,
+      "critic_0": 6698.9,
+      "critic_1": 5432.5,
+      "domain_verifier": 13571.7,
+      "perception": 14334.57,
+      "planner": 19853.5,
+      "revision_1": 12265.5,
+      "solver": 28508,
+      "specialist_audit": 17643
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 50.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 1,
+      "pass_rate": 0.5833333333333334,
+      "passed_positive_weight": 70.0,
+      "positive_weight": 120.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 20.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.6923076923076923,
+      "passed_positive_weight": 45.0,
+      "positive_weight": 65.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 1,
+      "pass_rate": 0.7692307692307693,
+      "passed_positive_weight": 50.0,
+      "positive_weight": 65.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 1,
+      "pass_rate": 0.7727272727272727,
+      "passed_positive_weight": 51.0,
+      "positive_weight": 66.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 10.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.8,
+      "passed_positive_weight": 40.0,
+      "positive_weight": 50.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 6.0,
+      "name": "Not applicable",
+      "negative_criteria": 2,
+      "pass_rate": 0.8823529411764706,
+      "passed_positive_weight": 45.0,
+      "positive_weight": 51.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 15.0,
+      "positive_weight": 15.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 5.0,
+      "positive_weight": 5.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.0625,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the student used incorrect signs in the change row of your ICE table: +x -x, -x.",
+          "criterion_index": 0,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the change row should be the change row should be -x, +x, +x because x represents the change in concentration. The reactant concentration decrease...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the errors in the ICE table caused an incorrect setup of the Ka expression as 1.8 \u00d7 10\u207b\u2074 = (x * x)/(0.25 + x).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that while the ICE table had setup errors, the incorrect simplification of the Ka expression was the main reason for the incorrect molarity of H+",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the student incorrectly simplified 1.8 * 10^(-4) =(x * x) / {0.25 -x) to 1.8 * 10^(-4) = x / 0.25",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "weak-acid ICE-table assessment",
+      "response_preview": "## Feedback on Your Methanoic Acid Problem First, take a breath \u2014 your frustration is completely understandable. Weak acid equilibrium problems have a specific trick that isn't obvious at first. You actually have the hardest conceptual pieces already in pla...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "6843120a2b986bd2d9ca5f3f",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2682926829268293,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly read the entire student\u2019s solution as: if (month == 2) { days = 28; } else if (month == 4 || month == 6 || month == 9 || month == 11) { days = 30 } e...",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the missing final closing brace } for the method in the student's solution.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the missing semicolon after assigning days = 30 in the student's solution.",
+          "criterion_index": 7,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that the student omitted the isLeapYear method definition(public static boolean isLeapYear(int year) { return (year % 4 == 0 && year % 100 != 0) || (y...",
+          "criterion_index": 8,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that the student\u2019s code is missing a variable declaration for days(int days;)(e.g., At the start of your method, you directly assigned days = 28).",
+          "criterion_index": 9,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "days-in-month switch adaptive explanation",
+      "response_preview": "Great news: **you do not need to use a switch statement.** The problem never requires one. The switch in my earlier solution was purely my stylistic choice \u2014 not a rule you have to follow. ## Why I used a switch (and why it's optional) A switch is sometimes...",
+      "rubric_count": 10,
+      "subject": "Computer Science",
+      "task_id": "68376d91c5b329d497cbe8ca",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the correct answer of how to handle February\u2019s days by explicitly calling isLeapYear(year), such as if (month == 2) { if (isLeapYear(year)) { days = 29...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5121951219512195,
+      "bloom_taxonomy": "Create",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student is unable to proceed due to lack of knowledge regarding how to calculate the center of a geometrical shape in terms of its centroid.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide hints for calculating the surface and perimeter of a square, without giving the following equations: 1) Perimeter = 4 * side length 2) Surface = (side...",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide hints for implementing the Circle class with the following components: 1) A variable that stores its radius. 2) The equation perimeter = 2*pi*radius 3)...",
+          "criterion_index": 9,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "geometric-shapes OOP center-distance active hint",
+      "response_preview": "## Addressing Your Confusion on Line 34 Your comment `// I'm confused... should I calculate the distance from a side or from a corner?` is exactly the right instinct to question \u2014 and the answer comes down to a precise geometric distinction. ### Side vs. Co...",
+      "rubric_count": 10,
+      "subject": "Computer Science",
+      "task_id": "683e458c2e254199a0fa2e02",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must acknowledge the current steps taken by the student: 1) Defined an IShape interface. 2) Defined a Shape class that implements the IShape interface. 3) Provided...",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.5454545454545454,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "hydrogen iodide to iodoethylene assessment",
+      "response_preview": "## Assessment of Your Work ### What You Got Right - \u2705 **Correct reaction type:** You're right that 100% atom economy in an addition reaction means all atoms from every reactant end up in the single product \u2014 nothing is wasted or left over. - \u2705 **Correct pro...",
+      "rubric_count": 4,
+      "subject": "Chemistry",
+      "task_id": "6843120a9fab58968f2128c9",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the final, correct answer of (CH\u2261CH)",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.6666666666666666,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must explain that because the student is using a gas constant R = 62.36 L\u22c5mmHg\u22c5K\u207b\u00b9\u22c5mol\u207b\u00b9 they must convert the volume from mL to liters and the temperature from degree...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The moldel must identify that the student is making a mistake when converting the sample mass to CaCO3 moles because the sample is impure.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify that the student is not expressing their result with three significant figures but two.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "text",
+      "playbook": "Henry-law mole-fraction assessment",
+      "response_preview": "## Feedback on Your CaCO\u2083 Purity Calculation First, I want to reassure you: your instinct that \"the calcium carbonate can't be that impure\" is exactly right, and it's good scientific thinking. You actually got several steps correct \u2014 the problem lives in on...",
+      "rubric_count": 13,
+      "subject": "Chemistry",
+      "task_id": "684a8cd6f08ce27c3bf577e0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.7872340425531915,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly identify the relationship of the four bulbs and the switch in the circuit diagram: - Current flows from the voltage source through bulb **A**. - Afte...",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that bulb brightness is a function of the power dissipated by the bulb, and since $P=I^2R$ and each bulb has the same resistance $R$, the brightness of...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "multimodal",
+      "playbook": "bulbs-in-parallel switch adaptive explanation",
+      "response_preview": "## Good news: your instinct about C was right Your feeling that **C gets dimmer** is actually correct \u2014 and I owe you an apology, because the previous explanation I gave you had a significant error in it. Let me fix that now. --- ## What the switch actually...",
+      "rubric_count": 11,
+      "subject": "Physics",
+      "task_id": "683e3d8f3482feddb4d05e86",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8026315789473685,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that the student made a conceptual error and the correct likelihood is \\( L(\\mu, \\sigma^2) \\).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the student should use chain rule to differentiate with respect to u and get \\[ - \\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} 2(X_i-\\mu)(-1) \\], let it equ...",
+          "criterion_index": 11,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the student should differentiate with respect to \\( \\sigma^2 \\) and let it equal to 0: \\[ -\\frac{n}{2\\sigma^2} + \\frac{1}{2\\sigma^4} \\sum_{i=1}^{n...",
+          "criterion_index": 14,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "Normal MLE assessment",
+      "response_preview": "## Assessment of Your MLE Derivation for N(\u03bc, \u03c3\u00b2) Your setup and \u03bc-estimation are solid, but there are two errors in the \u03c3-differentiation step that you need to fix. Let me be precise about each one. --- ### \u2705 What You Did Correctly | Step | Verdict | |----...",
+      "rubric_count": 16,
+      "subject": "Statistics",
+      "task_id": "683e4517a08f8bb261597839",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.8928571428571429,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response is recommended to use a warm, teacher-like tone, such as \u201cLet\u2019s go back to your calculation of x and see how we can turn that into a concentration.\u201d",
+          "criterion_index": 8,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "Henry-law mole-fraction assessment",
+      "response_preview": "## Assessment of Your Work ### What You Did Correctly - \u2705 **Unit conversion of K_H:** 76.48 kbar = 76,480 bar \u2014 perfectly correct. - \u2705 **Arithmetic:** 0.987 \u00f7 76,480 = 1.291 \u00d7 10\u207b\u2075 \u2014 numerically right. - \u2705 **The \u00d71000 step** to convert to mmol is mechanical...",
+      "rubric_count": 13,
+      "subject": "Chemistry",
+      "task_id": "683e45162d501a5ab198c520",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must state that the correct answer is approximately 0.716 mmol.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.9038461538461539,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly identify content from the image, (the student solution claims the implementation is correct)",
+          "criterion_index": 8,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "binary-search midpoint overflow assessment",
+      "response_preview": "## Assessment: Binary Search Implementation ### What You Got Right Your overall algorithm logic is correct. Specifically: | Line | What You Wrote | Status | |------|---------------|--------| | 1\u20132 | `low = 0`, `high = n\u22121` | \u2705 Standard correct initializatio...",
+      "rubric_count": 12,
+      "subject": "Computer Science",
+      "task_id": "683e4516d3bdf2dc57e053e3",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "MovieRating active-learning hint",
+      "response_preview": "Great progress so far \u2014 your `addRating` method is fully correct, and your summation loop is on the right track. There are two things to address in `getAverageRating` before tackling `isHighlyRated`, since fixing them will make everything easier to test. --...",
+      "rubric_count": 8,
+      "subject": "Computer Science",
+      "task_id": "683e458eac89e71e0ce600c6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    }
+  ]
+}

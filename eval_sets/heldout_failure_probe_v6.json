@@ -1,0 +1,51 @@
+{
+  "description": "Top heldout500-agentic-v5 failures used to probe agentic-v6 multimodal evidence audit and failure-family playbooks. This is a targeted debugging probe, not a benchmark claim.",
+  "name": "heldout_failure_probe_v6",
+  "selection_policy": [
+    "source_run=runs/heldout500-agentic-v5/analysis.md",
+    "ten_weakest_rows_covering_multimodal_evidence_and_visible_recurring_task_families",
+    "created=2026-05-23"
+  ],
+  "task_ids": [
+    {
+      "task_id": "683e4517a08f8bb261597839",
+      "why": "assessment:multimodal; Statistics; Normal MLE visual evidence miss"
+    },
+    {
+      "task_id": "6843120a2b986bd2d9ca5f3f",
+      "why": "assessment:text/image-context; Chemistry; weak-acid ICE table details missed"
+    },
+    {
+      "task_id": "6843120a9fab58968f2128c9",
+      "why": "assessment:text/image-context; Chemistry; HI/iodoethylene Markovnikov misconception"
+    },
+    {
+      "task_id": "68376d91c5b329d497cbe8ca",
+      "why": "adaptive:multimodal; Computer Science; days-in-month switch/code audit"
+    },
+    {
+      "task_id": "683e4516d3bdf2dc57e053e3",
+      "why": "assessment:multimodal; Computer Science; binary-search overflow"
+    },
+    {
+      "task_id": "683e458c2e254199a0fa2e02",
+      "why": "active_learning:multimodal; Computer Science; shape/OOP center-distance hint"
+    },
+    {
+      "task_id": "683e3d8f3482feddb4d05e86",
+      "why": "adaptive:multimodal; Physics; bulb parallel-switch reasoning"
+    },
+    {
+      "task_id": "683e458eac89e71e0ce600c6",
+      "why": "active_learning:multimodal; Computer Science; MovieRating integer division/reuse hint"
+    },
+    {
+      "task_id": "683e45162d501a5ab198c520",
+      "why": "assessment:multimodal; Chemistry; Henry-law mole fraction vs molarity"
+    },
+    {
+      "task_id": "684a8cd6f08ce27c3bf577e0",
+      "why": "assessment:text/image-context; Chemistry; gas-law/unit audit"
+    }
+  ]
+}

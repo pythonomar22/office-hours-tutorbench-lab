@@ -1,0 +1,3814 @@
+{
+  "playbooks": [
+    {
+      "count": 464,
+      "mean_arrw": 0.7166688805122242,
+      "name": "none"
+    },
+    {
+      "count": 7,
+      "mean_arrw": 0.8282166785209382,
+      "name": "chi-square variance-test adaptive explanation"
+    },
+    {
+      "count": 7,
+      "mean_arrw": 0.7118862028624732,
+      "name": "recursive factorial assessment"
+    },
+    {
+      "count": 3,
+      "mean_arrw": 0.8003941441441441,
+      "name": "sinc integral/removable discontinuity assessment"
+    },
+    {
+      "count": 2,
+      "mean_arrw": 0.8993055555555556,
+      "name": "electricity-rates two-sample CI adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.75,
+      "name": "CLT sample-mean active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7872340425531915,
+      "name": "Gene X methylation/tumor-suppressor active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7619047619047619,
+      "name": "OOP design / inventory class"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "U-238/Pb-206 mass-ratio adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.543859649122807,
+      "name": "copper/KMnO4 redox active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.5526315789473685,
+      "name": "hydrogen halide acid strength"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.2857142857142857,
+      "name": "kinematics active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.6875,
+      "name": "natural-selection misconception assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.84375,
+      "name": "oxygen/CO2 cellular-respiration adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7619047619047619,
+      "name": "parametric arc-length active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8275862068965517,
+      "name": "penicillin allergy Bayes active-learning hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7857142857142857,
+      "name": "second ionization energy assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8591549295774648,
+      "name": "sideways-parabola enclosed-area assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.6666666666666666,
+      "name": "start-codon insertion mutation assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.6666666666666666,
+      "name": "trig accumulation probability assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.0625,
+      "name": "weak-acid ICE-table assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8181818181818182,
+      "name": "z-test vs t-test assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 1.0,
+      "name": "not applicable",
+      "negative_criteria": 0,
+      "pass_rate": 0.5,
+      "passed_positive_weight": 1.0,
+      "positive_weight": 2.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1186.0,
+      "name": "truthfulness",
+      "negative_criteria": 9,
+      "pass_rate": 0.6651609260304913,
+      "passed_positive_weight": 2356.0,
+      "positive_weight": 3542.0,
+      "rows_with_failure": 147,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 594.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 2,
+      "pass_rate": 0.6664795058955643,
+      "passed_positive_weight": 1187.0,
+      "positive_weight": 1781.0,
+      "rows_with_failure": 76,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 66.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 0.67,
+      "passed_positive_weight": 134.0,
+      "positive_weight": 200.0,
+      "rows_with_failure": 28,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 3170.0,
+      "name": "instruction_following",
+      "negative_criteria": 37,
+      "pass_rate": 0.7178962356500845,
+      "passed_positive_weight": 8067.0,
+      "positive_weight": 11237.0,
+      "rows_with_failure": 330,
+      "triggered_negative_criteria": 25
+    },
+    {
+      "failed_positive_weight": 2174.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 13,
+      "pass_rate": 0.7386705132828465,
+      "passed_positive_weight": 6145.0,
+      "positive_weight": 8319.0,
+      "rows_with_failure": 244,
+      "triggered_negative_criteria": 7
+    },
+    {
+      "failed_positive_weight": 294.0,
+      "name": "visual_perception",
+      "negative_criteria": 4,
+      "pass_rate": 0.7755725190839695,
+      "passed_positive_weight": 1016.0,
+      "positive_weight": 1310.0,
+      "rows_with_failure": 55,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 284.0,
+      "name": "emotional_component",
+      "negative_criteria": 1,
+      "pass_rate": 0.8093959731543624,
+      "passed_positive_weight": 1206.0,
+      "positive_weight": 1490.0,
+      "rows_with_failure": 77,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 322.0,
+      "name": "style_tone",
+      "negative_criteria": 2,
+      "pass_rate": 0.819910514541387,
+      "passed_positive_weight": 1466.0,
+      "positive_weight": 1788.0,
+      "rows_with_failure": 103,
+      "triggered_negative_criteria": 2
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": 0.8008816784778924,
+        "ci_low": 0.6797268684718256,
+        "count": 48,
+        "mean_arrw": 0.7427852857146228,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.7609606065291541,
+        "ci_low": 0.7101644371262229,
+        "count": 311,
+        "mean_arrw": 0.7345108025474681,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 0.7993228907990574,
+        "ci_low": 0.6297885876716015,
+        "count": 22,
+        "mean_arrw": 0.7175476266915113,
+        "name": "Create"
+      },
+      {
+        "ci_high": 0.7053001289621145,
+        "ci_low": 0.6001880418652867,
+        "count": 82,
+        "mean_arrw": 0.6557456749074742,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": 0.709311725091428,
+        "ci_low": 0.3979744437928554,
+        "count": 6,
+        "mean_arrw": 0.5571710422010917,
+        "name": "Remember"
+      },
+      {
+        "ci_high": 0.8191812751313808,
+        "ci_low": 0.6041594676492578,
+        "count": 20,
+        "mean_arrw": 0.7243034097886983,
+        "name": "Understand"
+      },
+      {
+        "ci_high": 0.8001870879793374,
+        "ci_low": 0.6192458929093004,
+        "count": 11,
+        "mean_arrw": 0.7002730035980861,
+        "name": "none"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.7206122301537589,
+        "ci_low": 0.66643692322997,
+        "count": 249,
+        "mean_arrw": 0.6960065589102816,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 0.7697497641715759,
+        "ci_low": 0.7161275827106457,
+        "count": 251,
+        "mean_arrw": 0.7405187679525496,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": 0.7616829033441462,
+        "ci_low": 0.6845125116920805,
+        "count": 85,
+        "mean_arrw": 0.7211007738713415,
+        "name": "Biology"
+      },
+      {
+        "ci_high": 0.7868614997861945,
+        "ci_low": 0.6902097354457123,
+        "count": 76,
+        "mean_arrw": 0.7401639173926106,
+        "name": "Calculus"
+      },
+      {
+        "ci_high": 0.7738828157703848,
+        "ci_low": 0.657404653296697,
+        "count": 79,
+        "mean_arrw": 0.7213480326014995,
+        "name": "Chemistry"
+      },
+      {
+        "ci_high": 0.7463419664834972,
+        "ci_low": 0.6524410940456589,
+        "count": 86,
+        "mean_arrw": 0.7029260967828584,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 0.757458167950554,
+        "ci_low": 0.6481396882220142,
+        "count": 86,
+        "mean_arrw": 0.7042654412503271,
+        "name": "Physics"
+      },
+      {
+        "ci_high": 0.7612587142913213,
+        "ci_low": 0.6847913508371697,
+        "count": 88,
+        "mean_arrw": 0.7230096997440366,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": 0.7948869679942699,
+        "ci_low": 0.7323640373961067,
+        "count": 167,
+        "mean_arrw": 0.7643968380020392,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.7158021209931262,
+        "ci_low": 0.6510536407608407,
+        "count": 167,
+        "mean_arrw": 0.6834367111805822,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.7427949101484539,
+        "ci_low": 0.6685263033902836,
+        "count": 166,
+        "mean_arrw": 0.7071544651280259,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 47,
+    "overall": {
+      "ci_high": 0.7361558956799353,
+      "ci_low": 0.6983838144573393,
+      "count": 500,
+      "mean_arrw": 0.7183516878495001,
+      "name": "overall"
+    },
+    "run_id": "heldout500-agentic-v5"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 15382892,
+    "generation_output_tokens": 2455481,
+    "judge_input_tokens": 1347986,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 127638,
+    "mean_generation_latency_ms": 101928.342,
+    "mean_judge_latency_ms": 3916.764,
+    "negative_weight_review_count": 47,
+    "row_count": 500,
+    "run_id": "heldout500-agentic-v5",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1989000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 398000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19998
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2389000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 500,
+      "coverage_critic_0": 500,
+      "coverage_critic_1": 28,
+      "coverage_critic_2": 12,
+      "critic_0": 500,
+      "critic_1": 28,
+      "critic_2": 12,
+      "domain_verifier": 500,
+      "perception": 248,
+      "planner": 500,
+      "revision_1": 28,
+      "revision_2": 12,
+      "solver": 500,
+      "specialist_audit": 83
+    },
+    "stage_mean_latency_ms": {
+      "composer": 18042.36,
+      "coverage_critic_0": 6980.11,
+      "coverage_critic_1": 11538.25,
+      "coverage_critic_2": 10280.5,
+      "critic_0": 5326.94,
+      "critic_1": 6086.64,
+      "critic_2": 9406.5,
+      "domain_verifier": 13259.33,
+      "perception": 14021.51,
+      "planner": 20842.85,
+      "revision_1": 13689.21,
+      "revision_2": 19119.5,
+      "solver": 24861.25,
+      "specialist_audit": 17927.01
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 125.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 0.5265151515151515,
+      "passed_positive_weight": 139.0,
+      "positive_weight": 264.0,
+      "rows_with_failure": 43,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 408.0,
+      "name": "Asks questions to guide students",
+      "negative_criteria": 0,
+      "pass_rate": 0.5598705501618123,
+      "passed_positive_weight": 519.0,
+      "positive_weight": 927.0,
+      "rows_with_failure": 69,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 135.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 3,
+      "pass_rate": 0.5714285714285714,
+      "passed_positive_weight": 180.0,
+      "positive_weight": 315.0,
+      "rows_with_failure": 34,
+      "triggered_negative_criteria": 3
+    },
+    {
+      "failed_positive_weight": 1056.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.6801938219261053,
+      "passed_positive_weight": 2246.0,
+      "positive_weight": 3302.0,
+      "rows_with_failure": 152,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 503.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 8,
+      "pass_rate": 0.6977163461538461,
+      "passed_positive_weight": 1161.0,
+      "positive_weight": 1664.0,
+      "rows_with_failure": 84,
+      "triggered_negative_criteria": 5
+    },
+    {
+      "failed_positive_weight": 754.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 8,
+      "pass_rate": 0.7070707070707071,
+      "passed_positive_weight": 1820.0,
+      "positive_weight": 2574.0,
+      "rows_with_failure": 102,
+      "triggered_negative_criteria": 6
+    },
+    {
+      "failed_positive_weight": 1375.0,
+      "name": "Not applicable",
+      "negative_criteria": 30,
+      "pass_rate": 0.721264950334482,
+      "passed_positive_weight": 3558.0,
+      "positive_weight": 4933.0,
+      "rows_with_failure": 256,
+      "triggered_negative_criteria": 15
+    },
+    {
+      "failed_positive_weight": 766.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 1,
+      "pass_rate": 0.7415654520917678,
+      "passed_positive_weight": 2198.0,
+      "positive_weight": 2964.0,
+      "rows_with_failure": 130,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 521.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 4,
+      "pass_rate": 0.8220628415300546,
+      "passed_positive_weight": 2407.0,
+      "positive_weight": 2928.0,
+      "rows_with_failure": 86,
+      "triggered_negative_criteria": 2
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.013157894736842105,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must read that the student solution saying the likelihood as \\( L(\\mu, \\sigma) \\).",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must point out that the student solution saying the likelihood as \\( L(\\mu, \\sigma) \\) is incorrect.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the student made a conceptual error and the correct likelihood is \\( L(\\mu, \\sigma^2) \\).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must read that the student solution saying the likelihood function is \\[ \\prod_{i=1}^n \\frac{1}{\\sqrt{2\\pi \\sigma}} \\exp\\left( -\\frac{(x_i-\\mu)^2}{2\\sigma^2} \\right...",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must point out that the student solution saying the likelihood function is \\[ \\prod_{i=1}^n \\frac{1}{\\sqrt{2\\pi \\sigma}} \\exp\\left( -\\frac{(x_i-\\mu)^2}{2\\sigma^2} \\...",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 15,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your MLE Derivation for N(\u03bc, \u03c3\u00b2) Your overall strategy is exactly right: write the likelihood, take the log, differentiate with respect to each parameter, and set equal to zero. Let's go through what works and what needs fixing. --- ### \u2705 W...",
+      "rubric_count": 16,
+      "subject": "Statistics",
+      "task_id": "683e4517a08f8bb261597839",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.0625,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the student used incorrect signs in the change row of your ICE table: +x -x, -x.",
+          "criterion_index": 0,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the change row should be the change row should be -x, +x, +x because x represents the change in concentration. The reactant concentration decrease...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the errors in the ICE table caused an incorrect setup of the Ka expression as 1.8 \u00d7 10\u207b\u2074 = (x * x)/(0.25 + x).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that while the ICE table had setup errors, the incorrect simplification of the Ka expression was the main reason for the incorrect molarity of H+",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the student incorrectly simplified 1.8 * 10^(-4) =(x * x) / {0.25 -x) to 1.8 * 10^(-4) = x / 0.25",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "weak-acid ICE-table assessment",
+      "response_preview": "# Feedback on Your Methanoic Acid Problem First, take a breath \u2014 your frustration is completely understandable, and you are not as lost as you think. You got the two hardest conceptual pieces right on the first try. Let's build from there. --- ## \u2705 What You...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "6843120a2b986bd2d9ca5f3f",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.09090909090909091,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly identify the source of conceptual errors such as mentioning of Markonikov's rule without understanding how to apply it",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on Your Work --- ### What You Got Right \u2713 - **100% atom economy means true addition with no byproducts** \u2014 correct. Every atom from both reactants must appear in the single product. - **Identifying iodoethylene as CH\u2082=CHI** \u2014 your initial identi...",
+      "rubric_count": 4,
+      "subject": "Chemistry",
+      "task_id": "6843120a9fab58968f2128c9",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the final, correct answer of (CH\u2261CH)",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.12195121951219512,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should include an open-ended invitation for further practice, framed as a student-friendly suggestion (e.g., Would you like to try writing your version using switch...",
+          "criterion_index": 1,
+          "dimensions": [
+            "style_tone"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must correctly read the entire student\u2019s solution as: if (month == 2) { days = 28; } else if (month == 4 || month == 6 || month == 9 || month == 11) { days = 30 } e...",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain switch's advantage where while both if-else chains and switch statements can produce correct results, using a switch statement helps improve 1) readabi...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the missing final closing brace } for the method in the student's solution.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the missing semicolon after assigning days = 30 in the student's solution.",
+          "criterion_index": 7,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Good news: **you do not need to use a switch statement.** The problem never requires one \u2014 that was simply my stylistic choice when I wrote the example. There is no obligation to match it. The problem has exactly three real constraints: | Constraint | What...",
+      "rubric_count": 10,
+      "subject": "Computer Science",
+      "task_id": "68376d91c5b329d497cbe8ca",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide the correct answer of how to handle February\u2019s days by explicitly calling isLeapYear(year), such as if (month == 2) { if (isLeapYear(year)) { days = 29...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.1346153846153846,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly identify the integer overflow issue in line 4 : int x = (low+high)/2, citning the code snippet from the image",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that overflow occurs when low + high exceeds the max integer value (ex. 2^31 -1 for a 32 bit signed integer)",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must describe the consequence: a negative index leading to a runtime error in some cases (name of the error type, e.g., ArrayIndexOutOfBoundsException).",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide the correct fix: x = low + (high - low)/2, with a step-by-step justification of its safety.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must imply the bug being significant, linking it to large array performance impacts",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 9,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment: Binary Search Implementation ### \u2705 What's Correct **Your algorithm (lines 1\u201310) is entirely correct.** Every component is textbook-standard: | Line | Element | Why it's right | |------|---------|----------------| | 1\u20132 | `low=0`, `high=n\u22121` |...",
+      "rubric_count": 12,
+      "subject": "Computer Science",
+      "task_id": "683e4516d3bdf2dc57e053e3",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.14634146341463414,
+      "bloom_taxonomy": "Create",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student is unable to proceed due to lack of knowledge regarding how to calculate the center of a geometrical shape in terms of its centroid.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a hint for finding the distance to the center of the given figures (square, circle) by referencing the circumcenter or circumcircle.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a hint for implementing the Square class with a variable that stores the value for a side, which is a key property.",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide hints for calculating the surface and perimeter of a square, without giving the following equations: 1) Perimeter = 4 * side length 2) Surface = (side...",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a hint for including the `cmath` standard C++ library in order to import the value for the Pi constant.",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Your comment on line 34 \u2014 *\"should I calculate the distance from a side or from a corner?\"* \u2014 is actually a sharp geometric question, not just confusion. You've independently identified the key distinction between two different \"centers\" of a triangle. Let'...",
+      "rubric_count": 10,
+      "subject": "Computer Science",
+      "task_id": "683e458c2e254199a0fa2e02",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must acknowledge the current steps taken by the student: 1) Defined an IShape interface. 2) Defined a Shape class that implements the IShape interface. 3) Provided...",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.14893617021276595,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly identify the relationship of the four bulbs and the switch in the circuit diagram: - Current flows from the voltage source through bulb **A**. - Afte...",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must recognize that closing the switch has the effect of adding Bulb **D** to the circuit. With the switch open, no current flows through Bulb **D** (and the bulb i...",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must directly acknowledge the student's confusion with a statement like \"I understand that you are confused.\"",
+          "criterion_index": 2,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that, though the diagram looks more complicated, Bulbs **B**, **C**, and **D** are all in parallel with each other.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that bulb brightness is a function of the power dissipated by the bulb, and since $P=I^2R$ and each bulb has the same resistance $R$, the brightness of...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 8,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Your Instinct About C Was Correct \u2014 and the Previous Explanation Needs a Correction You were right to be skeptical. **C does not get brighter \u2014 it goes out entirely.** And I need to correct something else too: **D also goes out**, not brighter. The previ...",
+      "rubric_count": 11,
+      "subject": "Physics",
+      "task_id": "683e3d8f3482feddb4d05e86",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.16666666666666666,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must identify why the student is stuck - not because of logic but because of how Java processes different data types during division as well as not being confident in...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must hint to the student to think about how to make sure the division keeps the decimal part (in **getAverageRating**) without mentioning the use of **double**.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must hint to the student to think about using a method already written inside another method without explicitly saying to use **getAverageRating()**.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must not provide the next step by suggesting to change **return total** to **return (double) total** and/or suggesting to change **public boolean isHighlyRated() { //s...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must provide the lines where the student is wrong: **return total / ratings.size();** and **public boolean isHighlyRated() { //stuck }**",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "You're in good shape \u2014 `addRating` is correct, and `getAverageRating` already does the work of computing the average. Here's the key insight that can unblock you: **A method inside a class can call another method in the same class directly by name.** No ext...",
+      "rubric_count": 8,
+      "subject": "Computer Science",
+      "task_id": "683e458eac89e71e0ce600c6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.17857142857142858,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly state that the Henry\u2019s law constant is in bar per mole-fraction, like 76.48 kbar refers to the pressure per mole-fraction form $(P = k_H*x)$, not th...",
+          "criterion_index": 0,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must clearly explain that using $C = P / k_H$ is dimensionally invalid in this case, such as saying \u201cP / k\\_H gives a mole fraction, not a concentration, because bo...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that mole fraction is dimensionless, and the student\u2019s error was treating it as $mol L^{-1}$, like \u201cThe value $1.29\\times 10^{-5}$ is a mole fraction,...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must distinguish mole fraction from molarity, such as stating \"Mole fraction is a unitless ratio, while molarity has units of mol per liter.\"",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must derive the moles of water as 55.5 by showing all the calculation as 1 liter of water is 1000 g (density of water is approximately 1 g/ml), and dividing by 18 g...",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 10,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work Your method, formula, arithmetic, and unit conversions are all correct. There is just one thing missing at the very end. --- ### \u2705 What You Did Correctly **Unit conversion of K_H:** $$K_H = 76.48 \\text{ kbar} \\times \\frac{1000 \\te...",
+      "rubric_count": 13,
+      "subject": "Chemistry",
+      "task_id": "683e45162d501a5ab198c520",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must identify the unit mistake when using the volume in the PV = nRT equation.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify the unit mistake when using the temperature in the PV = nRT equation.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain that because the student is using a gas constant R = 62.36 L\u22c5mmHg\u22c5K\u207b\u00b9\u22c5mol\u207b\u00b9 they must convert the volume from mL to liters and the temperature from degree...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The moldel must identify that the student is making a mistake when converting the sample mass to CaCO3 moles because the sample is impure.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain that purity is calculated as a quotient of masses.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 8,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work First \u2014 your instinct is exactly right. A result of 0.0095% would mean almost no CaCO\u2083 at all, which makes no physical sense. The good news is that your gas-law work is entirely correct. There is one critical error in the very las...",
+      "rubric_count": 13,
+      "subject": "Chemistry",
+      "task_id": "684a8cd6f08ce27c3bf577e0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.20689655172413793,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly state, using the wording from the image, that \"the bakery bakes 3 extra loaves for each group of 10 whole customers over 50\".",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "deleted",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must show for the example of 75 customers the correct calculation : - (75-50) // 10 = 2 groups - 2x3 = 6 extra loaves - total flour needed : 450+18=468 cups",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must show a code block where the function returns \"bake the max\" only when flour_amt >= final_flour_required",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must show that the student incorrectly used the wrong operator / instead of // in the code and must explain that / would result in a float and is incorrect for coun...",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must check for \"bake the max\" first, then \"bake the min\", then \"not enough\", in that order, and must show this order in the code.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "It's completely understandable to feel frustrated when something isn't working and you can't see why \u2014 that's one of the trickiest debugging situations. Let's figure this out together! **One quick issue first:** your code screenshot unfortunately didn't com...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "6811d40e6b7f984ce18baebb",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.20754716981132076,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that mathematically, the average of an empty set is undefined, similar to division by zero.",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must present at least three distinct approaches for handling empty arrays: throwing an exception (like IllegalArgumentException), returning Optional/OptionalInt, an...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide both pros and cons for each approach mentioned, with at least twos specific advantages and two specific disadvantages listed for each approach.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must include complete, compilable code examples showing the full method implementation for at least two different approaches, including method signature, empty arra...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain when to use each approach by distinguishing between contexts where empty arrays are expected/normal (like user input or search results) versus exceptio...",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 10,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your instinct is exactly right \u2014 throwing an exception is the better approach here, and it's great that you caught this. ## Why returning `0` is misleading The problem with the current code is that `0` is a perfectly valid average. For example, `average(new...",
+      "rubric_count": 13,
+      "subject": "Computer Science",
+      "task_id": "6842a1fbeec1338496adc799",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.2222222222222222,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that the initial push is assumed to be applied orthogonally to the normal force.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should include a follow-up question to check the student's understanding.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explain that the initial push does not have any vertical component.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must mention that the only radial forces involved in the circular motion equation are the normal force and the weight.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must not mention kinetic or potential energies, as they are irrelevant for establishing why the normal force is not affected by the initial push.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Your Frustration Is Actually Great Physics Intuition \u2014 Let Me Address It Directly You're right to push back. The push **would** matter if it were a finite, known speed \u2014 your instinct is correct. But the problem gives you a crucial phrase: **\"very small...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "684a8c40562837a83a9ac6b2",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.23076923076923078,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that a simplifying assumption is used precisely because the different surrounding materials could interfere with the heat transfer (e.g., by absorbing...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the purpose of this assumption is to allow for focusing on and comparing how the two orbs cool down differently.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should avoid stating that aerogels are transparent to infrared radiation (e.g., must not say that most of the lamp's energy passes through the aerogel).",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must remain focused on the student's question without answering to the original problem completely (i.e., must not state which orb ends up hotter). |",
+          "criterion_index": 4,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "That's a genuinely sharp observation, and it points to an important distinction the original explanation glossed over: **the medium controls how heat *leaves* the orb, not how heat *arrives* at it.** ## How the Heat Gets In Heat lamps deliver energy almost...",
+      "rubric_count": 6,
+      "subject": "Physics",
+      "task_id": "6847710ac4590722c4324810",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.2553191489361702,
+      "bloom_taxonomy": "Remember",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student incorrectly grouped \u201cthermal properties\u201d as one property and must instead distinguish between high specific heat and high heat of vap...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that calling water the \u201cuniversal solvent\u201d is an overgeneralization.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that the student gave an inaccurate example for coastal climates stability only being due to water's specific heat capacity.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that coastal climate stability is also a result of water's high latent heat (of vaporization).",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain the 'universal solvent' term should be avoided to make sure water's abilities are not overstated.",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on Your Three Properties of Water Overall, this is a strong response \u2014 you've correctly identified three biologically important properties, explained their mechanisms, and connected each to real-world examples. There are a couple of things to sh...",
+      "rubric_count": 11,
+      "subject": "Biology",
+      "task_id": "68545548714d62d3ac325d31",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.25806451612903225,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must include the correct equivalent resistance of 366.67 Ohms.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must include the correct current through resistor 6 of approximately 0.09 A.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must include the correct power through resistor 5 of approximately 0.83 W.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that R1 and R2 are in series, and that R5 and R6 are also in series.",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must correctly indicate that the combination of R5 and R6 (in series) is in parallel with R3.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 10,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Review of Your Circuit Solution You've chosen the right methods throughout \u2014 series/parallel reduction for R_eq, Ohm's law for current, and a power formula for P\u2085. The errors are in the values you substituted and one formula. Let me walk through each par...",
+      "rubric_count": 14,
+      "subject": "Physics",
+      "task_id": "681b84ff94969ef6e11908e0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.25925925925925924,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must note that the student is confused because they don't understand that the conditions for an elliptical orbit, $v_1^2 = \\frac{2GM r_2}{r_1(r_1 + r_2)}$, mean tha...",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must derive the necessary condition for the two expressions of velocity to be equivalent, $v_1^2 = \\frac{2GM r_2}{r_1(r_1 + r_2)}$. Alternatively, the response must...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that if the condition, $v_1^2 = \\frac{2GM r_2}{r_1(r_1 + r_2)}$ is not satisfied, then the space station is not in a closed elliptical orbit, and the e...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must acknowledge the student's confusion using a phrase, \"I understand that you are confused...\" or \"I get that this can be a confusing topic...\" or similar.",
+          "criterion_index": 4,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Great instinct to cross-check with energy conservation \u2014 that's exactly the right move in mechanics problems. There are actually **two things** going on here: a small arithmetic slip in your energy work, and a conceptual point about why the two formulas are...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "68096a17d9108896c270f6b6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.2608695652173913,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly interpret the image and identify that shell A is connected to shell C via a conducting wire, while shell B is isolated from shell C.",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must recognize that only shells A and C are directly connected and therefore must have equal potentials at equilibrium.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must reference infinity as the potential reference point (V = 0) and interpret potentials accordingly when applying Gauss's Law.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explain that when the switch is closed, charges redistribute between shells A and C to equalize potential, while conserving total charge. Shell B is not involv...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must include correct expressions for the final charge distribution and shell potentials after equilibrium. These could follow from setting potentials of A and C equ...",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessing Your Work Your instinct is good, and you're asking exactly the right question. Let me go through each claim carefully. --- ### \u2705 What You Got Right **1. V_B = V_C at equilibrium \u2014 correct conclusion.** Shell B and Shell C are conductors connect...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "683e45109394b13fefb08e44",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2682926829268293,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must explain that the higher binding energy of the 1s electrons in Br\u207b compared with chlorine results from bromide\u2019s greater nuclear charge (Z=35 compared with Z=17 fo...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must state that the initial explanation was mistaken and clarify that the corresponding orbital Peak X (1s in Cl) is the 1s orbital in Br^-, with higher binding energy.",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain that Z_eff for Br^- 1s electrons is dominated by the larger nuclear charge (Z=35) with only the other 1s electron providing significant shielding, leading...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must clarify that the teacher's statement \"More electrons = stronger binding\" applies to periodic trends across a period, not ion formation, using an example like F...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must estimate BE(Br^-) using the ratio (Zeff(Br\u2212)/Zeff(Cl))2(Z_{eff}(Br^-)/Z_{eff}(Cl))^2(Z_{eff}(Br^-)/Z_{eff}(Cl))^2 with Zeff(Cl)\u224816Z_{eff}(Cl) \\approx 16Z_{eff}(Cl...",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Correcting the Reasoning for Br\u207b (Part C) You're actually right that Br\u207b's binding energy for the corresponding orbital is **higher** than chlorine's 273 MJ/mol \u2014 but I need to be upfront about two things: (1) my previous explanation saying \"significantl...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "683775dc0a6dba7869a5c576",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.2682926829268293,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify the main missing background knowledge: defining vapor pressure as the number of gas-phase particles in equilibrium with the liquid at a given temperat...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explicitly state that, according to kinetic molecular theory, at 20\u00b0C all gas-phase particles have the same average kinetic energy AND must clarify that any sp...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that C is the correct answer because the strength of intermolecular forces (IMFs) directly explains why pentane has the highest vapor pressure and lowe...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the student's error in stating that Flask B has fewer particles than Flask A, clarifying that Flask A has fewer particles than Flask B and Flask B has...",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain why the other answer choices (A, B, and D) are incorrect: A because average kinetic energy is the same at a given temperature; B because speed doesn't...",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great observation catching Flask C has more vapor \u2014 but let's untangle the two specific errors in your reasoning about Choice B. --- ## Error 1: What the dots actually represent When you said *\"those particles appear to be moving faster,\"* you're reading so...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "683775dc2f4468651311d6ad",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.2727272727272727,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly identify the student\u2019s assumption that the box tips at its bottom corner is incorrect.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must show mathematically or explain how each force in the system acts on the box explicitly stating correct values for all forces (normal 423 N perpendicular to inc...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must calculate the distance $x=0.294 m$ where the normal force is applied to the box by the cart at the moment of slipping.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should specify what directions are assumed positive when summing moments and forces.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work ### What You Got Right Your identification of the tipping pivot is correct: at the moment of tipping, the normal force concentrates at the **lower corner** of the box (the corner at the lowest point of the inclined ramp). Your ins...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "68377588415e67c44f4734b6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2826086956521739,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that Patient A's negative result is consistent with antibody decline occurring 6 months after vaccination.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the card shows moderate agglutination in Patient C.",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the card shows strong agglutination in Patient B.",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that the card shows faint/absent agglutination in Patient A.",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the reason at day 3 sensitivity \u2248 25% because IgM generally appears 5-7 days after onset.",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 14,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "# Assessment: COVID-19 Agglutination Case Study You've engaged seriously with a complex multi-part question, and you correctly read some of the diagram results. However, there are significant errors in all three parts \u2014 including one fabricated fact and one...",
+      "rubric_count": 20,
+      "subject": "Biology",
+      "task_id": "68377627496507faa0915cd6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2857142857142857,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify the conceptual error made by the student of adding instead of subtracting when evaluating the definite integrals $\\int_{0}^{2} 2x dx$ and $\\int_{0}^{2...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the when using the Fundamental Theorem of Calculus ($\\int_a^b f(x) dx = F(b) - F(a)$), the value of the antiderivative at the lower limit must be...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that while the answer of $\\frac{4}{3}$ was correct, this was only because the lower limit of the integrals was $0$, so adding instead of subtracting di...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the correct evaluation of the definite integrals ($\\int_{0}^{2} 2x dx$ and $\\int_{0}^{2} x^2$) is $4 - 0 = 4$ and $\\frac{8}{3} - 0 = \\frac{8}{3}$.",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment: Area Between Curves **Your answer of $\\dfrac{4}{3}$ is exactly correct, and every single step of your work is right.** The moment of confusion you wrote down (\"This is confusing. I guess I just do the integral?\") didn't cause any mistake \u2014 yo...",
+      "rubric_count": 8,
+      "subject": "Calculus",
+      "task_id": "6836292325d9d55d0df0462c",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2857142857142857,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student is stuck because of confusion about which velocity expression to use for the two final equations",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must hint that the student should check their unit conversion between nautical miles and meters",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must hint that wind speed is unnecessary by reminding the student to check the assumptions in the prompt",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must guide the student toward substituting the velocity component expressions into the final two formulas without directly stating that 150sin(33) goes with v^2=u^2...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify that the -10ms^-1 term in the student's horizontal velocity expression represents wind speed, and that this is incorrect because the direction is wrong a...",
+          "criterion_index": 7,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "kinematics active-learning hint",
+      "response_preview": "## Good start \u2014 two things to check before moving forward You've correctly identified that the wind should be **subtracted from the horizontal component** (an on-shore breeze opposes the cannonball's forward travel \u2014 nice reasoning). Your overall structure...",
+      "rubric_count": 10,
+      "subject": "Physics",
+      "task_id": "683e458d3a109788e3f7e66e",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.2857142857142857,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must reason that when the car brakes while travelling north, the dog's inertia carries it towards the front, so the rear-corner ropes are the ones that take tension as...",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explicitly state that the student's choice of north-facing ropes is conceptually wrong, and the correct final answer is South-West and South-East.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must not make any physically incorrect statements. For example, it should not say that North-facing ropes would constrain the dog if it moved North, incorrectly implyi...",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 3,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment: Braking Ute / Dog in Tray ### What You Got Right \u2713 1. **\"The car experiences a deceleration South\"** \u2014 Correct. The car moves North and brakes, so the net acceleration vector of the car points South. Well done. 2. **The final answer \"North-We...",
+      "rubric_count": 5,
+      "subject": "Physics",
+      "task_id": "683e451765e18627c73884df",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.2894736842105263,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify the main missing background knowledge is that absolute value must be applied consistently to velocity across all segments when calculating total dista...",
+          "criterion_index": 0,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify the student's specific error of inconsistently applying the absolute value function (using it only for the middle segment where velocity is negative b...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must correct the student's error by explaining that total distance requires the consistent application of absolute value across all segments: \\(\\int_0^5 |v(t)| \\, d...",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a visual representation (ASCII graph or clear description) showing the particle's position changing over time through all three segments of motion (for...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explicitly acknowledge that calculating total distance with changing velocity signs is a challenging concept that confuses many students, using empathetic lang...",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Your Method Is Correct \u2014 But the 15.4 Figure Is Wrong Here's the key news first: **your friend is right. The correct total distance is approximately 24.5 miles.** The 15.4 figure in the initial explanation contains a numerical error. Your conceptual appr...",
+      "rubric_count": 10,
+      "subject": "Calculus",
+      "task_id": "6847710b9bc321f32d5b5ab8",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.2972972972972973,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must provide a corrected code snippet that uses a safe removal method (removeIf or removeAll) for memberList, and must implement both required behaviors (returning...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain why their chosen removal method is safe and preferable to manual iteration, referencing the risk of ConcurrentModifcationException.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must discuss at least one edge cases (e,g all members have graduated, no members have graduated) and explain how their solution handles it.",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a test case or example (with sample data and expected output) to illustrate the correct behavior of their solution.",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should end with a summary of key takeaways or best practices relevant to the problem.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment: `removeMembers` Your overall structure is excellent \u2014 there is exactly **one error** to fix. --- ### What You Did Correctly - **Two-pass removal strategy**: Collecting graduated members into a separate `toRemove` list and then removing them i...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "684771b3cf8ba842e93ec6de",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.3018867924528302,
+      "bloom_taxonomy": "Create",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student is stuck because they are missing key molecules, coenzymes, and pathways involved in cellular respiration.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must prompt the student to recall and label the two-carbon intermediate formed from pyruvate before the Krebs cycle, outside of the mitochondrial matrix, without na...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must prompt the student to recall and label the second reduced electron carrier that feeds the ETC, without naming it.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must prompt the student to identify the terminal electron-acceptor gas for the ETC, without naming it.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must prompt the student to mark the step that produces the majority of ATP (proton flow -> ATP), without naming the enzyme or the term \"oxidative phosphorylation\".",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 9,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Your diagram is really well-organized! You've correctly shown glucose entering the cytoplasm through the plasma membrane, the conversion to pyruvate with 2 ATP produced, pyruvate moving into the mitochondrion, and then both the Krebs Cycle and the electron...",
+      "rubric_count": 13,
+      "subject": "Biology",
+      "task_id": "683e458c5f104dac1d4d6e7a",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.3023255813953488,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "the response must explain that tetraploidy disrupts X-chromosome inactivation in females (e.g., XXXX) or Y-chromosome regulation in males (XXYY).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that tetraploidy disrupts Hox genes and morphogen gradients, causing organogenesis failure",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that tetraploidy disrupts epigenetic controls (e.g., X-inactivation) and cell division (e.g., 14+ hour cycles, apoptosis).",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that tetraploidy causes double expression of Hox genes (disrupting embryonic axis formation) and distorts morphogen gradients (vital for tissue developme...",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must contrast plant adaptations (neofunctionalization, asexual reproduction) with human vulnerabilities (rigid development) by stating that plants tolerate polyploi...",
+          "criterion_index": 9,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "You've got the math exactly right \u2014 46 + 46 = 92, four copies of every chromosome. And your instinct about \"how DNA is organized\" is actually pointing toward a real piece of the answer. Let me unpack that and add the other key reasons. --- ## It's Not Just...",
+      "rubric_count": 11,
+      "subject": "Biology",
+      "task_id": "681cfb9f423b8a534abc79ba",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.3023255813953488,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly acknowledge that the student correctly identified John only chooses one flavor, repeated for both scoops.",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must prompt the student to reconsider whether mint chip and cookie dough should count as chocolate flavors, given John's dislike of chocolate.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must prompt the student to consider how to calculate combinations with both repeated and distinct scoops, without providing a formulae.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must guide the student to consider the overlap between John's flavor options and Chris', to frame how to calculate the probability of a match.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must acknowledge the student's confusion by saying something such as \"I see you are confused.\"",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Great Instincts \u2014 Let's Pause Here Before Counting You're doing exactly the right thing by working through each person's constraints before jumping into combination formulas. That's the correct sequence: establish *who can order what* first, then count....",
+      "rubric_count": 11,
+      "subject": "Statistics",
+      "task_id": "683870ef328fdda5d51a6203",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.3055555555555556,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must conclude and justify that $h(x)$ is continuous and differentiable for all $x \\in (-2, 2)$",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state the correct values: $c = 0$, $d = 0$, and $c + d = 0$.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that a discontinuity in $g(x)$ does not automatically make $h(x) = f(g(x))$ discontinuous, especially when $f$ is constant or continuous over the image...",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that the student claims that discontinuities of g are discontinuities of h , and that this is incorrect (since h is continuous)",
+          "criterion_index": 8,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work ### What You Got Right \u2713 - **\"f(x) is continuous, any discontinuity in h(x) must come from g(x)\"** \u2014 this is exactly correct. Since h = f\u2218g, and f is continuous everywhere, every discontinuity of h must originate from g. - Floor a...",
+      "rubric_count": 9,
+      "subject": "Calculus",
+      "task_id": "683776272f4468651311d6dc",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must explicitly state that the student\u2019s final answer (e.g., c + d=6) is incorrect.",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.3181818181818182,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must: (a) Explicitly state the chosen sign convention (e.g., downward = positive) and justify its use, (b) Apply the convention consistently in both free-fall and p...",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment: Base Jumper Problem Your two-phase structure is exactly right, and your choice of energy conservation for Phase 1 and kinematics for Phase 2 are both valid methods. Your sign convention in the Phase 2 equations is internally consistent. Howev...",
+      "rubric_count": 8,
+      "subject": "Physics",
+      "task_id": "68545549f8ab7067dd48b799",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must provide a full step-by-step solution: (a) Correct free-fall velocity calculation \\( \\left( \\sqrt{2g \\times 150} \\right) \\), (b) Correct parachute-phase net for...",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": -5
+        },
+        {
+          "criteria_preview": "The response must state that the student's solution is incorrect, addressing their misplaced confidence in the result.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 2,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.32432432432432434,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must correctly identify the student's law of cosines error: using exterior angle \u03b8 instead of interior angle (180-\u03b8), and provide the correct expression with the prope...",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify the student's implicit differentiation errors: incorrect differentiation of s\u00b2 and cos(\u03b8), and provide the correct differentiation steps.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify the student's sign convention errors with velocities (\u1e61 = v\u2082 and \u017c = v\u2081) and provide the correct sign relationships.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify that the student's final answer (-233.6 m/s) is incorrect as both a negative value when magnitude was requested and numerically wrong, providing the corr...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Solution Your overall strategy is excellent \u2014 using the law of cosines to relate rope length to the angle, differentiating to find a constraint between rates, and combining two constraint equations to eliminate \u03b8\u0307. The setup and differ...",
+      "rubric_count": 10,
+      "subject": "Physics",
+      "task_id": "683e4514225c80e89ef01988",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The model must provide essential explanations for the complete correct solution methodology, including law of cosines application, implicit differentiation, and velocity relatio...",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.32432432432432434,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must identify that the student incorrectly assumed all four ropes contribute to the horizontal force, when only the front two would experience tension during forward a...",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must correctly interpret the diagram, equation and values given in the question.",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must recognize that the approach provided is complete, given that they substitute in two ropes, and correct trigonometric function.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must reach the correct final answer of $1.45 \\text{m s}^{-2}$.",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must not incorrectly ascribe any errors to the student's work, that are in fact valid approaches. For example, using equivalent forms of numerical values (e.g. $5.5 \\t...",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Solution You've made a strong start \u2014 the overall structure using Newton's 2nd Law horizontally and recognising all 4 ropes contribute is exactly right. However, there are two errors to address: a geometry/trigonometry mistake and an a...",
+      "rubric_count": 9,
+      "subject": "Physics",
+      "task_id": "683e4510bd7caf8a464501d6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.3269230769230769,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge that the free-body diagram for mass 2 is correctly drawn, including the forces acting on mass 1 by converting the angle of 60\u00b0 to 30\u00b0, given that t...",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the student made an error in decomposing the horizontal force of W_2, stating that the correct component is W_2 sin(30\u00b0).",
+          "criterion_index": 4,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must rewrite the horizontal equilibrium equation of mass 2 as -T + W_2sin(30\u00b0) = m_2a",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must simplify the equation -T + W_2sin(30\u00b0) = m_2a to obtain T = m_2gsin(30\u00b0)-m_2a",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must equal the equilibrium equations of mass 1 and mass 2 as m_1a + m_1g = m_2gsin(30\u00b0)-m_2a",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Solution Your final answer of **a \u2248 2.394 m/s\u00b2** is numerically correct. Your free-body diagrams, algebra, and arithmetic are all sound. There are two things to fix before this solution is complete, however \u2014 one about trigonometry rea...",
+      "rubric_count": 12,
+      "subject": "Physics",
+      "task_id": "683e451098da731381469199",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.32786885245901637,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly acknowledge the student's correct initial reasoning steps for Lenz's Law (i.e., that flux into the page is decreasing and that the induced B-field s...",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must pinpoint the student's specific error: stating that an induced B-field (directed into the page) results in a counter-clockwise (CCW) current.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide the correct Right-Hand Rule application or reasoning, detailing how to use the RHR (e.g., explicitly mentioning thumb for B-field direction, curled fin...",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must clearly state that the correct direction for the induced current is Clockwise (CW).",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that the student's final stated direction for the magnetic force (to the right) is incorrect.",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 9,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "# Assessment of Your Solution Your flux setup and Faraday's law work are strong. There is one real error \u2014 a cross-product arithmetic mistake in Part b) \u2014 and one important omission. Your current direction is actually correct, so let me confirm what you got...",
+      "rubric_count": 13,
+      "subject": "Physics",
+      "task_id": "683e45112667944fdee505b4",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.3283582089552239,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must prompt the student to understand the concept of string immutability by asking what happens to the original string when `a = a + b` is executed.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must guide the student to understand StringBuilder's efficiency advantage by explaining that it maintains an internal array rather than copying all characters repea...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain the mathematical complexity difference by guiding the student to calculate total character copies in string concatenation (e.g., 10 + 15 + 20 pattern)...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must address the negative count edge case by asking what happens when `0 < -1` in the loop condition.",
+          "criterion_index": 6,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must acknowledge the student's expressed feeling of being \"confused/overwhelmed about string concatenation efficiency and StringBuilder implementation details, by s...",
+          "criterion_index": 8,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 9,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your `StringBuilder` setup is spot on \u2014 initializing with `new StringBuilder(a)` and calling `sb.append(b)` in the loop are exactly right. You're also correct that you need a return statement. Here's the key question to resolve your uncertainty: **look at y...",
+      "rubric_count": 15,
+      "subject": "Computer Science",
+      "task_id": "6847720874c7f1cb6eb0b1d5",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.34210526315789475,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must read from the image the three key data points: 100.0 mL 0.200 M Pb(NO3)2, 100.0 mL 0.300 M Na2SO4, and Ksp = 1.6 x 10^-8.",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must show the visual-reasoning step that after mixing (200 mL total) the ion concentrations are [Pb^2+] = 0.100 M and [SO4^2-] = 0.150 M.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must supply the missing background idea that precipitation is predicted by comparing Q = [Pb^2+][SO4^2-] with Ksp, and must compute Q = 0.0150.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must conclude that a precipitate forms because Q >> Ksp.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must present its explanation in the logical sequence: dilution -> Q calculation -> comparison with Ksp -> precipitation decision -> common-ion discussion.",
+          "criterion_index": 6,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Your confusion makes complete sense \u2014 but there's one key reversal to fix, and once you see it, the whole thing clicks. ## The Crux: Which Side Is SO\u2084\u00b2\u207b On? Look at the dissolution equilibrium carefully: $$\\text{PbSO}_4(s) \\rightleftharpoons \\text{Pb}^{2+}(...",
+      "rubric_count": 10,
+      "subject": "Chemistry",
+      "task_id": "683e3d9065e18627c7388002",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.3442622950819672,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that concentration-volume relationship applies to aqueous solutions.",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the question is about gas-phase system. For such systems, pressure changes are tracked and hence the ideal gas law is applied.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must show the ideal gas law as $PV = nRT$ or $P = \\frac{nRT}{V}$",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that pressure is inversely proportional to volume. It means that when the volume of the reaction vessel increases, the total pressure of the system decre...",
+          "criterion_index": 8,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must define Le Chatelier's principle as if a dynamic equilibrium is disturbed by a change in concentration, temperature, or pressure, the system will always shift i...",
+          "criterion_index": 9,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 12,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great news: your **observations** in both parts are actually correct \u2014 you just drew the wrong conclusions from them. Let me show you exactly where each argument breaks down. --- ## Part (a): You only looked at one side of the equation You said: *\"concentra...",
+      "rubric_count": 23,
+      "subject": "Chemistry",
+      "task_id": "683e3d8c5f104dac1d4d666a",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.35294117647058826,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must directly name the precise stuck point: You\u2019ve written the formulas but haven\u2019t yet figured out how to connect your probability statement (P(\u0394 > 0)) to a z-scor...",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state, in explicit language, that you should next write the z-score formula using your values\u2014but must not perform the calculation, write the result, or plug i...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must tell you that once you have your z-score, you need to use the standard normal table to find the probability, but must not compute or state that probability.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must NOT give the final answer or perform all arithmetic steps that directly lead to the probability value (\u201c0.239\u201d or equivalent), or show the full numerical calcu...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical_negative",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must directly acknowledge any student confusion or frustration (e.g., \u201cI\u2019m stuck\u201d or \u201cI don\u2019t get it\u201d), and offer encouragement in a teacher-like tone.",
+          "criterion_index": 7,
+          "dimensions": [
+            "style_tone",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 6,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great work so far! You've correctly reframed the problem as P(p\u0302\u2082 \u2212 p\u0302\u2081 > 0), and your SE formula is set up perfectly with the right values. Let's move to the next step. --- **What you need before you can find a z-score** To standardize the boundary value o...",
+      "rubric_count": 10,
+      "subject": "Statistics",
+      "task_id": "68387052b790747a1c2a372e",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 0.3548387096774194,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify the syntax error caused by a missing closing curly brace (}) at the end of the method and explain that every opening brace ({) in Java must have a mat...",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must mention the necessity of checking if the arr parameter is null to prevent a NullPointerException and suggest including a conditional statement at the beginning...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that validating the index parameter is within the valid range (not negative and less than arr.length) is crucial to avoid ArrayIndexOutOfBoundsException...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must guide on implementing comprehensive validation for all parameters (arr, index) to ensure the method's robustness. Specifically, it should explain the necessity...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "recursive factorial assessment",
+      "response_preview": "## Assessment: `sumEvens` Recursive Method ### \u2705 What You Got Right Your overall structure is solid: 1. **Base case** \u2014 `if (index == arr.length) { return 0; }` is exactly right. It terminates recursion cleanly when you've visited every element. 2. **Even-n...",
+      "rubric_count": 7,
+      "subject": "Computer Science",
+      "task_id": "68377627ca52a73e1545735e",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.36363636363636365,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain that chemists write $C_4H_4O_4$ in condensed atom order for organic acids while mineral acids such as HCl or $H_2SO_4$ are written with H first to high...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must break down the molar mass of CO$_2$ exactly as $12.01 \\text{ g} + 2 \\times 16.00 \\text{ g} = 44.01 \\text{ g mol}^{-1}$.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must justify the rounding by stating something like \u201c3 significant figures because 0.0114 has 3.\u201d",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response needs to identify that the student is missing background knowledge regarding the difference between mineral acids, that are inorganic and more readily soluble in wa...",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response would ideally recognize that the student may be missing the background knowledge that the calculation to convert moles to grams is commonly expressed by the equatio...",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Your Formula Notation Your instinct is chemically sound. Writing H\u2082C\u2084H\u2082O\u2084 \u2014 with the acidic protons listed first \u2014 is a legitimate convention for acids, especially diprotic ones (acids with two ionizable H\u207a). You'll see this same pattern with oxalic acid...",
+      "rubric_count": 9,
+      "subject": "Chemistry",
+      "task_id": "681cfba0516d8f36be368b74",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.3698630136986301,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify one of the student errors as incorrectly identifying copper as the cathode and silver as the anode.",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that in a galvanic cell, the half-reaction with the higher standard reduction potential occurs at the cathode, while the one with lower standard reduct...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that since $E\u00b0(Ag\u207a/Ag) = +0.80 V > E\u00b0(Cu\u00b2\u207a/Cu) = +0.34 V$, silver should be the cathode and copper should be the anode.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify one of the student errors as using the wrong standard cell potential, resulting in the e-cell calculation was wrong.",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain that the e-cell should be calculated as 0.80-0.34 = 0.46V.",
+          "criterion_index": 9,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 10,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Galvanic Cell Solution --- ### What You Did Well Several parts of your work are mechanically solid: - **Electrode assignment** (Ag = anode, Cu = cathode) \u2014 correct final answer - **E\u00b0cell = 0.34 \u2212 0.80 = \u22120.46 V** \u2014 correct standard ce...",
+      "rubric_count": 17,
+      "subject": "Chemistry",
+      "task_id": "680979013d9d7eb8a361d50a",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.3783783783783784,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly state the z-score formula, z=(x\u2212\u03bc)/\u03c3, and explain that this formula gives the number of standard deviations a value ($x$) is from the mean ($\\mu$) o...",
+          "criterion_index": 0,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explicitly state that using the same z-score in another distribution means finding a value $x_{\\text{female}}$ such that $z_{ female}= \\frac {x_{female}\u2212300} {...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explicitly state that even though $x_{\\text{male}} = 530$ and $x_{\\text{female}} = 324$ are not equal, they both have $z = 0.6$ in their respective distributio...",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should use clear, labeled steps and consistent notations ($z_{\\text{male}}$, $z_{\\text{female}}$",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state that using the same z-score across distributions does not mean the distributions are otherwise comparable.",
+          "criterion_index": 7,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "Great instinct \u2014 you're actually *half right*, and that's what makes this question worth pausing on. **You're correct that z-scores are *computed* using each dataset's own parameters.** Nothing gets borrowed from the male distribution and plugged into the f...",
+      "rubric_count": 13,
+      "subject": "Statistics",
+      "task_id": "683e3d8f38791d6d309f6cd1",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.38095238095238093,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly state Bayes\u2019 theorem formula ($P(D\\mid T)=\\frac{P(T\\mid D)\\times P(D)}{P(T)}$), label its components (prior, likelihood, evidence), and show how the...",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must define sensitivity ($P(T \\mid D)$), specificity ($P(\\neg T \\mid \\neg D)$), false positive rate ($P(T \\mid \\neg D)$), and positive predictive value ($P(D \\mid T...",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must mention false negatives ($P(D \\mid T)$) and explain how they decrease the overall probability that a positive result means that someone has the disease.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "deleted",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must discuss at least one key assumption or limitation behind applying these test statistics to real populations, such as demographics (race, age, gender) or region.",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should encourage the student\u2019s active engagement by prompting a reflective question or inviting them to try a related problem.",
+          "criterion_index": 5,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Asks questions to guide students",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Why \"95% accurate\" doesn't mean what you think it means Your intuition makes total sense \u2014 and it's actually one of the most common traps in probability, so let's untangle it carefully. --- ### The core issue: two very different conditional probabilities...",
+      "rubric_count": 9,
+      "subject": "Statistics",
+      "task_id": "681cfb9f998b35aadeba36e0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.38235294117647056,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must acknowledge the student's stated feeling of being \"really confused\" before explaining the concept by offering an empathetic remark.",
+          "criterion_index": 0,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must state that the critical values \u00b12.921 were found using a t-distribution with 16 degrees of freedom.",
+          "criterion_index": 1,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model should indicate that if the student's critical values (\u00b12.921) were correct, then the conclusion provided by the student (reject the null hypothesis) would be correct.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must point out that the student\u2019s wrong critical values of \u00b12.921 were based on using 16 degrees of freedom, which appears to come from counting all 18 individual n...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must explain that each pair (x, y) constitutes one single observation or individual in the sample.",
+          "criterion_index": 4,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Addressing Your Critical Value of \u00b12.921 Good news: your t-statistic calculation (t \u2248 3.09) and your degrees of freedom setup (df = n \u2212 2 = 7) are both correct. The issue is specifically with how the critical value was pulled from the t-table. --- ### Wh...",
+      "rubric_count": 10,
+      "subject": "Statistics",
+      "task_id": "681b80dd850f62964ac697d2",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.38461538461538464,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state for $x=-2$ that the function is continuous there, the left-hand derivative is $0$, the right-hand derivative is $-2$, and classify the point as a corner/...",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must state for $x=0$ that the function is continuous there, the left-hand derivative is $-2$, the right-hand derivative is $0$, and classify the point as a corner/c...",
+          "criterion_index": 2,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must directly correct the student\u2019s idea that \u201cwe can just set the derivative at $x=-2$ to 0\u201d by quoting the actual left/right values ($0$ and $-2$) and stating tha...",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explicitly mention that the function is continuous at $x=-2$ by noting the same $y$-value from left and right.",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "You're not alone in feeling confused here \u2014 and I want to be upfront: the earlier explanation had an error at x = \u22122 that I need to fix. Let me address both of your questions directly. --- ## Your first point: \"Continuous at x = 0 means differentiable, righ...",
+      "rubric_count": 10,
+      "subject": "Calculus",
+      "task_id": "683e3d902b6d2a6c45002cec",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.38596491228070173,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the intercept $\\hat{\\beta}_0$ is incorrectly computed due to propagating an over-precise value for $\\hat{\\beta}_1$.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must identify that the final $SS_R$ calculation is invalid because it uses an inconsistent slope estimate",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide the correct systematic approach by explaining that students should compute required sums ($\\sum x_i$, $\\sum y_i$, $\\sum x_i^2$, $\\sum y_i^2$, $\\sum x_i...",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must recommend using the alternative slope formula $\\hat{\\beta}_1 = \\frac{n\\sum x_i y_i - (\\sum x_i)(\\sum y_i)}{n\\sum x_i^2 - (\\sum x_i)^2}$ for verification purposes.",
+          "criterion_index": 8,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Provides alternative solutions/ paths/",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must advise performing reasonableness checks by asking whether the slope and intercept make intuitive sense given the problem context",
+          "criterion_index": 9,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Regression Work ### The Short Answer Your work is **entirely correct** through all five lines. The only issue is that **Line 5 is left unfinished** \u2014 you set up the right product but never wrote a final numerical value. --- ### What Yo...",
+      "rubric_count": 13,
+      "subject": "Statistics",
+      "task_id": "683e45108103655aef73fc0f",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.39473684210526316,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must identify that the student's code returns -3 for [-5,-2] because it is just performing truncation (not rounding), and explain that this is wrong because standar...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide the correct \"add/subtract half divisor\" implementation, showing both the code and the mathematical explanation: for positive sums add array.length/2 be...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain all three types of rounding (truncation toward positive infinity, and round to nearest) with specific examples showing how each works differently for b...",
+          "criterion_index": 5,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must acknowledge the student's frustration in the opening paragraph using phrases like \"I understand your frustration,\" \"I can see why you are frustrated,\" or \"I co...",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should use a visual number line showing both negative and positive numbers with arrows or indicators to illustrate that \"rounding up\" means moving toward positive i...",
+          "criterion_index": 7,
+          "dimensions": [
+            "style_tone"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 7,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "Your frustration makes total sense \u2014 the modulo idea is genuinely clever, and you were close to something real. Let me show you exactly what's happening, step by step. --- ## Issue 1: Your code won't compile (missing return) When `remainder <= 0`, your meth...",
+      "rubric_count": 10,
+      "subject": "Computer Science",
+      "task_id": "6847710ae96863adfe49248d",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.4074074074074074,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The model must acknowledge the student's confusion by stating something as \"I understand you are confused\".",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must state that while selection bias is correct as the umbrella term, a more specific and appropriate type is coverage bias which happens when some members of the popu...",
+          "criterion_index": 1,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model must identify that the student used the sample size formula for estimating a mean $$n =(\\frac{z \\cdot \\sigma}{E})^2$$) instead of the formula for estimating a populati...",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The model should have an encouraging, positive tone throughout the response making statements such as \"Great job!\".",
+          "criterion_index": 6,
+          "dimensions": [
+            "style_tone",
+            "emotional_component"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "text",
+      "playbook": "none",
+      "response_preview": "## Feedback on All Three Parts --- ### Part (a) \u2014 Partially Correct \u2713\u2717 You correctly identified **selection bias** as the source, and you're right that restricting the survey to email limits who can participate. Good start. **What's missing:** You need to d...",
+      "rubric_count": 7,
+      "subject": "Statistics",
+      "task_id": "681a876b69aba25329fa1450",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    }
+  ]
+}

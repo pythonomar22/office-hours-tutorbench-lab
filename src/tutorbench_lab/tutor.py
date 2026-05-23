@@ -439,9 +439,9 @@ def record_for_response(
 
 
 def _needs_specialist_audit(base_turn: TutorTurnInput) -> bool:
-    """Whether to add a routed specialist audit before final composition."""
+    """Whether to add a routed evidence audit before final composition."""
 
-    return base_turn.image.present and base_turn.use_case == UseCase.ASSESSMENT
+    return base_turn.image.present
 
 
 def _sum_usage(usages) -> ModelUsage:
@@ -535,9 +535,11 @@ def _specialist_audit_turn(
         update={
             "system_prompt": dedent(
                 """\
-                You are a routed specialist auditor for a multimodal assessment
+                You are a routed specialist evidence auditor for a multimodal
                 tutor. Do not write the student-facing response. Do not solve by
-                making the student's answer look better than it is.
+                making the student's answer look better than it is. Your job is
+                to preserve exactly what is visible in the image before any
+                tutoring style decisions are made.
 
                 If the image contains a numbered/lettered diagram or labelled
                 drawing, the marker endpoint is the ground truth for what the
@@ -574,16 +576,30 @@ def _specialist_audit_turn(
                 If the image contains code, quote exact line numbers or visible
                 lines, list compile errors, runtime errors, logic errors,
                 corrected code expectations, output expectations, tests, edge
-                cases, and any documentation/comment requirements.
+                cases, and any documentation/comment requirements. Pay special
+                attention to line-level claims where a student says the code is
+                correct; look for overflow, integer division, missing semicolons
+                or braces, missing declarations, and required helper methods.
 
-                For any other assessment image, audit visible claims, equations,
-                signs, units, labels, and final answers against the prompt.
+                For math/science images, audit visible claims, equations, signs,
+                units, constants, parameter names, final answers, and any row of
+                an ICE table or likelihood derivation against the prompt. Do not
+                call a visible expression correct unless you can quote or
+                closely paraphrase it.
+
+                For adaptive-explanation rows, identify the exact visible facts
+                needed to answer the student's follow-up, but do not let an
+                image-only hunch override the conversation unless it is visible
+                and relevant to the follow-up. For active-learning rows, identify
+                the student's current stuck point and the final target that must
+                remain withheld.
+
                 If a fact is ambiguous, mark it ambiguous instead of guessing.
                 """
             ).strip(),
             "user_prompt": dedent(
                 f"""\
-                Original assessment task:
+                Original multimodal tutoring task:
                 {base_turn.user_prompt}
                 {perception_block}
                 {visual_probe_block}
@@ -999,6 +1015,16 @@ def _composer_system_prompt(base_turn: TutorTurnInput) -> str:
         closely paraphrase the specific mistaken phrase, line, label, or
         calculation before teaching from it.
 
+        For multimodal rows, treat the perception transcript and specialist
+        evidence audit as an evidence lock. If you say a visible step is
+        correct or incorrect, anchor that claim to the exact visible line,
+        expression, code snippet, label, unit, or diagram relationship. Do not
+        praise a whole solution as correct when the evidence audit identifies
+        a visible line-level issue. If the image contains multiple visible
+        mistakes, name the first conceptual mistake and also any later
+        arithmetic, notation, unit, code, or interpretation slip that a student
+        would need to fix.
+
         For code assessment, quote the exact faulty line, mention its line
         number when visible, provide corrected code when useful, suggest at
         least two additional test cases, and discuss edge cases such as
@@ -1106,6 +1132,10 @@ def _critic_turn(
                 trade-off, direct quote/paraphrase of the student's mistaken
                 wording, or visible image detail. Request revision if a
                 multimodal draft appears to misread the image.
+                For multimodal rows, request revision if the draft praises or
+                accepts a visible step as correct without quoting the exact
+                line/expression/code/label being accepted, or if it contradicts
+                the specialist evidence audit without explicitly resolving why.
                 When a rubric-blind task-family playbook is provided, request
                 revision if the draft ignores a relevant required move from it.
                 If the playbook uses words like "required", "quote", "state",
@@ -1257,6 +1287,11 @@ def _coverage_critic_turn(
                 Request revision if a multimodal response does not anchor to
                 visible work, labels, code lines, equations, or student wording
                 when those details are available.
+                Request revision if a multimodal draft broadly says the work is
+                correct while the perception transcript, specialist audit, or
+                verifier notes include visible unresolved mistakes. Request
+                revision if it fails to quote or closely paraphrase the visible
+                expression/code line/label that it is judging.
                 When a rubric-blind task-family playbook names exact traps or
                 required checks, treat those as the coverage checklist and
                 request revision if the draft only gives a generic explanation.

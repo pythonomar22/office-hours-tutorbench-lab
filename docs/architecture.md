@@ -17,16 +17,19 @@
 - UC3 active learning: input is the problem plus partial student work; output
   should be a hint or guiding question and must avoid giving the full answer.
 
-## Agentic Tutor V5
+## Agentic Tutor V6
 
 The agentic strategy is rubric-blind:
 
 - Perception: for image rows, transcribes visible problem text, diagrams,
   labels, code, student work, and ambiguity before any solving.
-- Specialist audit: for multimodal assessment rows, performs a routed visual
+- Specialist evidence audit: for all multimodal rows, performs a routed visual
   audit before solving. Numbered diagrams are audited by marker endpoint as
   drawn; code images are audited for exact lines, compile/runtime issues,
-  corrected-code expectations, tests, and edge cases.
+  corrected-code expectations, tests, and edge cases. Adaptive rows use the
+  audit to answer the follow-up without pivoting away from the conversation;
+  active-learning rows use it to identify the stuck point and the final target
+  that must remain withheld.
 - Solver/diagnoser: privately solves the task, identifies misconceptions, and
   recomputes arithmetic/code/diagram facts using the specialist audit when
   present.
@@ -51,11 +54,13 @@ The agentic strategy is rubric-blind:
   TutorBench tutoring patterns such as hydrogen-halide acidity, ellipse area
   optimization, recursive factorial feedback, CLT sample-mean hints,
   Bonferroni corrections, chemistry equilibrium reasoning, ionization-energy
-  feedback, and plant/animal cell diagrams. Playbook routing is intentionally
-  conservative: validation150 showed that several specific deterministic
-  rewrites underperformed the generic agent, so coffee/under-filling,
-  two-proportion, regression-residual, two's-complement, and weak-acid
-  titration-assessment routes are retired.
+  feedback, plant/animal cell diagrams, Normal MLE feedback, binary-search
+  overflow, MovieRating integer division hints, shape center-distance OOP hints,
+  Henry-law mole-fraction units, and bulbs-in-parallel switch reasoning.
+  Playbook routing is intentionally conservative: validation150 showed that
+  several specific deterministic rewrites underperformed the generic agent, so
+  coffee/under-filling, two-proportion, regression-residual, two's-complement,
+  and weak-acid titration-assessment routes are retired.
 - Deterministic final guards: narrow post-composition repairs for brittle
   task-family anchors that the LLM critic may miss, such as exact visual
   anchors, exact factorial verification, and crackle derivative-order audits.
@@ -141,6 +146,17 @@ playbook requirements need critic/guard enforcement when the model is tempted
 to fall back to a plausible but benchmark-wrong school-level interpretation.
 This is still a local public-HF-comparable result, not an official leaderboard
 claim.
+
+The current larger holdout checkpoint is baseline Sonnet `60.77%` versus
+agentic-v5 `71.84%` over 500 rows, a +11.07 point same-set gain on a split
+disjoint from dev10/dev50/validation150. The strongest remaining failure pattern
+is not generic pedagogy but multimodal evidence grounding: the tutor often gives
+a polished response to a wrong read of the image. Agentic-v6 therefore broadens
+the specialist evidence audit to all multimodal rows and adds targeted,
+rubric-blind failure-family playbooks. On the ten weakest v5 heldout rows,
+`heldout-failure-probe-v6` moved the average from `12.64%` to `64.42%`; the
+follow-up refined probe scored `59.12%`, showing that stricter playbook wording
+helps some assessment rows but can still regress active-learning rows.
 
 ## Office Hours Transfer Path
 

@@ -10,7 +10,7 @@ from tutorbench_lab.tutor import (
 )
 
 
-def test_specialist_audit_routes_only_multimodal_assessment() -> None:
+def test_specialist_audit_routes_all_multimodal_rows() -> None:
     assessment = TutorBenchExample(
         task_id="diagram",
         batch="USE_CASE_2_MULTIMODAL",
@@ -29,7 +29,7 @@ def test_specialist_audit_routes_only_multimodal_assessment() -> None:
     )
 
     assert _needs_specialist_audit(build_turn_input(assessment)) is True
-    assert _needs_specialist_audit(build_turn_input(active)) is False
+    assert _needs_specialist_audit(build_turn_input(active)) is True
 
 
 def test_sum_usage_tracks_all_agent_stages() -> None:
@@ -895,6 +895,79 @@ def test_underperforming_weak_acid_titration_playbook_is_retired(
     playbook = build_task_playbook(build_turn_input(example))
 
     assert playbook is None or "weak-acid titration assessment" not in playbook
+
+
+def test_heldout500_failure_family_playbooks_route_cleanly(adaptive_example) -> None:
+    examples = [
+        (
+            "Statistics",
+            "USE_CASE_2_MULTIMODAL",
+            (
+                "Assess this Normal MLE work. The student writes the likelihood "
+                "L(mu, sigma), differentiates the log-likelihood, and estimates sigma."
+            ),
+            "Normal MLE assessment",
+        ),
+        (
+            "Computer Science",
+            "USE_CASE_2_MULTIMODAL",
+            "Consider this binary search implementation with int x = (low+high)/2.",
+            "binary-search midpoint overflow assessment",
+        ),
+        (
+            "Computer Science",
+            "USE_CASE_3_MULTIMODAL",
+            (
+                "MovieRating has addRating, getAverageRating, isHighlyRated, "
+                "and return total / ratings.size();"
+            ),
+            "MovieRating active-learning hint",
+        ),
+        (
+            "Computer Science",
+            "USE_CASE_3_MULTIMODAL",
+            (
+                "Create C++ classes for triangle, circle, square with perimeter, "
+                "surface, and shortest distance to the center."
+            ),
+            "geometric-shapes OOP center-distance active hint",
+        ),
+        (
+            "Chemistry",
+            "USE_CASE_2_TEXT",
+            (
+                "Hydrogen iodide reacts with reactant X to form iodoethylene "
+                "with 100% atom economy."
+            ),
+            "hydrogen iodide to iodoethylene assessment",
+        ),
+        (
+            "Chemistry",
+            "USE_CASE_2_MULTIMODAL",
+            "Henry law constant k_H is in kbar per mole fraction for nitrogen in water.",
+            "Henry-law mole-fraction assessment",
+        ),
+        (
+            "Physics",
+            "USE_CASE_1_MULTIMODAL",
+            "A switch changes bulb A, B, C, and D brightness in a parallel circuit.",
+            "bulbs-in-parallel switch adaptive explanation",
+        ),
+        (
+            "Computer Science",
+            "USE_CASE_1_MULTIMODAL",
+            "Why use a switch statement to determine days based on month and leap year?",
+            "days-in-month switch adaptive explanation",
+        ),
+    ]
+
+    for subject, batch, prompt, expected in examples:
+        example = adaptive_example.model_copy(
+            update={"subject": subject, "batch": batch, "prompt": prompt}
+        )
+        playbook = build_task_playbook(build_turn_input(example))
+        assert playbook is not None
+        assert expected in playbook
 
 
 def test_remaining_dev50_failure_family_playbooks_route_cleanly(

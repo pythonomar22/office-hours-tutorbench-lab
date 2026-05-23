@@ -61,6 +61,37 @@ local public-HF/dev-set results unless explicitly marked as official.
   - This is the strongest current fairness anchor because it uses a larger
     split disjoint from all tuning/dev sets. It is close to, but not yet safely
     above, the `>=70%` local target.
+- Current Heldout500 agentic checkpoint: `heldout500-agentic-v5`
+  - Score: `71.84%`, CI `69.84%-73.69%`.
+  - Same-set Sonnet baseline: `60.77%`, CI `58.90%-62.83%`.
+  - Delta vs baseline: `+11.07` points.
+  - Delta vs `heldout500-agentic-v3`: `+3.61` points.
+  - Use-case scores: active learning `76.44%`, adaptive `68.34%`, assessment
+    `70.72%`.
+  - Modality scores: text `74.05%`, multimodal `69.60%`.
+  - This is the strongest current fairness anchor because it is larger and
+    disjoint from all development/validation splits, and it clears the local
+    `>=70%` target. It remains a local public-HF-comparable result, not an
+    official leaderboard result.
+- Heldout500 v6 failure probe: `heldout-failure-probe-v6`
+  - Score: `64.42%` on the ten weakest `heldout500-agentic-v5` rows.
+  - Those same rows averaged `12.64%` under v5, so the targeted delta is
+    `+51.78` points.
+  - Biggest row wins: MovieRating active hint `16.67% -> 100.00%`, Normal MLE
+    assessment `1.32% -> 80.26%`, binary-search overflow assessment
+    `13.46% -> 90.38%`, Henry-law mole-fraction assessment
+    `17.86% -> 89.29%`, and bulbs-in-parallel adaptive explanation
+    `14.89% -> 78.72%`.
+  - Main v6 architecture change: all multimodal rows now receive the specialist
+    evidence audit, not only assessment rows. Added rubric-blind playbooks for
+    Normal MLE notation, binary-search midpoint overflow, MovieRating integer
+    division/reuse hints, geometric-shape center-distance OOP hints, HI to
+    iodoethylene atom-economy reasoning, Henry-law mole-fraction units, bulb
+    parallel-switch reasoning, and days-in-month switch code review.
+  - `heldout-failure-probe-v6-refined` scored `59.12%`: it improved Normal MLE,
+    weak-acid ICE, and Henry-law rows but regressed several active-learning
+    rows. Treat this as evidence to verify v6 on a larger split before
+    committing to further tightening.
 - V4 failure-analysis probe: `probe10-agentic-v4-refined`
   - Score: `75.33%` over 10 heldout500 rows selected from the weakest v3
     failures; the same rows averaged roughly `4%` in `heldout500-agentic-v3`.

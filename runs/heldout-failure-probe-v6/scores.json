@@ -1,0 +1,111 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": 0.8181818181818181,
+      "ci_low": 0.22449186991869918,
+      "count": 5,
+      "mean_arrw": 0.5085827790096082,
+      "name": "Apply"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.5121951219512195,
+      "name": "Create"
+    },
+    {
+      "ci_high": 0.9038461538461539,
+      "ci_low": 0.8026315789473685,
+      "count": 3,
+      "mean_arrw": 0.8664449585502217,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7872340425531915,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.9101673402585256,
+      "ci_low": 0.537750132586666,
+      "count": 7,
+      "mean_arrw": 0.7381509604402722,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 0.6666666666666666,
+      "ci_low": 0.0625,
+      "count": 3,
+      "mean_arrw": 0.42487373737373735,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": 0.8060064935064936,
+      "ci_low": 0.21354166666666666,
+      "count": 4,
+      "mean_arrw": 0.5418695887445888,
+      "name": "Chemistry"
+    },
+    {
+      "ci_high": 0.9519230769230769,
+      "ci_low": 0.3902439024390244,
+      "count": 4,
+      "mean_arrw": 0.6710834896810507,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.7872340425531915,
+      "name": "Physics"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.8026315789473685,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": 1.0,
+      "ci_low": 0.5121951219512195,
+      "count": 2,
+      "mean_arrw": 0.7560975609756098,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 0.7872340425531915,
+      "ci_low": 0.2682926829268293,
+      "count": 2,
+      "mean_arrw": 0.5277633627400105,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 0.8363697705802969,
+      "ci_low": 0.40228174603174605,
+      "count": 6,
+      "mean_arrw": 0.6456593479619795,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 5,
+  "overall": {
+    "ci_high": 0.8180963345597492,
+    "ci_low": 0.4429855140966973,
+    "count": 10,
+    "mean_arrw": 0.6441677935203117,
+    "name": "overall"
+  },
+  "run_id": "heldout-failure-probe-v6"
+}

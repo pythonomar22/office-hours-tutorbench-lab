@@ -25,6 +25,10 @@ def build_task_playbook(
     use_case = turn.use_case.value
 
     if turn.subject.lower() == "computer science":
+        if use_case == "adaptive" and _has_days_in_month_switch_context(text):
+            notes.append(_days_in_month_switch_adaptive_playbook())
+        if use_case == "assessment" and _has_binary_search_overflow_context(text):
+            notes.append(_binary_search_overflow_assessment_playbook())
         if use_case == "assessment" and _has_binary_tree_traversal_context(text):
             notes.append(_binary_tree_traversal_assessment_playbook())
         if use_case == "assessment" and _has_kth_smallest_matrix_context(text):
@@ -35,6 +39,10 @@ def build_task_playbook(
             notes.append(_factorial_code_playbook())
         if use_case == "active_learning" and _has_fastpower_context(text):
             notes.append(_fastpower_active_hint_playbook())
+        if use_case == "active_learning" and _has_movie_rating_context(text):
+            notes.append(_movie_rating_active_hint_playbook())
+        if use_case == "active_learning" and _has_shape_oop_center_context(text):
+            notes.append(_shape_oop_center_active_hint_playbook())
 
     if (
         turn.subject.lower() == "chemistry"
@@ -78,6 +86,18 @@ def build_task_playbook(
         and _has_h2_o2_water_sphere_context(text)
     ):
         notes.append(_water_limiting_reagent_visual_playbook())
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "assessment"
+        and _has_hi_iodoethylene_context(text)
+    ):
+        notes.append(_hi_iodoethylene_assessment_playbook())
+    if (
+        turn.subject.lower() == "chemistry"
+        and use_case == "assessment"
+        and _has_henry_mole_fraction_context(text)
+    ):
+        notes.append(_henry_mole_fraction_assessment_playbook())
     if (
         turn.subject.lower() == "chemistry"
         and use_case == "assessment"
@@ -198,6 +218,12 @@ def build_task_playbook(
     if (
         turn.subject.lower() == "statistics"
         and use_case == "assessment"
+        and _has_normal_mle_context(text)
+    ):
+        notes.append(_normal_mle_assessment_playbook())
+    if (
+        turn.subject.lower() == "statistics"
+        and use_case == "assessment"
         and _has_qualitative_survey_context(text)
     ):
         notes.append(_qualitative_survey_assessment_playbook())
@@ -257,6 +283,12 @@ def build_task_playbook(
         and _has_velocity_time_signed_area_context(text)
     ):
         notes.append(_velocity_time_area_adaptive_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "adaptive"
+        and _has_bulb_parallel_switch_context(text)
+    ):
+        notes.append(_bulb_parallel_switch_adaptive_playbook())
     if (
         turn.subject.lower() == "physics"
         and use_case == "active_learning"
@@ -381,6 +413,17 @@ def _has_velocity_time_signed_area_context(text: str) -> bool:
     )
 
 
+def _has_bulb_parallel_switch_context(text: str) -> bool:
+    return (
+        _has_any(text, ["bulb", "bulbs"])
+        and _has_any(text, ["switch", "brighter", "dimmer", "parallel"])
+        and (
+            _has_any(text, ["**c**", "**d**"])
+            or all(re.search(rf"\b{letter}\b", text) for letter in ["a", "b", "c", "d"])
+        )
+    )
+
+
 def _has_kinematics_hint_context(text: str) -> bool:
     return (
         _has_any(text, ["vf", "v_f", "v^2", "kinematic"])
@@ -426,6 +469,37 @@ def _has_fastpower_context(text: str) -> bool:
     return _has_any(text, ["fastpower", "fast power", "b^x", "b**x", "exponentiation"]) and (
         _has_any(text, ["negative", "odd", "x / 2", "x/2", "???", "return type"])
         or _has_any(text, ["recursive", "recursion", "decreasing subproblem"])
+    )
+
+
+def _has_days_in_month_switch_context(text: str) -> bool:
+    return _has_any(text, ["switch statement", "switch"]) and _has_any(
+        text, ["month", "days", "leap year", "isleapyear", "total number of hours"]
+    )
+
+
+def _has_binary_search_overflow_context(text: str) -> bool:
+    return _has_any(text, ["binary search", "low", "high"]) and _has_any(
+        text, ["(low+high)/2", "(low + high)/2", "low+high", "middle", "mid"]
+    )
+
+
+def _has_movie_rating_context(text: str) -> bool:
+    return _has_any(text, ["movierating", "movie rating"]) and _has_any(
+        text, ["addrating", "getaveragerating", "ishighlyrated", "ratings.size"]
+    )
+
+
+def _has_shape_oop_center_context(text: str) -> bool:
+    return _has_any(text, ["triangle", "circle", "square"]) and _has_any(
+        text,
+        [
+            "shortest distance to the center",
+            "distance to the center",
+            "geometrical shapes",
+            "geometrical shape",
+            "geometrical",
+        ],
     )
 
 
@@ -485,6 +559,18 @@ def _has_uranium_lead_mass_ratio_context(text: str) -> bool:
 def _has_copper_kmno4_redox_context(text: str) -> bool:
     return _has_any(text, ["kmno4", "mno4", "permanganate"]) and _has_any(
         text, ["copper", "so2", "oxalic acid", "acidified"]
+    )
+
+
+def _has_hi_iodoethylene_context(text: str) -> bool:
+    return _has_any(text, ["hydrogen iodide", "hi"]) and _has_any(
+        text, ["iodoethylene", "iodoethene", "reactant x", "atom economy"]
+    )
+
+
+def _has_henry_mole_fraction_context(text: str) -> bool:
+    return _has_any(text, ["henry", "k_h", "kh"]) and _has_any(
+        text, ["mole fraction", "kbar", "n2", "n₂", "nitrogen", "water"]
     )
 
 
@@ -610,6 +696,12 @@ def _has_trig_accumulation_probability_context(text: str) -> bool:
     )
 
 
+def _has_normal_mle_context(text: str) -> bool:
+    return _has_any(text, ["likelihood", "log-likelihood", "mle"]) and _has_any(
+        text, ["sigma", "σ", "normal", "n(μ", "n(mu"]
+    )
+
+
 def _has_chi_square_variance_context(text: str) -> bool:
     return _has_any(
         text, ["chi-square", "chi square", "χ²", "variance", "standard deviation"]
@@ -660,6 +752,176 @@ def _has_crackle_derivative_context(text: str) -> bool:
     return _has_any(text, ["crackle", "jerk"]) and _has_any(
         text, ["derivative", "x''", "x’’", "position function", "time t"]
     )
+
+
+def _days_in_month_switch_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: days-in-month switch adaptive explanation
+        - Directly answer the student's confusion: an if/else chain can be
+          correct, but a switch statement is often more readable and organized
+          for grouping many month cases.
+        - Quote or closely paraphrase the visible if/else structure when it is
+          present: February, grouped 30-day months, and the else case for
+          31-day months.
+        - Required code audit when the visible work resembles the common
+          if/else solution: quote or paraphrase the student's branches
+          (month == 2, grouped 30-day months, else 31 days), then identify
+          missing semicolon after days = 30, missing final method brace, missing
+          declaration such as int days;, and missing isLeapYear helper when the
+          prompt expects leap-year handling.
+        - Explain that February should use isLeapYear(year) rather than a fixed
+          28-day value.
+        - End with an open-ended practice invitation about trying the switch
+          version or another date-related method.
+        """
+    ).strip()
+
+
+def _binary_search_overflow_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: binary-search midpoint overflow assessment
+        - Do not mark the implementation fully correct if it uses
+          (low + high) / 2 for the midpoint.
+        - Quote the visible midpoint line, such as int x = (low + high) / 2 or
+          mid = (low + high) / 2, and identify it as the bug.
+        - Explain that low + high can exceed the signed integer maximum
+          (for example 2^31 - 1 in Java/C++ int), which may wrap negative and
+          lead to an invalid index/runtime error.
+        - Provide the safe fix: low + (high - low) / 2, and justify why it
+          avoids overflow by subtracting before adding back low.
+        - Include a concrete large-number example rather than only stating the
+          rule abstractly.
+        """
+    ).strip()
+
+
+def _movie_rating_active_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: MovieRating active-learning hint
+        - Keep this as a hint; do not write the completed corrected code.
+        - Identify the real stuck point: Java integer division can discard the
+          decimal part in return total / ratings.size(), and a class method can
+          reuse a helper method already written in the same class.
+        - Quote the visible lines where the student is stuck or wrong:
+          return total / ratings.size(); and the unfinished isHighlyRated method
+          when present.
+        - Hint about preserving the decimal part without explicitly saying to
+          cast total to double or writing return (double) total / ratings.size().
+        - Hint about reusing the already-written average method without naming
+          getAverageRating() inside the final code.
+        - Include a checkpoint about no ratings added: what should happen before
+          dividing by ratings.size()?
+        """
+    ).strip()
+
+
+def _shape_oop_center_active_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: geometric-shapes OOP center-distance active hint
+        - Keep this as a scaffolded hint, not a full C++ solution.
+        - Identify the likely stuck point: how to represent each shape's center
+          or centroid/circumcenter and how that connects to the "shortest
+          distance to the center" property.
+        - Prompt the student to decide what data each derived class must store:
+          a side length for Square, a radius for Circle, and enough triangle
+          information to reason about its center.
+        - For Square, hint toward perimeter and surface from its side length
+          without writing the exact formulas.
+        - For Circle, hint that radius and pi are needed, and remind them to
+          include the standard math library for pi/sqrt-type calculations; do
+          not hand over both exact circle formulas in final form.
+        - Mention circumcenter/circumcircle as a useful way to think about
+          distance from the center when the relevant distance is from center to
+          boundary/vertices.
+        """
+    ).strip()
+
+
+def _hi_iodoethylene_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: hydrogen iodide to iodoethylene assessment
+        - Work backward from the product and 100% atom economy: all atoms from
+          HI and reactant X end up in iodoethylene/iodoethene.
+        - Identify the student's correct high-level idea that addition to an
+          unsaturated compound is relevant.
+        - Explicitly flag the conceptual misuse of Markovnikov's rule when the
+          student mentions it without applying regiochemistry to an asymmetric
+          alkene. If ethene is the relevant reactant, Markovnikov orientation is
+          not the deciding issue because ethene is symmetric.
+        - Make clear which atoms are removed from the product to infer X; the
+          reactant should be the alkene before HI addition, not a product with
+          only iodine subtracted.
+        """
+    ).strip()
+
+
+def _henry_mole_fraction_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Henry-law mole-fraction assessment
+        - Check the units of Henry's law constant before accepting the student's
+          formula. A value in kbar per mole-fraction is pressure divided by mole
+          fraction, not bar L mol^-1.
+        - State that P / k_H gives a mole fraction in this convention, not a
+          molarity. Mole fraction is unitless; molarity is mol/L.
+        - If the task asks for amount dissolved in 1 L of water, convert water
+          to moles: 1000 g / 18.0 g mol^-1 is about 55.5 mol.
+        - Relate mole fraction to moles with x_N2 = n_N2 / (n_N2 + 55.5), then
+          solve for n_N2 before converting to mass or concentration if needed.
+        - Explicitly name the student's unit error if they treat the mole
+          fraction value as mol/L.
+        """
+    ).strip()
+
+
+def _normal_mle_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: Normal MLE assessment
+        - Required: audit visible notation before differentiating. If the
+          student writes L(mu, sigma) for a model parameterized by variance,
+          call that notation/conceptual target wrong or misleading and say the
+          correct likelihood target is L(mu, sigma^2). Do not merely say it is
+          algebraically equivalent.
+        - Check the Normal density constant carefully: the denominator should
+          contain sqrt(2*pi*sigma^2), not sqrt(2*pi*sigma). If the visible
+          expression places sigma inside the square root without squaring it,
+          quote that expression and call it incorrect.
+        - Distinguish partial derivatives from total derivatives:
+          use partial ln L / partial mu and partial ln L / partial sigma (or
+          partial sigma^2 if that is the chosen parameterization).
+        - For the mu derivative, include the chain-rule sign from
+          d(x_i - mu)^2/dmu = 2(x_i - mu)(-1).
+        - For the variance estimate, make clear whether the final estimator is
+          for sigma or sigma^2, and use mu-hat inside the final sigma^2 formula.
+        - Do not affirm the likelihood or derivative work as correct unless the
+          exact visible expression matches these checks.
+        """
+    ).strip()
+
+
+def _bulb_parallel_switch_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: bulbs-in-parallel switch adaptive explanation
+        - Directly acknowledge the student's confusion about bulb C.
+        - State the topology explicitly: current first passes through A, then
+          the remaining section has B, C, and D as parallel branches after the
+          switch is closed. With the switch open, D has no current.
+        - Explain brightness via power/current for identical bulbs: P = I^2 R.
+        - Closing the switch adds D as another parallel path, decreasing the
+          equivalent resistance of the parallel section and increasing total
+          current through A, so A gets brighter.
+        - Because A now has a larger voltage drop, the parallel section gets a
+          smaller voltage drop, so B and C get dimmer. The correct conclusion is
+          that A and D get brighter; C does not get brighter.
+        """
+    ).strip()
 
 
 def _binary_tree_traversal_assessment_playbook() -> str:
@@ -1191,6 +1453,12 @@ def _weak_acid_ice_assessment_playbook() -> str:
         - Quote the student's ICE-table change row if visible. If they wrote
           +x, -x, -x, explain that the reactant must decrease and products must
           increase, so the change row is -x, +x, +x.
+        - For the common HCOOH row with C = 0.25 M and Ka = 1.8e-4, do not let
+          a weak image transcript hide the later visible work. The student may
+          have written the wrong change row (+x, -x, -x), the wrong denominator
+          0.25 + x, the bad simplification x*x/(0.25 - x) -> x/0.25, [H+] =
+          4.5e-5, and pH = 4.35. Audit those explicitly if this row family
+          matches.
         - Required: state that wrong ICE signs can produce a wrong denominator such as
           0.25 + x, but the larger conceptual error is simplifying
           Ka = x*x/(0.25 - x) as x/0.25 instead of x^2/0.25.
