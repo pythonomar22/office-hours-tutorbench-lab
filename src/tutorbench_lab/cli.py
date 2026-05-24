@@ -55,6 +55,7 @@ from tutorbench_lab.reports import (
     compare_reports,
     score_report_markdown,
 )
+from tutorbench_lab.response_selector import select_run_record
 from tutorbench_lab.run_analysis import analysis_markdown, build_run_analysis
 from tutorbench_lab.schemas import JudgedRunRecord, RunRecord, ScoreReport, Strategy
 from tutorbench_lab.scoring import build_score_report
@@ -607,6 +608,131 @@ def blend_responses(
     console.print(
         f"Selected auxiliary for [bold]{auxiliary_count}[/bold] row(s) "
         f"using policy [bold]{policy.value}[/bold]"
+    )
+
+
+@app.command("select-responses")
+def select_responses(
+    primary_path: Path,
+    auxiliary_path: Path,
+    output_path: Path,
+    run_id: str = typer.Option(
+        "selector-v1",
+        "--run-id",
+        help="Run ID to write into selected response records.",
+    ),
+    selector_model: str | None = typer.Option(
+        None,
+        "--selector-model",
+        help="Rubric-blind selector model.",
+    ),
+    max_tokens: int = typer.Option(700),
+    request_timeout_s: float | None = typer.Option(
+        None,
+        "--request-timeout-s",
+        help="Per-provider request timeout in seconds.",
+    ),
+    workers: int = typer.Option(
+        1,
+        "--workers",
+        min=1,
+        help="Number of examples to select concurrently.",
+    ),
+    resume: bool = typer.Option(
+        False,
+        "--resume",
+        help="Skip task IDs already present in output_path.",
+    ),
+) -> None:
+    """Use a rubric-blind LLM selector to choose between two response files."""
+
+    selector_model = selector_model or critic_model_default()
+    request_timeout_s = (
+        request_timeout_s if request_timeout_s is not None else request_timeout_default()
+    )
+    primary_records = list(read_model_jsonl(primary_path, RunRecord))
+    auxiliary_records = list(read_model_jsonl(auxiliary_path, RunRecord))
+    auxiliary_by_task_id = {record.example.task_id: record for record in auxiliary_records}
+    pairs = []
+    for primary in primary_records:
+        auxiliary = auxiliary_by_task_id.get(primary.example.task_id)
+        if auxiliary is None:
+            raise typer.BadParameter(
+                f"Missing auxiliary response for {primary.example.task_id}",
+                param_hint="auxiliary_path",
+            )
+        pairs.append((primary, auxiliary))
+
+    if resume and output_path.exists():
+        completed = {
+            record.example.task_id
+            for record in read_model_jsonl(output_path, RunRecord)
+        }
+        pairs = [pair for pair in pairs if pair[0].example.task_id not in completed]
+        console.print(
+            f"Resuming selector [bold]{run_id}[/bold]; "
+            f"skipping {len(completed)} completed task ID(s)"
+        )
+
+    def select_record(index: int, primary: RunRecord, auxiliary: RunRecord) -> RunRecord:
+        console.print(f"[{index}/{len(pairs)}] selecting {primary.example.task_id}")
+        return select_run_record(
+            primary,
+            auxiliary,
+            run_id=run_id,
+            selector_model=selector_model,
+            max_tokens=max_tokens,
+            request_timeout_s=request_timeout_s,
+        )
+
+    if workers == 1:
+        for index, (primary, auxiliary) in enumerate(pairs, start=1):
+            append_jsonl(output_path, select_record(index, primary, auxiliary))
+    else:
+        console.print(f"Selecting with [bold]{workers}[/bold] worker threads")
+        error_count = 0
+        errors_path = output_path.with_name("selector_errors.jsonl")
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {
+                executor.submit(select_record, index, primary, auxiliary): (
+                    index,
+                    primary.example.task_id,
+                )
+                for index, (primary, auxiliary) in enumerate(pairs, start=1)
+            }
+            for future in as_completed(futures):
+                index, task_id_for_error = futures[future]
+                try:
+                    append_jsonl(output_path, future.result())
+                except Exception as exc:
+                    error_count += 1
+                    _append_parallel_error(
+                        errors_path,
+                        phase="selector",
+                        index=index,
+                        task_id=task_id_for_error,
+                        exc=exc,
+                    )
+                    console.print(
+                        f"[red]selector failed[/red] for {task_id_for_error}; "
+                        f"logged to [bold]{errors_path}[/bold]"
+                    )
+        if error_count:
+            console.print(
+                f"Wrote partial selected responses to [bold]{output_path}[/bold]; "
+                f"{error_count} task(s) failed. Resume after inspection."
+            )
+            raise typer.Exit(code=1)
+
+    selected_records = list(read_model_jsonl(output_path, RunRecord))
+    selected_count = sum(
+        1
+        for record in selected_records
+        if record.response.trace.get("selector_selected_source") == "auxiliary"
+    )
+    console.print(
+        f"Wrote selected responses to [bold]{output_path}[/bold]; "
+        f"selected auxiliary for [bold]{selected_count}[/bold] row(s)"
     )
 
 

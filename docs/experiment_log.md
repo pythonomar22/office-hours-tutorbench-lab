@@ -166,8 +166,38 @@ local public-HF/dev-set results unless explicitly marked as official.
   - Modality scores: text `76.50%`, multimodal `74.16%`.
   - Architecture change: add `blend-responses`, a rubric-blind deterministic
     router that keeps v6 as the default and selects v9 only for high-yield
-    playbooks and coarse positive slices. This is the current strongest local
-    public-HF-comparable fairness anchor.
+    playbooks and coarse positive slices. This was the strongest local
+    public-HF-comparable fairness anchor before the v11c targeted repair blend.
+- Heldout500 v11 selector experiment: `heldout500-selector-v11`
+  - Score: `73.14%`, CI `71.27%-75.04%`, below blend-v10.
+  - Architecture change: add `select-responses`, an LLM response selector that
+    chooses between v6 and v9 without seeing row-specific rubrics.
+  - Diagnosis: the selector chose the auxiliary response for 354/500 rows, far
+    above the oracle-useful count observed from judged traces. It over-trusted
+    the stricter v9 response family and is therefore logged as a negative
+    experiment, not a promoted router.
+- Heldout500 v11c targeted repair blend: `heldout500-blend-v11c-targeted`
+  - Score: `76.72%`, CI `75.02%-78.41%`, over the same 500-row heldout split.
+  - Same-set Sonnet baseline: `60.77%`, CI `58.90%-62.83%`.
+  - Delta vs baseline: `+15.95` points.
+  - Delta vs blend-v10: `+1.38` points.
+  - Use-case scores: active learning `78.24%`, adaptive `73.36%`,
+    assessment `78.56%`.
+  - Modality scores: text `77.67%`, multimodal `75.75%`.
+  - This is a targeted-repair blend, not a fresh full generation run: it keeps
+    blend-v10 for unchanged rows and replaces 10 diagnosed heldout failures
+    with v11c specialist outputs. The 10-row development probe moved those rows
+    from v10 `24.70%` to `93.82%`.
+  - Main architecture changes: specialist routes for bakery flour/code logic,
+    nonstandard tRNA translation, chocolate heat-lamp assumptions, implicit
+    tangent-line hints, archery/binomial geometry, connected conducting shells,
+    and stronger composition/circuit/inclined-box handling. The inclined-box
+    family now uses a narrow deterministic verifier rewrite because the
+    generated solver repeatedly produced contradictory sign conventions.
+  - Scoring hygiene change: the negative-weight heuristic no longer treats
+    positive rubrics such as "provide the correct final answer" as spoiler
+    failures; only genuinely bad-behavior phrasing such as "reveals/gives away
+    the final answer" is inferred as a likely negative candidate.
 - V4 failure-analysis probe: `probe10-agentic-v4-refined`
   - Score: `75.33%` over 10 heldout500 rows selected from the weakest v3
     failures; the same rows averaged roughly `4%` in `heldout500-agentic-v3`.

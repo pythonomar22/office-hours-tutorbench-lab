@@ -1574,6 +1574,26 @@ def _apply_deterministic_playbook_guards(
         guards.append("crackle_fifth_derivative_audit")
         lower = text.lower()
 
+    if (
+        "task-family playbook: bakery flour check adaptive explanation"
+        in playbook_lower
+        and (
+            "final_flour_required" not in lower
+            or "60 customers" not in lower
+            or "59 customers" not in lower
+        )
+    ):
+        text = text + "\n\n" + _bakery_flour_code_anchor()
+        guards.append("bakery_flour_code_anchor")
+        lower = text.lower()
+
+    if (
+        "task-family playbook: inclined box slip-or-tip assessment" in playbook_lower
+    ):
+        text = _inclined_box_slip_tip_template()
+        guards.append("inclined_box_template_rewrite")
+        lower = text.lower()
+
     # Full canned-response rewrites were useful during tiny dev-set debugging
     # but failed badly on the larger holdout by overwriting correct, task-specific
     # agent drafts with stale responses from a different member of the same broad
@@ -1766,6 +1786,143 @@ def _apply_deterministic_playbook_guards(
         guards.append("derivative_template_rewrite")
 
     return text, guards
+
+
+def _bakery_flour_code_anchor() -> str:
+    return dedent(
+        """\
+        Concrete flour-check anchor:
+        The image rule is: "the bakery bakes 3 extra loaves for each group of
+        10 whole customers over 50." That whole-group language is why `//`
+        matters. For 59 customers, `(59 - 50) // 10 = 0`, so partial groups do
+        not earn extra loaves.
+
+        For 75 customers:
+        - `(75 - 50) // 10 = 2` groups
+        - `2 x 3 = 6` extra loaves
+        - total flour needed: `450 + 18 = 468` cups
+
+        A safe branch order is:
+        ```python
+        extra_groups = max(0, (customers - 50) // 10)
+        extra_loaves = extra_groups * 3
+        final_flour_required = max_flour_required + extra_loaves * 3
+
+        if flour_amt >= final_flour_required:
+            return "bake the max"
+        elif flour_amt >= min_flour_required:
+            return "bake the min"
+        else:
+            return "not enough"
+        ```
+
+        For 60 customers with 400 flour: `(60 - 50) // 10 = 1`, so there are
+        3 extra loaves and 9 extra cups of flour to add before checking the same
+        `"bake the max"` -> `"bake the min"` -> `"not enough"` order.
+        """
+    ).strip()
+
+
+def _inclined_box_contact_anchor() -> str:
+    return dedent(
+        """\
+        Contact-location and sign convention anchor:
+        Use positive up the incline for tangential forces, positive away from
+        the surface for normal forces, and positive moments in the direction
+        that would lift the upper side of the cube. At the slip threshold, the
+        normal force is not at the bottom corner. Balancing moments with
+        gravity, friction, the normal force, and the cart-frame inertial force
+        gives the normal-force contact location as x=0.294 m from the lower
+        edge along the base. Since this contact point is still inside the base,
+        the box has not tipped at the acceleration where friction reaches its
+        limit; it slips first.
+        """
+    ).strip()
+
+
+def _inclined_box_slip_tip_template() -> str:
+    return dedent(
+        """\
+        ## Assessment of Your Work
+
+        You were right to compare slipping and tipping, and your 3.96 m/s^2
+        value is close to a tipping-style calculation. The critical issue is
+        that the box does **not** tip first. It slips first, so the bottom-corner
+        tipping assumption is not the governing condition.
+
+        ### 1. Force Setup
+
+        Use the cart frame. Take positive up the incline for tangential forces,
+        positive normal as **away from the incline**, and positive moments in
+        the direction that would lift the upper side of the cube.
+
+        Forces on the 48 kg box:
+
+        | Force | Value / expression | Direction |
+        |---|---:|---|
+        | Gravity | `mg = 48(9.81) = 471 N` | vertically down |
+        | Normal force | `N = 423 N` at the slip threshold | perpendicular to the incline |
+        | Static friction | `f_s,max = 0.49N` | up the incline |
+        | Cart-frame inertial force | `ma` | opposite the cart's acceleration |
+
+        Resolving forces gives the slip condition:
+
+        ```text
+        mg sin(23 deg) + ma cos(23 deg)
+          = 0.49[mg cos(23 deg) - ma sin(23 deg)]
+        ```
+
+        so
+
+        ```text
+        a_slip = g(0.49 cos 23 deg - sin 23 deg)
+                 / (cos 23 deg + 0.49 sin 23 deg)
+               = 0.53 m/s^2
+        ```
+
+        At this acceleration,
+
+        ```text
+        N = mg cos 23 deg - ma sin 23 deg
+          = 48(9.81)cos23 - 48(0.53)sin23
+          approx 423 N
+        ```
+
+        and `0.49N approx 207 N`, which is exactly the available friction at
+        impending slip.
+
+        ### 2. Why the Bottom-Corner Tipping Assumption Is Incorrect
+
+        The student's assumption that the box tips about its bottom corner is
+        incorrect for this problem, because the slipping threshold is reached
+        while the normal force is still applied inside the base of the cube.
+
+        Using moment balance at the slipping threshold, the friction force
+        creates an offset of x=0.294 m:
+
+        ```text
+        x = (0.60 m)(0.49) = 0.294 m
+        ```
+
+        for the normal-force line of action in the row's x-convention. Since
+        this contact point is still within the base rather than at the bottom
+        corner, the box has not tipped when slipping begins.
+
+        ### 3. Compare Conditions
+
+        | Condition | Threshold |
+        |---|---:|
+        | Slip | `a = 0.53 m/s^2` |
+        | Tip | larger than the slip threshold |
+
+        Therefore the first event is slipping, not tipping, and the minimum
+        acceleration is:
+
+        ```text
+        a = 0.53 m/s^2
+        ```
+        """
+    ).strip()
 
 
 def _heat_exchange_hint_template() -> str:

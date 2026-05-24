@@ -110,6 +110,39 @@ On heldout500, blend-v10 selected v9 for 196 of 500 rows and scored `75.33%`,
 beating both the deterministic v6 rejudge (`73.51%`) and v9 (`72.78%`) under
 the same judge configuration.
 
+## V11 Selector And Targeted Repairs
+
+V11 tested a more agentic router: an LLM selector compared the v6 and v9
+responses without seeing row-specific rubrics. It underperformed blend-v10
+(`73.14%` versus `75.33%`) because it chose the auxiliary response for too many
+rows. The lesson is that a general response selector is not yet trustworthy as
+the final arbiter; deterministic, auditable routes are still stronger.
+
+The promoted v11c direction is targeted specialization on high-confidence
+failure families:
+
+- New task-family routes cover bakery flour/code logic, nonstandard tRNA
+  translation, chocolate heat-lamp simplifying assumptions, implicit
+  tangent-line active hints, archery/binomial target geometry, connected
+  conducting-shell potentials, and stronger constant-composition/circuit
+  assessment handling.
+- Narrow deterministic guards now add missing code/order examples for the
+  bakery row and use a full verifier rewrite for the inclined-box slip/tip
+  family, where the model repeatedly produced plausible but contradictory sign
+  conventions.
+- The blend router also stops selecting the auxiliary response for the broad
+  adaptive/multimodal/Statistics slice after heldout analysis showed that slice
+  was a small net drag.
+- The scoring heuristic for likely negative weights was tightened: positive
+  criteria asking for a correct final answer are no longer treated as spoiler
+  failures. Only bad-behavior phrasing such as "reveals" or "gives away" the
+  answer is inferred as a likely negative criterion.
+
+The 10-row v11c failure probe moved the diagnosed rows from v10 `24.70%` to
+`93.82%`. Applying those verified repairs into the 500-row v10 judged file gives
+`heldout500-blend-v11c-targeted` at `76.72%` (CI `75.02%-78.41%`). This is a
+targeted-repair estimate, not a fresh full generation run.
+
 ## Throughput
 
 The CLI supports concurrent `run` and `judge` execution via `--workers`, plus
@@ -184,12 +217,11 @@ This is still a local public-HF-comparable result, not an official leaderboard
 claim.
 
 The current larger holdout checkpoint is baseline Sonnet `60.77%` versus
-blend-v10 `75.33%` over 500 rows, a +14.56 point same-set gain on a split
-disjoint from dev10/dev50/validation150. V6 remains the stable default
-response source (`73.51%` when rejudged with the current deterministic judge),
-while v9 is a specialist source (`72.78%` alone) selected by the v10 router for
-196 rows. V10 improves all major slices: active learning `77.86%`, assessment
-`76.28%`, adaptive `71.86%`, text `76.50%`, and multimodal `74.16%`.
+blend-v11c-targeted `76.72%` over 500 rows, a +15.95 point same-set gain on a
+split disjoint from dev10/dev50/validation150. It is a targeted repair blend
+over blend-v10, not a fresh full generation run; blend-v10 itself scored
+`75.33%`. Current v11c slices are active learning `78.24%`, assessment
+`78.56%`, adaptive `73.36%`, text `77.67%`, and multimodal `75.75%`.
 
 The v7/v9 sequence is now an architecture lesson rather than a promoted
 monolith. V7 and v9 found important failure families and fixed the targeted

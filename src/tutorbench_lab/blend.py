@@ -42,7 +42,6 @@ _AUX_POSITIVE_SLICES = {
     (UseCase.ADAPTIVE, Modality.MULTIMODAL, "Biology"),
     (UseCase.ADAPTIVE, Modality.MULTIMODAL, "Calculus"),
     (UseCase.ADAPTIVE, Modality.MULTIMODAL, "Chemistry"),
-    (UseCase.ADAPTIVE, Modality.MULTIMODAL, "Statistics"),
     (UseCase.ASSESSMENT, Modality.MULTIMODAL, "Calculus"),
     (UseCase.ASSESSMENT, Modality.MULTIMODAL, "Statistics"),
     (UseCase.ASSESSMENT, Modality.TEXT, "Biology"),

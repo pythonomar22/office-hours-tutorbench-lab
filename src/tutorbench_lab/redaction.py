@@ -157,6 +157,10 @@ def _trace_summary(record: JudgedRunRecord) -> dict[str, Any]:
         "stage_usage": _jsonable(trace.get("stage_usage") or {}),
         "stage_rate_limit_headers_present": bool(stage_rate_limits),
         "task_playbook": _playbook_name(trace.get("task_playbook")),
+        "selector_selected_source": trace.get("selector_selected_source"),
+        "selector_confidence": trace.get("selector_confidence"),
+        "blend_selected_source": trace.get("blend_selected_source"),
+        "blend_policy": trace.get("blend_policy"),
         "revision_attempt_count": len(trace.get("revision_attempts") or []),
         "critic_attempt_count": len(trace.get("critic_attempts") or []),
         "stopped_due_to_revision_limit": bool(

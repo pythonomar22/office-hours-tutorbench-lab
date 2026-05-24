@@ -1,0 +1,672 @@
+{
+  "playbooks": [
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "archery target binomial-geometry explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8275862068965517,
+      "name": "bakery flour check adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7777777777777778,
+      "name": "chi-square variance-test adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "chocolate-orb heat-pulse assumption explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "composition constant-range assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9565217391304348,
+      "name": "connected conducting-shell potential assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "implicit tangent-line active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "inclined box slip-or-tip assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8360655737704918,
+      "name": "nonstandard tRNA translation assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9838709677419355,
+      "name": "series/parallel circuit assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 6.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.8235294117647058,
+      "passed_positive_weight": 28.0,
+      "positive_weight": 34.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 0.8571428571428571,
+      "passed_positive_weight": 6.0,
+      "positive_weight": 7.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 13.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.8916666666666667,
+      "passed_positive_weight": 107.0,
+      "positive_weight": 120.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 11.0,
+      "name": "instruction_following",
+      "negative_criteria": 0,
+      "pass_rate": 0.9506726457399103,
+      "passed_positive_weight": 212.0,
+      "positive_weight": 223.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.9545454545454546,
+      "passed_positive_weight": 21.0,
+      "positive_weight": 22.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 0.9642857142857143,
+      "passed_positive_weight": 27.0,
+      "positive_weight": 28.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.9782608695652174,
+      "passed_positive_weight": 45.0,
+      "positive_weight": 46.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 28.0,
+      "positive_weight": 28.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.833879781420765,
+        "count": 5,
+        "mean_arrw": 0.9227686703096539,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.9565217391304348,
+        "count": 3,
+        "mean_arrw": 0.9801309022907901,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8275862068965517,
+        "name": "Understand"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.990065451145395,
+        "ci_low": 0.8480204342273308,
+        "count": 6,
+        "mean_arrw": 0.92429278192445,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.8770491803278688,
+        "count": 4,
+        "mean_arrw": 0.959016393442623,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8360655737704918,
+        "name": "Biology"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 1.0,
+        "count": 2,
+        "mean_arrw": 1.0,
+        "name": "Calculus"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8275862068965517,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.9673913043478262,
+        "count": 4,
+        "mean_arrw": 0.9850981767180926,
+        "name": "Physics"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.7777777777777778,
+        "count": 2,
+        "mean_arrw": 0.8888888888888888,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.8026819923371648,
+        "count": 4,
+        "mean_arrw": 0.9013409961685823,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.9967741935483871,
+        "ci_low": 0.8929436920883821,
+        "count": 5,
+        "mean_arrw": 0.9552916561285725,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 0,
+    "overall": {
+      "ci_high": 0.9896914446002805,
+      "ci_low": 0.8792313256380799,
+      "count": 10,
+      "mean_arrw": 0.9381822265317191,
+      "name": "overall"
+    },
+    "run_id": "mixed"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 604198,
+    "generation_output_tokens": 71845,
+    "judge_input_tokens": 33577,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 2562,
+    "mean_generation_latency_ms": 136627.2,
+    "mean_judge_latency_ms": 4742,
+    "negative_weight_review_count": 0,
+    "row_count": 10,
+    "run_id": "heldout-v11b-failure-probe",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1989000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19999
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2389000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 10,
+      "coverage_critic_0": 10,
+      "coverage_critic_1": 2,
+      "coverage_critic_2": 2,
+      "critic_0": 10,
+      "critic_1": 2,
+      "critic_2": 2,
+      "domain_verifier": 10,
+      "perception": 6,
+      "planner": 10,
+      "revision_1": 2,
+      "revision_2": 2,
+      "solver": 10,
+      "specialist_audit": 6
+    },
+    "stage_mean_latency_ms": {
+      "composer": 21465.5,
+      "coverage_critic_0": 6691.5,
+      "coverage_critic_1": 9384,
+      "coverage_critic_2": 7485.5,
+      "critic_0": 7462.3,
+      "critic_1": 12856.5,
+      "critic_2": 9472,
+      "domain_verifier": 15792.5,
+      "perception": 14567.17,
+      "planner": 19537.2,
+      "revision_1": 21455,
+      "revision_2": 24052.5,
+      "solver": 27187.3,
+      "specialist_audit": 21349.17
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.8780487804878049,
+      "passed_positive_weight": 36.0,
+      "positive_weight": 41.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 6.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.8846153846153846,
+      "passed_positive_weight": 46.0,
+      "positive_weight": 52.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 8.0,
+      "name": "Not applicable",
+      "negative_criteria": 0,
+      "pass_rate": 0.9316239316239316,
+      "passed_positive_weight": 109.0,
+      "positive_weight": 117.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 2.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.95,
+      "passed_positive_weight": 38.0,
+      "positive_weight": 40.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 27.0,
+      "positive_weight": 27.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 67.0,
+      "positive_weight": 67.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 6.0,
+      "positive_weight": 6.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.7777777777777778,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must restate the counts of all the flavors as Apple: 28, Berry: 23, Alpaca: 27, Orange: 22, and Total: 100.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must restate the The Chi-Square formula as $$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must calculate each flavor value as Apple: $25 (28 - 25)^2 = 25 \\cdot 3^2 = 25 \\cdot 9 = 0.36$ Berry: $25 (23 - 25)^2 = 25 \\cdot -2^2 = 25 \\cdot 4 = 0.16$ Cherry: $...",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response should follow guidelines by using proper LaTeX formatting for equations.",
+          "criterion_index": 13,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 4,
+      "modality": "multimodal",
+      "playbook": "chi-square variance-test adaptive explanation",
+      "response_preview": "## Fixing the Direction of the Rejection Rule First, a quick correction from the earlier explanation: the third flavor in your problem is **Cherry** (not \"Alpaca\" \u2014 that was a typo on my end). All the numbers remain exactly the same. --- ### Your Exact Conf...",
+      "rubric_count": 14,
+      "subject": "Statistics",
+      "task_id": "683e3d8fa08f8bb26159720b",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8275862068965517,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must show that the student incorrectly used the wrong operator / instead of // in the code and must explain that / would result in a float and is incorrect for coun...",
+          "criterion_index": 3,
+          "dimensions": [
+            "truthfulness",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "bakery flour check adaptive explanation",
+      "response_preview": "I can hear the frustration \u2014 this kind of bug is genuinely maddening because your math might be perfectly correct, and the function still silently returns nothing. Let's fix it. **First, a heads-up:** your code screenshot didn't come through in your submiss...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "6811d40e6b7f984ce18baebb",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8360655737704918,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the student response did not identify the STOP codon in the mRNA sequence (UAG), AND determine the source/type of error (i.e. conceptual).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a detailed explanation correctly solving the question, including: the original coding sequence (CDS): 5'-AUG-AGU-ACU-UCC-CGC-CGA-UAG-3'; AND the origin...",
+          "criterion_index": 11,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "nonstandard tRNA translation assessment",
+      "response_preview": "## Feedback on Your Nonstandard tRNA Translation Your confusion here is completely understandable \u2014 nonstandard tRNA charging is genuinely tricky because the mRNA sequence stays exactly the same; only the amino acid *cargo* attached to the tRNA changes. You...",
+      "rubric_count": 13,
+      "subject": "Biology",
+      "task_id": "68097912014bb68a4c65e4a1",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.9565217391304348,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must reference infinity as the potential reference point (V = 0) and interpret potentials accordingly when applying Gauss's Law.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "connected conducting-shell potential assessment",
+      "response_preview": "## Assessment of Your Work Your self-doubt at the end is well-calibrated \u2014 there is a foundational error, but your instinct to use **potential equality as the equilibrium condition** is exactly right. Let's fix the root mistake and rebuild from there. --- #...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "683e45109394b13fefb08e44",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.9838709677419355,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response should use an encouraging tone by using elements such as statements that express enthusiasm or willingness to assist.",
+          "criterion_index": 7,
+          "dimensions": [
+            "style_tone"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "series/parallel circuit assessment",
+      "response_preview": "## Assessment of Your Circuit Solution Your approach of redrawing the circuit in simplified stages is exactly the right strategy \u2014 that's good circuit analysis thinking. You also correctly identified that R\u2085 + R\u2086 = 200 \u03a9 as a first step. However, all three...",
+      "rubric_count": 14,
+      "subject": "Physics",
+      "task_id": "681b84ff94969ef6e11908e0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "chocolate-orb heat-pulse assumption explanation",
+      "response_preview": "You are correct to question the practicalities of the scenario \u2014 this is a genuinely sharp physical observation, not a misunderstanding. ## What You've Spotted In a real experiment, the surrounding media *would* interact differently with the incoming lamp r...",
+      "rubric_count": 6,
+      "subject": "Physics",
+      "task_id": "6847710ac4590722c4324810",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "implicit tangent-line active hint",
+      "response_preview": "You're thinking about this exactly right \u2014 implicit differentiation is the correct tool here, and your right-side derivative **3x\u00b2 \u2212 1** is correct. Let's clear up the two specific things you're unsure about. --- ## 1. Does d/dx(y\u2074) need a dy/dx factor? Yes...",
+      "rubric_count": 8,
+      "subject": "Calculus",
+      "task_id": "68477209e96863adfe492508",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "inclined box slip-or-tip assessment",
+      "response_preview": "## Assessment of Your Work You were right to compare slipping and tipping, and your 3.96 m/s^2 value is close to a tipping-style calculation. The critical issue is that the box does **not** tip first. It slips first, so the bottom-corner tipping assumption...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "68377588415e67c44f4734b6",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "composition constant-range assessment",
+      "response_preview": "## Assessment of Your Work Your instinct to examine where g(x) jumps is exactly the right starting point \u2014 that's good mathematical thinking. However, there are two independent errors that compound each other, and together they lead to the wrong answer. Let...",
+      "rubric_count": 9,
+      "subject": "Calculus",
+      "task_id": "683776272f4468651311d6dc",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "archery target binomial-geometry explanation",
+      "response_preview": "Great questions \u2014 and I want to be upfront: the earlier explanation had **three errors** that your follow-up questions helped uncover. Let me fix the geometry carefully, explain the assumptions, and then set you up to finish the binomial calculation yoursel...",
+      "rubric_count": 17,
+      "subject": "Statistics",
+      "task_id": "683e3d8d9394b13fefb087f2",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    }
+  ]
+}

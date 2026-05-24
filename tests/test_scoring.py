@@ -10,7 +10,13 @@ from tutorbench_lab.judge import (
     parse_judge_json_for_indices,
 )
 from tutorbench_lab.protocol import build_turn_input
-from tutorbench_lab.schemas import CriterionRating, JudgeResult, Strategy, TutorResponse
+from tutorbench_lab.schemas import (
+    CriterionRating,
+    JudgeResult,
+    RubricCriterion,
+    Strategy,
+    TutorResponse,
+)
 from tutorbench_lab.tutor import record_for_response
 
 
@@ -43,6 +49,23 @@ def test_arrw_uses_critical_weights_and_clamps_negative(active_learning_example)
     assert raw == -5.0
     assert clamped == 0.0
     assert manual_review is True
+
+
+def test_positive_final_answer_rubric_is_not_spoiler_negative() -> None:
+    positive = RubricCriterion(
+        criteria=(
+            "The response should correctly provide the final answer rounded to "
+            "two decimal places."
+        )
+    )
+    negative = RubricCriterion(
+        criteria="The response reveals the final answer directly."
+    )
+
+    assert positive.negative_weight_candidate is False
+    assert positive.inferred_weight == 1
+    assert negative.negative_weight_candidate is True
+    assert negative.inferred_weight == -5
 
 
 def test_heuristic_judge_produces_judged_record(adaptive_example):

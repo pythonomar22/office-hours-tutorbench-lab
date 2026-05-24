@@ -1,0 +1,812 @@
+{
+  "playbooks": [
+    {
+      "count": 1,
+      "mean_arrw": 0.9777777777777777,
+      "name": "archery target binomial-geometry explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.41379310344827586,
+      "name": "bakery flour check adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.7058823529411765,
+      "name": "chi-square variance-test adaptive explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "chocolate-orb heat-pulse assumption explanation"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8611111111111112,
+      "name": "composition constant-range assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 1.0,
+      "name": "implicit tangent-line active hint"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.5,
+      "name": "inclined box slip-or-tip assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.2608695652173913,
+      "name": "none"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.8360655737704918,
+      "name": "nonstandard tRNA translation assessment"
+    },
+    {
+      "count": 1,
+      "mean_arrw": 0.9193548387096774,
+      "name": "series/parallel circuit assessment"
+    }
+  ],
+  "rubric_dimensions": [
+    {
+      "failed_positive_weight": 7.0,
+      "name": "visual_perception",
+      "negative_criteria": 0,
+      "pass_rate": 0.6818181818181818,
+      "passed_positive_weight": 15.0,
+      "positive_weight": 22.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 12.0,
+      "name": "visual_reasoning",
+      "negative_criteria": 0,
+      "pass_rate": 0.7391304347826086,
+      "passed_positive_weight": 34.0,
+      "positive_weight": 46.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 38.0,
+      "name": "instruction_following",
+      "negative_criteria": 3,
+      "pass_rate": 0.8240740740740741,
+      "passed_positive_weight": 178.0,
+      "positive_weight": 216.0,
+      "rows_with_failure": 8,
+      "triggered_negative_criteria": 2
+    },
+    {
+      "failed_positive_weight": 1.0,
+      "name": "conciseness_relevance",
+      "negative_criteria": 0,
+      "pass_rate": 0.8571428571428571,
+      "passed_positive_weight": 6.0,
+      "positive_weight": 7.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "student_level_calibration",
+      "negative_criteria": 0,
+      "pass_rate": 0.875,
+      "passed_positive_weight": 105.0,
+      "positive_weight": 120.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 3.0,
+      "name": "truthfulness",
+      "negative_criteria": 0,
+      "pass_rate": 0.9117647058823529,
+      "passed_positive_weight": 31.0,
+      "positive_weight": 34.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "emotional_component",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 28.0,
+      "positive_weight": 28.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "style_tone",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 28.0,
+      "positive_weight": 28.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "score_report": {
+    "by_bloom": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "Analyze"
+      },
+      {
+        "ci_high": 0.962768670309654,
+        "ci_low": 0.6367320261437909,
+        "count": 5,
+        "mean_arrw": 0.8039451408978893,
+        "name": "Apply"
+      },
+      {
+        "ci_high": 0.9193548387096774,
+        "ci_low": 0.2608695652173913,
+        "count": 3,
+        "mean_arrw": 0.6804451716793933,
+        "name": "Evaluate"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.41379310344827586,
+        "name": "Understand"
+      }
+    ],
+    "by_modality": [
+      {
+        "ci_high": 0.8838358282381052,
+        "ci_low": 0.486437336887112,
+        "count": 6,
+        "mean_arrw": 0.6897981248675683,
+        "name": "multimodal"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.625,
+        "count": 4,
+        "mean_arrw": 0.834016393442623,
+        "name": "text"
+      }
+    ],
+    "by_subject": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.8360655737704918,
+        "name": "Biology"
+      },
+      {
+        "ci_high": 1.0,
+        "ci_low": 0.8611111111111112,
+        "count": 2,
+        "mean_arrw": 0.9305555555555556,
+        "name": "Calculus"
+      },
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 0.41379310344827586,
+        "name": "Computer Science"
+      },
+      {
+        "ci_high": 0.9596774193548387,
+        "ci_low": 0.32065217391304346,
+        "count": 4,
+        "mean_arrw": 0.6700561009817672,
+        "name": "Physics"
+      },
+      {
+        "ci_high": 0.9777777777777777,
+        "ci_low": 0.7058823529411765,
+        "count": 2,
+        "mean_arrw": 0.8418300653594771,
+        "name": "Statistics"
+      }
+    ],
+    "by_use_case": [
+      {
+        "ci_high": null,
+        "ci_low": null,
+        "count": 1,
+        "mean_arrw": 1.0,
+        "name": "active_learning"
+      },
+      {
+        "ci_high": 0.9888888888888889,
+        "ci_low": 0.486815415821501,
+        "count": 4,
+        "mean_arrw": 0.7743633085418076,
+        "name": "adaptive"
+      },
+      {
+        "ci_high": 0.8793994946824137,
+        "ci_low": 0.42373485388453314,
+        "count": 5,
+        "mean_arrw": 0.6754802177617343,
+        "name": "assessment"
+      }
+    ],
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "negative_weight_review_count": 3,
+    "overall": {
+      "ci_high": 0.8969398907103825,
+      "ci_low": 0.5727244521319353,
+      "count": 10,
+      "mean_arrw": 0.7474854322975901,
+      "name": "overall"
+    },
+    "run_id": "heldout-v11-failure-probe"
+  },
+  "summary": {
+    "candidate_model": "anthropic:claude-sonnet-4-6",
+    "dataset_revision": "c70d2311cdca7129cab9376ba22eaa97c3cff3d7",
+    "generation_input_tokens": 507660,
+    "generation_output_tokens": 68146,
+    "judge_input_tokens": 34009,
+    "judge_model": "anthropic:claude-sonnet-4-6",
+    "judge_output_tokens": 2567,
+    "mean_generation_latency_ms": 131521.1,
+    "mean_judge_latency_ms": 4424.3,
+    "negative_weight_review_count": 3,
+    "row_count": 10,
+    "run_id": "heldout-v11-failure-probe",
+    "strategy": "agentic"
+  },
+  "throughput": {
+    "rate_limits": {
+      "anthropic-ratelimit-input-tokens-limit": {
+        "max_limit": 2000000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-input-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 1993000
+      },
+      "anthropic-ratelimit-output-tokens-limit": {
+        "max_limit": 400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-output-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 399000
+      },
+      "anthropic-ratelimit-requests-limit": {
+        "max_limit": 20000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-requests-remaining": {
+        "max_limit": null,
+        "min_remaining": 19998
+      },
+      "anthropic-ratelimit-tokens-limit": {
+        "max_limit": 2400000,
+        "min_remaining": null
+      },
+      "anthropic-ratelimit-tokens-remaining": {
+        "max_limit": null,
+        "min_remaining": 2393000
+      }
+    },
+    "retry_after_header_count": 0,
+    "stage_counts": {
+      "composer": 10,
+      "coverage_critic_0": 10,
+      "coverage_critic_1": 2,
+      "critic_0": 10,
+      "critic_1": 2,
+      "domain_verifier": 10,
+      "perception": 6,
+      "planner": 10,
+      "revision_1": 2,
+      "solver": 10,
+      "specialist_audit": 6
+    },
+    "stage_mean_latency_ms": {
+      "composer": 22927.4,
+      "coverage_critic_0": 7544.1,
+      "coverage_critic_1": 10680.5,
+      "critic_0": 7402.5,
+      "critic_1": 6881,
+      "domain_verifier": 16389.8,
+      "perception": 15340.5,
+      "planner": 19942.2,
+      "revision_1": 26983.5,
+      "solver": 26354.4,
+      "specialist_audit": 21412.33
+    }
+  },
+  "tutoring_skills": [
+    {
+      "failed_positive_weight": 5.0,
+      "name": "Includes examples/ analogy",
+      "negative_criteria": 0,
+      "pass_rate": 0.16666666666666666,
+      "passed_positive_weight": 1.0,
+      "positive_weight": 6.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 15.0,
+      "name": "Identifying correct steps by student",
+      "negative_criteria": 0,
+      "pass_rate": 0.7761194029850746,
+      "passed_positive_weight": 52.0,
+      "positive_weight": 67.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 6.0,
+      "name": "Identifying Core difficulty/ misconception attribution",
+      "negative_criteria": 0,
+      "pass_rate": 0.7777777777777778,
+      "passed_positive_weight": 21.0,
+      "positive_weight": 27.0,
+      "rows_with_failure": 2,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 22.0,
+      "name": "Not applicable",
+      "negative_criteria": 2,
+      "pass_rate": 0.808695652173913,
+      "passed_positive_weight": 93.0,
+      "positive_weight": 115.0,
+      "rows_with_failure": 5,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 6.0,
+      "name": "Stating definitions/ formulae/ theorems/ laws",
+      "negative_criteria": 0,
+      "pass_rate": 0.85,
+      "passed_positive_weight": 34.0,
+      "positive_weight": 40.0,
+      "rows_with_failure": 4,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 7.0,
+      "name": "Step by step help/ analysis",
+      "negative_criteria": 0,
+      "pass_rate": 0.8653846153846154,
+      "passed_positive_weight": 45.0,
+      "positive_weight": 52.0,
+      "rows_with_failure": 3,
+      "triggered_negative_criteria": 0
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Identifying incorrect steps by student",
+      "negative_criteria": 1,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 36.0,
+      "positive_weight": 36.0,
+      "rows_with_failure": 1,
+      "triggered_negative_criteria": 1
+    },
+    {
+      "failed_positive_weight": 0.0,
+      "name": "Provides alternative solutions/ paths/",
+      "negative_criteria": 0,
+      "pass_rate": 1.0,
+      "passed_positive_weight": 10.0,
+      "positive_weight": 10.0,
+      "rows_with_failure": 0,
+      "triggered_negative_criteria": 0
+    }
+  ],
+  "weakest_rows": [
+    {
+      "arrw": 0.2608695652173913,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must correctly interpret the image and identify that shell A is connected to shell C via a conducting wire, while shell B is isolated from shell C.",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must recognize that only shells A and C are directly connected and therefore must have equal potentials at equilibrium.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must reference infinity as the potential reference point (V = 0) and interpret potentials accordingly when applying Gauss's Law.",
+          "criterion_index": 2,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must explain that when the switch is closed, charges redistribute between shells A and C to equalize potential, while conserving total charge. Shell B is not involv...",
+          "criterion_index": 3,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must include correct expressions for the final charge distribution and shell potentials after equilibrium. These could follow from setting potentials of A and C equ...",
+          "criterion_index": 5,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "none",
+      "response_preview": "## Assessment of Your Work Your instincts are good in several places, and your uncertainty at the end is well-founded \u2014 there are some important errors to fix. Let me go through everything carefully. --- ## \u2705 What You Got Right **1. V_B = V_C at equilibrium...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "683e45109394b13fefb08e44",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.41379310344827586,
+      "bloom_taxonomy": "Understand",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explicitly state, using the wording from the image, that \"the bakery bakes 3 extra loaves for each group of 10 whole customers over 50\".",
+          "criterion_index": 0,
+          "dimensions": [
+            "visual_perception"
+          ],
+          "severity": "deleted",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must show a code block where the function returns \"bake the max\" only when flour_amt >= final_flour_required",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must check for \"bake the max\" first, then \"bake the min\", then \"not enough\", in that order, and must show this order in the code.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying correct steps by student",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must explain why partial groups wont work in the case of a normal divison operator \"/\", and show an example (59 customers, the extra loaves is 0 still)",
+          "criterion_index": 6,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Includes examples/ analogy",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must show a step by step calculation for 60 customers with 400 flour from the examples in the image",
+          "criterion_index": 7,
+          "dimensions": [
+            "visual_reasoning"
+          ],
+          "severity": "deleted",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "bakery flour check adaptive explanation",
+      "response_preview": "It's completely understandable to feel frustrated when your function returns `None` \u2014 it's one of those bugs that gives you no error message at all, which makes it especially tricky to track down. The good news: this is a very common, very fixable issue. --...",
+      "rubric_count": 9,
+      "subject": "Computer Science",
+      "task_id": "6811d40e6b7f984ce18baebb",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.5,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must calculate the distance $x=0.294 m$ where the normal force is applied to the box by the cart at the moment of slipping.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response should specify what directions are assumed positive when summing moments and forces.",
+          "criterion_index": 6,
+          "dimensions": [
+            "truthfulness"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "inclined box slip-or-tip assessment",
+      "response_preview": "## Assessment of Your Work --- ### What You Did Right - Recognizing that the problem asks for the **minimum** acceleration to cause *either* slip *or* tip is the correct framing \u2014 you need both thresholds and report the smaller one. - Correctly carrying the...",
+      "rubric_count": 7,
+      "subject": "Physics",
+      "task_id": "68377588415e67c44f4734b6",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response should correctly provide the final answer rounded to two decimal places as $a=0.53 m/s^2$.",
+          "criterion_index": 4,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.7058823529411765,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain the null hypothesis by stating the proportion of each flavor in the fruit snacks is equal (25% for each).",
+          "criterion_index": 0,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must restate the counts of all the flavors as Apple: 28, Berry: 23, Alpaca: 27, Orange: 22, and Total: 100.",
+          "criterion_index": 1,
+          "dimensions": [
+            "visual_perception",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must restate the The Chi-Square formula as $$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$.",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Stating definitions/ formulae/ theorems/ laws",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response must calculate each flavor value as Apple: $25 (28 - 25)^2 = 25 \\cdot 3^2 = 25 \\cdot 9 = 0.36$ Berry: $25 (23 - 25)^2 = 25 \\cdot -2^2 = 25 \\cdot 4 = 0.16$ Cherry: $...",
+          "criterion_index": 3,
+          "dimensions": [
+            "visual_reasoning",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 1
+        },
+        {
+          "criteria_preview": "The response should follow guidelines by using proper LaTeX formatting for equations.",
+          "criterion_index": 13,
+          "dimensions": [
+            "conciseness_relevance"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 5,
+      "modality": "multimodal",
+      "playbook": "chi-square variance-test adaptive explanation",
+      "response_preview": "## Fixing the Direction of the Decision Rule You're right that p \u2248 0.79 is much larger than 0.05 \u2014 that observation is correct. But here's the key: the direction of the rule is the opposite of what you described. **The rejection rule is:** > Reject H\u2080 when...",
+      "rubric_count": 14,
+      "subject": "Statistics",
+      "task_id": "683e3d8fa08f8bb26159720b",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 0.8360655737704918,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must state that the student response did not identify the STOP codon in the mRNA sequence (UAG), AND determine the source/type of error (i.e. conceptual).",
+          "criterion_index": 2,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        },
+        {
+          "criteria_preview": "The response must provide a detailed explanation correctly solving the question, including: the original coding sequence (CDS): 5'-AUG-AGU-ACU-UCC-CGC-CGA-UAG-3'; AND the origin...",
+          "criterion_index": 11,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Step by step help/ analysis",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 2,
+      "modality": "text",
+      "playbook": "nonstandard tRNA translation assessment",
+      "response_preview": "## Feedback on Your Translation Work It's completely understandable to feel thrown off by nonstandard tRNA charging \u2014 you're right that it's unusual, and the fact that you recognized *which* codons are affected shows good instincts. Let's work through exact...",
+      "rubric_count": 13,
+      "subject": "Biology",
+      "task_id": "68097912014bb68a4c65e4a1",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.8611111111111112,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "multimodal",
+      "playbook": "composition constant-range assessment",
+      "response_preview": "## Feedback on Your Work Your instinct to examine the floor/ceiling behavior and identify the integer points in (\u22122, 2) is exactly the right starting move \u2014 good thinking. However, there are two significant errors that change the answer completely. Let me w...",
+      "rubric_count": 9,
+      "subject": "Calculus",
+      "task_id": "683776272f4468651311d6dc",
+      "triggered_negative": [
+        {
+          "criteria_preview": "The response must explicitly state that the student\u2019s final answer (e.g., c + d=6) is incorrect.",
+          "criterion_index": 7,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Identifying incorrect steps by student",
+          "weight": -5
+        }
+      ],
+      "triggered_negative_count": 1,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.9193548387096774,
+      "bloom_taxonomy": "Evaluate",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain the theory behind the current splits unevenly because of the difference in resistances due to parallel branching.",
+          "criterion_index": 11,
+          "dimensions": [
+            "instruction_following"
+          ],
+          "severity": "critical",
+          "tutoring_skill": "Not applicable",
+          "weight": 5
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "series/parallel circuit assessment",
+      "response_preview": "# Circuit Analysis Feedback You've shown good instincts in several places \u2014 you correctly identified that series pairs combine by addition (R\u2081 + R\u2082 = 200 \u03a9, R\u2085 + R\u2086 = 200 \u03a9), and you correctly reached for Ohm's Law and a power formula. However, all three fi...",
+      "rubric_count": 14,
+      "subject": "Physics",
+      "task_id": "681b84ff94969ef6e11908e0",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "assessment"
+    },
+    {
+      "arrw": 0.9777777777777777,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [
+        {
+          "criteria_preview": "The response must explain the relevance of the assumption that there are only binary outcomes, since it is crucial aspect in establishing the binomial setting, such as having on...",
+          "criterion_index": 15,
+          "dimensions": [
+            "instruction_following",
+            "student_level_calibration"
+          ],
+          "severity": "not_critical",
+          "tutoring_skill": "Identifying Core difficulty/ misconception attribution",
+          "weight": 1
+        }
+      ],
+      "failed_positive_count": 1,
+      "modality": "multimodal",
+      "playbook": "archery target binomial-geometry explanation",
+      "response_preview": "# Addressing Your Three Confusions You've caught some real errors in the earlier explanation \u2014 let me work through each of your questions carefully. --- ## 1. The Square's Area Your instinct to question the area of 100 was right, but 256 isn't quite correct...",
+      "rubric_count": 17,
+      "subject": "Statistics",
+      "task_id": "683e3d8d9394b13fefb087f2",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Analyze",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "chocolate-orb heat-pulse assumption explanation",
+      "response_preview": "You are correct to question the setup \u2014 this is a genuinely sharp physical observation, not a misunderstanding. In a real experiment, you would be right that the surrounding media would complicate things. Aerogel, open air, and marble all interact different...",
+      "rubric_count": 6,
+      "subject": "Physics",
+      "task_id": "6847710ac4590722c4324810",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "adaptive"
+    },
+    {
+      "arrw": 1.0,
+      "bloom_taxonomy": "Apply",
+      "failed_positive": [],
+      "failed_positive_count": 0,
+      "modality": "text",
+      "playbook": "implicit tangent-line active hint",
+      "response_preview": "## You're on the right track \u2014 let me clear up both uncertainties Your instinct about the right-hand side is spot on: **d/dx(x\u00b3 \u2212 x + 2) = 3x\u00b2 \u2212 1** \u2713. And your instinct that something is missing from your `4y\u00b3 (?)` is also correct. Let's fill in both gaps....",
+      "rubric_count": 8,
+      "subject": "Calculus",
+      "task_id": "68477209e96863adfe492508",
+      "triggered_negative": [],
+      "triggered_negative_count": 0,
+      "use_case": "active_learning"
+    }
+  ]
+}

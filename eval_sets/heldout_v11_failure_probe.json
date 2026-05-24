@@ -1,0 +1,52 @@
+{
+  "description": "Targeted heldout500 weak-row probe for the agentic-v11 specialist-router iteration. Chosen from v10/v11 failure analysis to cover Office Hours-style tutoring gaps across assessment, adaptive explanation, active learning, multimodal perception, code, physics, biology, calculus, and statistics.",
+  "name": "heldout_v11_failure_probe",
+  "selection_policy": [
+    "source_examples=data/processed/examples.jsonl",
+    "manual_from_heldout500_weak_rows",
+    "rubric_blind_candidate_generation",
+    "development_probe_not_claimed_as_leaderboard_score"
+  ],
+  "task_ids": [
+    {
+      "task_id": "68377588415e67c44f4734b6",
+      "why": "assessment:text; Physics; inclined box slip-or-tip weak row"
+    },
+    {
+      "task_id": "683776272f4468651311d6dc",
+      "why": "assessment:multimodal; Calculus; composition constant-range weak row"
+    },
+    {
+      "task_id": "6811d40e6b7f984ce18baebb",
+      "why": "adaptive:multimodal; Computer Science; bakery flour/code weak row"
+    },
+    {
+      "task_id": "6847710ac4590722c4324810",
+      "why": "adaptive:text; Physics; heat-lamp simplifying-assumption weak row"
+    },
+    {
+      "task_id": "68097912014bb68a4c65e4a1",
+      "why": "assessment:text; Biology; nonstandard tRNA translation weak row"
+    },
+    {
+      "task_id": "681b84ff94969ef6e11908e0",
+      "why": "assessment:multimodal; Physics; resistor-network visual reasoning weak row"
+    },
+    {
+      "task_id": "68477209e96863adfe492508",
+      "why": "active_learning:text; Calculus; implicit tangent-line scaffolding weak row"
+    },
+    {
+      "task_id": "683e3d8d9394b13fefb087f2",
+      "why": "adaptive:multimodal; Statistics; archery target/binomial geometry weak row"
+    },
+    {
+      "task_id": "683e3d8fa08f8bb26159720b",
+      "why": "adaptive:multimodal; Statistics; chi-square visual statistics regression row"
+    },
+    {
+      "task_id": "683e45109394b13fefb08e44",
+      "why": "assessment:multimodal; Chemistry; multimodal assessment residual-risk row"
+    }
+  ]
+}

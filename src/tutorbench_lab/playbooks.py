@@ -27,6 +27,8 @@ def build_task_playbook(
     if turn.subject.lower() == "computer science":
         if use_case == "adaptive" and _has_days_in_month_switch_context(text):
             notes.append(_days_in_month_switch_adaptive_playbook())
+        if use_case == "adaptive" and _has_bakery_flour_context(text):
+            notes.append(_bakery_flour_adaptive_playbook())
         if use_case == "assessment" and _has_binary_search_overflow_context(text):
             notes.append(_binary_search_overflow_assessment_playbook())
         if use_case == "assessment" and _has_binary_tree_traversal_context(text):
@@ -128,6 +130,11 @@ def build_task_playbook(
         ):
             notes.append(_composition_constant_range_assessment_playbook())
         if (
+            turn.use_case.value == "active_learning"
+            and _has_implicit_tangent_line_context(text)
+        ):
+            notes.append(_implicit_tangent_line_hint_playbook())
+        if (
             turn.use_case.value == "adaptive"
             and _has_piecewise_nondifferentiability_context(text)
         ):
@@ -165,6 +172,12 @@ def build_task_playbook(
         and _has_start_codon_insertion_context(text)
     ):
         notes.append(_start_codon_insertion_assessment_playbook())
+    if (
+        turn.subject.lower() == "biology"
+        and use_case == "assessment"
+        and _has_nonstandard_trna_translation_context(text)
+    ):
+        notes.append(_nonstandard_trna_translation_assessment_playbook())
     if (
         turn.subject.lower() == "biology"
         and use_case == "assessment"
@@ -307,6 +320,12 @@ def build_task_playbook(
         notes.append(_chi_square_variance_adaptive_playbook())
     if (
         turn.subject.lower() == "statistics"
+        and use_case == "adaptive"
+        and _has_archery_target_binomial_context(text)
+    ):
+        notes.append(_archery_target_binomial_adaptive_playbook())
+    if (
+        turn.subject.lower() == "statistics"
         and use_case == "assessment"
         and _has_trig_accumulation_probability_context(text)
     ):
@@ -336,6 +355,12 @@ def build_task_playbook(
         and _has_bulb_parallel_switch_context(text)
     ):
         notes.append(_bulb_parallel_switch_adaptive_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "adaptive"
+        and _has_chocolate_heat_lamp_context(text)
+    ):
+        notes.append(_chocolate_heat_lamp_adaptive_playbook())
     if (
         turn.subject.lower() == "physics"
         and use_case == "active_learning"
@@ -378,6 +403,12 @@ def build_task_playbook(
         and _has_series_parallel_circuit_context(text)
     ):
         notes.append(_series_parallel_circuit_assessment_playbook())
+    if (
+        turn.subject.lower() == "physics"
+        and use_case == "assessment"
+        and _has_connected_shell_potential_context(text)
+    ):
+        notes.append(_connected_shell_potential_assessment_playbook())
     if (
         turn.subject.lower() == "calculus"
         and use_case == "assessment"
@@ -461,9 +492,44 @@ def _has_ci_z_vs_t_context(text: str) -> bool:
 
 
 def _has_series_parallel_circuit_context(text: str) -> bool:
-    return _has_any(text, ["current of the 3", "3ω", "3ohm", "3 ohm", "3Ω"]) and _has_any(
+    explicit_small_circuit = _has_any(
+        text, ["current of the 3", "3ω", "3ohm", "3 ohm", "3Ω"]
+    ) and _has_any(
         text,
         ["12v", "12 v", "6ω", "6ohm", "6 ohm", "6Ω", "5ω", "5ohm", "5 ohm", "5Ω"],
+    )
+    large_visual_circuit = _has_any(
+        text,
+        [
+            "circuit problem shown in the image",
+            "student's solution to the circuit",
+            "student solution to the circuit",
+        ],
+    ) and _has_any(
+        text,
+        ["600 ohms", "600ω", "1a", "100w", "r_eq", "resistor 6", "power through"],
+    )
+    return explicit_small_circuit or large_visual_circuit
+
+
+def _has_connected_shell_potential_context(text: str) -> bool:
+    return (
+        _has_any(text, ["v_b = v_c", "vb = vc", "v_b=v_c", "vb=vc"])
+        and _has_any(text, ["gauss", "potential", "equilibrium"])
+        and _has_any(text, ["shell", "conducting wire", "wire"])
+    )
+
+
+def _has_bakery_flour_context(text: str) -> bool:
+    return _has_any(text, ["bakery", "loaves", "flour"]) and _has_any(
+        text,
+        [
+            "bake the max",
+            "bake the min",
+            "not enough",
+            "check_flour",
+            "customers over 50",
+        ],
     )
 
 
@@ -534,6 +600,14 @@ def _has_bulb_parallel_switch_context(text: str) -> bool:
             _has_any(text, ["**c**", "**d**"])
             or all(re.search(rf"\b{letter}\b", text) for letter in ["a", "b", "c", "d"])
         )
+    )
+
+
+def _has_chocolate_heat_lamp_context(text: str) -> bool:
+    return (
+        _has_any(text, ["chocolate", "orb", "orbs"])
+        and _has_any(text, ["heat lamp", "heat lamps", "same heat pulse"])
+        and _has_any(text, ["aerogel", "silk", "marble", "different media"])
     )
 
 
@@ -756,7 +830,26 @@ def _has_composition_constant_range_context(text: str) -> bool:
     return (
         _has_any(text, ["h(x)", "f(g(x))", "h = f(g"])
         and _has_any(text, ["discontinuities in g", "discontinuities of g", "g(x)"])
-        and _has_any(text, ["f(x) = 2", "f(x)=2", "constant"])
+        and _has_any(
+            text,
+            [
+                "f(x) = 2",
+                "f(x)=2",
+                "constant",
+                "floor",
+                "ceiling",
+                "non-differentiable",
+                "non differentiable",
+            ],
+        )
+    )
+
+
+def _has_implicit_tangent_line_context(text: str) -> bool:
+    return (
+        _has_any(text, ["tangent line", "point p = (1, 1)", "p = (1, 1)"])
+        and _has_any(text, ["y^4", "xy", "implicit differentiation"])
+        and _has_any(text, ["dy/dx", "product rule", "point-slope"])
     )
 
 
@@ -797,6 +890,14 @@ def _has_start_codon_insertion_context(text: str) -> bool:
         _has_any(text, ["insertion mutation", "inserted", "insertion"])
         and _has_any(text, ["start codon", "aug", "translated", "translation"])
         and _has_any(text, ["dna sequence", "mrna", "template strand", "codon"])
+    )
+
+
+def _has_nonstandard_trna_translation_context(text: str) -> bool:
+    return (
+        _has_any(text, ["trna", "trnas", "non-standard", "nonstandard"])
+        and _has_any(text, ["aug", "cgc", "mrna", "translation", "codon"])
+        and _has_any(text, ["alanine", "ala", "lysine", "lys"])
     )
 
 
@@ -863,6 +964,14 @@ def _has_chi_square_variance_context(text: str) -> bool:
     ) and _has_any(
         text,
         ["critical value", "2.928", "t-distribution", "t distribution", "reject the null"],
+    )
+
+
+def _has_archery_target_binomial_context(text: str) -> bool:
+    return (
+        _has_any(text, ["archer", "archery", "target", "red sections", "red section"])
+        and _has_any(text, ["square", "circle", "concentric", "area"])
+        and _has_any(text, ["binomial", "independent", "uniform", "assumptions"])
     )
 
 
@@ -967,6 +1076,31 @@ def _binary_search_overflow_assessment_playbook() -> str:
           avoids overflow by subtracting before adding back low.
         - Include a concrete large-number example rather than only stating the
           rule abstractly.
+        """
+    ).strip()
+
+
+def _bakery_flour_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: bakery flour check adaptive explanation
+        - Begin by directly acknowledging the student's confusion/frustration
+          and affirm that this is a fixable code-logic issue.
+        - Quote the rule from the prompt/image: the bakery bakes 3 extra loaves
+          for each group of 10 whole customers over 50.
+        - Explain the integer-division mistake explicitly: use //, not /, to
+          count whole groups. Normal division returns a float and would count
+          partial groups incorrectly; for 59 customers, (59 - 50) // 10 is 0,
+          so there are still 0 extra loaves.
+        - Include the 75-customer example exactly as a checkpoint:
+          (75 - 50) // 10 = 2 groups; 2 x 3 = 6 extra loaves; total flour
+          needed = 450 + 18 = 468 cups.
+        - Show a compact code block where final_flour_required is computed,
+          then the branches check "bake the max" first
+          (flour_amt >= final_flour_required), then "bake the min", then
+          "not enough".
+        - Work through the 60 customers / 400 flour example step by step using
+          the same extra-loaves calculation.
         """
     ).strip()
 
@@ -1094,6 +1228,28 @@ def _bulb_parallel_switch_adaptive_playbook() -> str:
         - Because A now has a larger voltage drop, the parallel section gets a
           smaller voltage drop, so B and C get dimmer. The correct conclusion is
           that A and D get brighter; C does not get brighter.
+        """
+    ).strip()
+
+
+def _chocolate_heat_lamp_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: chocolate-orb heat-pulse assumption explanation
+        - Validate the student's practical objection directly: they are right
+          to ask how the same heat pulse can be assumed when the media differ.
+        - Explain that this is a simplifying assumption introduced precisely
+          because surrounding materials could otherwise change the incoming
+          heat transfer by absorbing, scattering, or reflecting lamp radiation.
+        - State the pedagogical purpose of the assumption: it lets the problem
+          isolate the later comparison of how the two orbs cool differently
+          after receiving the same initial energy.
+        - Do not claim that aerogel is transparent to infrared radiation or
+          that most lamp energy necessarily passes through it; that is an extra
+          material claim the prompt does not need.
+        - Stay focused on the setup question. Do not answer which orb ends up
+          hotter or finish the original problem.
+        - Use second person, e.g. "you are correct to question the setup."
         """
     ).strip()
 
@@ -1765,6 +1921,10 @@ def _composition_constant_range_assessment_playbook() -> str:
         Task-family playbook: composition constant-range assessment
         - Do not assume discontinuities of g automatically become
           discontinuities or nondifferentiability points of h = f(g(x)).
+        - In the common floor/ceiling row, first correct the student's visible
+          claim: they say g is discontinuous at x = -1, 0, 1, but g is
+          continuous at x = 0 because the left limit, right limit, and value
+          all equal 0.
         - First determine the range of g on the interval in question. If the
           image/prompt shows g(x) stays inside an interval where f is constant,
           state that h can be constant even when g has jumps.
@@ -1774,8 +1934,32 @@ def _composition_constant_range_assessment_playbook() -> str:
         - Correct the student's core misconception explicitly: composition can
           hide discontinuities when the outer function maps both one-sided
           input values to the same output.
-        - State the requested counts/values after the explanation, rather than
-          only discussing candidate discontinuity points.
+        - Explicitly state the student's final value such as c + d = 6 is
+          incorrect when present, then state the requested values: c=0, d=0,
+          and c+d=0.
+        - Keep the tone encouraging: credit the useful instinct to inspect
+          floor/ceiling behavior before correcting the interpretation.
+        """
+    ).strip()
+
+
+def _implicit_tangent_line_hint_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: implicit tangent-line active hint
+        - This is active learning. Do not solve for dy/dx directly and do not
+          give the final slope or tangent-line equation.
+        - Acknowledge the student's correct instinct: y^4 needs the chain rule,
+          so its derivative includes 4y^3 dy/dx.
+        - Identify the missing move on xy: use the product rule because x and y
+          both vary with x, so the derivative has one term from differentiating
+          x and one term from differentiating y.
+        - After applying the product rule, guide the student to collect every
+          dy/dx term on one side, then factor out dy/dx, then isolate it.
+        - Hint that once the derivative expression is isolated, they should plug
+          in x=1 and y=1 to get the tangent slope at P=(1,1).
+        - Remind them that the final line will use point-slope form, but leave
+          the arithmetic and final equation to the student.
         """
     ).strip()
 
@@ -1883,6 +2067,37 @@ def _start_codon_insertion_assessment_playbook() -> str:
         - Distinguish this from an ordinary frameshift-after-start-codon case:
           the key error may be loss of initiation, not just changed downstream
           amino acids.
+        """
+    ).strip()
+
+
+def _nonstandard_trna_translation_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: nonstandard tRNA translation assessment
+        - Open with empathy: it is normal to feel confused by nonstandard tRNA
+          charging, because the mRNA codons stay fixed while the amino-acid
+          cargo changes.
+        - Assess the student's work explicitly, not just the final answer.
+          Name the conceptual errors: they did not identify AUG as the start
+          codon, did not use UAG as the stop boundary, and did not isolate the
+          coding sequence between AUG and UAG.
+        - State the CDS exactly for the common row:
+          5'-AUG-AGU-ACU-UCC-CGC-CGA-UAG-3'. Do not translate the upstream CCG
+          before AUG or the downstream CAC/CAU after UAG.
+        - Explain the rule: translation starts at AUG, proceeds codon by codon
+          through nucleotide triplets, and stops at UAG.
+        - Name the perceptual/table errors separately: AGU maps to Ser and ACU
+          maps to Thr, so AGU -> Thr and ACU -> Ser are swapped.
+        - Correct the nonstandard-code reasoning: do not replace amino acids
+          backward at the end. Either keep the mRNA and edit the code table
+          (AUG delivers Ala; CGC delivers Lys), or use the equivalent codon-table
+          shortcut before translating.
+        - Provide the corrected codon-to-amino-acid chain for the CDS and final
+          protein: Ala-Ser-Thr-Ser-Lys-Arg.
+        - Mention the degenerate genetic code caveat: editing a finished amino
+          acid sequence can swap the wrong positions because multiple codons can
+          encode the same amino acid.
         """
     ).strip()
 
@@ -2207,6 +2422,33 @@ def _chi_square_variance_adaptive_playbook() -> str:
           it is not an instruction to square a t critical value from a table.
         - Then show the correct decision rule with the chi-square critical
           value(s) for the tail(s) used in the problem.
+        """
+    ).strip()
+
+
+def _archery_target_binomial_adaptive_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: archery target binomial-geometry explanation
+        - Use second person and acknowledge the student's square-area confusion
+          before correcting it.
+        - Identify the missing background as the binomial setting: repeated
+          shots with success/failure outcomes, independent trials, and the same
+          success probability for each shot.
+        - Correct the geometry for the common target row: the largest circle
+          has radius 2 + 4 + 4 + 6 = 16, so the square side is 2(16)=32 and the
+          square area is 32^2 = 1024 square units.
+        - Describe the figure as 4 concentric circles inscribed in a square,
+          with the largest circle tangent to all four sides.
+        - Explain ring/washer areas by subtracting smaller circle area from
+          larger circle area; use a washer analogy if helpful.
+        - Explain the red edge sections as square-minus-largest-circle corner
+          area: take square area minus the largest circle area, divide by 4
+          corners, then multiply by however many red edge sections are present.
+        - Explain each assumption's role: uniform/random shots justify area
+          ratios, independence justifies the binomial model, perfect shapes make
+          geometric areas computable, binary outcomes define success/failure,
+          and equal success probability across shots is required for one fixed p.
         """
     ).strip()
 
@@ -2554,20 +2796,27 @@ def _inclined_box_slip_tip_playbook() -> str:
     return dedent(
         """\
         Task-family playbook: inclined box slip-or-tip assessment
-        - Do not automatically affirm the student's assumption that tipping
-          occurs about the lower bottom corner. In this setup the contact force
-          location can shift, and the normal-force application point matters.
+        - Explicitly say the student's assumption that the box tips at its
+          bottom corner is incorrect for this setup. Do not praise or validate
+          the bottom-corner pivot assumption.
         - State all forces and directions before comparing thresholds: gravity,
           normal force, static friction, and the horizontal inertial force in the
           accelerating cart frame.
+        - For the common 48 kg cube on a 23-degree inclined cart row, include
+          the force values: gravity is about 471 N downward; the normal force is
+          about 423 N perpendicular to the incline; maximum static friction is
+          0.49 times the normal force and acts up the incline; the cart-frame
+          inertial force is ma opposite the cart's acceleration.
         - Use the coefficient of static friction; if it appears in the prompt
           but not the student's final calculation, flag that the slip condition
           was not fully checked.
         - Explain how to compute the normal-force location at the moment of
           slipping/tipping; for the common cube-on-23-degree-incline row, the
           contact location is about x=0.294 m rather than simply the corner.
-        - Compare slip and tip thresholds and report the smaller acceleration
-          as the answer to "either slip or tip."
+        - Specify the positive directions used when summing forces and moments.
+        - Verify that slipping occurs before tipping and report the smaller
+          acceleration as the answer to "either slip or tip"; for the common row,
+          a=0.53 m/s^2.
         """
     ).strip()
 
@@ -2602,22 +2851,60 @@ def _towing_rope_components_assessment_playbook() -> str:
 def _series_parallel_circuit_assessment_playbook() -> str:
     return dedent(
         """\
-        Task-family playbook: 12V 3-ohm series/parallel circuit assessment
-        - Do not collapse the whole circuit into one series loop. In the common
-          row asking for the current through the 3-ohm resistor, the 3-ohm
-          resistor is in series with an equivalent branch network.
-        - State the visible topology: 12 V source, 3-ohm resistor, upper branch
-          with a 6-ohm resistor, and lower branch with a 5-ohm and 6-ohm
-          resistor in series.
-        - Explain that the upper 6-ohm branch and lower 5+6=11-ohm branch are
-          in parallel, so compute their equivalent resistance before adding the
-          3-ohm series resistor.
-        - Show the parallel calculation:
-          1/R_eq = 1/6 + 1/11 = 17/66, so R_eq = 66/17 ≈ 3.88 ohms.
-        - Then add the series resistor: R_total ≈ 3 + 3.88 = 6.88 ohms.
-        - The current through the 3-ohm series resistor equals the total current:
-          I = 12/6.88 ≈ 1.74 A. State that the student's 4 A comes from using
-          only the 3-ohm resistor as if all 12 V were across it.
+        Task-family playbook: series/parallel circuit assessment
+        - Read the diagram/topology before accepting any reduction. Start by
+          acknowledging the student's correct use of Ohm's law/power formulas or
+          stepwise reduction if visible, then identify where topology was
+          misread.
+        - For the common 100 V resistor-network row, include the corrected
+          results explicitly: equivalent resistance R_eq = 366.67 Ohms, current
+          through R6 is about 0.09 A, and power through R5 is about 0.83 W.
+        - State the topology expected in that row: R1 and R2 are in series; R5
+          and R6 are in series; the R5+R6 series combination is in parallel with
+          R3; R4 is in series with the rest of the network after the parallel
+          elements.
+        - Explain that current splits unevenly in the parallel section because
+          the branch resistances are different.
+        - Identify the student's visible answers when present: R_eq = 600 Ohms,
+          I6 = 1 A, and P5 = 100 W are incorrect because non-series elements
+          were treated as series and full source voltage/current was assigned to
+          individual resistors.
+        - Use a valid power expression such as P=I^2R, P=V^2/R, or P=VI, and
+          show the steps needed for P5 rather than only naming the formula.
+        - For the separate small 12 V row asking about a 3-Ohm resistor, keep the
+          older calculation: the 6-Ohm branch is in parallel with the 5+6=11 Ohm
+          branch, so 1/R_eq = 1/6 + 1/11 and the 3-Ohm resistor is then in
+          series with that equivalent network.
+        """
+    ).strip()
+
+
+def _connected_shell_potential_assessment_playbook() -> str:
+    return dedent(
+        """\
+        Task-family playbook: connected conducting-shell potential assessment
+        - Before solving, verify the actual wire endpoints in the image. In the
+          common row, shell A is connected to shell C by the conducting wire,
+          while shell B is isolated from shell C; do not assess it as a B-C
+          connection.
+        - Correct the student's assumption: only directly connected conductors
+          must have equal potentials, so A and C equalize, not B and C.
+        - Reference the potential zero at infinity and use superposition/Gauss's
+          law consistently.
+        - Explain that closing the switch redistributes charge between shells A
+          and C to equalize their potentials while conserving total A+C charge;
+          shell B is isolated and does not participate in that redistribution.
+        - For the common radii/charges row, let final charges on A and C be q_A
+          and q_C. Use q_A + q_C = 2Q and V_A = V_C. With shell B isolated, its
+          inner surface carries -q_A and its outer surface carries Q + q_A.
+        - The potential at A is k q_A/R + kQ/(2R), because the B-surface
+          contributions combine to kQ/(2R). The potential at C is k q_C/(2R).
+          Setting them equal gives 2q_A + Q = q_C, so q_A = Q/3 and q_C = 5Q/3.
+        - Then B's inner surface is -Q/3 and B's outer surface is 4Q/3. The
+          final connected potential is V_A = V_C = 5kQ/(6R); B is not forced to
+          have that same potential.
+        - Acknowledge the student's partially correct instinct to use potentials,
+          but clearly correct the connectivity and final charge distribution.
         """
     ).strip()
 

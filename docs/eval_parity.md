@@ -95,8 +95,11 @@ they exposed real tutoring failure modes, but they should not be cited as
 benchmark performance. The latest dev50 checkpoint is `85.28%` local ARRw with
 a `80.11%-89.66%` bootstrap CI.
 
-The current validation checkpoint is `validation150-retired-playbooks-v3` at
-`72.13%` local ARRw with a `69.02%-75.35%` bootstrap CI, versus `59.65%` for a
-same-set Sonnet baseline. This is stronger evidence than dev50, but the next
-meaningful claim step is still the full pinned public-HF release followed by
-judge calibration and official Scale submission.
+The current larger heldout checkpoint is `heldout500-blend-v11c-targeted` at
+`76.72%` local ARRw with a `75.02%-78.41%` bootstrap CI, versus `60.77%` for a
+same-set Sonnet baseline. This is public-HF-comparable engineering evidence,
+but it is still not a leaderboard result because it uses the 1,473-row public
+HF release, a local Sonnet judge, and a targeted repair blend rather than
+Scale-side evaluation. The next meaningful claim step is judge calibration on
+published baselines, then a full frozen-architecture public-HF run or official
+Scale submission.

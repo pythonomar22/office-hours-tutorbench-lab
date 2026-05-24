@@ -35,7 +35,10 @@ submission protocol exactly.
   so this lab infers:
   - critical positive criteria: `+5`
   - non-critical positive criteria: `+1`
-  - likely spoiler/failure criteria: `-5`
+  - likely spoiler/failure criteria: `-5`, only when the criterion is phrased
+    as bad behavior, e.g. "reveals" or "gives away" the final answer. Criteria
+    that ask the model to provide the correct final answer are scored as normal
+    positive criteria.
 - Rows with inferred negative criteria are counted as manual-review rows and
   must be called out in reports.
 

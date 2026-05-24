@@ -1307,6 +1307,94 @@ def test_v9_failure_playbooks_cover_remaining_probe_gaps(adaptive_example) -> No
     assert "df = n - 1" in ci_playbook
 
 
+def test_v11_playbooks_route_new_failure_families(adaptive_example) -> None:
+    examples = [
+        (
+            "Computer Science",
+            "USE_CASE_1_MULTIMODAL",
+            (
+                "A bakery check_flour function decides whether to return "
+                "\"bake the max\", \"bake the min\", or \"not enough\" based on "
+                "customers, loaves, and flour."
+            ),
+            "bakery flour check adaptive explanation",
+        ),
+        (
+            "Physics",
+            "USE_CASE_1_TEXT",
+            (
+                "Two chocolate orbs under identical heat lamps receive the same "
+                "heat pulse, but one is in aerogel on marble and one hangs from silk."
+            ),
+            "chocolate-orb heat-pulse assumption explanation",
+        ),
+        (
+            "Biology",
+            "USE_CASE_2_TEXT",
+            (
+                "A nonstandard tRNA translation problem has mRNA codons AUG and "
+                "CGC, where tRNAs deliver alanine/Ala and lysine/Lys instead."
+            ),
+            "nonstandard tRNA translation assessment",
+        ),
+        (
+            "Calculus",
+            "USE_CASE_3_TEXT",
+            (
+                "Find the tangent line at point P = (1, 1) on y^4 + xy = x^3 - x + 2. "
+                "The student asks about implicit differentiation, dy/dx, and the "
+                "product rule before point-slope form."
+            ),
+            "implicit tangent-line active hint",
+        ),
+        (
+            "Statistics",
+            "USE_CASE_1_MULTIMODAL",
+            (
+                "An archery target has concentric circles in a square. The student "
+                "asks about red sections, area, binomial assumptions, uniform shots, "
+                "and independent trials."
+            ),
+            "archery target binomial-geometry explanation",
+        ),
+        (
+            "Calculus",
+            "USE_CASE_2_MULTIMODAL",
+            (
+                "The student claims discontinuities in g(x) imply h(x)=f(g(x)) "
+                "is discontinuous and non-differentiable at the same points."
+            ),
+            "composition constant-range assessment",
+        ),
+        (
+            "Physics",
+            "USE_CASE_2_MULTIMODAL",
+            (
+                "Review the student's solution to the circuit problem shown in the image. "
+                "They calculated R_eq = 600 ohms, I6 = 1A, and P5 = 100W."
+            ),
+            "series/parallel circuit assessment",
+        ),
+        (
+            "Physics",
+            "USE_CASE_2_MULTIMODAL",
+            (
+                "Do you agree with the student's assumption that V_B = V_C at "
+                "equilibrium? Use Gauss's law, potential, and the conducting wire."
+            ),
+            "connected conducting-shell potential assessment",
+        ),
+    ]
+
+    for subject, batch, prompt, expected in examples:
+        example = adaptive_example.model_copy(
+            update={"subject": subject, "batch": batch, "prompt": prompt}
+        )
+        playbook = build_task_playbook(build_turn_input(example))
+        assert playbook is not None
+        assert expected in playbook
+
+
 def test_deterministic_guards_add_brittle_playbook_anchors() -> None:
     playbook = "\n\n".join(
         [
@@ -1379,6 +1467,26 @@ def test_crackle_guard_adds_fifth_derivative_audit() -> None:
     assert "x'''''(t) = 288t - 144" in guarded
     assert "x'''''(2) = 432 m/s^5" in guarded
     assert guards == ["crackle_fifth_derivative_audit"]
+
+
+def test_v11_guards_add_bakery_and_inclined_anchors() -> None:
+    bakery, bakery_guards = _apply_deterministic_playbook_guards(
+        "Use return statements instead of print statements.",
+        "Task-family playbook: bakery flour check adaptive explanation",
+    )
+    inclined, inclined_guards = _apply_deterministic_playbook_guards(
+        "The box slips before it tips.",
+        "Task-family playbook: inclined box slip-or-tip assessment",
+    )
+
+    assert "final_flour_required" in bakery
+    assert "(59 - 50) // 10 = 0" in bakery
+    assert "60 customers with 400 flour" in bakery
+    assert bakery_guards == ["bakery_flour_code_anchor"]
+    assert "x=0.294 m" in inclined
+    assert "positive up the incline" in inclined
+    assert "a = 0.53 m/s^2" in inclined
+    assert inclined_guards == ["inclined_box_template_rewrite"]
 
 
 def test_full_response_templates_do_not_overwrite_dynamic_agent_output() -> None:

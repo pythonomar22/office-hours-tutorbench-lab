@@ -1,0 +1,118 @@
+{
+  "by_bloom": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.23076923076923078,
+      "name": "Analyze"
+    },
+    {
+      "ci_high": 0.35339869281045755,
+      "ci_low": 0.16008318478906713,
+      "count": 5,
+      "mean_arrw": 0.2660816944761014,
+      "name": "Apply"
+    },
+    {
+      "ci_high": 0.27419354838709675,
+      "ci_low": 0.16666666666666666,
+      "count": 3,
+      "mean_arrw": 0.23390992675705158,
+      "name": "Evaluate"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.20689655172413793,
+      "name": "Understand"
+    }
+  ],
+  "by_modality": [
+    {
+      "ci_high": 0.3166808752486502,
+      "ci_low": 0.21369825839768286,
+      "count": 6,
+      "mean_arrw": 0.262113103262832,
+      "name": "multimodal"
+    },
+    {
+      "ci_high": 0.3389423076923077,
+      "ci_low": 0.09556631892697466,
+      "count": 4,
+      "mean_arrw": 0.22428135389200962,
+      "name": "text"
+    }
+  ],
+  "by_subject": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.2459016393442623,
+      "name": "Biology"
+    },
+    {
+      "ci_high": 0.375,
+      "ci_low": 0.16666666666666666,
+      "count": 2,
+      "mean_arrw": 0.2708333333333333,
+      "name": "Calculus"
+    },
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.20689655172413793,
+      "name": "Computer Science"
+    },
+    {
+      "ci_high": 0.26753155680224405,
+      "ci_low": 0.09178321678321678,
+      "count": 4,
+      "mean_arrw": 0.20282172245706606,
+      "name": "Physics"
+    },
+    {
+      "ci_high": 0.35294117647058826,
+      "ci_low": 0.3111111111111111,
+      "count": 2,
+      "mean_arrw": 0.3320261437908497,
+      "name": "Statistics"
+    }
+  ],
+  "by_use_case": [
+    {
+      "ci_high": null,
+      "ci_low": null,
+      "count": 1,
+      "mean_arrw": 0.375,
+      "name": "active_learning"
+    },
+    {
+      "ci_high": 0.3320261437908497,
+      "ci_low": 0.21883289124668437,
+      "count": 4,
+      "mean_arrw": 0.27542951751876704,
+      "name": "adaptive"
+    },
+    {
+      "ci_high": 0.2605407766767066,
+      "ci_low": 0.10978638847491307,
+      "count": 5,
+      "mean_arrw": 0.1986171930139925,
+      "name": "assessment"
+    }
+  ],
+  "judge_model": "anthropic:claude-sonnet-4-6",
+  "negative_weight_review_count": 3,
+  "overall": {
+    "ci_high": 0.301535538725376,
+    "ci_low": 0.18897781859194596,
+    "count": 10,
+    "mean_arrw": 0.24698040351450307,
+    "name": "overall"
+  },
+  "run_id": "heldout500-blend-v10"
+}

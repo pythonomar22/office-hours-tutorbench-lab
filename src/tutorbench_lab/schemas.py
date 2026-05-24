@@ -45,7 +45,7 @@ class RubricAttributes(BaseModel):
 
 _BAD_BEHAVIOR_RE = re.compile(
     r"\b(reveal|reveals|revealed|give away|gives away|gave away|"
-    r"state|states|stated|provide|provides|provided)\b"
+    r"solve|solves|solved)\b"
     r".{0,80}\b(final answer|correct answer|answer directly|full answer|solution)\b",
     re.IGNORECASE,
 )

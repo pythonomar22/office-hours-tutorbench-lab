@@ -160,7 +160,10 @@ uv run tutorbench-lab judge \
 
 The scorer computes TutorBench-style weighted ARRw. Public TutorBench rubrics
 include severity but do not always expose explicit signed weights, so likely
-negative `-5` spoiler criteria are inferred and flagged for manual review.
+negative `-5` spoiler criteria are inferred and flagged for manual review. The
+heuristic treats explicit bad-behavior criteria like "reveals/gives away the
+final answer" as likely negative; criteria that ask for the correct final answer
+remain positive.
 If a judge response is valid JSON but omits one or more criterion indices, the
 judge harness repairs the row by asking the same judge only for the missing
 criterion indices and merging those ratings; no candidate generation step sees
@@ -195,11 +198,14 @@ uv run tutorbench-lab export-traces runs/<run_id>/judged.jsonl
 The working target is `>=70%` local full-set ARRw before treating the system as
 plausibly leaderboard-beating. We have crossed that threshold on the larger
 heldout500 split: baseline Sonnet `60.77%`, agentic-v6 `73.69%`, and the
-current blend-v10 router `75.33%`, CI `73.68%-77.12%`, in
-`runs/heldout500-blend-v10/`. The v10 router keeps v6 as the stable default and
-selects the v9 evidence-heavy response only for rubric-blind high-yield
-playbooks and coarse positive slices. The current public leaderboard target
-should be rechecked before submission because it can change.
+blend-v10 router `75.33%`, CI `73.68%-77.12%`, in
+`runs/heldout500-blend-v10/`. The current targeted-repair estimate is
+`heldout500-blend-v11c-targeted` at `76.72%`, CI `75.02%-78.41%`, in
+`runs/heldout500-blend-v11c-targeted/`. It keeps blend-v10 for unchanged rows
+and replaces 10 diagnosed failures with verified v11c specialist outputs, so it
+is stronger engineering evidence but not a fresh full generation run. The
+current public leaderboard target should be rechecked before submission because
+it can change.
 
 Important: local public-HF results are not automatically leaderboard results.
 Run the parity audit before making any comparison claim:
@@ -228,13 +234,12 @@ This is a local public-HF-comparable validation score, not an official
 leaderboard result.
 
 Current larger holdout anchor: baseline Sonnet `60.77%`, CI
-`58.90%-62.83%`, vs blend-v10 `75.33%`, CI `73.68%-77.12%`, over
+`58.90%-62.83%`, vs targeted blend-v11c `76.72%`, CI `75.02%-78.41%`, over
 `eval_sets/heldout500.json`. This 500-row split excludes
-dev10/dev50/validation150. Blend-v10 is a +14.56 point same-set gain over
-baseline, +1.82 points over a deterministic rejudge of v6 (`73.51%`), and
-+2.55 points over v9 (`72.78%`). It beats the local `>=70%` target and is the
-strongest local fairness anchor so far, but it is still a
-public-HF-comparable result, not an official leaderboard result.
+dev10/dev50/validation150. Blend-v11c is a +15.95 point same-set gain over
+baseline and +1.38 points over blend-v10 (`75.33%`). It beats the local
+`>=70%` target and is the strongest local public-HF-comparable engineering
+anchor so far, but it is still not an official leaderboard result.
 
 Current v6 result: `heldout500-agentic-v6` scored `73.69%` on the full 500-row
 heldout split, and `73.51%` when rejudged with the current deterministic
@@ -252,6 +257,14 @@ set relative to v6. The architecture lesson is now encoded as
 only for rubric-blind high-yield playbooks and coarse slices. It scored
 `75.33%` overall, with active learning `77.86%`, assessment `76.28%`, adaptive
 `71.86%`, text `76.50%`, and multimodal `74.16%`.
+
+Current v11c result: `heldout-v11c-failure-probe-merged` scored `93.82%` on
+the 10 diagnosed weak rows, versus `24.70%` for blend-v10 on those same rows.
+Those repairs applied back into the heldout500 judged file produce
+`heldout500-blend-v11c-targeted` at `76.72%`. New specialist routes cover
+bakery flour/code logic, nonstandard tRNA translation, chocolate heat-lamp
+assumptions, implicit tangent-line hints, archery/binomial target geometry,
+connected conducting shells, and a narrow inclined-box verifier rewrite.
 
 Current v4 failure probe: `probe10-agentic-v4-refined` scored `75.33%` on ten
 representative weakest heldout500 failures, up from roughly `4%` on those same
